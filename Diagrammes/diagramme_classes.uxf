@@ -1,0 +1,84 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>590</x><y>0</y><w>360</w><h>160</h></coordinates><panel_attributes>Point
+--
+latitude : float
+longitude : float
+--
+__init__(latitude, longitude)
++ test_egal (autre_point : Point) : bool
++ distance (autre_point : Point) : float
++ test_perimetre ( perimetre : float, autre_point : Point) : bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>260</y><w>360</w><h>160</h></coordinates><panel_attributes>Polygone
+--
+liste_points : list [ Point ]
+--
+__init__( list [ Point ] )
++ test_sommet(autre_point : Point) : bool
++ rectangle_excrit ( ) : list [ float ] ou Polygone ?
++ test_point_voisin ( autre_point : Point ) : bool
++ test_polyg_voisin ( autre_polyg : Polygone ) : bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>150</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>560</x><y>490</y><w>420</w><h>160</h></coordinates><panel_attributes>MultiPolygone
+--
+liste_polyg : list [ Polygone ]
+--
+__init__( list [ Polygone] )
+
++ rectangle_excrit ( ) : list [ float ] ou Polygone ?
++ test_point_voisin ( autre_point : Point ) : bool
++ test_polyg_voisin ( autre_polyg : Polygone ) : bool
++ test_multipolyg_voisin ( autre_multipolyg : MultiPolygone ) : bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>760</x><y>410</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1080</x><y>400</y><w>430</w><h>180</h></coordinates><panel_attributes>Parcelle
+--
+id_parc : str
+geom_type : str 
+geom_coord : Polygone ou Multipolygone
+--
+__init__(id : str, geom_type : str , geom_coord : Polygone ou Multipolygone)
++id_commune() : str
++test_parcel_voisine(autre_parcelle) : bool
+
++test_commune_voisine(commune : Commune) : bool    ???
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>390</y><w>430</w><h>180</h></coordinates><panel_attributes>Commune
+--
+id_com : str
+geom_type : str 
+geom_coord : Polygone ou Multipolygone
+--
+__init__(id : str, geom_type : str , geom_coord : Polygone ou Multipolygone)
++id_commune() : str
++test_commune_voisine(autre_comune) : bool
+
++test_commune_voisine(commune : Commune) : bool    ???
++test_parcel_limite(parcelle : Parcelle) : bool 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>350</y><w>190</w><h>150</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..1
+&lt; définit ?</panel_attributes><additional_attributes>10;120;70;120;70;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>460</y><w>160</w><h>140</h></coordinates><panel_attributes>lt=-
+m1=
+m2=1..0
+&lt; définit</panel_attributes><additional_attributes>10;10;70;10;70;110;140;110</additional_attributes></element><element><id>Relation</id><coordinates><x>940</x><y>350</y><w>160</w><h>170</h></coordinates><panel_attributes>lt=-
+m1=1..0
+m2=1
+définit &gt;</panel_attributes><additional_attributes>10;10;70;10;70;140;140;140</additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>480</y><w>130</w><h>120</h></coordinates><panel_attributes>lt=-
+m1=0..1
+m2=
+définit ? &gt;</panel_attributes><additional_attributes>10;90;40;90;40;10;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>260</y><w>210</w><h>150</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+est voisine de &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1200</x><y>270</y><w>210</w><h>150</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+est voisine de &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>560</y><w>1010</w><h>200</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+&lt; est voisine de </panel_attributes><additional_attributes>10;10;10;180;970;180;970;20</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>560</y><w>1100</w><h>260</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n
+&lt; est en limite de </panel_attributes><additional_attributes>10;10;10;230;1060;240;1060;20</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>560</y><w>1230</w><h>300</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n
+&lt; est incluse dans </panel_attributes><additional_attributes>10;10;10;280;1190;280;1190;20</additional_attributes></element></diagram>
