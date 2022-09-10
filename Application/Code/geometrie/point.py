@@ -11,7 +11,7 @@ class Point():
         longitude : float
     
     """
-    def __init__(self,liste_coordo : list[float]):
+    def __init__(self, liste_coordo : list[float]):
         """constructeur de la classe Point
         Paramètres
         ----------
@@ -19,5 +19,18 @@ class Point():
         """
         self.latitude = liste_coordo[0]
         self.longitude = liste_coordo[1]
+
+    def test_egal (self, autre_point) -> bool:
+        """teste d'égalité avec un 2ème point
+        Parametre:
+        ----------
+            autre_point : Point
+        """
+        return (autre_point.latitude == self.latitude) and (autre_point.longitude == self.longitude)
+
+    def __str__(self) -> str:
+        """affichage"""
+        print("point:")
+        return "({};{})".format(self.latitude,self.longitude)
 
 
