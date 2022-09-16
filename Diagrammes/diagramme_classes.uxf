@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram note</help_text><element><id>UMLClass</id><coordinates><x>653</x><y>0</y><w>360</w><h>140</h></coordinates><panel_attributes>Point
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram note</help_text><element><id>UMLClass</id><coordinates><x>900</x><y>80</y><w>360</w><h>140</h></coordinates><panel_attributes>Point
 --
 latitude : float
 longitude : float
@@ -8,9 +8,9 @@ __init__( liste_coordo : list [float] )
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>653</x><y>260</y><w>360</w><h>160</h></coordinates><panel_attributes>Polygone
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>500</y><w>360</w><h>160</h></coordinates><panel_attributes>Polygone
 --
-liste_points : list [ list[ Point ] ]
+liste_points : list [ list[ Segment ] ]
 --
 __init__( liste_brute : list [ list [ list[ float ] ] ] )
 + test_sommet(autre_point : Point) : bool
@@ -20,7 +20,7 @@ __init__( liste_brute : list [ list [ list[ float ] ] ] )
 + test_polyg_proche ( autre_polyg : Polygone ) : bool
 + test_polyg_contigu ( autre_polyg : Polygone ) : bool
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>823</x><y>130</y><w>30</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>623</x><y>490</y><w>420</w><h>160</h></coordinates><panel_attributes>MultiPolygone
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>730</y><w>420</w><h>160</h></coordinates><panel_attributes>MultiPolygone
 --
 liste_polyg : list [ Polygone ]
 --
@@ -31,53 +31,51 @@ __init__(liste_brute : list[ list [ list[ list[ float ] ] ]  ] )
 + test_polyg_proche ( autre_polyg : Polygone ) : bool
 + test_multipolyg_proche ( autre_multipolyg : MultiPolygone ) : bool
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>823</x><y>410</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1143</x><y>400</y><w>430</w><h>180</h></coordinates><panel_attributes>Parcelle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1070</x><y>650</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>400</y><w>430</w><h>180</h></coordinates><panel_attributes>Parcelle
 --
 id_parc : str
-geom_type : str 
 geom_coord : Polygone
 --
-__init__(id : str, geom_type : str , geom_coord : Polygone )
+__init__(id : str, geom_coord : Polygone )
 +id_commune() : str
 +test_parcel_voisine(autre_parcelle) : bool
 
 +test_commune_voisine(commune : Commune) : bool    ???
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>63</x><y>390</y><w>430</w><h>180</h></coordinates><panel_attributes>Commune
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>740</y><w>430</w><h>180</h></coordinates><panel_attributes>Commune
 --
 id_com : str
-geom_type : str 
 geom_coord : Multipolygone
 --
-__init__(id : str, geom_type : str , geom_coord : Multipolygone)
+__init__(id : str, geom_coord : Multipolygone)
 +import_json()
 +test_commune_voisine(autre_comune) : bool
 
 +test_commune_voisine(commune : Commune) : bool    ???
 +test_parcel_limite(parcelle : Parcelle) : bool 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>483</x><y>460</y><w>160</w><h>140</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>800</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=
 m2=1..0
-&lt; définit</panel_attributes><additional_attributes>10;10;70;10;70;110;140;110</additional_attributes></element><element><id>Relation</id><coordinates><x>1003</x><y>350</y><w>160</w><h>170</h></coordinates><panel_attributes>lt=-
+&lt; définit</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>540</y><w>210</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=1..0
 m2=1
-définit &gt;</panel_attributes><additional_attributes>10;10;70;10;70;140;140;140</additional_attributes></element><element><id>Relation</id><coordinates><x>183</x><y>260</y><w>210</w><h>150</h></coordinates><panel_attributes>lt=-
+définit &gt;</panel_attributes><additional_attributes>190;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>660</y><w>210</w><h>100</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-est contigüe à &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>1263</x><y>270</y><w>210</w><h>150</h></coordinates><panel_attributes>lt=-
+est contigüe à &gt;</panel_attributes><additional_attributes>10;80;10;20;170;20;170;80</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>300</y><w>210</w><h>120</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-est contigüe à &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>333</x><y>560</y><w>1010</w><h>200</h></coordinates><panel_attributes>lt=-
+est contigüe à &gt;</panel_attributes><additional_attributes>10;100;10;20;170;20;170;100</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>490</y><w>190</w><h>340</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-&lt; est contigüe à </panel_attributes><additional_attributes>10;10;10;180;970;180;970;20</additional_attributes></element><element><id>Relation</id><coordinates><x>293</x><y>560</y><w>1100</w><h>260</h></coordinates><panel_attributes>lt=-
+&lt; est contigüe à </panel_attributes><additional_attributes>140;310;10;310;10;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>440</y><w>310</w><h>490</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1..*
-&lt; est en limite de </panel_attributes><additional_attributes>10;10;10;230;1060;240;1060;20</additional_attributes></element><element><id>Relation</id><coordinates><x>233</x><y>560</y><w>1230</w><h>300</h></coordinates><panel_attributes>lt=-
+&lt; est en limite de </panel_attributes><additional_attributes>260;460;10;460;10;10;290;10</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>550</y><w>140</w><h>240</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1..*
-&lt; est incluse dans </panel_attributes><additional_attributes>10;10;10;280;1190;280;1190;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1153</x><y>0</y><w>360</w><h>190</h></coordinates><panel_attributes>Rectangle
+&lt; est incluse dans </panel_attributes><additional_attributes>30;210;10;210;10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1420</x><y>240</y><w>360</w><h>190</h></coordinates><panel_attributes>Rectangle
 --
 lat_min : float
 lat_max : float
@@ -88,15 +86,16 @@ __init__( lat_min : float , lat_max : float,
 long_min : float, long_max : float )
 
 + test_point_inclus ( autre_point : Point ) : bool
++test_intersct_rect (autre_rect).....
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1003</x><y>100</y><w>170</w><h>250</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1250</x><y>340</y><w>190</w><h>250</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-intersecte &gt;</panel_attributes><additional_attributes>10;220;60;220;110;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1003</x><y>40</y><w>170</w><h>50</h></coordinates><panel_attributes>lt=-
+intersecte &gt;</panel_attributes><additional_attributes>10;220;60;220;110;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1250</x><y>130</y><w>190</w><h>200</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-est inclus dans &gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>223</x><y>70</y><w>360</w><h>130</h></coordinates><panel_attributes>Segment
+est inclus dans &gt;</panel_attributes><additional_attributes>10;10;60;10;60;170;170;170</additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>280</y><w>360</w><h>140</h></coordinates><panel_attributes>Segment
 --
 point1 : Point
 point2 : Point
@@ -106,4 +105,21 @@ __init__( point1, point2 )
 + test_egal_segm ( autre_segment : segment ) : bool
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>573</x><y>80</y><w>100</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;90;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>453</x><y>190</y><w>220</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;130;10;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1020</x><y>210</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1030</x><y>410</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1260</x><y>420</y><w>270</w><h>450</h></coordinates><panel_attributes>lt=-
+m1=1..*
+m2=1..*
+intersecte &gt;</panel_attributes><additional_attributes>10;420;60;420;230;90;230;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1660</x><y>420</y><w>30</w><h>600</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;580</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1520</x><y>1000</y><w>360</w><h>130</h></coordinates><panel_attributes>Cadrillage
+--
+
+id_cadrillage : str
+--
+__init__( lat_min : float , lat_max : float,
+long_min : float, long_max : float , id_cadrillage )
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>780</x><y>0</y><w>1060</w><h>940</h></coordinates><panel_attributes>Package 1
+--
+-Content 1
++Content 2
+bg=gray
+fg=red</panel_attributes><additional_attributes></additional_attributes></element></diagram>
