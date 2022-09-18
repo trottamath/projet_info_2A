@@ -4,11 +4,11 @@ auteur: Jean-Philippe Trotta
 date : 10/09/2022
 """
 
-from Application.Code.geometrie.segment import Segment
-from geometrie.multi_polygone import MultiPolygone
-from geometrie.polygone import Polygone
-from geometrie.point import Point
-from geometrie.rectangle import Rectangle
+from ..geometrie.segment import Segment
+from ..geometrie.multi_polygone import MultiPolygone
+from ..geometrie.polygone import Polygone
+from ..geometrie.point import Point
+from ..geometrie.rectangle import Rectangle
 
 
 
@@ -46,20 +46,25 @@ poly5 = Polygone([[[10,-1],[10,1],[14,-1],[14,1]]]) #false
 print(poly5.test_intersect_rect(rect1))
 
 
-#test polygones proches (version non-symétrique)
+#test polygones proches
 poly6 = Polygone([[[5,1],[6,1],[6,2]]]) 
 print(poly6.test_polyg_proche(poly4)) #true
-print(poly4.test_polyg_proche(poly6)) #true 
+
 
 poly7 = Polygone([[[4,4],[4,6],[6,6]]])
 print(poly7.test_polyg_proche(poly4)) #true
 
 #test polygones contigus
 poly8 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
-print(poly8.test_polyg_contigu(poly7)) #true
-print(poly8.test_polyg_contigu(poly2)) #false
+poly9 = Polygone([[[4,4],[4,5],[6,7]]])
+print(poly8.test_polyg_contigu(poly9)) #true
+print(poly8.test_polyg_contigu(poly7)) #false
 
 #test multipoly
 m1 = MultiPolygone([[[[1,5545.3254],[654436.65,25545.444],[5425,11]],[[12,322],[4,10],[35,44]]],[[[2,25545],[654436.65,25545.444],[5425,5545.3254],[654436.65,25545.444],[5425,22]]]])
 
 print(m1)
+print(m1.test_polyg_contigu(m1)) #true
+
+
+

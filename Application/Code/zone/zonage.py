@@ -1,5 +1,5 @@
-"""module parcelle.py pour définir la classe Parcelle
-version 1.1
+"""module zonage.py pour définir la classe Zonage
+version 1.0
 date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
@@ -7,34 +7,48 @@ auteur : Jean-Philippe Trotta
 import gzip
 import json
 #import requests #(TODO problème avec pip install à résoudre)
-
+import urllib
 from urllib import request
-from zonage import Zonage
 
 from Application.Code.geometrie.polygone import Polygone
+from Application.Code.geometrie.multi_polygone import MultiPolygone
+from Application.Code.geometrie.abstract_polygone import AbstractPolygone
 
-class Parcelle(Zonage):
-    """
+class Zonage():
+    """classe zonage (classe mère commune à Commune et Parcelle)
     Attributs:
     ----------
-        id_parc : str
-            identifiant de la parcelle
-        geom_coord : Polygone
+        id : str
+            identifiant de la zone
+        geom_coord : AbstractPolygone
     """
+    def __init__(self, id : str, geom_coord : AbstractPolygone ):
+        """constructeur de la classe Zonage
 
-    def ident_commune(self):
-        """retourne l'identifiant de la commune dont la parcelle est issue
         """
-        id=""
-        for i in range(5):
-            id = id + self.id_parc[i]
-        return id
+        self.id = id
+        self.geom_coord = geom_coord
 
+    def ident_departement(self):
+        return self.id[0] + self.id[1]
 
+    def test_zone_proche(self, autre_zone) -> bool:
+        """teste si l' autre_zone donnée est proche de cette zone
+        Paramètres:
+        -----------
+            autre_zone : Zonage
+        """
+        return autre_zone.geom_coord.test_polyg_proche(self.geom_coord)
 
+    def test_zone_contigu(self, macro_zone : Zonage) -> bool:
+        """teste si la macro_zone donnée est contigüe de cette zone
+        Paramètres:
+        -----------
+            macro_zone : Zonage
+                attention : si macro_zone est de type Parcelle, alors self aussi
+        """
+        return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord)
 
-
-# à modifier cf tp2 et à déplacer dans la classe mère
 
     @staticmethod
     def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
@@ -54,7 +68,7 @@ class Parcelle(Zonage):
                 sauf si zonage1="france" alors laisser par défaut zonage2="communes"
         
         """
-        #méthode statique car commune à la classe Parcelle et Commune (voir si nécessaire du créer une classe mère commune)
+        
         url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
 
         if zonage1 == "departements":
@@ -70,17 +84,6 @@ class Parcelle(Zonage):
         else:
             url = "{}{}/geojson/{}/{}/{}".format(url,date,zonage1,url_zone1,fichier)
         return url
+    
 
-  
 
-
-    url=url_json(id_dep="13")
-    print(url)
-    with gzip.open(url, "rb") as file:
-        data = json.loads(file.read(), encoding="utf-8")
-
-    #autre essai
-    #fich = urllib.urlopen(url)
-    #print(json.loads(fich.read()))
-
-    #data= requests.get(url).json()

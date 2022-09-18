@@ -40,7 +40,7 @@ class Polygone(AbstractPolygone):
             liste_poly_geom.append(liste_segments)
         
         self.liste_poly_geom = liste_poly_geom
-    
+
     def test_segment(self, autre_segment : Segment) -> bool:
         """teste si un segment appartient au 1er polygone géométrique
         """
@@ -54,7 +54,7 @@ class Polygone(AbstractPolygone):
         """retourne le plus petit rectangle qui inclus le polygone géométrique extérieur (selon ces latitudes et longitudes extrèmes)
         """
         print("recherche du rectangle circonscrit") # TODO à supprimer à la fin
-        
+
         #initialisation sur les coordonnées du 1er point du 1er segment du polygone géométrique extérieur
         sgm = self.liste_poly_geom[0][0]
         lat_min = sgm.point1.latitude
@@ -73,8 +73,6 @@ class Polygone(AbstractPolygone):
                 long_min = sgm.point1.longitude
         return Rectangle(lat_min = lat_min, lat_max = lat_max, long_min = long_min, long_max = long_max)
 
-
-
     def test_polyg_contigu (self, autre_polyg ) -> bool:
         """ teste si deux polygones ont au moins un segment commun
                 le test s'effectue sur les polygones géométriques extérieurs
@@ -88,9 +86,7 @@ class Polygone(AbstractPolygone):
                 for sgm2 in autre_polyg.liste_poly_geom[0]:
                     if sgm1.test_egal(sgm2):
                         return True
-            return False
-        else:
-            return False
+        return False
 
     def __str__(self) -> str:
         """affichage
