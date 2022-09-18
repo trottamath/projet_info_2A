@@ -36,6 +36,24 @@ class Rectangle():
         print("test inclusion dans rectangle") # TODO à supprimer à la fin
         return (autre_point.latitude <= self.lat_max) and (autre_point.latitude >= self.lat_min) and (autre_point.longitude <= self.long_max) and (autre_point.longitude >= self.long_min)
 
+    def test_intersect_rect (self, autre_rect) -> bool:
+        """teste si un autre rectangle intersecte celui-ci
+        Paramètre :
+        -----------
+            autre_rect : Rectangle
+        """
+        print("test intersection de rectangles") # TODO à supprimer à la fin
+        if (autre_rect.long_max < self.long_min) or (autre_rect.long_min > self.long_max) or (autre_rect.lat_max < self.lat_min) or (autre_rect.lat_min > self.lat_max):
+            return False
+        else:
+            return True
+
+    def union_rectangle(self, autre_rect):
+        """retourne le plus petit rectangle (au sens des latitudes et longitudes extrèmes) qui inclus ce rectangle et un autre rectangle donné
+        """
+        return Rectangle(lat_min= min(self.lat_min, autre_rect.lat_min), lat_max= max(self.lat_max, autre_rect.lat_max), long_min= min(self.long_min, autre_rect.long_min), long_max= max(self.long_max, autre_rect.long_max))
+
+
     def __str__(self) -> str:
         """affichage"""
         print("rectangle:")

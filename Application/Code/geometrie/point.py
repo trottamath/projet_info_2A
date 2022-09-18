@@ -33,6 +33,6 @@ class Point():
     def __str__(self) -> str:
         """affichage"""
         print("point:")
-        return "({};{})".format(self.latitude,self.longitude)
+        return "( {} ; {} )".format(self.latitude,self.longitude)
 
 
