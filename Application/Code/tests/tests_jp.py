@@ -29,10 +29,6 @@ poly2=Polygone([[[12,322],[4,10],[35,44]]]) #sans trou
 print(poly2.test_segment(sgm1))
 
 
-#test multipoly
-m1 = MultiPolygone([[[1,5545.3254],[654436.65,25545.444],[5425,11]],[[2,25545],[654436.65,25545.444],[5425,5545.3254],[654436.65,25545.444],[5425,22]]])
-
-print(m1)
 
 #test rect
 rect1 = Rectangle(lat_min=-1, lat_max=5, long_min=-2, long_max=7)
@@ -61,4 +57,9 @@ print(poly7.test_polyg_proche(poly4)) #true
 #test polygones contigus
 poly8 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
 print(poly8.test_polyg_contigu(poly7)) #true
+print(poly8.test_polyg_contigu(poly2)) #false
 
+#test multipoly
+m1 = MultiPolygone([[[[1,5545.3254],[654436.65,25545.444],[5425,11]],[[12,322],[4,10],[35,44]]],[[[2,25545],[654436.65,25545.444],[5425,5545.3254],[654436.65,25545.444],[5425,22]]]])
+
+print(m1)

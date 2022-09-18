@@ -6,9 +6,10 @@ auteur : Jean-Philippe Trotta
 from point import Point
 from segment import Segment
 from rectangle import Rectangle
+from abstract_polygone import AbstractPolygone
 import doctest
 
-class Polygone():
+class Polygone(AbstractPolygone):
     """Classe Polygone
     Attributs :
     -----------
@@ -72,25 +73,11 @@ class Polygone():
                 long_min = sgm.point1.longitude
         return Rectangle(lat_min = lat_min, lat_max = lat_max, long_min = long_min, long_max = long_max)
 
-    def test_intersect_rect (self, rectangle : Rectangle ) -> bool:
-        """teste si le polygone est proche d'un rectangle donné
-                c'est-à-dire si le rectangle circonscrit au polygone intersecte le rectangle donnée
-        """
-        print("test de voisinage avec un rectangle") # TODO à supprimer à la fin
-        return rectangle.test_intersect_rect(autre_rect= self.rectangle_circonscrit())
 
-    def test_polyg_proche (self, autre_polyg ) -> bool:
-        """teste si un autre polygone donné est proche du polygone initial 
-                c'est-à-dire si leur rectangle circonscrit respectif s'intersectent
-        Paramètre:
-        ----------
-            autre_polyg : Polygone
-        """
-        print("test polygone proche") # TODO à supprimer à la fin
-        return autre_polyg.test_intersect_rect(self.rectangle_circonscrit())
 
     def test_polyg_contigu (self, autre_polyg ) -> bool:
         """ teste si deux polygones ont au moins un segment commun
+                le test s'effectue sur les polygones géométriques extérieurs
         Paramètre:
         ----------
             autre_polyg : Polygone

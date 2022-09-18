@@ -1,6 +1,6 @@
 """module rectangle.py pour définir la classe Rectangle
-version 1.0
-date 10/09/2022
+version 1.1
+date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 from point import Point
