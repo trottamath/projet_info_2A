@@ -24,3 +24,8 @@ class Commune(Zonage):
         geom_coord : MultiPolygone
     """
 
+
+m1=MultiPolygone([[[2,1],[3,5],[2,7]],[[0,0]]],[[[1,1],[3,5],[0,0]]])
+
+com1= Commune(id="13400", geom_coord=m1)
+print(com1)

@@ -106,7 +106,7 @@ __init__( lat_min : float , lat_max : float,
 long_min : float, long_max : float , nb-row : int, nb_col : int )
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1200</x><y>0</y><w>1110</w><h>940</h></coordinates><panel_attributes>geometrie
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1200</x><y>0</y><w>1130</w><h>940</h></coordinates><panel_attributes>geometrie
 --
 
 bg=gray

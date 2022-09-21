@@ -85,5 +85,8 @@ class Zonage():
             url = "{}{}/geojson/{}/{}/{}".format(url,date,zonage1,url_zone1,fichier)
         return url
     
+    def __str__(self) -> str:
+        return "identifiant : {} \n coordonnées : \n {}".format(self.id, self.geom_coord)
+    
 
 

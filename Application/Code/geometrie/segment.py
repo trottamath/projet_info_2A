@@ -33,3 +33,4 @@ class Segment():
         """
         print("Segment:")
         return "[ {} ; {} ]".format(str(self.point1),str(self.point2))
+
