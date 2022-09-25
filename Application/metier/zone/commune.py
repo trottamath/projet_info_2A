@@ -7,6 +7,7 @@ auteur : Jean-Philippe Trotta
 import gzip
 import json  # à déplacer dans la classe Import_json
 #import requests #(TODO problème avec pip install à résoudre)
+#from pip._vendor import requests
 import urllib
 from urllib import request
 

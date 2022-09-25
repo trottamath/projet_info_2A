@@ -10,8 +10,8 @@ CREATE TABLE parcelle (
 
 DROP TABLE IF EXISTS parcelle_parcelle CASCADE;
 CREATE TABLE parcelle_parcelle (
-id_parc1 TEXT,
-id_parc2 TEXT,
-date TEXT
+    id_parc1 TEXT,
+    id_parc2 TEXT,
+    date TEXT
 );
 
