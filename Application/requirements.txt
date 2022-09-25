@@ -1,0 +1,5 @@
+requests
+psycopg2-binary
+dataclasses
+python-dotenv
+fastapi[all]
