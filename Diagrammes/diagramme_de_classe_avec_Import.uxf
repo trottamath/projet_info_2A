@@ -1,0 +1,124 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>7</zoom_level><element><id>UMLClass</id><coordinates><x>518</x><y>273</y><w>252</w><h>112</h></coordinates><panel_attributes>Point
+--
+latitude : float
+longitude : float
+--
+__init__( liste_coordo : list [float] )
++ test_egal (autre_point : Point) : bool
+
+? + distance (autre_point : Point) : float
+? + test_perimetre ( perimetre : float, autre_point : Point) : bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>518</x><y>455</y><w>252</w><h>112</h></coordinates><panel_attributes>Polygone
+--
+liste_points : list [ Point ]
+--
+__init__( liste_brute : list [ list[ float ] ] )
++ test_sommet(autre_point : Point) : bool
++ rectangle_circonscrit ( ) : Rectangle
++ test_intersect_rect ( rectangle : Rectangle ) : bool
++ test_point_proche ( autre_point : Point ) : bool
++ test_polyg_proche ( autre_polyg : Polygone ) : bool
++ test_polyg_contigu ( autre_polyg : Polygone ) : bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>637</x><y>378</y><w>21</w><h>91</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>497</x><y>616</y><w>294</w><h>112</h></coordinates><panel_attributes>MultiPolygone
+--
+liste_polyg : list [ Polygone ]
+--
+__init__(liste_brute : list[ list[ list[ float ] ] ] )
+
++ rectangle_circonscrit ( ) : Rectangle
++ test_point_proche ( autre_point : Point ) : bool
++ test_polyg_proche ( autre_polyg : Polygone ) : bool
++ test_multipolyg_proche ( autre_multipolyg : MultiPolygone ) : bool
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>637</x><y>560</y><w>21</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>861</x><y>553</y><w>301</w><h>126</h></coordinates><panel_attributes>Parcelle
+--
+id_parc : str
+geom_type : str 
+geom_coord : Polygone ou Multipolygone
+--
+__init__(id : str, geom_type : str , geom_coord : Polygone ou Multipolygone)
++id_commune() : str
++test_parcel_voisine(autre_parcelle) : bool
+
++test_commune_voisine(commune : Commune) : bool    ???
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>105</x><y>546</y><w>301</w><h>126</h></coordinates><panel_attributes>Commune
+--
+id_com : str
+geom_type : str 
+geom_coord : Polygone ou Multipolygone
+--
+__init__(id : str, geom_type : str , geom_coord : Polygone ou Multipolygone)
++import_json()
++test_commune_voisine(autre_comune) : bool
+
++test_commune_voisine(commune : Commune) : bool    ???
++test_parcel_limite(parcelle : Parcelle) : bool 
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>399</x><y>518</y><w>133</w><h>105</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..1
+&lt; définit ?</panel_attributes><additional_attributes>10;120;70;120;70;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>399</x><y>595</y><w>112</w><h>98</h></coordinates><panel_attributes>lt=-
+m1=
+m2=1..0
+&lt; définit</panel_attributes><additional_attributes>10;10;70;10;70;110;140;110</additional_attributes></element><element><id>Relation</id><coordinates><x>763</x><y>518</y><w>112</w><h>119</h></coordinates><panel_attributes>lt=-
+m1=1..0
+m2=1
+définit &gt;</panel_attributes><additional_attributes>10;10;70;10;70;140;140;140</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>609</y><w>91</w><h>84</h></coordinates><panel_attributes>lt=-
+m1=0..1
+m2=
+définit ? &gt;</panel_attributes><additional_attributes>10;90;40;90;40;10;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>455</y><w>147</w><h>105</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+est contigüe à &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>945</x><y>462</y><w>147</w><h>105</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+est contigüe à &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>294</x><y>665</y><w>707</w><h>140</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+&lt; est contigüe à </panel_attributes><additional_attributes>10;10;10;180;970;180;970;20</additional_attributes></element><element><id>Relation</id><coordinates><x>266</x><y>665</y><w>770</w><h>182</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n
+&lt; est en limite de </panel_attributes><additional_attributes>10;10;10;230;1060;240;1060;20</additional_attributes></element><element><id>Relation</id><coordinates><x>224</x><y>665</y><w>861</w><h>210</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1..n
+&lt; est incluse dans </panel_attributes><additional_attributes>10;10;10;280;1190;280;1190;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>868</x><y>273</y><w>252</w><h>133</h></coordinates><panel_attributes>Rectangle
+--
+lat_min : float
+lat_max : float
+long_min : float
+long_max : float
+--
+__init__( lat_min : float , lat_max : float,
+long_min : float, long_max : float )
+
++ test_point_inclus ( autre_point : Point ) : bool
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>763</x><y>343</y><w>140</w><h>175</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+intersecte &gt;</panel_attributes><additional_attributes>10;220;110;220;110;10;150;10</additional_attributes></element><element><id>Relation</id><coordinates><x>763</x><y>301</y><w>119</w><h>35</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1..n
+est inclus dans &gt;</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>231</x><y>147</y><w>112</w><h>63</h></coordinates><panel_attributes>/Import/
+--
+
+--
+__init__()
+import()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>147</x><y>259</y><w>119</w><h>84</h></coordinates><panel_attributes>Web
+--
+-id
+-type(parcelle ou commune)
+-version : str
+-
+--
+__init__()
+import()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>259</y><w>112</w><h>63</h></coordinates><panel_attributes>Local
+--
+
+--
+__init__()
+import()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>203</y><w>35</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;80</additional_attributes></element><element><id>Relation</id><coordinates><x>217</x><y>203</y><w>49</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;80</additional_attributes></element></diagram>
