@@ -32,6 +32,7 @@ class Zonage():
     def ident_departement(self):
         return self.id[0] + self.id[1]
 
+
     def test_zone_proche(self, autre_zone) -> bool:
         """teste si l' autre_zone donnée est proche de cette zone
         Paramètres:
@@ -47,7 +48,10 @@ class Zonage():
             macro_zone : Zonage
                 attention : si macro_zone est de type Parcelle, alors self aussi
         """
+        # à modifier pour que ça ne pose pas de pb pour les parcelles en limite d'une commune (ou à préciser dans les classes filles) TODO à supprimer
+
         return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord)
+
 
 
     @staticmethod

@@ -22,7 +22,7 @@ class Parcelle(Zonage):
         geom_coord : Polygone
     """
 
-    def ident_commune(self):
+    def ident_commune(self): 
         """retourne l'identifiant de la commune dont la parcelle est issue
         """
         id=""
@@ -30,11 +30,21 @@ class Parcelle(Zonage):
             id = id + self.id_parc[i]
         return id
 
+    def lien_zone(self, autre_parcelle) -> str:
+        """retourne "contigues" si les deux parcelles sont contigües
+                sinon renourne "non-contigues"
+        Parametres :
+        ------------
+            autre_parcelle : Parcelle
+        """
+        if self.geom_coord.test_polyg_contigu(autre_parcelle.geom_coord):
+            return "contigues"
+        return "non-contigues"
 
 
 
 
-# à modifier cf tp2 et à déplacer dans la classe mère
+# à modifier cf tp2 et à déplacer dans la classe mère (ou dans une classe import ?)
 
     @staticmethod
     def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
