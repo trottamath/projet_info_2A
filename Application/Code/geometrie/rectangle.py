@@ -29,7 +29,7 @@ class Rectangle():
         self.long_min = long_min
         self.long_max = long_max
     
-    def test_point_inclus ( self, autre_point : Point ) -> bool:
+    def test_point_inclus ( self, autre_point : Point ) -> bool:  # à supprimer si inutile ailleurs
         """teste si un point est inclus dans un rectangle
         """
         print("test inclusion dans rectangle") # TODO à supprimer à la fin

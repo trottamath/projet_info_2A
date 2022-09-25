@@ -73,7 +73,7 @@ class Polygone(AbstractPolygone):
                 long_min = sgm.point1.longitude
         return Rectangle(lat_min = lat_min, lat_max = lat_max, long_min = long_min, long_max = long_max)
 
-    def test_polyg_contigu (self, autre_polyg ) -> bool:
+    def test_polyg_contigu (self, autre_polyg ) -> bool: #TODO à tester (car modifié)
         """ teste si deux polygones ont au moins un segment commun
                 le test s'effectue sur les polygones géométriques extérieurs
         Paramètre:
@@ -83,9 +83,8 @@ class Polygone(AbstractPolygone):
         print("test polygones contigus") # TODO à supprimer à la fin
         if self.test_polyg_proche(autre_polyg= autre_polyg):  
             for sgm1 in self.liste_poly_geom[0]:
-                for sgm2 in autre_polyg.liste_poly_geom[0]:
-                    if sgm1.test_egal(sgm2):
-                        return True
+                if autre_polyg.test_segment(autre_segment=sgm1):
+                    return True
         return False
 
     def __str__(self) -> str:
