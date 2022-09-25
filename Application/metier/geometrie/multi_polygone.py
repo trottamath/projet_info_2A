@@ -4,9 +4,9 @@ date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 
-from rectangle import Rectangle
-from abstract_polygone import AbstractPolygone
-from polygone import Polygone
+from metier.geometrie.rectangle import Rectangle
+from metier.geometrie.abstract_polygone import AbstractPolygone
+from metier.geometrie.polygone import Polygone
 
 class MultiPolygone(AbstractPolygone):
     """Classe MultiPolygone

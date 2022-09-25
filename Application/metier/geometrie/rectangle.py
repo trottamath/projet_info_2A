@@ -3,7 +3,7 @@ version 1.1
 date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
-from point import Point
+
 
 class Rectangle():
     """Classe Rectangle
@@ -29,11 +29,11 @@ class Rectangle():
         self.long_min = long_min
         self.long_max = long_max
     
-    def test_point_inclus ( self, autre_point : Point ) -> bool:  # à supprimer si inutile ailleurs
-        """teste si un point est inclus dans un rectangle
-        """
-        print("test inclusion dans rectangle") # TODO à supprimer à la fin
-        return (autre_point.latitude <= self.lat_max) and (autre_point.latitude >= self.lat_min) and (autre_point.longitude <= self.long_max) and (autre_point.longitude >= self.long_min)
+#    def test_point_inclus ( self, autre_point : Point ) -> bool:  # à supprimer si inutile ailleurs
+ #       """teste si un point est inclus dans un rectangle
+  #      """
+   #     print("test inclusion dans rectangle") # TODO à supprimer à la fin
+    #    return (autre_point.latitude <= self.lat_max) and (autre_point.latitude >= self.lat_min) and (autre_point.longitude <= self.long_max) and (autre_point.longitude >= self.long_min)
 
     def test_intersect_rect (self, autre_rect) -> bool:
         """teste si un autre rectangle intersecte celui-ci

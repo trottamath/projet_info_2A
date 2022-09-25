@@ -10,9 +10,9 @@ import json
 import urllib
 from urllib import request
 
-from Application.metier.geometrie.polygone import Polygone
-from Application.metier.geometrie.multi_polygone import MultiPolygone
-from Application.metier.geometrie.abstract_polygone import AbstractPolygone
+from metier.geometrie.polygone import Polygone
+from metier.geometrie.multi_polygone import MultiPolygone
+from metier.geometrie.abstract_polygone import AbstractPolygone
 
 class Zonage():
     """classe zonage (classe mère commune à Commune et Parcelle)

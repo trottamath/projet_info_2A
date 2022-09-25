@@ -4,7 +4,7 @@ date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 
-from rectangle import Rectangle
+from metier.geometrie.rectangle import Rectangle
 from abc import ABC, abstractmethod
 
 class AbstractPolygone():

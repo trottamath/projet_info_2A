@@ -5,16 +5,16 @@ auteur : Jean-Philippe Trotta
 """
 
 import gzip
-import json
+import json  # à déplacer dans la classe Import_json
 #import requests #(TODO problème avec pip install à résoudre)
 import urllib
 from urllib import request
 
-from zonage import Zonage
-from parcelle import Parcelle
+from metier.zone.zonage import Zonage
+from metier.zone.parcelle import Parcelle
 
-from Application.metier.geometrie.polygone import Polygone
-from Application.metier.geometrie.multi_polygone import MultiPolygone
+from metier.geometrie.polygone import Polygone
+from metier.geometrie.multi_polygone import MultiPolygone
 
 class Commune(Zonage):
     """
