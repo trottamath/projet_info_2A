@@ -6,7 +6,7 @@ auteur : Jean-Philippe Trotta
 
 import gzip
 import json
-#import requests #(TODO problème avec pip install à résoudre)
+import requests #(TODO problème avec pip install à résoudre)
 
 from urllib import request
 from metier.zone.zonage import Zonage

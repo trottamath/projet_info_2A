@@ -1,14 +1,12 @@
 {
-    "terminal.integrated.env.osx": {
-        "PYTHONPATH": "${workspaceFolder}",
+    "python.analysis.extraPaths": [
+        "./*"
+    ],
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/Application",
     },
     "terminal.integrated.env.linux": {
-        "PYTHONPATH": "${workspaceFolder}",
+        "PYTHONPATH": "${workspaceFolder}/Application",
     },
-    "terminal.integrated.env.windows": {
-        "PYTHONPATH": "${workspaceFolder}",
-    },
- 
     "python.languageServer": "Jedi"
-
 }
