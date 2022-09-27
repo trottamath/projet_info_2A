@@ -1,42 +1,44 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>152</y><w>260</w><h>90</h></coordinates><panel_attributes>Commune
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>130</x><y>112</y><w>260</w><h>90</h></coordinates><panel_attributes>Commune
 --
 id_com : str
+liste_requet : list [ str ] 
 id_cadrillage_fr : str
 date
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>152</y><w>250</w><h>110</h></coordinates><panel_attributes>Parcelle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>670</x><y>112</y><w>250</w><h>130</h></coordinates><panel_attributes>Parcelle
 --
 id_parc : str
 id_com_inclus : str
-limite_com : bool
+limite_com : bool (ou None ?)
+liste_requet : list [ str ] 
 nom_commune : str
 date
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>202</y><w>310</w><h>50</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>162</y><w>310</w><h>50</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2=*
-&lt; est contigüe à</panel_attributes><additional_attributes>10;20;290;20</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>212</y><w>40</w><h>160</h></coordinates><panel_attributes>lt=.
+&lt; est contigüe à</panel_attributes><additional_attributes>10;20;290;20</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>172</y><w>40</w><h>160</h></coordinates><panel_attributes>lt=.
 m1=
-m2=1</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>92</y><w>200</w><h>220</h></coordinates><panel_attributes>lt=-
+m2=1</panel_attributes><additional_attributes>10;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>52</y><w>200</w><h>230</h></coordinates><panel_attributes>lt=-
 m1=1..n
 m2=1..n
-&lt; est contigüe à</panel_attributes><additional_attributes>10;170;10;200;90;200;90;10;10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>392</y><w>150</w><h>80</h></coordinates><panel_attributes>Parcelle_Parcelle
+&lt; est contigüe à</panel_attributes><additional_attributes>10;190;10;200;90;200;90;10;10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>352</y><w>150</w><h>80</h></coordinates><panel_attributes>Parcelle_Parcelle
 --
 id_parc1 : str
 id_parc2 : str
 date
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>62</y><w>220</w><h>250</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>22</y><w>220</w><h>250</h></coordinates><panel_attributes>lt=-
 m1=1..n
 m2=1..n
-&lt; est contigüe à </panel_attributes><additional_attributes>180;180;180;230;10;230;10;10;170;10;170;90</additional_attributes></element><element><id>Relation</id><coordinates><x>940</x><y>282</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=.
+&lt; est contigüe à </panel_attributes><additional_attributes>180;180;180;230;10;230;10;10;170;10;170;90</additional_attributes></element><element><id>Relation</id><coordinates><x>940</x><y>242</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=.
 m1=1..n
-m2=1</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>412</y><w>170</w><h>80</h></coordinates><panel_attributes>Commune_Commune
+m2=1</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>372</y><w>170</w><h>80</h></coordinates><panel_attributes>Commune_Commune
 --
 id_com1 : str
 id_com2 : str
@@ -44,9 +46,9 @@ date
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>282</y><w>50</w><h>150</h></coordinates><panel_attributes>lt=.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>242</y><w>50</w><h>150</h></coordinates><panel_attributes>lt=.
 m1=1..n
-m2=1</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>352</y><w>260</w><h>100</h></coordinates><panel_attributes>Parcelle_Commune
+m2=1</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>400</x><y>312</y><w>260</w><h>100</h></coordinates><panel_attributes>Parcelle_Commune
 --
 id_parc : str
 id_com : str
