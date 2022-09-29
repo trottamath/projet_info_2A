@@ -1,0 +1,20 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>340</x><y>130</y><w>240</w><h>50</h></coordinates><panel_attributes>dans tb Parcelle_Parcelle,
+y a-t-il id_requet dans liste_requet</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>290</y><w>260</w><h>30</h></coordinates><panel_attributes>le programme interroge le site</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>10</x><y>10</y><w>940</w><h>560</h></coordinates><panel_attributes>Requette : id_requet = 2
+nom_requette : "Parcelles contigues à parcelle donnée"
+Paramètre : id_parc_r , date_parc_r
+bg=blue
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>40</x><y>180</y><w>150</w><h>80</h></coordinates><panel_attributes>dans tb Parcelle,
+y a-t-il id_parc=id_parc_r 
+et date=date_parc_r</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>150</y><w>180</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+oui
+</panel_attributes><additional_attributes>160;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>210</y><w>140</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+non</panel_attributes><additional_attributes>120;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>100</y><w>130</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+oui
+</panel_attributes><additional_attributes>110;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>170</y><w>50</w><h>140</h></coordinates><panel_attributes>lt=&lt;-
+non
+
+</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>680</x><y>100</y><w>260</w><h>60</h></coordinates><panel_attributes>Donner la liste des parcelles contigues:
+tous les id_parc2 associés à id_parc1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>290</y><w>120</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>320</y><w>240</w><h>50</h></coordinates><panel_attributes>dans tb Parcelle_Parcelle,
+stoquer toutes les associations avec  parc1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>360</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>450</y><w>240</w><h>50</h></coordinates><panel_attributes>dans tb Parcelle,
+ajouter id_requet dans liste_requet
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
