@@ -6,7 +6,7 @@ auteur : Jean-Philippe Trotta
 from metier.geometrie.point import Point
 from metier.geometrie.segment import Segment
 from metier.geometrie.rectangle import Rectangle
-from metier.abstract_polygone import AbstractPolygone
+from metier.geometrie.abstract_polygone import AbstractPolygone
 import doctest
 
 class Polygone(AbstractPolygone):

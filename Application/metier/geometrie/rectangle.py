@@ -53,10 +53,14 @@ class Rectangle():
         return Rectangle(lat_min= min(self.lat_min, autre_rect.lat_min), lat_max= max(self.lat_max, autre_rect.lat_max), long_min= min(self.long_min, autre_rect.long_min), long_max= max(self.long_max, autre_rect.long_max))
 
 
-    def sous_ensemble(self, num_ligne : int, num_col : int, nb_lignes_tot : int, nb_col_tot: int ) -> Rectangle :
+    def sous_ensemble(self, num_ligne : int, num_col : int, nb_lignes_tot : int, nb_col_tot: int ) :
         ''' Subdivise le rectangle en lignes et colonnes
         et retourne le sous-rectangle selectionné dans la subdivision
         convention: même numérotation que les listes en partant de 0 pour num_col et num_ligne
+
+        Returns
+        -------
+            Rectangle
         '''
         pas_long = (self.long_max - self.long_min) / nb_col_tot
         pas_lat = (self.lat_max - self.lat_min) / nb_lignes_tot

@@ -41,18 +41,6 @@ class Zonage():
         """
         return autre_zone.geom_coord.test_polyg_proche(self.geom_coord)
 
-    def test_zone_contigu(self, macro_zone : Zonage) -> bool:
-        """teste si la macro_zone donnée est contigüe de cette zone
-        Paramètres:
-        -----------
-            macro_zone : Zonage
-                attention : si macro_zone est de type Parcelle, alors self aussi
-        """
-        # à modifier pour que ça ne pose pas de pb pour les parcelles en limite d'une commune (ou à préciser dans les classes filles) TODO à supprimer
-
-        return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord)
-
-
 
     @staticmethod
     def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
