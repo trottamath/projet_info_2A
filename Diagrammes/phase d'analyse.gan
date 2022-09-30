@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2022-07-01" view-index="0" gantt-divider-location="463" resource-divider-location="300" version="3.0.3005" locale="fr_FR">
+    <description/>
+    <view zooming-state="default:8" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="296" order="0"/>
+        <field id="tpd4" name="Date de début" width="80" order="1"/>
+        <field id="tpd5" name="Date de fin" width="81" order="2"/>
+        <option id="taskLabelUp" value=""/>
+        <option id="taskLabelDown" value=""/>
+        <option id="taskLabelLeft" value="taskDates"/>
+        <option id="taskLabelRight" value="name"/>
+        <option id="color.recent">
+            <![CDATA[#99ccff #660099 #009900 #99cc00 #000000 #cc00ff #ff9966 #ff9933 #ffcc00 #ff6600]]>
+        </option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nom" width="209" order="0"/>
+        <field id="1" name="Rôle par défaut" width="85" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Choix du sujet" color="#99ccff" meeting="false" start="2022-08-22" duration="6" complete="0" thirdDate="2022-08-22" thirdDate-constraint="0" expand="true"/>
+        <task id="112" name="Suivi de projet" color="#99cc00" meeting="true" start="2022-08-30" duration="0" complete="0" thirdDate="2022-10-03" thirdDate-constraint="0" expand="true"/>
+        <task id="80" name="Etude préalable" color="#8cb6ce" meeting="false" start="2022-08-30" duration="13" complete="0" thirdDate="2022-08-22" thirdDate-constraint="0" expand="true"/>
+        <task id="82" name="Modélisation des cas d'utilisation" color="#8cb6ce" meeting="false" start="2022-08-30" duration="5" complete="0" thirdDate="2022-07-01" thirdDate-constraint="0" expand="true"/>
+        <task id="114" name="Réunion de travail" color="#009933" meeting="true" start="2022-09-07" duration="0" complete="1" thirdDate="2022-09-07" thirdDate-constraint="0" expand="true"/>
+        <task id="84" name="Conception générale et plannification" color="#8cb6ce" meeting="false" start="2022-09-01" duration="25" complete="0" thirdDate="2022-09-01" thirdDate-constraint="0" expand="true"/>
+        <task id="86" name="Modélisation UML de la base de données" color="#8cb6ce" meeting="false" start="2022-09-08" duration="7" complete="0" thirdDate="2022-07-01" thirdDate-constraint="0" expand="true"/>
+        <task id="116" name="Réunion de travail" color="#009933" meeting="true" start="2022-09-14" duration="0" complete="2" thirdDate="2022-09-07" thirdDate-constraint="0" expand="true"/>
+        <task id="118" name="Suivi de projet" color="#99cc00" meeting="true" start="2022-09-16" duration="0" complete="0" thirdDate="2022-08-30" thirdDate-constraint="0" expand="true"/>
+        <task id="88" name="Diagramme par séquence" color="#8cb6ce" meeting="false" start="2022-09-26" duration="5" complete="0" thirdDate="2022-07-01" thirdDate-constraint="0" expand="true"/>
+        <task id="90" name="Diagramme d'activité" color="#8cb6ce" meeting="false" start="2022-09-28" duration="5" complete="0" thirdDate="2022-09-26" thirdDate-constraint="0" expand="true"/>
+        <task id="92" name="Diagramme d'états pour chaque requête" color="#8cb6ce" meeting="false" start="2022-09-21" duration="8" complete="0" thirdDate="2022-07-01" thirdDate-constraint="0" expand="true"/>
+        <task id="120" name="Réunion de travail" color="#009933" meeting="true" start="2022-09-21" duration="0" complete="3" thirdDate="2022-09-07" thirdDate-constraint="0" expand="true"/>
+        <task id="95" name="Modélisation des classes de la couche Métier" color="#8cb6ce" meeting="false" start="2022-09-02" duration="20" complete="0" thirdDate="2022-07-01" thirdDate-constraint="0" expand="true"/>
+        <task id="122" name="Réunion de travail" color="#009933" meeting="true" start="2022-09-28" duration="0" complete="1" thirdDate="2022-09-07" thirdDate-constraint="0" expand="true"/>
+        <task id="97" name="Rédaction du rapport d'analyse" color="#660099" meeting="false" start="2022-09-08" duration="28" complete="0" thirdDate="2022-08-01" thirdDate-constraint="0" expand="true"/>
+        <task id="124" name="Réunion de travail : finalisation dossier d'analyse" color="#009900" meeting="true" start="2022-10-05" duration="0" complete="5" thirdDate="2022-09-07" thirdDate-constraint="0" priority="2" expand="true"/>
+        <task id="99" name="Remise du rapport d'analyse" color="#000000" meeting="true" start="2022-10-10" duration="0" complete="0" thirdDate="2022-08-01" thirdDate-constraint="0" expand="true"/>
+        <task id="126" name="Réunion de travail" color="#009933" meeting="true" start="2022-10-12" duration="0" complete="1" thirdDate="2022-09-07" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
