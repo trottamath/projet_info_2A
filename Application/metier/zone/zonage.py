@@ -41,6 +41,13 @@ class Zonage():
         """
         return autre_zone.geom_coord.test_polyg_proche(self.geom_coord)
 
+    def test_zone_contigu(self, macro_zone) -> bool:
+        """teste si la macro_zone donnée est contigüe à cette zone
+        Paramètres:
+        -----------
+            macro_zone : Zonage
+        """
+        return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord)
 
     @staticmethod
     def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
