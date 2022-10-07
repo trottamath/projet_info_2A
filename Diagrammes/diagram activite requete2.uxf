@@ -1,71 +1,71 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLNote</id><coordinates><x>2</x><y>0</y><w>2040</w><h>1020</h></coordinates><panel_attributes>Attribut de la requête :
+<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><element><id>UMLNote</id><coordinates><x>0</x><y>84</y><w>1224</w><h>612</h></coordinates><panel_attributes>Attribut de la requête :
 la requête a un identifiant
 et un nom (ici : "Parcelles contigues à une parcelle donnée" )
 
 Paramètres utilisés par cette requête : identifiant de la parcelle (dont on cherche les parcelles contigües) , et la date du fichier cadastral
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>412</x><y>160</y><w>110</w><h>130</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>252</x><y>180</y><w>66</w><h>78</h></coordinates><panel_attributes>lt=&lt;-
     
   oui
-</panel_attributes><additional_attributes>90;20;10;20;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>270</y><w>570</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
-      non</panel_attributes><additional_attributes>550;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>872</x><y>120</y><w>120</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>90;20;10;20;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>246</y><w>342</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+      non</panel_attributes><additional_attributes>550;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>528</x><y>156</y><w>72</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
 oui
 
 
-</panel_attributes><additional_attributes>100;20;10;20;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>872</x><y>190</y><w>130</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>100;20;10;20;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>528</x><y>198</y><w>78</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
 non
 
-</panel_attributes><additional_attributes>110;80;10;80;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>182</x><y>390</y><w>20</w><h>20</h></coordinates><panel_attributes>type=initial</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1712</x><y>40</y><w>20</w><h>20</h></coordinates><panel_attributes>type=final</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>182</x><y>310</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1282</x><y>120</y><w>150</w><h>80</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>130;60;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>52</x><y>240</y><w>270</w><h>80</h></coordinates><panel_attributes>La commmune de la parcelle donnée est-elle
+</panel_attributes><additional_attributes>110;80;10;80;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>114</x><y>318</y><w>12</w><h>12</h></coordinates><panel_attributes>type=initial</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1032</x><y>108</y><w>12</w><h>12</h></coordinates><panel_attributes>type=final</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>114</x><y>270</y><w>18</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>774</x><y>156</y><w>102</w><h>90</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>150;130;150;10;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>36</x><y>228</y><w>162</w><h>48</h></coordinates><panel_attributes>La commmune de la parcelle donnée est-elle
 déjà définie dans la base de données ?
 
 bg=yellow
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>502</x><y>140</y><w>280</w><h>70</h></coordinates><panel_attributes>La base de données contient-elle les
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>306</x><y>168</y><w>168</w><h>42</h></coordinates><panel_attributes>La base de données contient-elle les
 parcelles en limite de cette commune ? 
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>402</x><y>270</y><w>40</w><h>40</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>280</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>862</x><y>160</y><w>40</w><h>40</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>772</x><y>170</y><w>110</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>972</x><y>100</y><w>320</w><h>70</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>246</x><y>246</y><w>24</w><h>24</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>192</x><y>252</y><w>66</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>522</x><y>180</y><w>24</w><h>24</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>468</x><y>186</y><w>66</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>588</x><y>144</y><w>192</w><h>42</h></coordinates><panel_attributes>
 Interroger la base de données :
 La parcelle donnée fait-elle partie des
 parcelles en limite de sa commune ?
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1292</x><y>190</y><w>120</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;10;80</additional_attributes></element><element><id>UMLState</id><coordinates><x>982</x><y>240</y><w>320</w><h>70</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>780</x><y>240</y><w>84</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>594</x><y>228</y><w>192</w><h>42</h></coordinates><panel_attributes>
 Test à l'aide de la couche service :
 La parcelle donnée est-elle
 en limite de sa commune ?
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1392</x><y>180</y><w>40</w><h>40</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>1562</x><y>140</y><w>320</w><h>100</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>852</x><y>234</y><w>24</w><h>24</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>942</x><y>186</y><w>192</w><h>60</h></coordinates><panel_attributes>
 Tester à l'aide la couche service,
 pour chaque autres parcelles de la commune,
 si elles sont contigües à la parcelle donnée.
 Et retourner la liste de parcelles satisfant la condition. 
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1422</x><y>180</y><w>160</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
-non</panel_attributes><additional_attributes>140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1402</x><y>210</y><w>70</w><h>160</h></coordinates><panel_attributes>lt=&lt;-
-oui</panel_attributes><additional_attributes>50;140;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>1422</x><y>350</y><w>320</w><h>70</h></coordinates><panel_attributes>La base de données contient-elle les
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>216</y><w>84</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
+non</panel_attributes><additional_attributes>120;10;60;10;60;50;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>858</x><y>252</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+oui</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>714</x><y>330</y><w>192</w><h>42</h></coordinates><panel_attributes>La base de données contient-elle les
 communes voisines de cette commune ?
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1542</x><y>410</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>1532</x><y>490</y><w>40</w><h>40</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1402</x><y>500</y><w>150</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
-non</panel_attributes><additional_attributes>10;60;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1562</x><y>500</y><w>160</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
-oui</panel_attributes><additional_attributes>140;60;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>1092</x><y>530</y><w>320</w><h>70</h></coordinates><panel_attributes>Lancer la requête
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>342</y><w>96</w><h>36</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;40;10;10;140;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>624</x><y>366</y><w>24</w><h>24</h></coordinates><panel_attributes>type=decision</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>534</x><y>366</y><w>102</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+non</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>384</y><w>30</w><h>84</h></coordinates><panel_attributes>lt=&lt;-
+oui</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>348</x><y>360</y><w>192</w><h>42</h></coordinates><panel_attributes>Lancer la requête
 "communes contigües à commune donnée"
 sur cette commune
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>1572</x><y>560</y><w>320</w><h>90</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>570</x><y>456</y><w>192</w><h>54</h></coordinates><panel_attributes>
 Parmi la liste des communes contigües
 à cette commune, la couche service cherche
 lesquelles sont contigües à la parcelle donnée.
 Récupérer la liste de ces communes contigües 
 à la parcelle donnée.
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1402</x><y>570</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>170;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1642</x><y>640</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>1502</x><y>730</y><w>320</w><h>100</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>396</y><w>132</w><h>96</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>200;140;10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>612</x><y>504</y><w>18</w><h>84</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>528</x><y>576</y><w>192</w><h>60</h></coordinates><panel_attributes>
 Lancer la requête
 "parcelles en limite d'une commune donnée"
 sur toutes les communes récupérées.
 Récupérer la liste de listes de ces parcelles.
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>1682</x><y>880</y><w>320</w><h>100</h></coordinates><panel_attributes>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>900</x><y>588</y><w>192</w><h>60</h></coordinates><panel_attributes>
 Tester à l'aide la couche service,
 pour chaque parcelles récupérées,
 si elles sont contigües à la parcelle donnée.
 Et retourner la liste de parcelles satisfant la condition. 
 
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1612</x><y>820</y><w>90</w><h>130</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;110;10;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1872</x><y>190</y><w>110</w><h>710</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;90;10;90;690</additional_attributes></element><element><id>Relation</id><coordinates><x>1712</x><y>50</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element></diagram>
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>714</x><y>606</y><w>198</w><h>18</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>310;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>240</y><w>18</w><h>360</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;580</additional_attributes></element><element><id>Relation</id><coordinates><x>1032</x><y>114</y><w>18</w><h>84</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element></diagram>
