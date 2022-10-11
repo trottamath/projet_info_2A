@@ -44,7 +44,7 @@ class Parcelle(Zonage):
 
 
 
-# à modifier cf tp2 et à déplacer dans la classe mère (ou dans une classe import ?)
+# à modifier cf tp2 et à déplacer dans le client
 
     @staticmethod
     def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
