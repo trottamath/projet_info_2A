@@ -3,7 +3,7 @@ version 1.0
 date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
-from metier.geometrie.point import Point
+from objets.geometrie.point import Point
 
 class Segment():
     """Classe Segment

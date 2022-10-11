@@ -11,11 +11,11 @@ import json  # à déplacer dans la classe Import_json
 import urllib
 from urllib import request
 
-from metier.zone.zonage import Zonage
-from metier.zone.parcelle import Parcelle
+from objets.zone.zonage import Zonage
+from objets.zone.parcelle import Parcelle
 
-from metier.geometrie.polygone import Polygone
-from metier.geometrie.multi_polygone import MultiPolygone
+from objets.geometrie.polygone import Polygone
+from objets.geometrie.multi_polygone import MultiPolygone
 
 class Commune(Zonage):
     """

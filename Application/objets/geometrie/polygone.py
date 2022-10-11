@@ -3,10 +3,10 @@ version 1.1
 date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
-from metier.geometrie.point import Point
-from metier.geometrie.segment import Segment
-from metier.geometrie.rectangle import Rectangle
-from metier.geometrie.abstract_polygone import AbstractPolygone
+from objets.geometrie.point import Point
+from objets.geometrie.segment import Segment
+from objets.geometrie.rectangle import Rectangle
+from objets.geometrie.abstract_polygone import AbstractPolygone
 import doctest
 
 class Polygone(AbstractPolygone):

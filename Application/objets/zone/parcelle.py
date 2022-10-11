@@ -9,9 +9,9 @@ import json
 import requests #(TODO problème avec pip install à résoudre)
 
 from urllib import request
-from metier.zone.zonage import Zonage
+from objets.zone.zonage import Zonage
 
-from metier.geometrie.polygone import Polygone
+from objets.geometrie.polygone import Polygone
 
 class Parcelle(Zonage):
     """
