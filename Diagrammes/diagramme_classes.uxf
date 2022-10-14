@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><help_text>Space for diagram note</help_text><element><id>UMLClass</id><coordinates><x>763</x><y>54</y><w>216</w><h>72</h></coordinates><panel_attributes>Point
+<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><help_text>Space for diagram note</help_text><element><id>UMLClass</id><coordinates><x>702</x><y>12</y><w>216</w><h>72</h></coordinates><panel_attributes>Point
 --
 latitude : float
 longitude : float
@@ -8,7 +8,7 @@ __init__( liste_coordo : list [float] )
 
 bg=blue
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>757</x><y>306</y><w>216</w><h>84</h></coordinates><panel_attributes>Polygone
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>696</x><y>264</y><w>216</w><h>84</h></coordinates><panel_attributes>Polygone
 --
 liste_poly_geom : list [ list[ Segment ] ]
 --
@@ -17,7 +17,7 @@ __init__( liste_brute : list [ list [ list[ float ] ] ] )
 + rectangle_circonscrit ( ) : Rectangle
 + test_polyg_contigu ( autre_polyg : Polygone ) : bool
 
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>727</x><y>456</y><w>252</w><h>84</h></coordinates><panel_attributes>MultiPolygone
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>666</x><y>414</y><w>252</w><h>84</h></coordinates><panel_attributes>MultiPolygone
 --
 liste_polyg : list [ Polygone ]
 --
@@ -28,10 +28,10 @@ __init__(liste_brute : list[ list [ list[ list[ float ] ] ]  ] )
 bg=blue
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>859</x><y>384</y><w>30</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=1..*</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>139</x><y>264</y><w>210</w><h>90</h></coordinates><panel_attributes>Parcelle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>798</x><y>342</y><w>30</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..*</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>78</x><y>222</y><w>210</w><h>90</h></coordinates><panel_attributes>Parcelle
 --
-
+geom_coord : Polygone
 --
 
 +ident_commune( )
@@ -39,24 +39,24 @@ m2=1..*</panel_attributes><additional_attributes>10;120;10;10</additional_attrib
 bg=blue
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>121</x><y>456</y><w>234</w><h>102</h></coordinates><panel_attributes>Commune
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>414</y><w>234</w><h>102</h></coordinates><panel_attributes>Commune
 --
-
+geom_coord : MultiPolygone
 --
 __init__(id : str, geom_coord : Multipolygone)
 
 +lien_zone(autre_zone : Zonage) : str
 
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>193</x><y>402</y><w>126</w><h>66</h></coordinates><panel_attributes>lt=-
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>132</x><y>360</y><w>126</w><h>66</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-est contigüe à &gt;</panel_attributes><additional_attributes>10;90;10;20;170;20;170;90</additional_attributes></element><element><id>Relation</id><coordinates><x>211</x><y>186</y><w>126</w><h>90</h></coordinates><panel_attributes>lt=-
+est contigüe à &gt;</panel_attributes><additional_attributes>10;90;10;20;170;20;170;90</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>144</y><w>126</w><h>90</h></coordinates><panel_attributes>lt=-
 m1=1..*
 m2=1..*
-est contigüe à &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>103</x><y>336</y><w>84</w><h>144</h></coordinates><panel_attributes>lt=-
+est contigüe à &gt;</panel_attributes><additional_attributes>10;130;10;20;170;20;170;130</additional_attributes></element><element><id>Relation</id><coordinates><x>42</x><y>294</y><w>78</w><h>144</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1..*
-&lt; est incluse dans </panel_attributes><additional_attributes>30;210;10;210;10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1129</x><y>150</y><w>216</w><h>144</h></coordinates><panel_attributes>Rectangle
+&lt; est incluse dans </panel_attributes><additional_attributes>30;210;10;210;10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1068</x><y>108</y><w>216</w><h>144</h></coordinates><panel_attributes>Rectangle
 --
 lat_min : float
 lat_max : float
@@ -75,10 +75,10 @@ bg=blue
 nb_lignes_tot : int, nb_col_tot: int ) -&gt; Rectangle 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1177</x><y>288</y><w>78</w><h>102</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1116</x><y>246</y><w>72</w><h>102</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-est inscrit dans &gt;</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>757</x><y>174</y><w>216</w><h>84</h></coordinates><panel_attributes>Segment
+est inscrit dans &gt;</panel_attributes><additional_attributes>10;150;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>696</x><y>132</y><w>216</w><h>84</h></coordinates><panel_attributes>Segment
 --
 point1 : Point
 point2 : Point
@@ -89,14 +89,14 @@ __init__( point1, point2 )
 
 bg=blue
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>859</x><y>120</y><w>24</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=2</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>859</x><y>252</y><w>30</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=3..*</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>679</x><y>12</y><w>678</w><h>564</h></coordinates><panel_attributes>geometrie
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>798</x><y>78</y><w>24</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=2</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>798</x><y>210</y><w>30</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=3..*</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>618</x><y>0</y><w>678</w><h>564</h></coordinates><panel_attributes>geometrie
 --
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>61</x><y>120</y><w>546</w><h>468</h></coordinates><panel_attributes>zone
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>0</x><y>78</y><w>546</w><h>468</h></coordinates><panel_attributes>zone
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1027</x><y>378</y><w>210</w><h>78</h></coordinates><panel_attributes>/AbstractPolygone/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>966</x><y>336</y><w>210</w><h>78</h></coordinates><panel_attributes>/AbstractPolygone/
 --
 
 --
@@ -105,7 +105,7 @@ m2=3..*</panel_attributes><additional_attributes>10;90;10;10</additional_attribu
 + test_intersect_rect ( rectangle : Rectangle ) : bool
 + test_polyg_proche ( autre_polyg : AbstractPolygone ) : bool
 
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>967</x><y>378</y><w>72</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>943</x><y>426</y><w>96</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>403</x><y>372</y><w>192</w><h>108</h></coordinates><panel_attributes>Zonage
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>906</x><y>336</y><w>72</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>882</x><y>384</y><w>96</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>342</x><y>330</y><w>192</w><h>108</h></coordinates><panel_attributes>Zonage
 --
 
 id : str
@@ -119,4 +119,4 @@ __init__(id : str, geom_coord : AbstractPolygone)
   
 bg=blue
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>349</x><y>474</y><w>120</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;10;180;60;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>343</x><y>330</y><w>144</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;70;220;10;10;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>288</x><y>432</y><w>120</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;10;180;60;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>282</x><y>288</y><w>144</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>220;70;220;10;10;10</additional_attributes></element></diagram>
