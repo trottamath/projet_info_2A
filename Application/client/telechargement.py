@@ -39,3 +39,7 @@ class AbstractTelechargement():
         '''telecharge un fichier depuis une url donnée et l'enregistre dans un dossier donné'''
         pass # à faire
 
+#test
+#if __name__ == "__main__":
+    lien = url_json("08","latest","departements", id_zone = None)
+    print(lien)
