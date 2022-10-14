@@ -1,9 +1,9 @@
     
-
+class AbstractTelechargement():
     
     #@staticmethod
     def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
-        """import d'un fichier json à partir du web
+        """génère l'url où se trouve le fichier json sur le web
         Parametres:
         -----------
             date : str = "latest" 
@@ -36,5 +36,7 @@
             url = "{}{}/geojson/{}/{}/{}".format(url,date,zonage1,url_zone1,fichier)
         return url
     
-    def __str__(self) -> str:
-        return "identifiant : {} \n coordonnées : \n {}".format(self.id, self.geom_coord)
+    def telecharge(url_web,chemin_dossier):
+        '''telecharge un fichier depuis une url donnée et l'enregistre dans un dossier donné'''
+        pass # à faire
+

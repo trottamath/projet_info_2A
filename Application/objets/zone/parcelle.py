@@ -4,11 +4,6 @@ date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 
-import gzip
-import json
-import requests #(TODO problème avec pip install à résoudre)
-
-from urllib import request
 from objets.zone.zonage import Zonage
 
 from objets.geometrie.polygone import Polygone
@@ -44,42 +39,7 @@ class Parcelle(Zonage):
 
 
 
-# à modifier cf tp2 et à déplacer dans le client
 
-    @staticmethod
-    def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
-        """import d'un fichier json à partir du web
-        Parametres:
-        -----------
-            date : str = "latest" 
-                sinon saisir au format "AAAA-MM-JJ"
-            zonage1 : str = "departements"
-                zonage au choix parmi "departements" ou "france" ou "communes"
-            id_dep : str
-                code de département
-            id_zone : str = None
-                saisir le code communes si zone1="communes"
-            zonage2 : str = "communes"
-                zonage au choix parmi "parcelles" ou "communes"
-                sauf si zonage1="france" alors laisser par défaut zonage2="communes"
-        
-        """
-        #méthode statique car commune à la classe Parcelle et Commune (voir si nécessaire du créer une classe mère commune)
-        url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
-
-        if zonage1 == "departements":
-            id_zone = id_dep
-            url_zone1 = id_dep
-        elif zonage1 == "communes":
-            url_zone1="{}/{}".format(id_dep,id_zone)
-
-        fichier ="cadastre-{}-{}.json.gz".format(id_zone,zonage2)
-
-        if zonage1 == "france" and zonage2== "communes":
-            url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/france/cadastre-france-communes.json.gz"
-        else:
-            url = "{}{}/geojson/{}/{}/{}".format(url,date,zonage1,url_zone1,fichier)
-        return url
 
   
 
