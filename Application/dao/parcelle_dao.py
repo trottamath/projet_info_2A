@@ -20,7 +20,7 @@ class ParcelleDAO(metaclass=Singleton):
         cursor.execute(
             "INSERT INTO parcelle (id_parc, id_com_limit)"
             " VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id", # RETURNING parcelle_id;"  ???
-            {"id_parc": parcel.id, "id_com_limit": parcel.ident_commune()})
+            {"id_parc": parcel.id, "id_com_limit": parcel.ident_commune()} )
         res = cursor.fetchone() #facultatif ? 
         return res  #['parcelle_id']  #??
 
@@ -31,7 +31,7 @@ class ParcelleDAO(metaclass=Singleton):
         cursor.execute(
             "INSERT INTO parcelle (id_parc, id_com_limit)"
             " VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id",
-            {"id_parc": id_parcel, "id_com_limit": id_com})
+            {"id_parc": id_parcel, "id_com_limit": id_com} )
         res = cursor.fetchone()
         return res
 
@@ -41,7 +41,7 @@ class ParcelleDAO(metaclass=Singleton):
             "SELECT id_parc, id_com_limit"
             "\n\t FROM parcelle"
             "\n\t WHERE id_parc=%(id_parcel)s",
-            {"id_parc": id_parc})  # ou id_parcel ???
+            {"id_parc": id_parc} )  # ou id_parcel ???
         res = cursor.fetchone()
         return res
 
@@ -57,7 +57,7 @@ class ParcelleDAO(metaclass=Singleton):
             "SELECT id_parc"
             "\n\t FROM parcelle"
             "\n\t WHERE id_com_limit=%(id_com_lim)s",
-            {"id_com_limit": id_com_lim})  # à vérifier
+            {"id_com_limit": id_com_lim} )  # à vérifier
         res = cursor.fetchone()
         return res
 
@@ -65,5 +65,12 @@ class ParcelleDAO(metaclass=Singleton):
 
     def drop(self, id_parcel : str):
         '''pour supprimer une parcelle de la base de données'''
+        cursor.execute(
+            "DELETE FROM parcelle"\
+            "WHERE id_par =%(id_parcel)s",
+            {"id_parc": id_parc} ) 
+        res = cursor.fetchone()
+        return res
+
         
 
