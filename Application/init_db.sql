@@ -1,7 +1,8 @@
 DROP TABLE IF EXISTS commune CASCADE;
 CREATE TABLE commune (
   id_com TEXT PRIMARY KEY,
-    nom_commune TEXT
+  nom_commune TEXT,
+  id_dep TEXT
 );
 
 DROP TABLE IF EXISTS parcelle CASCADE;
@@ -26,3 +27,10 @@ CREATE TABLE commune_commune (
     PRIMARY KEY (id_com1, id_com2, date)
 );
 
+
+DROP TABLE IF EXISTS departements_contigus CASCADE;
+CREATE TABLE departements_contigus (
+    id_dep1 TEXT REFERENCES commune(id_dep),
+    id_dep2 TEXT REFERENCES commune(id_dep),
+    PRIMARY KEY (id_dep1, id_dep2)
+);

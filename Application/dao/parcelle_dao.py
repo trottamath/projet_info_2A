@@ -30,12 +30,12 @@ class ParcelleDAO(metaclass=Singleton):
         id_com = ss_str(chaine= id_parcel, nbr_caract= 5)
         cursor.execute(
             "INSERT INTO parcelle (id_parc, id_com_limit)"
-            " VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id",
+            "VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id",
             {"id_parc": id_parcel, "id_com_limit": id_com} )
         res = cursor.fetchone()
         return res
 
-    def research(self, id_parcel : str):
+    def research(self, id_parcel : str): #est-ce qu'il vaut mieux commencer par cette méthode, pour tester l'existance avant de créer ?
         '''pour chercher une parcelle dans la base de données à partir de son identifiant (code)'''
         cursor.execute(
             "SELECT id_parc, id_com_limit"
@@ -58,7 +58,7 @@ class ParcelleDAO(metaclass=Singleton):
             "\n\t FROM parcelle"
             "\n\t WHERE id_com_limit=%(id_com_lim)s",
             {"id_com_limit": id_com_lim} )  # à vérifier
-        res = cursor.fetchone()
+        res = cursor.fetchall()
         return res
 
 #update inutile dans ce cas ?
