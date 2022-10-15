@@ -4,11 +4,11 @@ date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 
-import gzip
-import json
+#import gzip
+#import json
 #import requests #(TODO problème avec pip install à résoudre)
-import urllib
-from urllib import request
+#import urllib
+#from urllib import request
 
 from objets.geometrie.polygone import Polygone
 from objets.geometrie.multi_polygone import MultiPolygone
@@ -30,7 +30,10 @@ class Zonage():
         self.geom_coord = geom_coord
 
     def ident_departement(self):
-        return self.id[0] + self.id[1]
+        id_dep = self.id[0] + self.id[1]
+        if id_dep == "97":
+            id_dep = id_dep + self.id[2]
+        return id_dep
 
 
     def test_zone_proche(self, autre_zone) -> bool:
@@ -49,3 +52,16 @@ class Zonage():
         """
         return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord)
 
+    def ss_list_contig(self,list_zones) -> list :
+        """ extrait une sous-liste de zones contigües
+        Parametre:
+            list_zones : list [ Zonage ]
+            à priori, si c'est une liste de communes, self est aussi une commune
+        Return :
+            list [ Zonage ]
+            """
+        ss_list= []
+        for zone in list_zones:
+            if zone.test_zone_contigu(macro_zone= self):
+                ss_list.append(zone)  # ou avec zone.id
+        return ss_list #selon les besoins, on aurait pu ne retourner que la liste des identifiants

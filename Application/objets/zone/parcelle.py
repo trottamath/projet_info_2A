@@ -23,7 +23,9 @@ class Parcelle(Zonage):
         id=""
         for i in range(5):
             id = id + self.id_parc[i]
-        return id
+        if self.id_parc[0] + self.id_parc[1] == "97":
+            id = id + self.id_parc[5]
+        return id # à vérifier pour les DOM, si les id communes ont 6 caractères
 
     def lien_zone(self, autre_parcelle) -> str:
         """retourne "contigues" si les deux parcelles sont contigües

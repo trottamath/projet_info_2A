@@ -7,7 +7,6 @@ from objets.geometrie.point import Point
 from objets.geometrie.segment import Segment
 from objets.geometrie.rectangle import Rectangle
 from objets.geometrie.abstract_polygone import AbstractPolygone
-import doctest
 
 class Polygone(AbstractPolygone):
     """Classe Polygone

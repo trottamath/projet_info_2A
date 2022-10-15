@@ -4,12 +4,11 @@ date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 
-import gzip
-import json  # à déplacer dans la classe Import_json
+#import gzip
+#import json  # à déplacer dans la classe Import_json
 #import requests #(TODO problème avec pip install à résoudre)
 #from pip._vendor import requests
-import urllib
-from urllib import request
+
 
 from objets.zone.zonage import Zonage
 from objets.zone.parcelle import Parcelle
