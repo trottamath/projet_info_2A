@@ -23,7 +23,14 @@ class Commune(Zonage):
         id : str
             identifiant de la commune
         geom_coord : MultiPolygone
+        nom : str
+            nom de la commune
     """
+    def __init__(self, id : str, geom_coord : Multipolygone, nom : str):
+        '''constructeur de la classe Commune'''
+        super.__init__(self, id= id, geom_coord= geom_coord)
+        self.nom = nom
+    
 
     def lien_zone(self, autre_zone : Zonage) -> str:
         """si autre_zone est une commune contigue, retourne "contigues"

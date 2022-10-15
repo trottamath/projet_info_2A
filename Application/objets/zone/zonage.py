@@ -29,6 +29,16 @@ class Zonage():
         self.id = id
         self.geom_coord = geom_coord
 
+    @staticmethod
+    def ss_str(chaine: str, nbr_caract: int):
+        '''pour une chaine de caractère donnée, et nbr_caract un nombre entier de caractères à conserver
+        retourne les nbr_caract premiers caractères de la chaine'''
+        firsts=""
+        for i in range(nbr_caract):
+            firsts = firsts + chaine[i]
+        return firsts
+    
+
     def ident_departement(self):
         id_dep = self.id[0] + self.id[1]
         if id_dep == "97":
