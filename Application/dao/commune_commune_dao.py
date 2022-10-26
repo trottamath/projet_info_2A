@@ -11,14 +11,11 @@ class CommuneCommuneDAO():
         '''ajoute une nouvelle paire de communes limitrophes pour la date donnée'''
         request = "INSERT INTO Commune (id_com1, id_com2, date)" \
                 "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"\
-                #"INSERT INTO Commune (id_com1, id_com2, date)" \
-                #"VALUES (%(id_com2)s, %(id_com1)s, %(date)s)"
-                #ajout bilatéral ? trop de mémoire ?
 
         cursor.execute(
             request, {"id_com1" : id_com1, "id_com2":id_com2, "date":date}
         )
-        # à faire / vérifier 
+  
 
     def recherche_com(self,id_com: str,date):
         '''recherche les communes limitrophes à une commune donnée'''
@@ -28,7 +25,6 @@ class CommuneCommuneDAO():
                     "\n\t WHERE (id_com1=%(id_com)s OR id_com2=%(id_com)s) AND date=%(date)s ",
             {"id_com": id_com}
         )  
-        # à revoir : il faut récupérer la liste des id_com1 et id_com2 différent de id_com
 
         res = cursor.fetchall() # liste de tuples (id_com1, id_com2) des lignes retournées
         voisins = []
@@ -37,5 +33,6 @@ class CommuneCommuneDAO():
                 if res[i][j] != id_com : # voisin de la commune et non la commune elle-même
                     voisins.append(res[i][j])
         return voisins # liste des communes voisines
+
 
     
