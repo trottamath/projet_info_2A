@@ -27,7 +27,9 @@ class LienService():
         Retuns
         ------
         list_dico : list[dict]'''
-        pass
+        list_dico=[]
+        
+
         #à coder, utiliser le Json local
 
         return list_dico
