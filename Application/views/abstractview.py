@@ -1,2 +1,0 @@
-class AbstractView(abc):
-    

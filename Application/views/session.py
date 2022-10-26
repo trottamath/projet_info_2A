@@ -5,11 +5,11 @@ class Session(metaclass=Singleton):
     def __init__(self):
         """
         Définition des variables que l'on stocke en session
-        Le syntaxe
-        ref:type = valeur
-        permet de donner le type des variables. Utile pour l'autocompletion.
+        La syntaxe => ref:type = valeur nous permet de donner le type des variables.
         """
-        self.user_name: str = "Bob"
-        self.user_mdp: str = None
-        self.selected_pokemon = None
+        self.id_utilisateur: int = "2058"
+        self.id_requete: int = None
+        self.id_commune : int = None
+        
+       
 

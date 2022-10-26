@@ -22,7 +22,6 @@ TEAM_SELECTION = inquirer.checkbox(
             ]
         )
 
-
 class CheckBoxExampleView(AbstractView):
         
     def display_info(self):
@@ -33,4 +32,5 @@ class CheckBoxExampleView(AbstractView):
         pprint(answers)
         from view.start_view import StartView
         return StartView()
+
 
