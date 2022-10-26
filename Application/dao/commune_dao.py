@@ -49,3 +49,7 @@ class CommuneDAO(metaclass=Singleton):
                     {"id_com": id_com}
                 )
 
+    #def modif_nom(self, id_com:str, nv_id:str) :
+        #"""Modifier le nom d'une commune"""
+        #request = 
+        
