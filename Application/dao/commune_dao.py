@@ -18,7 +18,7 @@ class CommuneDAO(metaclass=Singleton):
                     request,
                     {"id_com": id_com}
                 )
-                res = cursor.fetchall()
+                res = cursor.fetchall() 
         return res
 
     
@@ -48,5 +48,4 @@ class CommuneDAO(metaclass=Singleton):
                     request,
                     {"id_com": id_com}
                 )
-        
-        
+
