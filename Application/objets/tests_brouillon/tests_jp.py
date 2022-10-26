@@ -4,11 +4,11 @@ auteur: Jean-Philippe Trotta
 date : 10/09/2022
 """
 
-from metier.geometrie.segment import Segment
-from metier.geometrie.multi_polygone import MultiPolygone
-from metier.geometrie.polygone import Polygone
-from metier.geometrie.point import Point
-from metier.geometrie.rectangle import Rectangle
+from objets.geometrie.segment import Segment
+from objets.geometrie.multi_polygone import MultiPolygone
+from objets.geometrie.polygone import Polygone
+from objets.geometrie.point import Point
+from objets.geometrie.rectangle import Rectangle
 
 
 

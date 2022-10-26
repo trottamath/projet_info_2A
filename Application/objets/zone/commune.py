@@ -4,11 +4,6 @@ date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 
-#import gzip
-#import json  # à déplacer dans la classe Import_json
-#import requests #(TODO problème avec pip install à résoudre)
-#from pip._vendor import requests
-
 
 from objets.zone.zonage import Zonage
 from objets.zone.parcelle import Parcelle
@@ -26,7 +21,7 @@ class Commune(Zonage):
         nom : str
             nom de la commune
     """
-    def __init__(self, id : str, geom_coord : Multipolygone, nom : str):
+    def __init__(self, id : str, geom_coord : MultiPolygone, nom : str):
         '''constructeur de la classe Commune'''
         super.__init__(self, id= id, geom_coord= geom_coord)
         self.nom = nom
@@ -59,8 +54,10 @@ class Commune(Zonage):
                 return "contigues"
             else:
                 return "non-contigues"
+    def __str__(self):
+        return "{}_{}".format(self.id,self.nom)
 
-m1=MultiPolygone([[[2,1],[3,5],[2,7]],[[0,0]]],[[[1,1],[3,5],[0,0]]])
+#m1=MultiPolygone([[[2,1],[3,5],[2,7]],[[0,0],[3,5],[2,7]]],[[[1,1],[3,5],[0,0]]])  bug TODO
 
-com1= Commune(id="13400", geom_coord=m1)
-print(com1)
+#com1= Commune(id="13400", geom_coord=m1,nom="coucou")
+#print(com1)

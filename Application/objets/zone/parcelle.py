@@ -35,3 +35,6 @@ class Parcelle(Zonage):
         if self.geom_coord.test_polyg_contigu(autre_parcelle.geom_coord):
             return "contigues"
         return "non-contigues"
+
+    def __str__(self):
+        return self.id
