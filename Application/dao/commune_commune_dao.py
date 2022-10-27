@@ -28,6 +28,8 @@ class CommuneCommuneDAO():
 
         request = "INSERT INTO Commune (id_com1, id_com2, date)" \
                 "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"\
+                "INSERT INTO Commune (id_com1, id_com2, date)"\
+                "VALUES(%(id_com2)s, %(id_com1)s, %(date)s)"
 
         cursor.execute(
             request, {"id_com1" : id_com1, "id_com2": id_com2, "date": date}
@@ -36,20 +38,22 @@ class CommuneCommuneDAO():
 
     def recherche_com(self, id_com: str, date):
         '''recherche les communes limitrophes à une commune donnée'''
+        # request = "SELECT id_com1, id_com2"\
+        #         "\n\t FROM commune_commune"\
+        #         "\n\t WHERE (id_com1=%(id_com)s OR id_com2=%(id_com)s) AND date=%(date)s "
+        request = "SELECT id_com2"\
+            "\n\t FROM commune_commune"\
+            "\n\t WHERE (id_com1=%(id_com)s AND date=%(date)s "
         cursor.execute(
-            "SELECT id_com1, id_com2"\
-                "\n\t FROM commune_commune"\
-                    "\n\t WHERE (id_com1=%(id_com)s OR id_com2=%(id_com)s) AND date=%(date)s ",
-            {"id_com": id_com}
+            {"id_com": id_com, "date":date}
         )  
-
-        res = cursor.fetchall() # liste de tuples (id_com1, id_com2) des lignes retournées
-        voisins = []
-        for i in range(len(res)) : 
-            for j in range(len(res[i])): # res[i] de longueur 2 car (id_com1, id_com2)
-                if res[i][j] != id_com : # voisin de la commune et non la commune elle-même
-                    voisins.append(res[i][j])
-        return voisins # liste des communes voisines
+        # res = cursor.fetchall() # liste de tuples (id_com1, id_com2) des lignes retournées
+        # voisins = []
+        # for i in range(len(res)) : 
+        #     for j in range(len(res[i])): # res[i] de longueur 2 car (id_com1, id_com2)
+        #         if res[i][j] != id_com : # voisin de la commune et non la commune elle-même
+        #             voisins.append(res[i][j])
+        # return voisins # liste des communes voisines
 
 
 
