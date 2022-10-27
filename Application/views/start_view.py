@@ -1,36 +1,36 @@
-"""
-* Checkbox question example
-* run example by typing `python example/checkbox.py` in your console
-From : https://github.com/CITGuru/PyInquirer/blob/master/examples/checkbox.py
-"""
-from pprint import pprint
-
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
-from InquirerPy.separator import Separator
 
-from prompt_toolkit.validation import Validator, ValidationError
 from view.abstract_view import AbstractView
 from view.session import Session
 
-TEAM_SELECTION = inquirer.checkbox(
-            message="Choisis ta requête"
-            ,choices=[
-                requete1,
-                requete2,
-                requete3
+class StartView(AbstractView):
+
+    def __init__(self):
+        self.__questions = inquirer.select(
+            message=f'Bonjour{Session().user_name}'
+            , choices=[
+                Choice('Liste des communes limitrophes à une commune donnée')
+                ,Choice('Liste des parcelles en bordure d\'une commune donnée')
+                ,Choice('Liste des parcelles limitrophes à une parcelle donnée')
+                ,Choice('Aucun')
             ]
         )
-
-
-class CheckBoxExampleView(AbstractView):
-        
     def display_info(self):
-        print(f"Bonjour {Session().user_name}, choisissez la commune à traiter")
-
+        with open('graphical_assets/banner.txt','r',encoding="utf_8") as asset:
+            print(asset.read())
+    
     def make_choice(self):
-        answers = TEAM_SELECTION.execute()
-        pprint(answers)
-        from view.start_view import StartView
-        return StartView()
+        reponse = self.__questions.execute()
+        if reponse == 'Aucun':
+            pass
+        elif reponse == 'Liste des communes limitrophes à une commune donnée':
+            from views.commune_commune_view import Commune_Commune_View
+            return Commune_Commune_View()
+        elif reposne == 'Liste des parcelles en bordure d\'une commune donnée':
+            from views.commune_parcelle_view import Commune_Parcelle_View
+            return Commune_Parcelle_View()
+        elif reponse == 'Liste des parcelles limitrophe à une parcelle donnéé':
+            from views.parcelle_parcelle_view import Parcelle_Parcelle_View
+            return Parcelle_Parcelle_View()
 
