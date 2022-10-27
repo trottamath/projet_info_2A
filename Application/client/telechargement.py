@@ -38,17 +38,17 @@ class AbstractTelechargement():
             url = "{}{}/geojson/{}/{}/{}".format(url,date,zonage1,url_zone1,fichier)
         return url
     
-    #def download(url, path):
-       #'''telecharge un fichier depuis une url donnée et l'enregistre dans un dossier donné'''
-        #req = requests.get(url)
+    def download(url, path):
+       """telecharge un fichier depuis une url donnée et l'enregistre dans un dossier donné"""
+    req = requests.get(url)
 
     ############################################################### TEST ############################################################################
     
     #test pour fonction qui recup url
-        lien_1 = url_json("08","latest","departements", id_zone = None)
-        print(lien_1)
-        lien_2 = url_json("08","latest","communes", id_zone = "08124")
-        print(lien_2)
+    lien_1 = url_json("08","latest","departements", id_zone = None)
+    print(lien_1)
+    lien_2 = url_json("08","latest","communes", id_zone = "08124")
+    print(lien_2)
 
         #download("https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/08/08124/cadastre-08124-communes.json.gz")
 
