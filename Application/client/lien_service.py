@@ -1,35 +1,36 @@
 '''module lien_service.py'''
 
 class LienService():
-    '''classe qui créer les dictionnaires utiles pour la couche Service à partir des fichier Json locaux'''
-    def __init__(self,dico_initial):
-        '''constructeur
+    '''classe qui créer les dictionnaires utiles pour la couche Service à partir des fichiers .json.gz stockés en local'''
+    
+    def __init__(self,dict_initial):
+        '''Constructeur
         Paramètres:
         -----------
-        dico_initial : dict
-            clés du dictionnaire
+        dict_initial : dict
+            Clés du dictionnaire :
             ---------------------
-            zonage1: échelon principal (departement ou commune)
-            id1: identifiant de l'échelon principal
+            zonage1: échelon principal (département ou commune)
+            id: identifiant de l'échelon principal
             zonage2: échelon secondaire (découpage de l'échelon principal)  commune ou parcelle
             date: date du fichier'''
-        self.dico = dico_initial 
+        self.dict = dict_initial 
 
-    def genere_dico(self)->list[dict]:
+    def genere_dict(self)->list[dict]: #la couche client ne renvoie pas un dictionnaire de dictionnaire comme prévu ? 
         '''retourne une liste d'au moins un dictionnaire
-                par exemple: lorsque zonage1="departement", id1="35", zonage2="commune", date="latest"
-                la méthode retourne un liste avec un dictionnaire pour chaque commune du département 35
+                Exemple: zonage1="departement", id="35", zonage2="commune", date="latest"
+                La méthode retourne une liste de dictionnaires avec les communes du département 35
                 chaque dictionnaire a en plus une clée "coordinates" 
                 voire une clée "nom" pour le nom de commune
 
         
         
-        Retuns
+        Returns
         ------
-        list_dico : list[dict]'''
-        list_dico=[]
+        list_dict : list[dict]'''
+        list_dict=[]
         
 
         #à coder, utiliser le Json local
 
-        return list_dico
+        return list_dict
