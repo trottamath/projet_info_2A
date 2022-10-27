@@ -1,3 +1,6 @@
+'''module departement.py
+on initialise ce module par l'import d'un fichier csv qui contient les couples de départements limitrophes'''
+
 import csv
 from pathlib import Path 
 script_location=Path(__file__).absolute().parent
@@ -14,10 +17,18 @@ for col in data:
 
 
 class Departement():
+    '''classe Departement
+    Attribut:
+    ---------
+        id_dep : str
+            le code de département''' 
+    
     def __init__(self,id_dep:str):
+        '''constructeur'''
         self.id_dep=id_dep
     
-    def dep_contig(self):
+    def dep_contig(self)->list[str]:
+        '''retourne la liste des identifients de départements limitrophes à ce département'''
         liste_dep=[]
         for i in range(len(dep1)):
             if dep1[i]==self.id_dep:
@@ -26,5 +37,5 @@ class Departement():
                 liste_dep.append(dep1[i])
         return liste_dep
 
-#print(Departement(id_dep="35").dep_contig())
+#print(Departement(id_dep="974").dep_contig())
 

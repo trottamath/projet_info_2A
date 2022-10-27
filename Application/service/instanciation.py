@@ -2,7 +2,7 @@ from client.lien_service import LienService
 from objets.zone.parcelle import Parcelle
 from objets.zone.commune import Commune
 from objets.zone.zonage import Zonage
-from departements import Departement
+#from objets.zone.departement import Departement
 
 class Instanciation():
     def __init__(self, zonage1:str, id1:str, zonage2:str, date:str ) -> dict:
@@ -16,7 +16,7 @@ class Instanciation():
         self.dico = {"zonage1": zonage1, "id1": id1, "zonage2": zonage2, "date": date}
 
     def instancier_zonage(self)->list[Zonage]:
-        '''créer une liste d'instances de Commune ou Parcelle à partir du liste de dictionnaires demandée au client'''
+        '''créer une liste d'instances de Commune ou Parcelle à partir d'une liste de dictionnaires demandée au client'''
         list_dico=LienService(self.dico).genere_dico()
         list_zonage=[]
         for dico in list_dico:

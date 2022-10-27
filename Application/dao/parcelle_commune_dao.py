@@ -1,5 +1,6 @@
 from utils.singleton import Singleton
 from dao.db_connection import DBConnection
+from dao.parcelle_dao import ParcelleDAO
 
 
 connexion =  DBConnection().connection
@@ -22,7 +23,7 @@ class ParcelleCommuneDAO():
     
     def create(self, id_parc: str, id_com: str, date):
         '''ajout d'un couple parcelle/commune contigues à une date donnée'''
-        # if self.recherche_unit(id_parc,id_com,date) == None :
+        # if self.recherche_unit(id_parc,id_com,date) != None : pass
         cursor.execute(
             "INSERT INTO parcelle_commune (id_parc, id_com, date)"\
             "VALUES (%(id_parc)s, %(id_com)s, %(date)s) ",
@@ -30,17 +31,16 @@ class ParcelleCommuneDAO():
         )
         res = cursor.fetchone()
         return res
+    
+    def create_all(self, id_com: str, list_id_parc: list[str], date):
+        '''ajout d'une liste de parcelles en limite d'une commune pour une date donnée'''
+        for id_parc in list_id_parc:
+            self.create(id_parc= id_parc, id_com= id_com, date= date)
+        ParcelleDAO().create_list(list_id_parc= list_id_parc)
 
-    def recherche_coms(self, id_parc: str, date):
-        '''recherche les communes limitrophes à une parcelle donnée pour une date donnée, dans bdd'''
-        cursor.execute(
-            "SELECT id_com"\
-            "FROM parcelle_commune"\
-            "\n\t WHERE id_parc=%(id_parc)s",
-            {"id_parc": id_parc}
-        )
-        res = cursor.fetchall()
-        return res 
+        
+
+
 
     
 
