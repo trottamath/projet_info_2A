@@ -75,7 +75,7 @@ class Requete ():
             
             return list_id_com_contig
         
-        if self.dico_requete["num"] == "2" :
+        elif self.dico_requete["num"] == "2" :
             
             id_com = self.dico_requete["id"] #l'identifiant de la commune d'intérêt
             commune = Instanciation(zonage1="commune", id1=id_com, zonage2="commune", date=self.dico_requete["date"]).instancier_zonage()
@@ -90,7 +90,7 @@ class Requete ():
 
             return list_id_parc_lim
         
-        if self.dico_requete["num"] == "3" :
+        elif self.dico_requete["num"] == "3" :
             id_parc = self.dico_requete["id"] #l'identifiant de la parcelle d'intérêt
             id_com = ss_str(chaine= id_parc, nbr_caract= 5) #identifiant de la commune de cette parcelle
             requete2_com = Requete(dico_requete= {"num":"2","id":id_com,"date":self.dico_requete["date"]})
@@ -133,9 +133,8 @@ class Requete ():
             
             list_id_parc_contig = [liste_parc_com1[i].id for i in range(len(liste_parc_com1))]
             return list_id_parc_contig
-
-
-
+        else:
+            return None # en cas d'erreur de numéro de requête saisi par l'utlisateur
 
 
     def Get_or_create(self) ->list[str]:
@@ -143,8 +142,6 @@ class Requete ():
             return self.Get_DAO()
         else:
             return self.Get_Client()
+    
 
-            
-
-
-
+    #prévoir de retourner un message d'erreur exploitable par la couche controleur si la requète n'est pas valide par exemple pour un identifient de commune inconnue

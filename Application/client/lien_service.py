@@ -1,5 +1,8 @@
 '''module lien_service.py'''
 
+from client.importation import Importation
+
+
 class LienService():
     '''classe qui créer les dictionnaires utiles pour la couche Service à partir des fichiers .json.gz stockés en local'''
     
@@ -11,16 +14,16 @@ class LienService():
             Clés du dictionnaire :
             ---------------------
             zonage1: échelon principal (département ou commune)
-            id: identifiant de l'échelon principal
+            id1: identifiant de l'échelon principal
             zonage2: échelon secondaire (découpage de l'échelon principal)  commune ou parcelle
             date: date du fichier'''
         self.dict = dict_initial 
 
-    def genere_dict(self)->list[dict]: #la couche client ne renvoie pas un dictionnaire de dictionnaire comme prévu ? 
-        '''retourne une liste d'au moins un dictionnaire
+    def genere_dict(self)->list[dict]: 
+        '''retourne une liste de dictionnaires
                 Exemple: zonage1="departement", id="35", zonage2="commune", date="latest"
                 La méthode retourne une liste de dictionnaires avec les communes du département 35
-                chaque dictionnaire a en plus une clée "coordinates" 
+                chaque dictionnaire a entre autres une clée "coordinates" , un clé "id"
                 voire une clée "nom" pour le nom de commune
 
         
@@ -28,9 +31,15 @@ class LienService():
         Returns
         ------
         list_dict : list[dict]'''
-        list_dict=[]
-        
+        zonage1 = self.zonage1
+        id1= self.id1
+        zonage2 = self.zonage2
+        date = self.date
 
-        #à coder, utiliser le Json local
+        dico_extract_json = # à stocker ici
+
+
+        list_dict = dico_extract_json["features"]
+        
 
         return list_dict

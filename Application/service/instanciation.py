@@ -19,11 +19,13 @@ class Instanciation():
         '''créer une liste d'instances de Commune ou Parcelle à partir d'une liste de dictionnaires demandée au client'''
         list_dico=LienService(self.dico).genere_dico()
         list_zonage=[]
-        for dico in list_dico:
-            if dico["zonage2"]=="commune":
-                list_zonage.append(Commune(id=dico["id"], geom_coord=dico["coordinates"], nom=dico["nom"]))
-            elif dico["zonage2"]=="parcelle":
-                list_zonage.append(Parcelle(id=dico["id"], geom_coord=dico["coordinates"]))
+        if self.dico["zonage2"]=="commune":
+            for dico in list_dico:
+                list_zonage.append(Commune(id=dico["id"], geom_coord=dico["geometry"]["coordinates"], nom=dico["nom"]))
+        elif self.dico["zonage2"]=="parcelle":
+            for dico in list_dico:
+                list_zonage.append(Parcelle(id=dico["id"], geom_coord=dico["geometry"]["coordinates"]))
+
         return list_zonage
 
 
