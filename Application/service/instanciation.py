@@ -21,7 +21,7 @@ class Instanciation():
         list_zonage=[]
         if self.dico["zonage2"]=="commune":
             for dico in list_dico:
-                list_zonage.append(Commune(id=dico["id"], geom_coord=dico["geometry"]["coordinates"], nom=dico["nom"]))
+                list_zonage.append(Commune(id=dico["id"], geom_coord=dico["geometry"]["coordinates"], nom=dico["properties"]["nom"]))
         elif self.dico["zonage2"]=="parcelle":
             for dico in list_dico:
                 list_zonage.append(Parcelle(id=dico["id"], geom_coord=dico["geometry"]["coordinates"]))

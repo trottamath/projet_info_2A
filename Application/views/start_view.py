@@ -25,12 +25,15 @@ class StartView(AbstractView):
         if reponse == 'Aucun':
             pass
         elif reponse == 'Liste des communes limitrophes à une commune donnée':
+            num="1"
             from views.commune_commune_view import Commune_Commune_View
             return Commune_Commune_View()
-        elif reposne == 'Liste des parcelles en bordure d\'une commune donnée':
+        elif reponse == 'Liste des parcelles en bordure d\'une commune donnée':
+            num="2"
             from views.commune_parcelle_view import Commune_Parcelle_View
             return Commune_Parcelle_View()
-        elif reponse == 'Liste des parcelles limitrophe à une parcelle donnéé':
+        elif reponse == 'Liste des parcelles limitrophe à une parcelle donnée':
+            num="3"
             from views.parcelle_parcelle_view import Parcelle_Parcelle_View
             return Parcelle_Parcelle_View()
 

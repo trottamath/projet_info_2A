@@ -8,7 +8,7 @@ from objets.zone.zonage import Zonage
 from objets.zone.departement import Departement
 from service.instanciation import Instanciation
 
-# quel est l'intérêt de la couche API si nos requête sont gérées ici ?
+
 class Requete ():
     """Classe qui lie le Service à la DAO : envoie de la requête
     à la DAO, et récupération du résultat"""
