@@ -1,3 +1,19 @@
+from service.requete import Requete
+
+# utiliser Requete(dico_requete= ???? ).Get_or_create()
+# voir les clés de dico_requete (à récuperer par Insomnia ?)
+            #dico_requete: dict
+               # les clées de ce dictionnaire sont
+                #num : str
+                 #   numero de la requete (1 ou 2 dans le cas de l'appel à la DAO)
+                  #  "1" pour les communes contigües à la commune donnée
+                   # "2" pour les parcelles en limite de la commune donnée
+                    #"3" pour les parcelles contigües à la parcelle donnée
+               # id : str
+                #    identifiant du zonage donnée
+                #date : str
+                 #   date du fichier cadatral de référence
+
 class Controler:
     """Main controller."""
 
