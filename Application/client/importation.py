@@ -1,6 +1,2 @@
+#faire programme qui va télécharger tous les départements avec les communes pour remplir la DAO
 
-import os
-
-data_folder = os.listdir('Application/Client/data/communes')
-data_files_names =[data_folder]
-print(data_files_names)

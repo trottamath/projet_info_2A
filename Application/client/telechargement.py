@@ -3,11 +3,13 @@ import json
 import os
 
 class Telechargement():
+
+    def __init():
+        pass
     
-    #@staticmethod
-    def generator_link(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
+    def generator_link(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes"):
         '''import d'un fichier json à partir du web
-        Parametres:
+        Parameters:
         -----------
             date : str = "latest" 
                 sinon saisir au format "AAAA-MM-JJ"
@@ -38,8 +40,25 @@ class Telechargement():
             url = "{}{}/geojson/{}/{}/{}".format(url,date,zonage1,url_zone1,fichier)
         return url
     
+    
+    def generator_path(url : str):
+        '''Méthode qui dirige le fichier json.gz dans un dossier en fonction du zonage_1
+        Parameters:
+        -----------
+        url : str
+        Lien du fichier json.gz
+        '''
+        path = 'Application/client/data'
+        if 'departements' in url:
+            path = os.path.join(path,'departements')
+        elif 'france' in url:
+            path = os.path.join(path,'france')
+        else : 
+            path = os.path.join(path,'communes')
+        return(path)
+    
     def download(url : str , path : str):
-       '''telecharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
+       '''Télécharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
        
         Attributes
         ----------
@@ -56,7 +75,21 @@ class Telechargement():
        with req as rq:
             with open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
                 file.write(rq.content)
-        
+    
+    def read_json(path : str):
+        '''Lis le fichier json comme un dictionnaire
+       
+        Attributes
+        ----------
+        path : str 
+        Chemin dans lequel le fichier json.gz est stocké
+       
+       '''
+        with gzip.open(path,'rb') as file:
+            data = json.load(file) #, parse_float=float, parse_int=float
+            print(data)
+            print(data.get("type"))
+
 
     ############################################################### TEST ############################################################################
     
@@ -66,7 +99,12 @@ class Telechargement():
     lien_2 = generator_link("08","latest","communes", id_zone = "08124")
     print(lien_2)
 
+    #test pour le générateur de chemin : 
+
+    print(generator_path('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz'))
+
     #test fonction telechargement
-    download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','client/data/communes')
+    download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/')
 
     #lecture du json.gz
+    read_json(path)
