@@ -1,6 +1,7 @@
 import requests
 import json    
 import os
+import gzip
 
 class Telechargement():
 
@@ -76,7 +77,7 @@ class Telechargement():
             with open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
                 file.write(rq.content)
     
-    def read_json(path : str):
+    def read_json(url : str, path : str):
         '''Lis le fichier json comme un dictionnaire
        
         Attributes
@@ -85,10 +86,12 @@ class Telechargement():
         Chemin dans lequel le fichier json.gz est stocké
        
        '''
-        with gzip.open(path,'rb') as file:
+        req = requests.get(url)
+        filename = req.url[url.rfind('/')+1:]
+
+        with gzip.open(os.path.join(path,filename),'rb') as file:
             data = json.load(file) #, parse_float=float, parse_int=float
-            print(data)
-            print(data.get("type"))
+        return(print(data))
 
 
     ############################################################### TEST ############################################################################
@@ -107,4 +110,4 @@ class Telechargement():
     download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/')
 
     #lecture du json.gz
-    read_json(path)
+    read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/')
