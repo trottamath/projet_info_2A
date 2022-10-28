@@ -37,7 +37,7 @@ class view1:
     def output(self, personnes):
         """ afficher les informations d'une liste des
 personnes """
-        print "La liste des communes trouvés"
-        print " %d personnes trouvées"%len(personnes)
-        for pers in personnes:
-print pers['nom'], pers['prenom'], pers['tel']
+        print "La liste des communes trouvées"
+        print " %d communes trouvées"%len(communes)
+        for id_commune in communes:
+print id_commune['Identifiant de la commune trouvée']
