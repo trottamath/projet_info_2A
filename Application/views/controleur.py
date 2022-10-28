@@ -1,3 +1,5 @@
+#à supprimer 
+
 from service.requete import Requete
 
 # utiliser Requete(dico_requete= ???? ).Get_or_create()

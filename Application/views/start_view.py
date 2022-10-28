@@ -47,14 +47,14 @@ class StartView(AbstractView):
             pass
         elif reponse == 'Liste des communes limitrophes à une commune donnée':
             Session().num="1"
-            from views.commune_commune_view import Commune_Commune_View
-            return Commune_Commune_View()
+            #from views.commune_commune_view import Commune_Commune_View
+            #return Commune_Commune_View()
         elif reponse == 'Liste des parcelles en bordure d\'une commune donnée':
             Session().num="2"
-            from views.commune_parcelle_view import Commune_Parcelle_View
-            return Commune_Parcelle_View()
+            #from views.commune_parcelle_view import Commune_Parcelle_View
+            #return Commune_Parcelle_View()
         elif reponse == 'Liste des parcelles limitrophe à une parcelle donnée':
             Session().num="3"
-            from views.parcelle_parcelle_view import Parcelle_Parcelle_View
-            return Parcelle_Parcelle_View()
+        from views.abstract_view import AbstractView
+        return AbstractView()
 
