@@ -11,7 +11,7 @@ req = requests.get(downloadUrl)
 print(req)
 
 filename = req.url[downloadUrl.rfind('/')+1:]
-path = 'Application/client/data/communes' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
+path = 'Application/client/data/communes/' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
 
 print(filename)
 
