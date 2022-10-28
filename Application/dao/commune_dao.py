@@ -18,17 +18,20 @@ class CommuneDAO(metaclass=Singleton):
                     request,
                     {"id_com": id_com}
                 )
-                res = cursor.fetchall() 
+                res = cursor.fetchone() 
         return res
 
     
     def ajout_commune(self, id_com: str, nom_com: str):
         """Ajouter commune à la table Commune dans BdD"""
-        id_dep = ss_str(chaine= id_parcel, nbr_caract= 2)
-        if id_com=="97":
-            id_dep = ss_str(chaine= id_parcel, nbr_caract= 3)
+
+        #if self.nom_communes(id_com= id_com)==nom_com: pass
+        id_dep = ss_str(chaine= id_com, nbr_caract= 2)
+        if id_dep=="97":
+            id_dep = ss_str(chaine= id_com, nbr_caract= 3)
         request = "INSERT INTO Commune (id_com, nom_commune, id_dep)"\
-        "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"
+        "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
+        "WHERE NOT EXISTS (SELECT id_com FROM Commune WHERE id_com = %(id_com)s)" #  test de pré-existance
 
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :

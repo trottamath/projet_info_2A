@@ -23,8 +23,20 @@ class ParcelleDAO(metaclass=Singleton):
             {"id_parc": parcel.id, "id_com_limit": parcel.ident_commune()} )
         res = cursor.fetchone() #facultatif ? 
         return res  #['parcelle_id']  #??
+    
+    def research(self, id_parcel : str): #est-ce qu'il vaut mieux commencer par cette méthode, pour tester l'existance avant de créer ?
+        '''pour chercher une parcelle dans la base de données à partir de son identifiant (code)'''
+        cursor.execute(
+            "SELECT id_parc, id_com_limit"
+            "\n\t FROM parcelle"
+            "\n\t WHERE id_parc=%(id_parcel)s",
+            {"id_parc": id_parc} )  # ou id_parcel ???
+        res = cursor.fetchone()
+        return res
 
     def create_id(self, id_parcel : str):
+        #ajouter un test de pré-exitance ? TODO
+        #if self.research(id_parcel= id_parcel)!=None : pass
         '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
         directement à partir de son identifiant'''
         id_com = ss_str(chaine= id_parcel, nbr_caract= 5)
@@ -35,15 +47,7 @@ class ParcelleDAO(metaclass=Singleton):
         res = cursor.fetchone()
         return res
 
-    def research(self, id_parcel : str): #est-ce qu'il vaut mieux commencer par cette méthode, pour tester l'existance avant de créer ?
-        '''pour chercher une parcelle dans la base de données à partir de son identifiant (code)'''
-        cursor.execute(
-            "SELECT id_parc, id_com_limit"
-            "\n\t FROM parcelle"
-            "\n\t WHERE id_parc=%(id_parcel)s",
-            {"id_parc": id_parc} )  # ou id_parcel ???
-        res = cursor.fetchone()
-        return res
+
 
     def create_list(self, list_id_parc : list[str]):
         '''pour ajouter toute une liste de parcelles'''

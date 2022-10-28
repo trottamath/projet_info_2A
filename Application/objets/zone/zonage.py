@@ -4,11 +4,6 @@ date 18/09/2022
 auteur : Jean-Philippe Trotta
 """
 
-#import gzip
-#import json
-#import requests #(TODO problème avec pip install à résoudre)
-#import urllib
-#from urllib import request
 
 from objets.geometrie.polygone import Polygone
 from objets.geometrie.multi_polygone import MultiPolygone
@@ -37,6 +32,14 @@ class Zonage():
         for i in range(nbr_caract):
             firsts = firsts + chaine[i]
         return firsts
+
+    @staticmethod
+    def ident_dep(id: str):
+        id_dep= id[0] + id[1]
+        if id_dep == "97":
+            id_dep = id_dep + id[2]
+        return id_dep
+
     
 
     def ident_departement(self):
@@ -72,6 +75,6 @@ class Zonage():
             """
         ss_list= []
         for zone in list_zones:
-            if zone.test_zone_contigu(macro_zone= self):
+            if zone.test_zone_contigu(macro_zone= self) and self.id!=zone.id:
                 ss_list.append(zone)  # ou avec zone.id
         return ss_list #selon les besoins, on aurait pu ne retourner que la liste des identifiants
