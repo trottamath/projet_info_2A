@@ -67,6 +67,6 @@ class Telechargement():
     print(lien_2)
 
     #test fonction telechargement
-    download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes')
+    download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','client/data/communes')
 
     #lecture du json.gz
