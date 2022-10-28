@@ -60,8 +60,7 @@ class Telechargement():
     
     def download(url : str , path : str):
        '''Télécharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
-       
-        Attributes
+        Parameters
         ----------
         url : str 
         Lien de téléchargement du fichier json.gz
@@ -79,8 +78,7 @@ class Telechargement():
     
     def read_json(url : str, path : str):
         '''Lis le fichier json comme un dictionnaire
-       
-        Attributes
+        Parameters
         ----------
         path : str 
         Chemin dans lequel le fichier json.gz est stocké
