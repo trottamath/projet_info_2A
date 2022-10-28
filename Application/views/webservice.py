@@ -1,3 +1,5 @@
+#à supprimer
+
 class Webservice:
 
 response = requests.get("http://example.org")

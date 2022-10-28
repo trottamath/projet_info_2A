@@ -1,3 +1,5 @@
+#à supprimer
+
 #régler la couche view avec le logiciel insomnia  
 #
 

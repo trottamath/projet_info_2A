@@ -2,11 +2,11 @@ import requests
 import json    
 import os
 
-class AbstractTelechargement():
+class Telechargement():
     
     #@staticmethod
-    def url_json(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
-        """import d'un fichier json à partir du web
+    def generator_link(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes" ):
+        '''import d'un fichier json à partir du web
         Parametres:
         -----------
             date : str = "latest" 
@@ -20,7 +20,7 @@ class AbstractTelechargement():
             zonage2 : str = "communes"
                 zonage au choix parmi "parcelles" ou "communes"
                 sauf si zonage1="france" alors laisser par défaut zonage2="communes"
-            """
+            '''
             
         url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
 
@@ -38,22 +38,35 @@ class AbstractTelechargement():
             url = "{}{}/geojson/{}/{}/{}".format(url,date,zonage1,url_zone1,fichier)
         return url
     
-    def download(url, path):
-       """telecharge un fichier depuis une url donnée et l'enregistre dans un dossier donné"""
-    req = requests.get(url)
+    def download(url : str , path : str):
+       '''telecharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
+       
+        Attributes
+        ----------
+        url : str 
+        Lien de téléchargement du fichier json.gz
+
+        path : str 
+        Chemin vers lequel le fichier json.gz sera stocké
+       
+       '''
+       req = requests.get(url)
+       filename = req.url[url.rfind('/')+1:]
+       
+       with req as rq:
+            with open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+                file.write(rq.content)
+        
 
     ############################################################### TEST ############################################################################
     
     #test pour fonction qui recup url
-    lien_1 = url_json("08","latest","departements", id_zone = None)
+    lien_1 = generator_link("08","latest","departements", id_zone = None)
     print(lien_1)
-    lien_2 = url_json("08","latest","communes", id_zone = "08124")
+    lien_2 = generator_link("08","latest","communes", id_zone = "08124")
     print(lien_2)
 
-        #download("https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/08/08124/cadastre-08124-communes.json.gz")
-
-    #test fonction telechargement 
-
-
+    #test fonction telechargement
+    download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','client/data/communes')
 
     #lecture du json.gz
