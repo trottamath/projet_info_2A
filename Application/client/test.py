@@ -1,9 +1,8 @@
 import requests
 import gzip
+import shutil
 import os
 import json
-import pandas
-
 
 
 downloadUrl ='https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz'
@@ -19,33 +18,28 @@ print(filename)
 
 print(os.path.join(path,filename))
 
+
 #téléchargement du json.gz dans le fichier "data"
 
 with req as rq:
     with gzip.open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
         file.write(rq.content)
 
-#lecture du json.gz
+#lecture du json.gz sous forme de dictionnaire depuis un fichier donné
 
-with gzip.open(filename,mode="rt", encoding='utf-8') as gzfile:
-    data = json.load(gzfile) #, parse_float=float, parse_int=float
-    print(data) 
+# data_folder = os.listdir('Application/Client/data/communes')
+# data_files_names = data_files_names =[data_folder]
+# data_folder[0]
 
-# def lecture_dictionnaire(path,name_file):
+with gzip.open(filename,'rb') as f_in :
+    with open('json_decomp.json','wb') as f_out:
+        shutil.copyfileobj(f_in,f_out)
 
-#     with gzip.open(name_file,mode="rt", encoding='utf-8') as gzfile:
-#         data = json.load(gzfile) #, parse_float=float, parse_int=float
-#         print(data) 
-        # print(data.get("type"))
-
-#lecture_dictionnaire(path,name_file)
+#with gzip.open(filename,'rb') as file:
+    #raw_json = file.read()
+    #data = json.load(file) #, parse_float=float, parse_int=float
+    #print(data)
+    #print(data.get("type"))
 
 #os.path.join(path,filename)
 
-# body = []
-
-# with gzip.open('cadastre-04004-communes.json.gz', mode="rt", encoding='utf-8') as gzfile:
-#     body.extend(
-#         json.load(gzfile, parse_float=float, parse_int=float))
-
-# print(body)
