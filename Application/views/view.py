@@ -1,4 +1,7 @@
-class View(AbstractView):
+#régler la couche view avec le logiciel insomnia  
+#
+
+#class View(AbstractView):
 
     def choix_utilisateur(self, id_utilisateur):
         id_utilisateur = input("tapez votre identifiant : ")
@@ -20,4 +23,21 @@ class View(AbstractView):
         if choice == "n":
             return False
         return True
-    
+
+#requete 1 : trouver la liste des communes limitrophes 
+class view1:
+    def __init__(self,):
+        pass
+    def input(self,):
+        """ recuperer la requête à valider"""
+        print "Recherche de la requête"
+        print "Introduire une commune"
+        nom_commune = raw_input()
+        return nom_commune
+    def output(self, personnes):
+        """ afficher les informations d'une liste des
+personnes """
+        print "La liste des communes trouvées"
+        print " %d communes trouvées"%len(communes)
+        for id_commune in communes:
+print id_commune['Identifiant de la commune trouvée']
