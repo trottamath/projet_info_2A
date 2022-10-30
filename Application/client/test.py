@@ -2,20 +2,22 @@ import requests
 import gzip
 import os
 import json
+import time
+import datetime
 
 
-downloadUrl = r'https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz'
+# downloadUrl = r'https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz'
 
-req = requests.get(downloadUrl)
+# req = requests.get(downloadUrl)
 
-print(req.headers)
+# print(req.headers)
 
-filename = req.url[downloadUrl.rfind('/')+1:]
-path = 'Application/client/data/commune/commune' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
+# filename = req.url[downloadUrl.rfind('/')+1:]
+# path = 'Application/client/data/commune/commune' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
 
-print(filename)
+# print(filename)
 
-print(os.path.join(path,filename))
+# print(os.path.join(path,filename))
 
 
 # #téléchargement du json.gz dans le fichier "data"
@@ -23,9 +25,9 @@ print(os.path.join(path,filename))
 # with req as rq:
 #     with open("test.json.gz", 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
 #         file.write(rq.content)
-with req as rq:
-    with open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
-        file.write(rq.content)
+# with req as rq:
+#     with open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+#         file.write(rq.content)
 
 #lecture du json.gz sous forme de dictionnaire depuis un fichier donné
 
@@ -33,10 +35,34 @@ with req as rq:
 # data_files_names = data_files_names =[data_folder]
 # data_folder[0]
 
-with gzip.open(os.path.join(path,filename),'rb') as file:
-    data = json.load(file) #, parse_float=float, parse_int=float
-    #print(data)
-    print(data.get("type"))
+# with gzip.open(os.path.join(path,filename),'rb') as file:
+#     data = json.load(file) #, parse_float=float, parse_int=float
+#     #print(data)
+#     print(data.get("type"))
 
 
+# ctime = os.path.getctime("Application/client/data/commune/commune/cadastre-04004-communes.json.gz")
+# print(ctime)
+# if ctime < time.time()- (3600):
+#     print('True')
+# else : 
+#     print('False')
 
+def create_place():
+    path = 'Application/client/data/commune/commune'
+    count = 0
+    #now_time = time.ctime()
+    #now = time.time()
+    for filename in os.listdir(path):
+        count = count + 1
+    
+    if count > 2:
+        for filename in os.listdir(path):
+            if time.ctime(os.path.getctime(filename)) < (time.time()- (7*86000)):
+                os.remove(filename)
+                print('True')
+            else : 
+                print('False')
+    return(count)
+
+create_place()
