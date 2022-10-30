@@ -4,11 +4,11 @@ from client.importation import Importation
 
 
 class LienService():
-    '''classe qui créer les dictionnaires utiles pour la couche Service à partir des fichiers .json.gz stockés en local'''
+    '''Classe qui créer les dictionnaires utiles pour la couche Service à partir des fichiers .json.gz stockés en local'''
     
     def __init__(self,dict_initial):
         '''Constructeur
-        Paramètres:
+        Parameters:
         -----------
         dict_initial : dict
             Clés du dictionnaire :
@@ -25,7 +25,8 @@ class LienService():
                 La méthode retourne une liste de dictionnaires avec les communes du département 35
                 chaque dictionnaire a entre autres une clée "coordinates" , un clé "id"
                 voire une clée "nom" pour le nom de commune
-
+        Parameters:
+        -----------
         
         
         Returns
