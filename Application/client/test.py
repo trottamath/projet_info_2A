@@ -41,8 +41,9 @@ import datetime
 #     print(data.get("type"))
 
 
-# ctime = os.path.getctime("Application/client/data/commune/commune/cadastre-04004-communes.json.gz")
-# print(ctime)
+ctime = time.ctime(os.path.getctime("Application/client/data/commune/commune/cadastre-04004-communes.json.gz"))
+print(ctime)
+#print(time.time()-ctime)
 # if ctime < time.time()- (3600):
 #     print('True')
 # else : 
@@ -56,13 +57,15 @@ def create_place():
     for filename in os.listdir(path):
         count = count + 1
     
+    print(count)
+    
     if count > 2:
         for filename in os.listdir(path):
-            if time.ctime(os.path.getctime(filename)) < (time.time()- (7*86000)):
-                os.remove(filename)
+            if os.path.getctime(os.path.join(path,filename)) < (time.time()- 360):
+                os.remove(os.path.join(path,filename))
                 print('True')
             else : 
                 print('False')
-    return(count)
+
 
 create_place()
