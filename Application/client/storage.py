@@ -1,8 +1,15 @@
 import os
 from datetime import datetime
 
-class Suppression():
-    '''Classe qui permet de gérer le stockage des fichiers, elle supprime les fichiers s'ils sont trop nombreux'''
+class Storage():
+    '''Classe qui permet de gérer le stockage des fichiers, elle supprime les fichiers s'ils sont trop nombreux dans un dossier
+        Attributes
+        ----------
+
+        Examples
+        --------
+        
+        '''
     
     def __init__():
         pass
@@ -33,10 +40,11 @@ class Suppression():
 
         Returns
         -------
-        
+
         Example
         -------
         '''
         pass
     #fixer un quota par dossier 
     #récuperer les dates de téléchargement pour supprimer le plus ancien
+    #héritage selon les dossiers communes départements... 

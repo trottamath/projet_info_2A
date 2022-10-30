@@ -8,10 +8,10 @@ downloadUrl = r'https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojso
 
 req = requests.get(downloadUrl)
 
-print(req)
+print(req.headers)
 
 filename = req.url[downloadUrl.rfind('/')+1:]
-path = 'Application/client/data/communes/' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
+path = 'Application/client/data/commune/commune' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
 
 print(filename)
 
@@ -35,7 +35,7 @@ with req as rq:
 
 with gzip.open(os.path.join(path,filename),'rb') as file:
     data = json.load(file) #, parse_float=float, parse_int=float
-    print(data)
+    #print(data)
     print(data.get("type"))
 
 

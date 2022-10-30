@@ -6,6 +6,16 @@ import gzip
 class Telechargement():
 
     def __init():
+        '''Classe qui permet de télécharger des fichiers json.gz depuis un site web
+        Attributes
+        ----------
+        url
+        path
+
+        Examples
+        --------
+        
+        '''
         pass
     
     def generator_link(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes"):
@@ -64,7 +74,7 @@ class Telechargement():
         Example
         -------
         '''
-        path = 'Application/client/data'
+        path = r'Application/client/data'
         if 'departements' in url:
             path = os.path.join(path,'departements')
         elif 'france' in url:

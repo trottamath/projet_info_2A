@@ -1,0 +1,28 @@
+import os
+import time
+from datetime import datetime
+from abc import ABC, abstractmethod
+from storage import Storage
+from telechargement import Telechargement
+
+class DepartementCommunes:
+    '''Classe qui gère le stockage du fichier communes dans départements
+    Attributes
+    ----------
+
+    Example
+    -------
+    
+    '''
+
+    def create_place():
+        path = Application/client/data/departement/communes
+        count = 0
+        now = time.time()
+
+        for filename in os.listdir(path):
+            count =+ 1
+        if count > 2:
+            os.remove(filename)
+        else :
+            print("Nothing to delete")
