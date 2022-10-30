@@ -9,7 +9,8 @@ class Telechargement():
         pass
     
     def generator_link(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes"):
-        '''import d'un fichier json à partir du web
+        '''Genère un lien url selon certains critères 
+
         Parameters:
         -----------
             date : str = "latest" 
@@ -23,7 +24,13 @@ class Telechargement():
             zonage2 : str = "communes"
                 zonage au choix parmi "parcelles" ou "communes"
                 sauf si zonage1="france" alors laisser par défaut zonage2="communes"
-            '''
+
+        Returns 
+        -------
+
+        Example
+        -------
+        '''
             
         url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
 
@@ -48,6 +55,14 @@ class Telechargement():
         -----------
         url : str
         Lien du fichier json.gz
+        
+        Return
+        ------
+        path
+        Chemin du fichier
+
+        Example
+        -------
         '''
         path = 'Application/client/data'
         if 'departements' in url:
@@ -57,6 +72,7 @@ class Telechargement():
         else : 
             path = os.path.join(path,'communes')
         return(path)
+
     
     def download(url : str , path : str):
        '''Télécharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
@@ -67,6 +83,9 @@ class Telechargement():
 
         path : str 
         Chemin vers lequel le fichier json.gz sera stocké
+
+        Example
+        -------
        
        '''
        req = requests.get(url)
@@ -82,6 +101,14 @@ class Telechargement():
         ----------
         path : str 
         Chemin dans lequel le fichier json.gz est stocké
+
+        Return
+        ------
+        data 
+        Fichier json sous la forme d'un dictionnaire python
+
+        Example
+        -------
        
        '''
         req = requests.get(url)

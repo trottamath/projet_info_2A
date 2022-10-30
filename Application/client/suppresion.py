@@ -8,23 +8,35 @@ class Suppression():
         pass
 
 
-    def delete_file(filename):
-        '''Méthode qui supprime un fichier en particulier
-        Parameters:
-        -----------
+    # def delete_file(path):
+    #     '''Méthode qui supprime un fichier en particulier
+    #     Parameters:
+    #     -----------
+    #     path 
+    #     Chemin entier du fichier 
         
-        Return:
-        -----------
-        '''
-        if os.path.exists(filename):
-            os.remove(filename)
-        else:
-            print("The file does not exist")
+    #     Return:
+    #     -----------
+    #     '''
+    #     if os.path.exists(filename):
+    #         os.remove(filename)
+    #         print("The file has been deleted")
+    #     else:
+    #         print("The file does not exist")
         
-        #os.rmdir("myfolder") #supprime un dossier
+    #     #os.rmdir("myfolder") #supprime un dossier
 
     def create_place():
-        '''Méthode qui supprime le fichier le plus ancien d'un dossier pour libérer de la place'''
+        '''Méthode qui supprime le fichier le plus ancien d'un dossier pour libérer de la place
+        Parameters
+        ----------
+
+        Returns
+        -------
+        
+        Example
+        -------
+        '''
         pass
     #fixer un quota par dossier 
     #récuperer les dates de téléchargement pour supprimer le plus ancien

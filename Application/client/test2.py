@@ -31,9 +31,9 @@ import json
 # data_files_names = data_files_names =[data_folder]
 # data_folder[0]
 
-with gzip.open("test.json.gz",'rb') as f_in :
-    with open('client\data\communes\json_decomp.json','wb') as f_out:
-        shutil.copyfileobj(f_in,f_out)
+# with gzip.open("test.json.gz",'rb') as f_in :
+#     with open('client\data\communes\json_decomp.json','wb') as f_out:
+#         shutil.copyfileobj(f_in,f_out)
 
 #with gzip.open(filename,'rb') as file:
     #raw_json = file.read()
@@ -43,3 +43,4 @@ with gzip.open("test.json.gz",'rb') as f_in :
 
 #os.path.join(path,filename)
 
+os.remove('Application/client/data/communes/cadastre-04004-communes.json.gz')
