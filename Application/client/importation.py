@@ -1,13 +1,11 @@
-#faire programme qui va télécharger tous les départements avec les communes pour remplir la DAO
-
 from telechargement import Telechargement
 import requests
 
 #https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/01/cadastre-01-communes.json.gz
-#https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/02/cadastre-02-communes.json.gz
-#https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/03/cadastre-03-communes.json.gz
 
 url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/"
+
+#Téléchargement de la france par département
 
 DEPARTMENTS = {
     '01': 'Ain', 
@@ -116,10 +114,6 @@ DEPARTMENTS = {
 id_dep = list(DEPARTMENTS.keys())
 print(id_dep)
 print(len(id_dep))
-
-#url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/{}/cadastre-{}-communes.json.gz".format(id,id)
-
-#Téléchargement de la france par département
 
 for i in id_dep :
     link = Telechargement.generator_link(i,"latest","departements", id_zone = None)
