@@ -113,8 +113,19 @@ DEPARTMENTS = {
     '976': 'Mayotte',
 }
 
-id_departement = list(DEPARTMENTS.keys())
-print(id_departement)
-print(len(id_departement))
+id_dep = list(DEPARTMENTS.keys())
+print(id_dep)
+print(len(id_dep))
 
-url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/{}/cadastre-{}-communes.json.gz".format(id,id)
+#url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/{}/cadastre-{}-communes.json.gz".format(id,id)
+
+#Téléchargement de la france par département
+
+for i in id_dep :
+    link = Telechargement.generator_link(i,"latest","departements", id_zone = None)
+    print(link)
+    path = Telechargement.generator_path(link)
+    print(path)
+    Telechargement.download(link,path)
+
+

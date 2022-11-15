@@ -76,12 +76,22 @@ class Telechargement():
         -------
         '''
         path = r'Application/client/data'
+        req = requests.get(url)
+        filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
             path = os.path.join(path,'departements')
+            if 'communes' in filename :
+                path = os.path.join(path,'communes')
+            else : 
+                path = os.path.join(path,'parcelles')
         elif 'france' in url:
             path = os.path.join(path,'france')
         else : 
             path = os.path.join(path,'communes')
+            if 'communes' in filename :
+                path = os.path.join(path,'communes')
+            else : 
+                path = os.path.join(path,'parcelles')
         return(path)
 
     

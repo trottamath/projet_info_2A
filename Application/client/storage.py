@@ -1,7 +1,6 @@
-import os
-from datetime import datetime
+from abc import ABC, abstractmethod
 
-class Storage():
+class Storage(ABC):
     '''Classe qui permet de gérer le stockage des fichiers, elle supprime les fichiers s'ils sont trop nombreux dans un dossier
         Attributes
         ----------
@@ -10,7 +9,7 @@ class Storage():
         --------
         
         '''
-    
+    @abstractmethod
     def __init__():
         pass
 

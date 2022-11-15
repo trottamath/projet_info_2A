@@ -43,6 +43,5 @@ import json
 
 #os.path.join(path,filename)
 
-os.remove('Application/client/data/communes/cadastre-04004-communes.json.gz')
+#os.remove('Application/client/data/communes/cadastre-04004-communes.json.gz')
 
-print(time.time())
