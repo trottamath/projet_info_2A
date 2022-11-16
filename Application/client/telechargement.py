@@ -143,22 +143,22 @@ class Telechargement():
     ############################################################### TEST ############################################################################
     
     #test pour fonction qui recup url
-    lien_1 = generator_link("08","latest","departements", id_zone = None)
-    print(lien_1)
-    lien_2 = generator_link("08","latest","communes", id_zone = "08124")
-    print(lien_2)
+    #lien_1 = generator_link("08","latest","departements", id_zone = None)
+    # print(lien_1)
+    # lien_2 = generator_link("08","latest","communes", id_zone = "08124")
+    # print(lien_2)
 
     #test pour le générateur de chemin : 
 
-    print(generator_path('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz'))
+    #print(generator_path('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz'))
 
     #test fonction telechargement
-    download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/commune/commune')
-    #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04005/cadastre-04005-communes.json.gz','Application/client/data/commune/commune')
-    #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04006/cadastre-04006-communes.json.gz','Application/client/data/commune/commune')
+    #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')
+    #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04005/cadastre-04005-communes.json.gz','Application/client/data/communes/communes')
+    #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04006/cadastre-04006-communes.json.gz','Application/client/data/communes/communes')
 
 
 
 
     #lecture du json.gz
-    read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/commune/commune')
+    #read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')

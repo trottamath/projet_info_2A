@@ -1,4 +1,4 @@
-from telechargement import Telechargement
+from client.telechargement import Telechargement
 import requests
 
 #https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/01/cadastre-01-communes.json.gz
