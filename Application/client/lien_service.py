@@ -1,6 +1,6 @@
 '''module lien_service.py'''
 
-from telechargement import Telechargement
+from client.telechargement import Telechargement
 
 
 class LienService():
@@ -8,7 +8,7 @@ class LienService():
     
     Attributes
     ----------
-
+    dict_initial : dict
     Example
     -------
     
@@ -26,10 +26,10 @@ class LienService():
             zonage2: échelon secondaire (découpage de l'échelon principal)  commune ou parcelle
             date: date du fichier
         '''
-        self.dict = dict_initial 
+        self.dict_initial = dict_initial 
 
-    def genere_dict(self) -> dict: 
-        '''Méthode qui retourne un dictionnaire 
+    def genere_dict(self) -> list[dict]: 
+        '''Méthode qui retourne une liste de dictionnaire 
                 Exemple: zonage1="departement", id="35", zonage2="commune", date="latest"
                 La méthode retourne une liste de dictionnaires avec les communes du département 35
                 chaque dictionnaire a entre autres une clée "coordinates" , un clé "id"
@@ -40,12 +40,12 @@ class LienService():
         
         Returns
         ------
-        dict : dict
+        list_dict : list[dict]
         
         Example
         -------
         '''
-        keys = list(self.dict.keys())
+        keys = list(self.dict_initial.keys())
         zonage1 = keys[0]
         id1= keys[1]
         zonage2 = keys[2]
@@ -56,20 +56,17 @@ class LienService():
         print(path)
         dico_extract_json = read_json(url,path) #dictionnaire
 
-        return(dico_extract_json)
-
-        #list_dict = dico_extract_json["features"]
+        list_dict = dico_extract_json["features"]
         
-
-        return list_dict
+        return (list_dict)
 
 ############################################################### TEST ############################################################################
     
     #test pour fonction qui genère dictionnaire
 
-    D = {'zonage1' : 'departement',
+D = {'zonage1' : 'departement',
         'id1' : '01',
         'zonage2' : 'commune',
         'date' : 'latest'}
-    dico = genere_dict(D)
-    print(dico)
+dico = LienService(D).genere_dict()
+print(dico)
