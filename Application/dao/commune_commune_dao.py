@@ -22,18 +22,15 @@ class CommuneCommuneDAO():
 
     def create(self, id_com1: str, id_com2: str, date):
         '''ajoute une nouvelle paire de communes limitrophes pour la date donnée'''
-        #commencer par tester si l'info n'est pas déjà dans la table pour éviter les doublons (attention à la symétrie)
-        if self.recherche(id_com1= id_com1, id_com2= id_com2, date= date) != None and self.recherche(id_com1= id_com2, id_com2= id_com1, date= date) != None:
-            pass #return True 
-
-        request = "INSERT INTO Commune (id_com1, id_com2, date)" \
-                "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"\
-                "INSERT INTO Commune (id_com1, id_com2, date)"\
-                "VALUES(%(id_com2)s, %(id_com1)s, %(date)s)"
-
-        cursor.execute(
-            request, {"id_com1" : id_com1, "id_com2": id_com2, "date": date}
-        )
+        # si le couple existe déjà, on ne l'ajoute pas à la base de données
+        if self.recherche(id_com1,id_com2,date) == None : # le couple n'existe pas déjà
+            request = "INSERT INTO Commune (id_com1, id_com2, date)" \
+                    "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"
+            cursor.execute(
+                request, {"id_com1" : id_com1, "id_com2": id_com2, "date": date}
+            )
+        else :
+            pass
     
 
     def recherche_com(self, id_com: str, date):
