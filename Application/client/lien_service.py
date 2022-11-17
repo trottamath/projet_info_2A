@@ -1,17 +1,12 @@
-'''module lien_service.py'''
-
 from client.telechargement import Telechargement
-
 
 class LienService():
     '''Classe qui créer les dictionnaires utiles pour la couche Service à partir des fichiers .json.gz stockés en local
     
     Attributes
     ----------
-    dict_initial : dict
-    Example
-    -------
-    
+    dico : dict
+
     '''
     
     def __init__(self,dict_initial):
@@ -26,9 +21,9 @@ class LienService():
             zonage2: échelon secondaire (découpage de l'échelon principal)  commune ou parcelle
             date: date du fichier
         '''
-        self.dict_initial = dict_initial 
+        self.dico = dict_initial 
 
-    def genere_dict(self) -> list[dict]: 
+    def genere_dico(self) -> list[dict]: 
         '''Méthode qui retourne une liste de dictionnaire 
                 Exemple: zonage1="departement", id="35", zonage2="commune", date="latest"
                 La méthode retourne une liste de dictionnaires avec les communes du département 35
@@ -37,15 +32,12 @@ class LienService():
         Parameters:
         -----------
         
-        
         Returns
         ------
         list_dict : list[dict]
         
-        Example
-        -------
         '''
-        keys = list(self.dict_initial.keys())
+        keys = list(self.dico.keys())
         zonage1 = keys[0]
         id1= keys[1]
         zonage2 = keys[2]
@@ -61,12 +53,12 @@ class LienService():
         return (list_dict)
 
 ############################################################### TEST ############################################################################
-    
-    #test pour fonction qui genère dictionnaire
+
+#test pour fonction qui genère dictionnaire
 
 D = {'zonage1' : 'departement',
-        'id1' : '01',
-        'zonage2' : 'commune',
-        'date' : 'latest'}
-dico = LienService(D).genere_dict()
+    'id1' : '01',
+    'zonage2' : 'commune',
+    'date' : 'latest'}
+dico = LienService(D).genere_dico()
 print(dico)
