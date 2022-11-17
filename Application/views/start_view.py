@@ -1,8 +1,8 @@
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 
-from view.abstract_view import AbstractView
-from view.session import Session
+from views.abstract_view import AbstractView
+from views.session import Session
 
 class StartView(AbstractView):
 
@@ -15,7 +15,8 @@ class StartView(AbstractView):
                 ,Choice('Liste des parcelles limitrophes à une parcelle donnée')
                 ,Choice('Aucun')
             ]
-        self.__questions2 = inquirer.select(
+        )
+        self.__questions1 = inquirer.select(
             message=f'Bonjour{Session().user_name}'
             , choices=[
                 Choice('2019-01-01')
@@ -37,8 +38,9 @@ class StartView(AbstractView):
             ]
         )
     def display_info(self):
-        with open('graphical_assets/banner.txt','r',encoding="utf_8") as asset:
-            print(asset.read())
+        # with open('graphical_assets/banner.txt','r',encoding="utf_8") as asset:
+        #     print(asset.read())
+        pass
     
     def make_choice(self):
         reponse = self.__questions.execute()

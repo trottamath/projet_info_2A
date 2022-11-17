@@ -1,4 +1,17 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>460</x><y>170</y><w>210</w><h>170</h></coordinates><panel_attributes>instanciation
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>370</x><y>310</y><w>210</w><h>170</h></coordinates><panel_attributes>Instanciation
+--
+type : str,
+id_type: str
+zone: str
+date: str
+--
+__init__(zonage1: str, id1: str,
+              zonage2: str,date: str ): dict
++instancier_zonage( ): list[Zonage]
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>90</y><w>210</w><h>170</h></coordinates><panel_attributes>Requete
 --
 type : str,
 id_type: str
