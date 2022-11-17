@@ -1,6 +1,6 @@
 '''module lien_service.py'''
 
-from telechargement import Telechargement
+from client.telechargement import Telechargement
 
 
 class LienService():

@@ -1,11 +1,11 @@
 from pprint import pprint
 
-import regex
+#import regex
 from prompt_toolkit.validation import ValidationError, Validator
-from PyInquirer import prompt
+from InquirerPy import prompt
 
 from views.session import Session
-from service.requete import Requete
+#from service.requete import Requete
 
 class AbstractView():
     def __init__(self) -> None:
