@@ -8,5 +8,8 @@
     "terminal.integrated.env.linux": {
         "PYTHONPATH": "${workspaceFolder}/Application",
     },
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}/Application",
+    },
     "python.languageServer": "Jedi"
 }
