@@ -9,7 +9,7 @@ class Telechargement():
         '''Classe qui permet de télécharger des fichiers json.gz depuis un site web'''
         pass
     
-    def generator_link(id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes"):
+    def generator_link(self, id_dep : str, date = "latest", zonage1 = "departements", id_zone = None, zonage2 = "communes"):
         '''Genère un lien url selon certains critères 
 
         Parameters:
@@ -40,6 +40,8 @@ class Telechargement():
             url_zone1 = id_dep
         elif zonage1 == "communes":
             url_zone1="{}/{}".format(id_dep,id_zone)
+        else :
+            print("Départements ou communes")
 
         fichier ="cadastre-{}-{}.json.gz".format(id_zone,zonage2)
 
@@ -50,12 +52,12 @@ class Telechargement():
         return url
     
     
-    def generator_path(url : str):
+    def generator_path(self, url : str):
         '''Méthode qui dirige le fichier json.gz dans un dossier en fonction du zonage_1
         Parameters:
         -----------
         url : str
-        Lien du fichier json.gz
+            Lien du fichier json.gz
         
         Return
         ------
@@ -85,7 +87,7 @@ class Telechargement():
         return(path)
 
     
-    def download(url : str , path : str):
+    def download(self, url : str , path : str):
        '''Télécharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
         Parameters
         ----------
@@ -106,7 +108,7 @@ class Telechargement():
             with open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
                 file.write(rq.content)
     
-    def read_json(url : str, path : str):
+    def read_json(self, url : str, path : str):
         '''Lis le fichier json comme un dictionnaire
         Parameters
         ----------
@@ -127,16 +129,19 @@ class Telechargement():
 
         with gzip.open(os.path.join(path,filename),'rb') as file:
             data = json.load(file) #, parse_float=float, parse_int=float
-        return(print(data))
+        return(data)
 
 
 ############################################################### TEST ############################################################################
     
 #test pour fonction qui recup url
-#lien_1 = generator_link("08","latest","departements", id_zone = None)
+# t = Telechargement()
+# lien_1 = t.generator_link(id_dep="08",date="latest",zonage1="departements", id_zone = None)
 # print(lien_1)
-# lien_2 = generator_link("08","latest","communes", id_zone = "08124")
+# lien_2 = t.generator_link("08","latest","communes", id_zone = "08124")
 # print(lien_2)
+# lien_3 = t.generator_link(id_dep="08",date="latest",zonage1="france",id_zone=None,zonage2="communes")
+# print(lien_3)
 
 #test pour le générateur de chemin : 
 
@@ -148,4 +153,7 @@ class Telechargement():
 #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04006/cadastre-04006-communes.json.gz','Application/client/data/communes/communes')
 
 #lecture du json.gz
-#read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')
+t = Telechargement()
+dico = t.read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')
+print(dico)
+print(type(dico))

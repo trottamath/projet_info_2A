@@ -55,7 +55,7 @@ class StartView(AbstractView):
             Session().num="2"
             #from views.commune_parcelle_view import Commune_Parcelle_View
             #return Commune_Parcelle_View()
-        elif reponse == 'Liste des parcelles limitrophe à une parcelle donnée':
+        elif reponse == 'Liste des parcelles limitrophes à une parcelle donnée':
             Session().num="3"
         from views.abstract_view import AbstractView
         return AbstractView()

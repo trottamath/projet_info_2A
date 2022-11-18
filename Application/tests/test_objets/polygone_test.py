@@ -1,3 +1,8 @@
+""" module polygone_test
+test unitaire de la classe Polygone
+auteur: Jean-Philippe Trotta
+date : 10/10/2022
+"""
 from objets.geometrie.point import Point
 from objets.geometrie.segment import Segment
 from objets.geometrie.polygone import Polygone

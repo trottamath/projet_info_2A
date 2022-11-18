@@ -5,7 +5,7 @@ class LienService():
     
     Attributes
     ----------
-    dico : dict
+    dict_initial : dict
 
     '''
     
@@ -37,18 +37,19 @@ class LienService():
         list_dict : list[dict]
         
         '''
-        keys = list(self.dico.keys())
-        zonage1 = keys[0]
-        id1= keys[1]
-        zonage2 = keys[2]
-        date = keys[3]
-        link = telechargement.generator_link(id1, date, zonage1, id_zone, zonage2)
-        print(link)
-        path = telechargement.generator_paht(link)
-        print(path)
-        dico_extract_json = read_json(url,path) #dictionnaire
 
-        list_dict = dico_extract_json["features"]
+        zonage1 = self.dico['zonage1']
+        id_dep= self.dico['id1']
+        zonage2 = self.dico['zonage2']
+        date = self.dico['date']
+        print(zonage1,id_dep,zonage2,date)
+        link = Telechargement().generator_link(id_dep = id_dep, date=date, zonage1=zonage1, id_zone = None, zonage2=zonage2)
+        print(link)
+        path = Telechargement().generator_path(link)
+        print(path)
+        dico_extract_json = Telechargement().read_json(link,path) #dictionnaire
+
+        list_dict = dico_extract_json['features'] #extraction de la liste de dictionnaire
         
         return (list_dict)
 
@@ -56,9 +57,10 @@ class LienService():
 
 #test pour fonction qui genère dictionnaire
 
-D = {'zonage1' : 'departement',
+D = {'zonage1' : 'departements',
     'id1' : '01',
-    'zonage2' : 'commune',
+    'zonage2' : 'communes',
     'date' : 'latest'}
-dico = LienService(D).genere_dico()
+test = LienService(D)
+dico = test.genere_dico()
 print(dico)

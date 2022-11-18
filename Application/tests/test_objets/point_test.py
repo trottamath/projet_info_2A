@@ -1,3 +1,8 @@
+""" module point_test
+test unitaire de la classe Point
+auteur: Jean-Philippe Trotta
+date : 10/10/2022
+"""
 from objets.geometrie.point import Point
 
 import unittest
