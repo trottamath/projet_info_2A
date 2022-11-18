@@ -25,5 +25,4 @@ class Session(metaclass=Singleton):
         self.list_res: list = None #liste des identifiants récupéré par la couche service
         self.user_name: str = "user" #à voir si c'est utile ?
         
-       
 
