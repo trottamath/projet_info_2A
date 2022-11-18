@@ -1,3 +1,8 @@
+""" module segment_test
+test unitaire de la classe Segment
+auteur: Jean-Philippe Trotta
+date : 10/10/2022
+"""
 from objets.geometrie.point import Point
 from objets.geometrie.segment import Segment
 

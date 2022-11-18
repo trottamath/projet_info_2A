@@ -37,7 +37,7 @@ class MultiPolygone(AbstractPolygone):
             rectangle = rectangle.union_rectangle(autre_rect= poly_ext.rectangle_circonscrit())
         return rectangle
 
-    def test_polyg_contigu (self, autre_polyg : AbstractPolygone ) -> bool: #j'ai remplacé Polygone par AbstractPolygone (récursivité possible si autre_polyg est un multipolygone)
+    def test_polyg_contigu (self, autre_polyg : AbstractPolygone ) -> bool: # AbstractPolygone (récursivité possible si autre_polyg est un multipolygone)
         """teste si un AbstractPolygone donné est contigu à ce MultiPolygone
         """
         if self.test_polyg_proche(autre_polyg):
@@ -46,7 +46,7 @@ class MultiPolygone(AbstractPolygone):
                     return True
         return False
     
-    #supprimmer la méthode suivante si le paramètre autre_polyg de la précédante peut être de type AbstractPolygone
+    #supprimmer la méthode suivante vu que le paramètre autre_polyg de la précédante peut être de type AbstractPolygone
     def test_multipolyg_contigu (self, autre_multipolyg ) -> bool:
         """teste si un autre multipolygone est contigu à celui-ci
         Paramètre :
@@ -63,15 +63,4 @@ class MultiPolygone(AbstractPolygone):
         print("multi-polygone:")
         return "\n".join("{}#".format(str(self.liste_polyg[i])) for i in range(len(self.liste_polyg)))
 
-#test polygones contigus
-poly8 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
-poly9 = Polygone([[[4,4],[4,5],[6,7]]])
-print(poly8.test_polyg_contigu(poly9)) #true
 
-
-#test multipoly
-m1 = MultiPolygone([[[[1,5545.3254],[654436.65,25545.444],[5425,11]],[[12,322],[4,10],[35,44]]],[[[2,25545],[654436.65,25545.444],[5425,5545.3254],[654436.65,25545.444],[5425,22]]]])
-
-print(m1)
-
-print(m1.test_polyg_contigu(poly9))
