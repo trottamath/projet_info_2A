@@ -13,14 +13,14 @@ class AbstractView():
             {
                 'type': 'input',
                 'name': 'id_zone',
-                'message':'quel est l\'identifiant de la zone de référence'
+                'message':'Quel est l\'identifiant de la zone de référence ?'
             }
         ]
 
 
 
     def display_info(self):
-        print(f"Hello {Session().user_name}, veuillez choisr un bon identifiant de zone")
+        print(f"Bonjour {Session().user_name}, veuillez choisir un identifiant de zone correct")
 
     def make_choice(self):
         answers = prompt(self.__questions)
