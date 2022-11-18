@@ -22,7 +22,7 @@ class CommuneCommuneDAO():
 
     def create(self, id_com1: str, id_com2: str, date):
         '''ajoute une nouvelle paire de communes limitrophes pour la date donnée'''
-        # si le couple existe déjà, on ne l'ajoute pas à la base de données
+        # si le couple existe déjà pour la date donnée, on ne l'ajoute pas à la base de données
         if self.recherche(id_com1,id_com2,date) == None : # le couple n'existe pas déjà
             request = "INSERT INTO Commune (id_com1, id_com2, date)" \
                     "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"
