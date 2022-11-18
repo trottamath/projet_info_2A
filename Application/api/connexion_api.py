@@ -28,16 +28,22 @@ async def post_todo(todo:Todo):
      todos[todo.id] = todo
         return todo
 
-
-# Lancement de l'application sur le le port 8XXX avec XXX les 3 derniers numéros de votre id
+# Lancement de l'application sur le port 8XXX avec id personnel : 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8058)
 
 
-    class Todo(BaseModel):
-    id : int
-    content : str
-    todos = {1 : Todo(1, "Step 1 : Learn python"),
-        , 2 : Todo(2,"Step 2 : Work on the IT project")
-        , 3 : Todo(3,"Step 3 : ???")
-        , 4 : Todo(4,"Step 4 : Profit")}
+
+# Import classique
+from fastapi import FastAPI
+# On instancie le webservice
+app = FastAPI()
+# Création d'un enpoint qui répond à la méthode GET à l'adresse "/" qui va
+retourne le message "Hello World"
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+# Lancement de l'application sur le le port 80
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.1.0", port=8058)
+
