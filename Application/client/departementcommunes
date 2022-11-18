@@ -5,7 +5,7 @@ from datetime import datetime
 #from storage import Storage
 # from telechargement import Telechargement
 
-class DepartementCommunes:
+class DepartementCommunes():
     '''Classe qui gère le stockage du fichier communes dans départements
     Attributes
     ----------
@@ -15,16 +15,19 @@ class DepartementCommunes:
     
     '''
 
-    def create_place():
-        path = 'Application/client/data/commune/commune'
+    def create_place(self):
+        path = 'Application/client/data/departements/communes'
         count = 0
         now_time = time.ctime()
         now = time.time()
+        print(len(os.listdir(path)))
 
         for filename in os.listdir(path):
-            count =+ 1
+            count = count + 1
+        
+        print(count)
 
-        if count > 2:
+        if count > 10:
             for filename in os.listdir(path):
                 if time.ctime(os.path.getctime(os.path.join(path,filename))) < (time.time()- (7*86000)):
                     os.remove(filename)
@@ -34,7 +37,8 @@ class DepartementCommunes:
 
 ############################################################### TEST ############################################################################
     
-    #test pour fonction libère de la place dans le sous-dossier commune du dossier département
+#test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-    create_place()
+D = DepartementCommunes()
+D.create_place()
 

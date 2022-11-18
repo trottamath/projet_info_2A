@@ -116,10 +116,10 @@ print(id_dep)
 print(len(id_dep))
 
 for i in id_dep :
-    link = Telechargement.generator_link(i,"latest","departements", id_zone = None)
+    link = Telechargement().generator_link(i,"latest","departements", id_zone = None)
     print(link)
-    path = Telechargement.generator_path(link)
+    path = Telechargement().generator_path(link)
     print(path)
-    Telechargement.download(link,path)
+    Telechargement().download(link,path)
 
 
