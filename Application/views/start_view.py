@@ -8,12 +8,12 @@ class StartView(AbstractView):
 
     def __init__(self):
         self.__questions = inquirer.select(
-            message=f'Bonjour{Session().user_name}'
+            message=f'Bonjour {Session().user_name}'
             , choices=[
                 Choice('Liste des communes limitrophes à une commune donnée')
                 ,Choice('Liste des parcelles en bordure d\'une commune donnée')
                 ,Choice('Liste des parcelles limitrophes à une parcelle donnée')
-                ,Choice('Aucun')
+                ,Choice('Quitter')
             ]
         )
         self.__questions1 = inquirer.select(
@@ -45,7 +45,7 @@ class StartView(AbstractView):
     def make_choice(self):
         reponse = self.__questions.execute()
         Session().date=self.__questions1.execute()
-        if reponse == 'Aucun':
+        if reponse == 'Quitter':
             pass
         elif reponse == 'Liste des communes limitrophes à une commune donnée':
             Session().num="1"
