@@ -4,10 +4,6 @@ class Storage(ABC):
     '''Classe qui permet de gérer le stockage des fichiers, elle supprime les fichiers s'ils sont trop nombreux dans un dossier
         Attributes
         ----------
-
-        Examples
-        --------
-        
         '''
     @abstractmethod
     def __init__():
