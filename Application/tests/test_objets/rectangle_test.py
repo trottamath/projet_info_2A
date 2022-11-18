@@ -1,3 +1,8 @@
+""" module rectangle_test
+test unitaire de la classe Rectangle
+auteur: Jean-Philippe Trotta
+date : 10/10/2022
+"""
 from objets.geometrie.rectangle import Rectangle
 
 import unittest
@@ -13,10 +18,11 @@ class RectangleTest(unittest.TestCase):
         test1 = rect1.test_intersect_rect (autre_rect = rect3) #False
         test2 = rect1.test_intersect_rect (autre_rect = rect2) #True
 
+        
+
         test = test2 and not test1 
         self.assertEqual(test, True)
     
-    def test_union_rectangle(self):
 
 if __name__ == '__main__':
     unittest.main()

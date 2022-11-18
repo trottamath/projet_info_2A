@@ -41,7 +41,7 @@ class Rectangle():
         -----------
             autre_rect : Rectangle
         """
-        print("test intersection de rectangles") # TODO à supprimer à la fin
+        #print("test intersection de rectangles") # TODO à supprimer à la fin
         if (autre_rect.long_max < self.long_min) or (autre_rect.long_min > self.long_max) or (autre_rect.lat_max < self.lat_min) or (autre_rect.lat_min > self.lat_max):
             return False
         else:
