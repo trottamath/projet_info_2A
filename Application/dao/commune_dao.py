@@ -7,10 +7,9 @@ from objets.zone.zonage import Zonage
 class CommuneDAO(metaclass=Singleton):
     "Table Commune dans la base de données"
 
-    def nom_communes(self, id_com: str):
+    def nom_communes(self, id_com: str): # OK
         """Retourne le nom de la commune correspondant à l'identifiant"""
-        request = "SELECT nom_commune FROM Commune"\
-            "WHERE id_com = %(id_com)s"
+        request = "SELECT nom_com FROM Commune WHERE id_com = %(id_com)s"
         
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
@@ -21,7 +20,7 @@ class CommuneDAO(metaclass=Singleton):
                 res = cursor.fetchone() 
         return res
 
-    def recherche(self, id_com:str):
+    def recherche(self, id_com:str): # OK
         """Recherche une commune par son identifiant"""
         request = "SELECT * FROM Commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
@@ -30,20 +29,23 @@ class CommuneDAO(metaclass=Singleton):
                     request,
                     {"id_com": id_com}
                 )
-            res = cursor.fetchall()
-        return res
-
+                res = cursor.fetchall()
+        if res ==[] :
+            print("la commune n'est pas dans la base de données")
+        else : 
+            return res
+        
     
     def ajout_commune(self, id_com: str, nom_com: str):
         """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà"""
 
-        if recherche(id_com) == None : # la commune n'est pas présente dans la table
-            id_dep = ss_str(chaine= id_com, nbr_caract= 2)
+        if self.recherche(id_com) == [] or self.recherche(id_com) == None : # la commune n'est pas présente dans la table
+            id_dep = ss_str(chaine = id_com, nbr_caract= 2)
             if id_dep=="97": # Dom Tom : ont un num de département à 3 chiffres
                 id_dep = ss_str(chaine= id_com, nbr_caract= 3)
             request = "INSERT INTO Commune (id_com, nom_commune, id_dep)"\
             "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
-            "WHERE NOT EXISTS (SELECT id_com FROM Commune WHERE id_com = %(id_com)s)" #  test de pré-existance
+            #"WHERE NOT EXISTS (SELECT id_com FROM Commune WHERE id_com = %(id_com)s)" #  test de pré-existance
 
             with DBConnection().connection as connection:
                 with connection.cursor() as cursor :
@@ -54,7 +56,7 @@ class CommuneDAO(metaclass=Singleton):
         else : # la commune est déjà dans la table
             pass # on ne fait rien
         
-    def suppression_commune(self, id_com: str):
+    def suppression_commune(self, id_com: str): # OK
         """Supprime la ligne d'une commune dans la table Commune de la BdD """
         request = "DELETE FROM Commune WHERE id_com =%(id_com)s"
         with DBConnection().connection as connection:
@@ -66,5 +68,20 @@ class CommuneDAO(metaclass=Singleton):
     
 
 
-        
-        
+################################################## TESTS ##################################################
+
+c = CommuneDAO()
+
+#### test ajout_commune
+c.ajout_commune('02012', 'AMBRIEF')
+
+#### test nom_commune : OK
+#print(c.nom_communes('35170'))
+#print(c.nom_communes('35000'))
+
+#### test recherche : OK
+#print(c.recherche('35170'))
+#print(c.recherche('35000'))
+
+#### test suppression commune : OK
+#c.suppression_commune('35000')
