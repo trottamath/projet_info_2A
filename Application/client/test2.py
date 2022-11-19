@@ -45,3 +45,21 @@ import json
 
 #os.remove('Application/client/data/communes/cadastre-04004-communes.json.gz')
 
+    # def create_place(self):
+    #     path = 'Application/client/data/departements/communes'
+    #     count = 0
+    #     now_time = time.ctime()
+    #     now = time.time()
+    #     print(len(os.listdir(path)))
+
+    #     for filename in os.listdir(path):
+    #         count = count + 1
+        
+    #     print(count)
+
+    #     if count > 10:
+    #         for filename in os.listdir(path):
+    #             if time.ctime(os.path.getctime(os.path.join(path,filename))) < (time.time()- (7*86000)):
+    #                 os.remove(filename)
+    #             else : 
+    #                 print('False')

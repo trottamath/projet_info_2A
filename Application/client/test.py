@@ -57,13 +57,31 @@ def create_place():
     for filename in os.listdir(path):
         count = count + 1
     
-    print(count)
     
-    if count > 80 :
-        L = []
-        for filename in os.listdir(path):
-            L.append(os.path.getctime(os.path.join(path,filename)))
-        L.sort()
+    
+    #first_filename = os.listdir(path).pop(0)
+
+    time = []
+    for filename in os.listdir(path) :
+        time.append(os.path.getctime(os.path.join(path,filename)))
+ 
+    dictionary = dict(zip(os.listdir(path),time)) 
+
+    if count > 95 :
+        L = os.path.getctime(os.path.join(path,os.listdir(path)[0]))
+        for filename in os.listdir(path) :
+            if L > os.path.getctime(os.path.join(path,filename)):
+                L = os.path.getctime(os.path.join(path,filename))
+            else : 
+                pass
+
+        file_remove = [key  for (key, val) in dictionary.items() if val == L]
+        
+        for filename in file_remove :
+            os.remove(os.path.join(path,filename))
+    
+    else :
+        pass
 
 
 create_place()
