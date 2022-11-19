@@ -43,7 +43,7 @@ class Polygone(AbstractPolygone):
     def test_segment(self, autre_segment : Segment) -> bool:
         """teste si un segment appartient au 1er polygone géométrique
         """
-        print("test d'appartenance d'un segment au polygone principal (bordure)") # à supprimer à la fin TODO
+        #print("test d'appartenance d'un segment au polygone principal (bordure)") # à supprimer à la fin TODO
         for sgm in self.liste_poly_geom[0]:
             if autre_segment.test_egal(sgm):
                 return True

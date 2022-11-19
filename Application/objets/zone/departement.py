@@ -1,5 +1,9 @@
 '''module departement.py
-on initialise ce module par l'import d'un fichier csv qui contient les couples de départements limitrophes'''
+on initialise ce module par l'import d'un fichier csv qui contient les couples de départements limitrophes
+
+auteur: Jean-Philippe Trotta
+date : 10/10/2022
+'''
 
 import csv
 from pathlib import Path 
@@ -13,7 +17,6 @@ dep2=[]
 for col in data:
     dep1.append(col[0])
     dep2.append(col[1])
-
 
 
 class Departement():
@@ -37,5 +40,4 @@ class Departement():
                 liste_dep.append(dep1[i])
         return liste_dep
 
-#print(Departement(id_dep="974").dep_contig())
-
+#print(Departement(id_dep="13").dep_contig())

@@ -10,7 +10,7 @@ from abc import ABC, abstractmethod
 class AbstractPolygone():
     """classe abstraite pour définir les méthodes communes aux objets de type Polygone et Multipolygone
     """
-    def __init__(self):
+    def __init__(self): #à supprimer ? TODO
         pass
 
     @abstractmethod
