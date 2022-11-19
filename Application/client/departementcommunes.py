@@ -29,7 +29,7 @@ class DepartementCommunes():
 
         if count > 10:
             for filename in os.listdir(path):
-                if time.ctime(os.path.getctime(os.path.join(path,filename))) < (time.time()- (7*86000)):
+                if time.ctime(os.path.getctime(os.path.join(path,filename))) < (time.time()- (7*86000)): #les 2 membres sont biens des nombres ? TODO vérifier
                     os.remove(filename)
                 else : 
                     print('False')
@@ -41,4 +41,5 @@ class DepartementCommunes():
 
 D = DepartementCommunes()
 D.create_place()
+# TypeError: '<' not supported between instances of 'str' and 'float'
 

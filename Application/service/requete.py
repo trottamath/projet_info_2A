@@ -41,14 +41,12 @@ class Requete ():
 
     def Get_DAO(self)->list[str]:
         """pour demander le resultat à la DAO qui va interroger la base de données"""
+        res = None
         if self.dico_requete["num"] == "1" : # voisines communes à une voisine donnée
             res = CommuneCommuneDAO().recherche_com(self.dico_requete["id"], self.dico_requete["date"])
         
         elif self.dico_requete["num"] == "2" : # parcelles en bordure d'une commune donnée
             res = ParcelleDAO().research_all_lim(self.dico_requete["id"])
-        
-        else:
-            res= None
 
         return res
     
@@ -60,7 +58,7 @@ class Requete ():
             id_com = self.dico_requete["id"] #l'identifiant de la commune d'intérêt
             id_dep = ident_dep(id= id_com) #l'identifiant du département de la commune  TODO vérifier syntaxe staticmethod
             list_dep = Departement(id_dep= id_dep).dep_contig() #la liste des id de départements limitrophes
-            list_com = Instanciation(zonage1="departement", id1=id_dep, zonage2="commune", date=self.dico_requete["date"]).instancier_zonage() #liste des communes du département
+            list_com = Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #liste des communes du département
             
             for commune in list_com:
                 if commune.id == id_com:
@@ -68,7 +66,7 @@ class Requete ():
 
             for id_dep in list_dep:
                 # concaténation avec les listes de communes des départements limitrophes
-                list_com = list_com + Instanciation(zonage1="departement", id1=id_dep, zonage2="commune", date=self.dico_requete["date"]).instancier_zonage() #concaténation
+                list_com = list_com + Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #concaténation
             
             list_id_com_contig = []
             
@@ -85,8 +83,8 @@ class Requete ():
         elif self.dico_requete["num"] == "2" :
             
             id_com = self.dico_requete["id"] #l'identifiant de la commune d'intérêt
-            commune = Instanciation(zonage1="commune", id1=id_com, zonage2="commune", date=self.dico_requete["date"]).instancier_zonage()
-            list_parc = Instanciation(zonage1="commune", id1=id_com, zonage2="parcelle", date=self.dico_requete["date"]).instancier_zonage()
+            commune = Instanciation(zonage1="communes", id1=id_com, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage()
+            list_parc = Instanciation(zonage1="communes", id1=id_com, zonage2="parcelles", date=self.dico_requete["date"]).instancier_zonage()
             list_id_parc_lim=[]
             for parcel in list_parc:
                 if parcel.test_zone_contigu(macro_zone= commune):
@@ -106,7 +104,7 @@ class Requete ():
             else:
                 list_id_parc_lim = requete2_com.Get_Client()
 
-            liste_parc_com1 = Instanciation(zonage1="commune", id1=id_com, zonage2="parcelle", date=self.dico_requete["date"]).instancier_zonage()
+            liste_parc_com1 = Instanciation(zonage1="communes", id1=id_com, zonage2="parcelles", date=self.dico_requete["date"]).instancier_zonage()
             for parcel in liste_parc_com1:
                 if parcel.id == id_parc:
                     parcel1 = parcel #parcelle d'intérêt
@@ -130,7 +128,7 @@ class Requete ():
                         list_id_parc_lim2 = requete2_com2.Get_DAO()
                     else:
                         list_id_parc_lim2 = requete2_com2.Get_Client()
-                    liste_parc_com2 = Instanciation(zonage1="commune", id1=id_com2, zonage2="parcelle", date=self.dico_requete["date"]).instancier_zonage()
+                    liste_parc_com2 = Instanciation(zonage1="communes", id1=id_com2, zonage2="parcelles", date=self.dico_requete["date"]).instancier_zonage()
                     liste_parc_lim2 = []
                     for parc2 in liste_parc_com2:
                         for id in list_id_parc_lim2:
@@ -141,7 +139,7 @@ class Requete ():
             list_id_parc_contig = [liste_parc_com1[i].id for i in range(len(liste_parc_com1))]
             return list_id_parc_contig
         else:
-            return None # en cas d'erreur de numéro de requête saisi par l'utlisateur
+            return None # en cas d'erreur de numéro de requête saisi par l'utlisateur (à supprimer)
 
 
     def Get_or_create(self) ->list[str]:

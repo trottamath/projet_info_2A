@@ -159,7 +159,7 @@ class Telechargement():
 #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04006/cadastre-04006-communes.json.gz','Application/client/data/communes/communes')
 
 #lecture du json.gz
-t = Telechargement()
-dico = t.read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')
-print(dico)
-print(type(dico))
+#t = Telechargement()
+#dico = t.read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')
+#print(dico)
+#print(type(dico))

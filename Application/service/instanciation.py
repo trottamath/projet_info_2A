@@ -38,10 +38,10 @@ class Instanciation():
         return list_zonage
 
 #test
-insta = Instanciation(zonage1="departements", id1="13", zonage2="communes", date="latest")
+#insta = Instanciation(zonage1="departements", id1="13", zonage2="communes", date="latest")
 
-print(insta.dico)
-print(insta.dico["zonage1"])
+#print(insta.dico)
+#print(insta.dico["zonage1"])
 
-liste = insta.instancier_zonage()
-print(liste[0].id)
+#liste = insta.instancier_zonage()
+#print(liste[0].id)
