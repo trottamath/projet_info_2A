@@ -24,6 +24,13 @@ class Zonage():
         self.id = id
         self.geom_coord = geom_coord
 
+    def test_egal_id(self,autre_zone): #à voir si utile
+        """teste si deux zonages ont le même identifiant
+        Paramètre:
+        ----------
+            autre_zone : Zonage"""
+        return self.id == autre_zone.id
+
     @staticmethod
     def ss_str(chaine: str, nbr_caract: int):
         '''pour une chaine de caractère donnée, et nbr_caract un nombre entier de caractères à conserver
@@ -76,8 +83,9 @@ class Zonage():
         ss_list= []
         for zone in list_zones:
             if zone.test_zone_contigu(macro_zone= self) and self.id!=zone.id:
-                ss_list.append(zone)  # ou avec zone.id
-        return ss_list #selon les besoins, on aurait pu ne retourner que la liste des identifiants
+                ss_list.append(zone)
+        return ss_list
+
     
     def __str__(self):
         return self.id

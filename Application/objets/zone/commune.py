@@ -62,8 +62,10 @@ class Commune(Zonage):
     def __str__(self):
         return "{}_{}".format(self.id,self.nom)
 
-
-#m1=MultiPolygone([[[[2,1],[3,5],[2,7]],[[0,0],[3,5],[2,7]]],[[[1,1],[3,5],[0,0]]]])  #bug TODO
-
-#com1= Commune(id="13400", geom_coord=m1,nom="coucou")
+#Test ok
+#m1=MultiPolygone([[[[2,1],[3,5],[2,7]],[[0,0],[3,5],[2,7]]],[[[1,1],[3,5],[0,0]]]])
+#com1= Commune(id="35170", geom_coord=m1,nom="Bruz")
 #print(com1)
+#print(com1.geom_coord)
+
+

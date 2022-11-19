@@ -1,7 +1,7 @@
 """module commune_dao.py pour définir la classe CommuneDAO
 version 1.0
 date 25/10/2022
-auteurs : Jean-Philippe Trotta et Chloé Contant
+auteurs : Chloé Contant et Jean-Philippe Trotta
 """
 from client.telechargement import Telechargement
 
@@ -21,16 +21,16 @@ class LienService():
         dict_initial : dict
             Description des clés du dictionnaire :
             --------------------------------------
-            zonage1: échelon principal (département ou commune)
+            zonage1: échelon principal (départements ou communes)
             id1: identifiant de l'échelon principal
-            zonage2: échelon secondaire (découpage de l'échelon principal)  commune ou parcelle
+            zonage2: échelon secondaire (découpage de l'échelon principal)  communes ou parcelles
             date: date du fichier
         '''
         self.dico = dict_initial 
 
     def genere_dico(self) -> list[dict]: 
         '''Méthode qui retourne une liste de dictionnaire 
-                Exemple: zonage1="departement", id="35", zonage2="commune", date="latest"
+                Exemple: zonage1="departements", id="35", zonage2="communes", date="latest"
                 La méthode retourne une liste de dictionnaires avec les communes du département 35
                 chaque dictionnaire a entre autres une clée "coordinates" , un clé "id"
                 voire une clée "nom" pour le nom de commune.

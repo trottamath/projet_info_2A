@@ -32,7 +32,7 @@ class Point():
 
     def __str__(self) -> str:
         """affichage"""
-        print("point:")
+        #print("point:")
         return "( {} ; {} )".format(self.latitude,self.longitude)
 
 
