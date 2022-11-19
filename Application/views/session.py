@@ -1,7 +1,7 @@
 """module session.py pour définir la classe Session
 version 1.0
 date 25/10/2022
-auteures : Fiona Fonkou et Justine Farnarier
+auteurs : Fiona Fonkou et Jean-Philippe Trotta
 """
 from utils.singleton import Singleton
 # utiliser Requete(dico_requete= ???? ).Get_or_create()

@@ -1,7 +1,7 @@
 """module connexion_api.py
 version 1.0
 date 18/11/2022
-auteures : Fiona Fonkou et Justine Farnarier
+auteures : Fiona Fonkou ? et Justine Farnarier
 """
 # Import classique
 from fastapi import FastAPI
