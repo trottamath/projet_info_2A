@@ -23,7 +23,11 @@ class Commune(Zonage):
     """
     def __init__(self, id : str, geom_coord : MultiPolygone, nom : str):
         '''constructeur de la classe Commune'''
-        super().__init__(self, id= id, geom_coord= geom_coord)
+        #super().__init__(self, id= id, geom_coord= geom_coord) TODO bug à corriger
+        self.id = id
+        self.geom_coord = geom_coord
+        
+        
         self.nom = nom
     
 
@@ -54,10 +58,12 @@ class Commune(Zonage):
                 return "contigues"
             else:
                 return "non-contigues"
+
     def __str__(self):
         return "{}_{}".format(self.id,self.nom)
 
-m1=MultiPolygone([[[[2,1],[3,5],[2,7]],[[0,0],[3,5],[2,7]]],[[[1,1],[3,5],[0,0]]]])  #bug TODO
 
-com1= Commune(id="13400", geom_coord=m1,nom="coucou")
-print(com1)
+#m1=MultiPolygone([[[[2,1],[3,5],[2,7]],[[0,0],[3,5],[2,7]]],[[[1,1],[3,5],[0,0]]]])  #bug TODO
+
+#com1= Commune(id="13400", geom_coord=m1,nom="coucou")
+#print(com1)

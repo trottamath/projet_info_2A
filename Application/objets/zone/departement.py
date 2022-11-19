@@ -1,4 +1,4 @@
-'''module departement.py
+'''module departement.py pour définir la classe Departement
 on initialise ce module par l'import d'un fichier csv qui contient les couples de départements limitrophes
 
 auteur: Jean-Philippe Trotta
@@ -39,5 +39,3 @@ class Departement():
             if dep2[i]==self.id_dep:
                 liste_dep.append(dep1[i])
         return liste_dep
-
-#print(Departement(id_dep="13").dep_contig())

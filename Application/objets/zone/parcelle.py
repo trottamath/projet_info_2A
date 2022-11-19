@@ -16,6 +16,11 @@ class Parcelle(Zonage):
             identifiant de la parcelle
         geom_coord : Polygone
     """
+    def __init__(self, id : str, geom_coord : Polygone ):
+        """contructeur de la classe Parcelle"""
+        #super().__init__(self, id= id, geom_coord= geom_coord) TODO bug
+        self.id=id
+        self.geom_coord = geom_coord
 
     def ident_commune(self): 
         """retourne l'identifiant de la commune dont la parcelle est issue
@@ -36,5 +41,5 @@ class Parcelle(Zonage):
             return "contigues"
         return "non-contigues"
 
-    def __str__(self):
-        return self.id
+#parc=Parcelle(id="20", geom_coord=[])
+#print(parc.id)

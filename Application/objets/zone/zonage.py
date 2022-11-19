@@ -78,3 +78,8 @@ class Zonage():
             if zone.test_zone_contigu(macro_zone= self) and self.id!=zone.id:
                 ss_list.append(zone)  # ou avec zone.id
         return ss_list #selon les besoins, on aurait pu ne retourner que la liste des identifiants
+    
+    def __str__(self):
+        return self.id
+
+#print(Zonage(id="20", geom_coord=[]))
