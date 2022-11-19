@@ -1,3 +1,9 @@
+"""module telechargement.py pour définir la classe Telechargement
+version 1.1
+date 20/10/2022
+auteurs : Chloé Contant, Jean-Philippe Trotta et Puchalski Eva
+"""
+
 import requests
 import json    
 import os

@@ -1,3 +1,8 @@
+"""module start_view.py pour définir la classe StartView
+version 1.0
+date 25/10/2022
+auteurs : Fiona Fonkou et Jean-Philippe Trotta
+"""
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 

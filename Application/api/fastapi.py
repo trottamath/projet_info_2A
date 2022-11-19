@@ -1,3 +1,9 @@
+"""module fastapi.py
+version 1.0
+date 18/11/2022
+auteure : Justine Farnarier
+"""
+
 from fastapi import FastAPI
 
 app = FastAPI()

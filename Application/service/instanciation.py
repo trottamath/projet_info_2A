@@ -1,3 +1,9 @@
+"""module instanciation.py pour définir la classe Instanciation
+version 1.0
+date 20/10/2022
+auteur : Jean-Philippe Trotta
+"""
+
 from client.lien_service import LienService
 from objets.zone.parcelle import Parcelle
 from objets.zone.commune import Commune

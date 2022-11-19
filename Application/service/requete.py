@@ -1,3 +1,10 @@
+"""module requete.py pour définir la classe Requete
+version 1.0
+date 20/10/2022
+auteur : Jean-Philippe Trotta et Eva Puchalski
+"""
+
+
 from dao.commune_commune_dao import CommuneCommuneDAO
 from dao.parcelle_dao import ParcelleDAO
 from dao.commune_dao import CommuneDAO

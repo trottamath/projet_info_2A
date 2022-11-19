@@ -1,3 +1,8 @@
+"""module departementcommunes.py pour définir la classe DepartementCommunes
+version 1.0
+date 05/11/2022
+auteur : Chloé Contant
+"""
 import os
 import time
 from datetime import datetime
@@ -7,12 +12,7 @@ from datetime import datetime
 
 class DepartementCommunes():
     '''Classe qui gère le stockage du fichier communes dans départements
-    Attributes
-    ----------
 
-    Example
-    -------
-    
     '''
 
     def create_place(self):

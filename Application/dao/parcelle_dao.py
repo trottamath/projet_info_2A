@@ -1,3 +1,9 @@
+"""module parcelle_dao.py pour définir la classe ParcelleDAO
+version 1.0
+date 15/10/2022
+auteurs : Jean-Philippe Trotta et Eva Puchalski
+"""
+
 from typing import Optional
 import hashlib
 

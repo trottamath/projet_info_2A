@@ -1,3 +1,8 @@
+"""module commune_dao.py pour définir la classe CommuneDAO
+version 1.0
+date 25/10/2022
+auteurs : Jean-Philippe Trotta et Chloé Contant
+"""
 from client.telechargement import Telechargement
 
 class LienService():

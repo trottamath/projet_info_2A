@@ -1,3 +1,8 @@
+"""module abstract_view.py pour définir la classe AbstractView
+version 1.0
+date 25/10/2022
+auteurs : Fiona Fonkou et Jean-Philippe Trotta
+"""
 from pprint import pprint
 
 #import regex

@@ -1,3 +1,8 @@
+"""module commune_dao.py pour définir la classe CommuneDAO
+version 1.0
+date 15/10/2022
+auteurs : Jean-Philippe Trotta et Eva Puchalski
+"""
 from utils.singleton import Singleton
 from dao.db_connection import DBConnection
 

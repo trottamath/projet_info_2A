@@ -1,3 +1,8 @@
+"""module session.py pour définir la classe Session
+version 1.0
+date 25/10/2022
+auteures : Fiona Fonkou et Justine Farnarier
+"""
 from utils.singleton import Singleton
 # utiliser Requete(dico_requete= ???? ).Get_or_create()
 # voir les clés de dico_requete (à récuperer par Insomnia ?)

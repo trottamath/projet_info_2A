@@ -1,3 +1,8 @@
+"""module importation.py
+version 1.0
+date 05/11/2022
+auteur : Chloé Contant
+"""
 from client.telechargement import Telechargement
 import requests
 

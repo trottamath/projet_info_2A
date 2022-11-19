@@ -1,3 +1,8 @@
+"""module connexion_api.py
+version 1.0
+date 18/11/2022
+auteures : Fiona Fonkou et Justine Farnarier
+"""
 # Import classique
 from fastapi import FastAPI
 import uvicorn
@@ -25,7 +30,7 @@ async def post_todo(todo:Todo):
     if not todos.get(todo.id):
         return JSONResponse(status_code=status.HTTP_409_CONFLICT)
     else :
-     todos[todo.id] = todo
+        todos[todo.id] = todo
         return todo
 
 # Lancement de l'application sur le port 8XXX avec id personnel : 
@@ -38,8 +43,7 @@ if __name__ == "__main__":
 from fastapi import FastAPI
 # On instancie le webservice
 app = FastAPI()
-# Création d'un enpoint qui répond à la méthode GET à l'adresse "/" qui va
-retourne le message "Hello World"
+# Création d'un enpoint qui répond à la méthode GET à l'adresse "/" qui va retourner le message "Hello World"
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
