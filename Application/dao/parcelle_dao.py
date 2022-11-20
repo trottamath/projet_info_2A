@@ -45,7 +45,7 @@ class ParcelleDAO(metaclass=Singleton):
         #if self.research(id_parcel= id_parcel)!=None : pass
         '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
         directement à partir de son identifiant'''
-        id_com = ss_str(chaine= id_parcel, nbr_caract= 5)
+        id_com = id_parcel[0:4]
         cursor.execute(
             "INSERT INTO parcelle (id_parc, id_com_limit)"
             "VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id",
@@ -81,6 +81,3 @@ class ParcelleDAO(metaclass=Singleton):
             {"id_parc": id_parc} ) 
         res = cursor.fetchone()
         return res
-
-        
-

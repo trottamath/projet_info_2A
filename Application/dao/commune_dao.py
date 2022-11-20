@@ -45,9 +45,9 @@ class CommuneDAO(metaclass=Singleton):
         """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà"""
 
         if self.recherche(id_com) == [] or self.recherche(id_com) == None : # la commune n'est pas présente dans la table
-            id_dep = ss_str(chaine = id_com, nbr_caract= 2)
+            id_dep = id_com[0:1]
             if id_dep=="97": # Dom Tom : ont un num de département à 3 chiffres
-                id_dep = ss_str(chaine= id_com, nbr_caract= 3)
+                id_dep = id_com[0:2]
             request = "INSERT INTO Commune (id_com, nom_commune, id_dep)"\
             "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
             #"WHERE NOT EXISTS (SELECT id_com FROM Commune WHERE id_com = %(id_com)s)" #  test de pré-existance
@@ -75,10 +75,10 @@ class CommuneDAO(metaclass=Singleton):
 
 ################################################## TESTS ##################################################
 
-c = CommuneDAO()
+#c = CommuneDAO()
 
 #### test ajout_commune
-c.ajout_commune('02012', 'AMBRIEF')
+#c.ajout_commune('02012', 'AMBRIEF')
 
 #### test nom_commune : OK
 #print(c.nom_communes('35170'))

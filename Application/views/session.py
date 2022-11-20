@@ -28,6 +28,6 @@ class Session(metaclass=Singleton):
         self.num: str = None #numero de la requete
         self.id : str = None #identifiant de la commune ou parcelle
         self.list_res: list = None #liste des identifiants récupéré par la couche service
-        self.user_name: str = "user" #à voir si c'est utile ?
+        self.user_name: str = "utilisateur" #à voir si c'est utile ?
         
 

@@ -16,6 +16,7 @@ from objets.zone.departement import Departement
 from service.instanciation import Instanciation
 
 
+
 class Requete ():
     """Classe qui lie le Service à la DAO : envoie de la requête
     à la DAO, et récupération du résultat"""
@@ -37,6 +38,16 @@ class Requete ():
                     date du fichier cadatral de référence
                 """
         self.dico_requete = dico_requete
+    
+
+    
+    def ident_dep(self):
+        "extrait les 2 ou 3 premiers caractères d'un identifiant de zonage pour donner celui du département"
+        id = self.dico_requete["id"]
+        id_dep= id[0] + id[1]
+        if id_dep == "97":
+            id_dep = id_dep + id[2]
+        return id_dep
             
 
     def Get_DAO(self)->list[str]:
@@ -56,7 +67,7 @@ class Requete ():
         et les méthodes de la couche Objets"""
         if self.dico_requete["num"] == "1" :
             id_com = self.dico_requete["id"] #l'identifiant de la commune d'intérêt
-            id_dep = ident_dep(id= id_com) #l'identifiant du département de la commune  TODO vérifier syntaxe staticmethod
+            id_dep = self.ident_dep() #l'identifiant du département de la commune  TODO vérifier syntaxe staticmethod
             list_dep = Departement(id_dep= id_dep).dep_contig() #la liste des id de départements limitrophes
             list_com = Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #liste des communes du département
             
@@ -97,7 +108,7 @@ class Requete ():
         
         elif self.dico_requete["num"] == "3" :
             id_parc = self.dico_requete["id"] #l'identifiant de la parcelle d'intérêt
-            id_com = ss_str(chaine= id_parc, nbr_caract= 5) #identifiant de la commune de cette parcelle
+            id_com = id_parc[0:4] #identifiant de la commune de cette parcelle
             requete2_com = Requete(dico_requete= {"num":"2","id":id_com,"date":self.dico_requete["date"]})
             if requete2_com.Get_DAO() != []:
                 list_id_parc_lim = requete2_com.Get_DAO()

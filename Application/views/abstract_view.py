@@ -10,7 +10,7 @@ from prompt_toolkit.validation import ValidationError, Validator
 from InquirerPy import prompt
 
 from views.session import Session
-#from service.requete import Requete
+from service.requete import Requete
 
 class AbstractView():
     def __init__(self) -> None:
@@ -25,7 +25,7 @@ class AbstractView():
 
 
     def display_info(self):
-        print(f"Bonjour {Session().user_name}, veuillez choisir un identifiant de zone correct")
+        print(f"Veuillez saisir un identifiant de zone correct (sans guillemets)")
 
     def make_choice(self):
         answers = prompt(self.__questions)

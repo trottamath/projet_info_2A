@@ -9,6 +9,9 @@ from objets.geometrie.polygone import Polygone
 from objets.geometrie.multi_polygone import MultiPolygone
 from objets.geometrie.abstract_polygone import AbstractPolygone
 
+
+
+
 class Zonage():
     """classe zonage (classe mère commune à Commune et Parcelle)
     Attributs:
@@ -31,23 +34,6 @@ class Zonage():
             autre_zone : Zonage"""
         return self.id == autre_zone.id
 
-    @staticmethod
-    def ss_str(chaine: str, nbr_caract: int):
-        '''pour une chaine de caractère donnée, et nbr_caract un nombre entier de caractères à conserver
-        retourne les nbr_caract premiers caractères de la chaine'''
-        firsts=""
-        for i in range(nbr_caract):
-            firsts = firsts + chaine[i]
-        return firsts
-
-    @staticmethod
-    def ident_dep(id: str):
-        id_dep= id[0] + id[1]
-        if id_dep == "97":
-            id_dep = id_dep + id[2]
-        return id_dep
-
-    
 
     def ident_departement(self):
         id_dep = self.id[0] + self.id[1]
