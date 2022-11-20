@@ -86,23 +86,23 @@ class Telechargement():
 
         '''
         url = self.generator_link()
-        path = r'/data'  #essaie avec modification provisoire de 'Application/client/data' 
+        path = r'/data'  #essai avec modification provisoire de 'Application/client/data/' 
         req = requests.get(url)
         filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
-            path = os.path.join(path,'departements')
+            path = os.path.join(path,'departements').replace("\\","/")
             if 'communes' in filename :
-                path = os.path.join(path,'communes')
+                path = os.path.join(path,'communes').replace("\\","/")
             else : 
-                path = os.path.join(path,'parcelles')
+                path = os.path.join(path,'parcelles').replace("\\","/")
         elif 'france' in url:
-            path = os.path.join(path,'france')
+            path = os.path.join(path,'france').replace("\\","/")
         else : 
-            path = os.path.join(path,'communes')
+            path = os.path.join(path,'communes').replace("\\","/")
             if 'communes' in filename :
-                path = os.path.join(path,'communes')
+                path = os.path.join(path,'communes').replace("\\","/")
             else : 
-                path = os.path.join(path,'parcelles')
+                path = os.path.join(path,'parcelles').replace("\\","/")
         return(path)
 
     
@@ -117,8 +117,7 @@ class Telechargement():
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
        print(filename)
-       print(os.path.join(path,filename))
-       chemin1 = "Application/client"+os.path.join(path,filename) #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
+       chemin1 = "Application/client"+os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
        print(chemin1)
        
        #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
