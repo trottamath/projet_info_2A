@@ -27,12 +27,12 @@ class Point():
         ----------
             autre_point : Point
         """
-        print("test d'égalité de points") # TODO à supprimer à la fin
+        #print("test d'égalité de points") # TODO à supprimer à la fin
         return (autre_point.latitude == self.latitude) and (autre_point.longitude == self.longitude)
 
     def __str__(self) -> str:
         """affichage"""
-        print("point:")
+        #print("point:")
         return "( {} ; {} )".format(self.latitude,self.longitude)
 
 

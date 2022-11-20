@@ -31,9 +31,9 @@ import json
 # data_files_names = data_files_names =[data_folder]
 # data_folder[0]
 
-with gzip.open("test.json.gz",'rb') as f_in :
-    with open('client\data\communes\json_decomp.json','wb') as f_out:
-        shutil.copyfileobj(f_in,f_out)
+# with gzip.open("test.json.gz",'rb') as f_in :
+#     with open('client\data\communes\json_decomp.json','wb') as f_out:
+#         shutil.copyfileobj(f_in,f_out)
 
 #with gzip.open(filename,'rb') as file:
     #raw_json = file.read()
@@ -43,3 +43,23 @@ with gzip.open("test.json.gz",'rb') as f_in :
 
 #os.path.join(path,filename)
 
+#os.remove('Application/client/data/communes/cadastre-04004-communes.json.gz')
+
+    # def create_place(self):
+    #     path = 'Application/client/data/departements/communes'
+    #     count = 0
+    #     now_time = time.ctime()
+    #     now = time.time()
+    #     print(len(os.listdir(path)))
+
+    #     for filename in os.listdir(path):
+    #         count = count + 1
+        
+    #     print(count)
+
+    #     if count > 10:
+    #         for filename in os.listdir(path):
+    #             if time.ctime(os.path.getctime(os.path.join(path,filename))) < (time.time()- (7*86000)):
+    #                 os.remove(filename)
+    #             else : 
+    #                 print('False')

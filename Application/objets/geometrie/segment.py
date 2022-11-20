@@ -25,7 +25,7 @@ class Segment():
         ----------
             autre_segment : Segment
         """
-        print("test d'égalité de segment") # TODO à supprimer à la fin
+        #print("test d'égalité de segment") # TODO à supprimer à la fin
         return ( (self.point1.test_egal(autre_segment.point1)) and (self.point2.test_egal(autre_segment.point2) ) ) or ( (self.point1.test_egal(autre_segment.point2)) and (self.point2.test_egal(autre_segment.point1)) )
 
     def __str__(self) -> str:
