@@ -18,7 +18,7 @@ class CommuneCommuneDAO():
         cursor.execute(
             "SELECT id_com1, id_com2"\
                 "\n\t FROM commune_commune"\
-                    "\n\t WHERE (id_com1=%(id_com1)s AND id_com2=%(id_com2)s) AND date=%(date)s ",
+                    "\n\t WHERE id_com1=%(id_com1)s AND id_com2=%(id_com2)s AND date=%(date)s ",
             {"id_com1": id_com1, "id_com2": id_com2, "date": date}
         )  
 
@@ -46,8 +46,8 @@ class CommuneCommuneDAO():
         #         "\n\t WHERE (id_com1=%(id_com)s OR id_com2=%(id_com)s) AND date=%(date)s "
         request = "SELECT id_com2"\
             "\n\t FROM commune_commune"\
-            "\n\t WHERE (id_com1=%(id_com)s AND date=%(date)s "
-        cursor.execute(
+            "\n\t WHERE id_com1=%(id_com)s AND date=%(date)s "
+        cursor.execute( request,
             {"id_com": id_com, "date":date}
         )  
         # res = cursor.fetchall() # liste de tuples (id_com1, id_com2) des lignes retournées

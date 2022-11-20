@@ -45,9 +45,9 @@ class CommuneDAO(metaclass=Singleton):
         """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà"""
 
         if self.recherche(id_com) == [] or self.recherche(id_com) == None : # la commune n'est pas présente dans la table
-            id_dep = id_com[0:1]
+            id_dep = id_com[0:2]
             if id_dep=="97": # Dom Tom : ont un num de département à 3 chiffres
-                id_dep = id_com[0:2]
+                id_dep = id_com[0:3]
             request = "INSERT INTO Commune (id_com, nom_commune, id_dep)"\
             "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
             #"WHERE NOT EXISTS (SELECT id_com FROM Commune WHERE id_com = %(id_com)s)" #  test de pré-existance

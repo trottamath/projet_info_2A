@@ -41,7 +41,7 @@ class LienService():
             list_dict : list[dict]
         
         '''
-        tel = Telechargement(id_dep=self.dico['id1'],zonage1 = self.dico['zonage1'],date = self.dico['date'], zonage2 = self.dico['zonage2'] )
+        tel = Telechargement(id_zone1=self.dico['id1'],zonage1 = self.dico['zonage1'],date = self.dico['date'], zonage2 = self.dico['zonage2'] )
         
         dico_extract_json = tel.read_json() #dictionnaire TODO le bug est ici !
 

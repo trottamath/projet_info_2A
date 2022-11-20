@@ -67,13 +67,13 @@ class Requete ():
         et les méthodes de la couche Objets"""
         if self.dico_requete["num"] == "1" :
             id_com = self.dico_requete["id"] #l'identifiant de la commune d'intérêt
-            id_dep = self.ident_dep() #l'identifiant du département de la commune  TODO vérifier syntaxe staticmethod
+            id_dep = self.ident_dep() #l'identifiant du département de la commune  
             list_dep = Departement(id_dep= id_dep).dep_contig() #la liste des id de départements limitrophes
             list_com = Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #liste des communes du département
             
             for commune in list_com:
                 if commune.id == id_com:
-                    com1= commune #commune d'intérêt    (à voir si un dico de commune est plus pratique)
+                    com1= commune #commune d'intérêt  
 
             for id_dep in list_dep:
                 # concaténation avec les listes de communes des départements limitrophes
@@ -82,7 +82,7 @@ class Requete ():
             list_id_com_contig = []
             
             for commune in list_com:
-                if commune.id != id_com and com1.test_zone_contigu(commune):
+                if commune.id != id_com and com1.test_zone_contigu(commune): #bug avec com1 ? TODO
                     list_id_com_contig.append(commune.id)
             
             #enregistrement dans la base de données
@@ -108,7 +108,7 @@ class Requete ():
         
         elif self.dico_requete["num"] == "3" :
             id_parc = self.dico_requete["id"] #l'identifiant de la parcelle d'intérêt
-            id_com = id_parc[0:4] #identifiant de la commune de cette parcelle
+            id_com = id_parc[0:5] #identifiant de la commune de cette parcelle
             requete2_com = Requete(dico_requete= {"num":"2","id":id_com,"date":self.dico_requete["date"]})
             if requete2_com.Get_DAO() != []:
                 list_id_parc_lim = requete2_com.Get_DAO()

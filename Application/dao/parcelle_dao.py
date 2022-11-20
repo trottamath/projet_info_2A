@@ -30,7 +30,7 @@ class ParcelleDAO(metaclass=Singleton):
         res = cursor.fetchone() #facultatif ? 
         return res  #['parcelle_id']  #??
     
-    def research(self, id_parcel : str): #est-ce qu'il vaut mieux commencer par cette méthode, pour tester l'existance avant de créer ?
+    def research(self, id_parc : str): #est-ce qu'il vaut mieux commencer par cette méthode, pour tester l'existance avant de créer ?
         '''pour chercher une parcelle dans la base de données à partir de son identifiant (code)'''
         cursor.execute(
             "SELECT id_parc, id_com_limit"
@@ -45,11 +45,11 @@ class ParcelleDAO(metaclass=Singleton):
         #if self.research(id_parcel= id_parcel)!=None : pass
         '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
         directement à partir de son identifiant'''
-        id_com = id_parcel[0:4]
+        id_com = id_parcel[0:5]
         cursor.execute(
             "INSERT INTO parcelle (id_parc, id_com_limit)"
             "VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id",
-            {"id_parc": id_parcel, "id_com_limit": id_com} )
+            {"id_parc": id_parc, "id_com_limit": id_com} )
         res = cursor.fetchone()
         return res
 
@@ -57,27 +57,27 @@ class ParcelleDAO(metaclass=Singleton):
 
     def create_list(self, list_id_parc : list[str]):
         '''pour ajouter toute une liste de parcelles'''
-        for id_parcel in list_id_parc:
-            if self.research(id_parcel= id_parcel) == None:
-                self.create_id(id_parcel= id_parcel)
+        for id_parc in list_id_parc:
+            if self.research(id_parc= id_parc) == None:
+                self.create_id(id_parc= id_parc)
 
-    def research_all_lim(self, id_com_lim: str):
+    def research_all_lim(self, id_com_limit: str):
         '''pour chercher toutes les parcelles de la bdd qui sont en limite de la commune dont l'identifiant est donné'''
         cursor.execute(
             "SELECT id_parc"
             "\n\t FROM parcelle"
-            "\n\t WHERE id_com_limit=%(id_com_lim)s",
-            {"id_com_limit": id_com_lim} )  # à vérifier
+            "\n\t WHERE id_com_limit=%(id_com_limit)s",
+            {"id_com_limit": id_com_limit} )  # à vérifier
         res = cursor.fetchall()
         return res
 
 #update inutile dans ce cas ?
 
-    def drop(self, id_parcel : str):
+    def drop(self, id_parc : str):
         '''pour supprimer une parcelle de la base de données'''
         cursor.execute(
             "DELETE FROM parcelle"\
-            "WHERE id_par =%(id_parcel)s",
+            "WHERE id_parc =%(id_parc)s",
             {"id_parc": id_parc} ) 
         res = cursor.fetchone()
         return res

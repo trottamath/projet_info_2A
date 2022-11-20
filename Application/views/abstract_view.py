@@ -32,7 +32,8 @@ class AbstractView():
         pprint(answers)
         Session().id=answers['id_zone']
         dico_requete= {"num":Session().num,"id":Session().id,"date":Session().date}
-        Session().list_res = Requete(dico_requete= dico_requete ).Get_or_create()
+        pprint(dico_requete)
+        Session().list_res = Requete(dico_requete= dico_requete ).Get_Client() #Get_Client()
         pprint(Session().list_res) 
 
         from views.start_view import StartView
