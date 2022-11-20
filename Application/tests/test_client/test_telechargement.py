@@ -35,15 +35,16 @@ class TelechargementTest(unittest.TestCase):
         self.assertEqual(test4, True)
 
 
-if __name__ == '__main__':
-    unittest.main()
+
     
 
 
 #test fonction telechargement
-t4 = Telechargement(id_zone1="07003",zonage1="departements",zonage2="communes")
-t4.download()  #bug TODO
+#t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+#t4.download()  #fonctionne avec chemin2 dans download telechargement
 
 #lecture de json vers dictionnaire
-#dico = t4.read_json()
-#print(dico) #ça fonctionne sur la vm TODO à tester ailleur
+#t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
+#t5.download()
+#dico = t5.read_json()
+#print(dico) #ça fonctionne sur la vm TODO à tester ailleur avec chemin2

@@ -111,17 +111,18 @@ class Telechargement():
              
        '''
        url = self.generator_link()
-       #path = "Application/client"+self.generator_path(url) #ajout provisoire à tester
+
        path= self.generator_path() 
+       print(path)
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
        print(filename)
        print(os.path.join(path,filename))
-       chemin1 = os.path.join(path,filename) #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
+       chemin1 = "Application/client"+os.path.join(path,filename) #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
        print(chemin1)
        
        chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
-       print(chemin2) #version2 à tester, OK sur VM
+       print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
        
        with req as rq:
             with open(chemin2, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
@@ -148,19 +149,19 @@ class Telechargement():
         filename = req.url[url.rfind('/')+1:]
 
         print(filename)
-        chemin1 = os.path.join(path,filename) #version d'origine mais avec bug (à supprimer ?)
+        chemin1 = os.path.join(path,filename) #version d'origine mais avec bug sur la VM
         print(chemin1)
 
         chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
-        print(chemin2) #version2 à tester, ok sur VM
+        print(chemin2) #version2 qui ne fonctionne qu'en test dans le même fichier... WTF
 
-        with gzip.open(chemin1,'rb') as file:
+        with gzip.open(chemin2,'rb') as file:
            data = json.load(file) #, parse_float=float, parse_int=float
         return(data)
 
 
 ############################################################### TEST ############################################################################
-    
+    # à faire absolument dans un fichier test, sinon ça fait croire que c ok alors que non
 #test pour fonction qui recup url
 
 # t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
@@ -176,8 +177,8 @@ class Telechargement():
 # print(lien_3)
 
 #test pour le générateur de chemin : 
-t4 = Telechargement(id_zone1="13400",zonage1="communes",zonage2="parcelles")
-t4.download()
+#t4 = Telechargement(id_zone1="13400",zonage1="communes",zonage2="parcelles")
+#t4.download() 
 
 #test fonction telechargement
 #t4 = Telechargement(id_zone1="08004",zonage1="communes")

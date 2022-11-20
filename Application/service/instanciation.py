@@ -33,7 +33,7 @@ class Instanciation():
                 list_zonage.append(Commune(id=dico["id"], geom_coord= MultiPolygone(liste_brute= dico["geometry"]["coordinates"]), nom= dico["properties"]["nom"]))
         elif self.dico["zonage2"]=="parcelles":
             for dico in list_dico:
-                list_zonage.append(Parcelle(id=dico["id"], geom_coord= Polygone(liste_brute= dico["geometry"]["coordinates"])))
+                list_zonage.append(Parcelle(id=dico["id"], geom_coord= Polygone(liste_brute= dico["geometry"]["coordinates"]))) #à vérifier
 
         return list_zonage
 
