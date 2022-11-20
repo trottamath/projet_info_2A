@@ -10,7 +10,7 @@ import unittest
 class TelechargementTest(unittest.TestCase):
     
     def test_generator_link(self):
-        '''test de la méthode qui recupère url'''
+        '''Test de la méthode qui recupère url'''
         
         t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
         lien_1 = t1.generator_link()
@@ -33,6 +33,7 @@ class TelechargementTest(unittest.TestCase):
         t4 = Telechargement(id_zone1="04004",zonage1="communes")
         test4 = t4.generator_path() == "Application/client/data/communes/communes"
         self.assertEqual(test4, True)
+<<<<<<< HEAD
     
     def test_download(self):
         '''test pour le téléchargement du fichier json.gz'''
@@ -69,3 +70,17 @@ class TelechargementTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+=======
+
+
+
+#test fonction telechargement
+t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+t4.download()  #fonctionne avec chemin2 dans download telechargement
+
+#lecture de json vers dictionnaire
+t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
+t5.download()
+dico = t5.read_json()
+print(dico) 
+>>>>>>> a18afb51885c895a7204e7505845add9eea378ee
