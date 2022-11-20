@@ -16,6 +16,7 @@ class DepartementsCommunes(Storage):
 
     def __init__(self):
         pass
+    #mettre quota dans les attributs de la classe ? 
 
     def create_place(self):
         '''Méthode qui supprime à partir d'un certain quota les fichiers les plus anciens dans le dossier
@@ -23,7 +24,7 @@ class DepartementsCommunes(Storage):
         
         path = 'Application/client/data/departements/communes'
         count = 0
-        quota = 72 #pourquoi pas 101 ?
+        quota = 90
 
         for filename in os.listdir(path):
             count = count + 1
@@ -37,18 +38,19 @@ class DepartementsCommunes(Storage):
 
         while count > quota :
             L = os.path.getctime(os.path.join(path,os.listdir(path)[0]))
-            print(os.listdir(path))
             for filename in os.listdir(path) :
-                if L > os.path.getctime(os.path.join(path,filename)):
+                if os.path.getctime(os.path.join(path,filename)) < L :
                     L = os.path.getctime(os.path.join(path,filename))
                 else : 
                     pass
+                print(L)
 
-                file_remove = [key  for (key, val) in dictionary.items() if val == L]
+                file_remove = [key for (key, val) in dictionary.items() if val == L]
                 print(file_remove)
         
                 for filename in file_remove :
                     os.remove(os.path.join(path,filename))
+                    del file_remove[file_remove.index(filename)]
 
 ############################################################### TEST ############################################################################
     

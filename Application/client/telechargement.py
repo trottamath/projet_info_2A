@@ -121,11 +121,11 @@ class Telechargement():
        chemin1 = "Application/client"+os.path.join(path,filename) #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
        print(chemin1)
        
-       chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
-       print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
+       #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
+       #print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
        
        with req as rq:
-            with open(chemin2, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+            with open(chemin1, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
                 file.write(rq.content)
     
     def read_json(self) -> dict : #bug TODO méthode à tester !
@@ -152,8 +152,8 @@ class Telechargement():
         chemin1 = os.path.join(path,filename) #version d'origine mais avec bug sur la VM
         print(chemin1)
 
-        chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
-        print(chemin2) #version2 qui ne fonctionne qu'en test dans le même fichier... WTF
+        #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
+        #print(chemin2) #version2 qui ne fonctionne qu'en test dans le même fichier... WTF
 
         with gzip.open(chemin2,'rb') as file:
            data = json.load(file) #, parse_float=float, parse_int=float
@@ -178,11 +178,11 @@ class Telechargement():
 
 #test pour le générateur de chemin : 
 #t4 = Telechargement(id_zone1="13400",zonage1="communes",zonage2="parcelles")
-#t4.download() 
+#t4.generator_path()
 
 #test fonction telechargement
-#t4 = Telechargement(id_zone1="08004",zonage1="communes")
-#t4.download()
+t4 = Telechargement(id_zone1="08004",zonage1="communes")
+t4.download()
 
 #lecture de json vers dictionnaire
 #dico = t4.read_json()
