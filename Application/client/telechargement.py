@@ -34,9 +34,7 @@ class Telechargement():
 
         Returns 
         -------
-
-        Example
-        -------
+            url : str
         '''
             
         url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
@@ -73,7 +71,7 @@ class Telechargement():
         Example
         -------
         '''
-        path = r'Application/client/data'
+        path = r'/data'  #essaie avec modification provisoire de 'Application/client/data' 
         req = requests.get(url)
         filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
@@ -107,14 +105,23 @@ class Telechargement():
         -------
        
        '''
+       #path = "Application/client"+path #ajout provisoire à tester
+       #path= generator_path(url=url) #pourquoi path est un paramètre au lieu d'utiliser la fonction generator_path ? TODO
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
+       print(filename)
+       print(os.path.join(path,filename))
+       chemin1 = os.path.join(path,filename) #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
+       print(chemin1)
+       
+       chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
+       print(chemin2) #version2 à tester
        
        with req as rq:
-            with open(os.path.join(path,filename), 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+            with open(chemin2, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
                 file.write(rq.content)
     
-    def read_json(self, url : str, path : str):
+    def read_json(self, url : str, path : str): #bug TODO méthode à tester !
         '''Lis le fichier json comme un dictionnaire
         Parameters
         ----------
@@ -130,11 +137,20 @@ class Telechargement():
         -------
        
        '''
+       #path= generator_path(url=url) #pourquoi path est un paramètre au lieu d'utiliser la fonction generator_path ? TODO
         req = requests.get(url)
+        
         filename = req.url[url.rfind('/')+1:]
 
-        with gzip.open(os.path.join(path,filename),'rb') as file:
-            data = json.load(file) #, parse_float=float, parse_int=float
+        print(filename)
+        chemin1 = os.path.join(path,filename) #version d'origine mais avec bug
+        print(chemin1)
+
+        chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
+        print(chemin2) #version2 à tester
+
+        with gzip.open(chemin2,'rb') as file:
+           data = json.load(file) #, parse_float=float, parse_int=float
         return(data)
 
 
@@ -156,10 +172,12 @@ class Telechargement():
 #test fonction telechargement
 #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')
 #download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04005/cadastre-04005-communes.json.gz','Application/client/data/communes/communes')
-#download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04006/cadastre-04006-communes.json.gz','Application/client/data/communes/communes')
 
+#Telechargement().download('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04006/cadastre-04006-communes.json.gz','/data/communes/communes') #ça fonctionne TODO
+
+#path1=Telechargement().generator_path(url='https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04006/cadastre-04006-communes.json.gz')
+#print(path1)
 #lecture du json.gz
-#t = Telechargement()
-#dico = t.read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','Application/client/data/communes/communes')
-#print(dico)
-#print(type(dico))
+
+#dico = Telechargement().read_json('https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/communes/04/04004/cadastre-04004-communes.json.gz','/data/communes/communes')
+#print(dico) #ça fonctionne sur la vm TODO à tester ailleur

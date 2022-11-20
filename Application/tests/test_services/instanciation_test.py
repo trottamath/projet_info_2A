@@ -5,24 +5,15 @@ date : 18/11/2022
 """
 
 from service.instanciation import Instanciation
-import unittest
 
-class InstanciationTest(unittest.TestCase):
-    def test_(self):
-
-        test = True
-        
-
-        self.assertEqual(test, True)
-
-if __name__ == '__main__':
-    unittest.main()
 
 #test
 insta = Instanciation(zonage1="departements", id1="13", zonage2="communes", date="latest")
 
-print(insta.dico)
-print(insta.dico["zonage1"])
+print(insta.dico) #{'zonage1': 'departements', 'id1': '13', 'zonage2': 'communes', 'date': 'latest'}
+print(insta.dico["zonage1"]) # "departement"
 
-liste = insta.instancier_zonage()
-print(liste[0].id)
+#liste = insta.instancier_zonage()   #ne fonctionne pas probablement à cause de la couche client TODO
+#print(liste[0].id)
+
+# No such file or directory: 'Application/client/data\\departements\\communes\\cadastre-13-communes.json.gz'

@@ -23,7 +23,7 @@ class DepartementsCommunes(Storage):
         
         path = 'Application/client/data/departements/communes'
         count = 0
-        quota = 72
+        quota = 72 #pourquoi pas 101 ?
 
         for filename in os.listdir(path):
             count = count + 1

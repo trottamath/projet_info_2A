@@ -52,7 +52,7 @@ class LienService():
         print(link)
         path = Telechargement().generator_path(link)
         print(path)
-        dico_extract_json = Telechargement().read_json(link,path) #dictionnaire
+        dico_extract_json = Telechargement().read_json(link,path) #dictionnaire TODO le bug est ici !
 
         list_dict = dico_extract_json['features'] #extraction de la liste de dictionnaire
         
@@ -60,12 +60,12 @@ class LienService():
 
 ############################################################### TEST ############################################################################
 
-#test pour fonction qui genère dictionnaire
+#test pour fonction qui genère dictionnaire (déplacé dans un fichier test TODO à supprimer ici)
 
-D = {'zonage1' : 'departements',
-    'id1' : '01',
-    'zonage2' : 'communes',
-    'date' : 'latest'}
-test = LienService(D)
-dico = test.genere_dico()
-print(dico)
+#D = {'zonage1' : 'departements',
+ #   'id1' : '01',
+  #  'zonage2' : 'communes',
+   # 'date' : 'latest'}
+#test = LienService(D)
+#dico = test.genere_dico()
+#print(dico)
