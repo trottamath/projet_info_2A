@@ -111,23 +111,21 @@ class Telechargement():
              
        '''
        url = self.generator_link()
-
        path= self.generator_path() 
-       print(path)
+       
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
-       print(filename)
        chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
-       print(chemin)
        
        #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
        #print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
-       
        with req as rq:
-            with open(chemin, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
-                file.write(rq.content)
+           with open(chemin, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+               file.write(rq.content)
+               #print(("Le fichier {} a bien été téléchargé.").format(filename))
+
     
-    def read_json(self) -> dict : #bug TODO méthode à tester !
+    def read_json(self) -> dict : 
         '''Lis le fichier json comme un dictionnaire
         Parameters
         ----------
@@ -146,10 +144,7 @@ class Telechargement():
         req = requests.get(url)
         
         filename = req.url[url.rfind('/')+1:]
-
-        print(filename)
-        chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug sur la VM
-        print(chemin)
+        chemin = os.path.join(path,filename).replace("\\","/") 
 
         #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
         #print(chemin2) #version2 qui ne fonctionne qu'en test dans le même fichier... WTF
@@ -180,7 +175,7 @@ class Telechargement():
 #t4.generator_path()
 
 #test fonction telechargement
-t4 = Telechargement(id_zone1="08004",zonage1="communes")
+#t4 = Telechargement(id_zone1="08004",zonage1="communes")
 #t4.download()
 
 #t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
@@ -188,5 +183,5 @@ t4 = Telechargement(id_zone1="08004",zonage1="communes")
 
 
 #lecture de json vers dictionnaire
-dico = t4.read_json()
-print(dico) #ça fonctionne sur la vm TODO à tester ailleur
+#dico = t4.read_json()
+#print(dico) 
