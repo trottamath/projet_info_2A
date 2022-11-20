@@ -44,7 +44,7 @@ class TelechargementTest(unittest.TestCase):
 #t4.download()  #fonctionne avec chemin2 dans download telechargement
 
 #lecture de json vers dictionnaire
-#t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
-#t5.download()
-#dico = t5.read_json()
-#print(dico) #ça fonctionne sur la vm TODO à tester ailleur avec chemin2
+t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
+t5.download()
+dico = t5.read_json()
+print(dico) #ça fonctionne sur la vm TODO à tester ailleur avec chemin2

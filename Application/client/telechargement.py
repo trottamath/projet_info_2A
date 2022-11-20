@@ -86,7 +86,7 @@ class Telechargement():
 
         '''
         url = self.generator_link()
-        path = r'/data'  #essai avec modification provisoire de 'Application/client/data/' 
+        path = r'Application/client/data'  #essai avec modification provisoire de '/data/' 
         req = requests.get(url)
         filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
@@ -117,14 +117,14 @@ class Telechargement():
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
        print(filename)
-       chemin1 = "Application/client"+os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
-       print(chemin1)
+       chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
+       print(chemin)
        
        #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
        #print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
        
        with req as rq:
-            with open(chemin1, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+            with open(chemin, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
                 file.write(rq.content)
     
     def read_json(self) -> dict : #bug TODO méthode à tester !
@@ -148,13 +148,13 @@ class Telechargement():
         filename = req.url[url.rfind('/')+1:]
 
         print(filename)
-        chemin1 = os.path.join(path,filename) #version d'origine mais avec bug sur la VM
-        print(chemin1)
+        chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug sur la VM
+        print(chemin)
 
         #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
         #print(chemin2) #version2 qui ne fonctionne qu'en test dans le même fichier... WTF
 
-        with gzip.open(chemin2,'rb') as file:
+        with gzip.open(chemin,'rb') as file:
            data = json.load(file) #, parse_float=float, parse_int=float
         return(data)
 
@@ -181,8 +181,12 @@ class Telechargement():
 
 #test fonction telechargement
 t4 = Telechargement(id_zone1="08004",zonage1="communes")
-t4.download()
+#t4.download()
+
+#t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
+#t5.download()
+
 
 #lecture de json vers dictionnaire
-#dico = t4.read_json()
-#print(dico) #ça fonctionne sur la vm TODO à tester ailleur
+dico = t4.read_json()
+print(dico) #ça fonctionne sur la vm TODO à tester ailleur
