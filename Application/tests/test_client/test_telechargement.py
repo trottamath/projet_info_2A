@@ -10,7 +10,7 @@ import unittest
 class TelechargementTest(unittest.TestCase):
     
     def test_generator_link(self):
-        '''test de la méthode qui recupère url'''
+        '''Test de la méthode qui recupère url'''
         
         t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
         lien_1 = t1.generator_link()
@@ -36,15 +36,12 @@ class TelechargementTest(unittest.TestCase):
 
 
 
-    
-
-
 #test fonction telechargement
-#t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
-#t4.download()  #fonctionne avec chemin2 dans download telechargement
+t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+t4.download()  #fonctionne avec chemin2 dans download telechargement
 
 #lecture de json vers dictionnaire
 t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
 t5.download()
 dico = t5.read_json()
-print(dico) #ça fonctionne sur la vm TODO à tester ailleur avec chemin2
+print(dico) 
