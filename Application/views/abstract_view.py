@@ -37,3 +37,4 @@ class AbstractView():
         pprint(Session().list_res) 
 
         from views.start_view import StartView
+
