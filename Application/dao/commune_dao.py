@@ -35,10 +35,10 @@ class CommuneDAO(metaclass=Singleton):
                     {"id_com": id_com}
                 )
                 res = cursor.fetchall()
-        if res ==[] :
-            print("la commune n'est pas dans la base de données")
-        else : 
-            return res
+        #if res ==[] :
+            #print("la commune n'est pas encore dans la base de données")
+        #else : 
+        return res
         
     
     def ajout_commune(self, id_com: str, nom_com: str):
@@ -48,9 +48,8 @@ class CommuneDAO(metaclass=Singleton):
             id_dep = id_com[0:2]
             if id_dep=="97": # Dom Tom : ont un num de département à 3 chiffres
                 id_dep = id_com[0:3]
-            request = "INSERT INTO Commune (id_com, nom_commune, id_dep)"\
+            request = "INSERT INTO commune (id_com, nom_com, id_dep)"\
             "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
-            #"WHERE NOT EXISTS (SELECT id_com FROM Commune WHERE id_com = %(id_com)s)" #  test de pré-existance
 
             with DBConnection().connection as connection:
                 with connection.cursor() as cursor :
@@ -59,11 +58,11 @@ class CommuneDAO(metaclass=Singleton):
                         {"id_com": id_com, "nom_com": nom_com, "id_dep": id_dep}
                     )
         else : # la commune est déjà dans la table
-            pass # on ne fait rien
+            print('la commune est déjà dans la base de données')
         
     def suppression_commune(self, id_com: str): # OK
         """Supprime la ligne d'une commune dans la table Commune de la BdD """
-        request = "DELETE FROM Commune WHERE id_com =%(id_com)s"
+        request = "DELETE FROM commune WHERE id_com =%(id_com)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(
@@ -75,10 +74,11 @@ class CommuneDAO(metaclass=Singleton):
 
 ################################################## TESTS ##################################################
 
-#c = CommuneDAO()
+c = CommuneDAO()
 
 #### test ajout_commune
-#c.ajout_commune('02012', 'AMBRIEF')
+#c.ajout_commune('33000', 'Bordeaux')
+#c.ajout_commune('39000', 'LONS-LE-SAUNIER')
 
 #### test nom_commune : OK
 #print(c.nom_communes('35170'))
@@ -89,4 +89,4 @@ class CommuneDAO(metaclass=Singleton):
 #print(c.recherche('35000'))
 
 #### test suppression commune : OK
-#c.suppression_commune('35000')
+#c.suppression_commune('83000')
