@@ -1,3 +1,8 @@
+"""module session.py pour définir la classe Session
+version 1.0
+date 25/10/2022
+auteurs : Fiona Fonkou et Jean-Philippe Trotta
+"""
 from utils.singleton import Singleton
 # utiliser Requete(dico_requete= ???? ).Get_or_create()
 # voir les clés de dico_requete (à récuperer par Insomnia ?)
@@ -23,7 +28,6 @@ class Session(metaclass=Singleton):
         self.num: str = None #numero de la requete
         self.id : str = None #identifiant de la commune ou parcelle
         self.list_res: list = None #liste des identifiants récupéré par la couche service
-        self.user_name: str = "user" #à voir si c'est utile ?
+        self.user_name: str = "utilisateur" #à voir si c'est utile ?
         
-       
 

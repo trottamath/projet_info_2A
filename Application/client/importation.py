@@ -1,3 +1,8 @@
+"""module importation.py
+version 1.0
+date 05/11/2022
+auteur : Chloé Contant
+"""
 from client.telechargement import Telechargement
 import requests
 
@@ -116,10 +121,10 @@ print(id_dep)
 print(len(id_dep))
 
 for i in id_dep :
-    link = Telechargement.generator_link(i,"latest","departements", id_zone = None)
+    link = Telechargement().generator_link(i,"latest","departements", id_zone = None)
     print(link)
-    path = Telechargement.generator_path(link)
+    path = Telechargement().generator_path(link)
     print(path)
-    Telechargement.download(link,path)
+    Telechargement().download(link,path)
 
 

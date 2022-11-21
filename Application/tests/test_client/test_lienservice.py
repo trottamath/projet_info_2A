@@ -1,11 +1,14 @@
 from client.lien_service import LienService
-from telechargement import Telechargement 
+ 
 
-D = {'zonage1' : 'departement',
+D = {'zonage1' : 'departements',
     'id1' : '01',
-    'zonage2' : 'commune',
+    'zonage2' : 'communes',
     'date' : 'latest'}
 test = LienService(D)
-dico = test.genere_dico()
+print(test.dico) #{'zonage1': 'departements', 'id1': '01', 'zonage2': 'communes', 'date': 'latest'}
+
+dico = test.genere_dico()  #bug TODO ok sur VM
 print(dico)
 
+#No such file or directory: 'Application/client/data/communes/communes\\cadastre-04004-communes.json.gz' TODO bug (résolu sur VM)
