@@ -4,6 +4,7 @@ auteurs: Jean-Philippe Trotta et Chloé Contant
 date : 20/11/2022
 """
 from client.telechargement import Telechargement
+from client.lien_service import LienService #provisoire
 
 import unittest
 
@@ -58,7 +59,7 @@ class TelechargementTest(unittest.TestCase):
     
 
 #test fonction telechargement
-#t5 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+#t5 = Telechargement(id_zone1="07",zonage1="departements",zonage2="communes")
 #test5 = t5.download()  
 
 #lecture de json vers dictionnaire
@@ -73,11 +74,13 @@ if __name__ == '__main__':
 
 
 #test fonction telechargement
-t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
-t4.download()  #fonctionne avec chemin2 dans download telechargement
+#t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+#t4.download()  #fonctionne avec chemin2 dans download telechargement
+#dico=t4.read_json()
+print (dico)
 
 #lecture de json vers dictionnaire
-t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
-t5.download()
-dico = t5.read_json()
-print(dico) 
+#t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
+#t5.download()
+#dico = t5.read_json()
+#print(dico) 

@@ -1,9 +1,9 @@
 from client.lien_service import LienService
  
 
-D = {'zonage1' : 'departements',
-    'id1' : '01',
-    'zonage2' : 'communes',
+D = {'zonage1' : 'communes',
+    'id1' : '01001',
+    'zonage2' : 'parcelles',
     'date' : 'latest'}
 test = LienService(D)
 print(test.dico) #{'zonage1': 'departements', 'id1': '01', 'zonage2': 'communes', 'date': 'latest'}
