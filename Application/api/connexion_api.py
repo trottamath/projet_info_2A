@@ -13,23 +13,23 @@ from service.requete import Requete
 app = FastAPI()
 
 # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des communes contigues à id_zone
-@app.get("/commune/")
+@app.get("/commune-commune/")
 async def get_all_commune(id_com:str, date):
     dico_requete = {"num":1,"id":id_com,"date":date}
-    return Requete().Get_Client()
+    return Requete(dico_requete).Get_Client()
 
 
 # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des parcelles en bordure de id_zone
-@app.get("/commune/")
+@app.get("/commune-parcelle/")
 async def get_all_commune(id_com:str, date):
     dico_requete = {"num":2,"id":id_com,"date":date}
-    return Requete().Get_Client()
+    return Requete(dico_requete).Get_Client()
 
 # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des parcelles limitrophes à id_zone
-@app.get("/commune/")
+@app.get("/parcelle-parcelle/")
 async def get_all_commune(id_com:str, date):
     dico_requete = {"num":3,"id":id_com,"date":date}
-    return Requete().Get_Client()
+    return Requete(dico_requete).Get_Client()
 
 
 
