@@ -21,18 +21,18 @@ class ParcelleDAO(metaclass=Singleton):
     """classe ParcelleDAO """
 
 
-    def ajout_parcelle(self, parcel : Parcelle ): # à supprimer ?
-        '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données'''
-     #   with DBConnection().connection as connection:
-      #      with connection.cursor() as cursor:
-        cursor.execute(
-            "INSERT INTO parcelle (id_parc, id_com_limit)"
-            " VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id", # RETURNING parcelle_id;"  ???
-            {"id_parc": parcel.id, "id_com_limit": parcel.ident_commune()} )
-        res = cursor.fetchone() #facultatif ? 
-        return res  #['parcelle_id']  #??
+    # def ajout_parcelle2(self, parcel : Parcelle ): # à supprimer ?
+    #     '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données'''
+    #  #   with DBConnection().connection as connection:
+    #   #      with connection.cursor() as cursor:
+    #     cursor.execute(
+    #         "INSERT INTO parcelle (id_parc, id_com_limit)"
+    #         " VALUES (%(id_parc)s, %(id_com_limit)s) RETURNING parcelle_id", # RETURNING parcelle_id;"  ???
+    #         {"id_parc": parcel.id, "id_com_limit": parcel.ident_commune()} )
+    #     res = cursor.fetchone() #facultatif ? 
+    #     return res  #['parcelle_id']  #??
     
-    def recherche_parcelle(self, id_parc:str): # ?
+    def recherche_parcelle(self, id_parc:str): # OK
         '''pour chercher une parcelle dans la base de données à partir de son identifiant (code)'''
         request = "SELECT * FROM parcelle WHERE id_parc = %(id_parc)s"
         with DBConnection().connection as connection:
@@ -44,24 +44,23 @@ class ParcelleDAO(metaclass=Singleton):
                 res = cursor.fetchall()
         return res
 
-    def ajout_parcelle(self, id_parc:str): # ?
+    def ajout_parcelle(self, id_parc:str): # OK
         '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
-        directement à partir de son identifiant'''
+        directement à partir de son identifiant
+        On ajoute une parcelle dans la base de données seulement si elle est en limite de sa commune'''
+
         if self.recherche_parcelle(id_parc) == [] or self.recherche_parcelle(id_parc) == None : # la parcelle n'est pas présente dans la table
-            id_com = id_parc[0:5]
-            id_dep = id_parc[0:2]
-            c = CommuneDAO()
-            nom_com = c.recherche_commune(id_com)
-            request = "INSERT INTO parcelle (id_parc, nom_com, id_dep) VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"
+            id_com_limit = id_parc[0:5]
+            request = "INSERT INTO parcelle (id_parc, id_com_limit) VALUES (%(id_parc)s, %(id_com_limit)s)"
         
             with DBConnection().connection as connection:
                 with connection.cursor() as cursor :
                     cursor.execute(
                         request,
-                        {"id_parc": id_parc}
+                        {"id_parc": id_parc, "id_com_limit" : id_com_limit}
                 )
-                res = cursor.fetchall()
-            return res
+                    #res = cursor.fetchall()
+            #eturn res
 
 
         #cursor.execute(
@@ -109,15 +108,20 @@ class ParcelleDAO(metaclass=Singleton):
 
 #p = ParcelleDAO()
 
-# test recherche_parcelle ??
-# p.recherche_parcelle('50250AZ4')
+# test recherche_parcelle : OK
+#print(p.recherche_parcelle('50250AZ4'))
 
 #### test suppression_parcelle : OK
 #p.drop('50250AZ4')
 
+<<<<<<< HEAD
 
 #### test ajout_parcelle :
 #p.ajout_parcelle('14302B6') # index out of range ?
+=======
+#### test ajout_parcelle : OK
+#p.ajout_parcelle('14302B6')
+>>>>>>> a43259ecb4fb9ac6e4cb3a8f8be463702992f45d
 
 #### test research_all_lim
 #p.research_all_lim('50250')
