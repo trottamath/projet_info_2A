@@ -175,8 +175,8 @@ class Telechargement():
 #t4.generator_path()
 
 #test fonction telechargement
-#t4 = Telechargement(id_zone1="08004",zonage1="communes")
-#t4.download()
+t4 = Telechargement(id_zone1="08004",zonage1="communes")
+t4.download()
 
 #t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
 #t5.download()
