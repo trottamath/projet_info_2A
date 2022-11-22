@@ -107,7 +107,7 @@ class ParcelleDAO(metaclass=Singleton):
 
 ############################################ TESTS ############################################
 
-p = ParcelleDAO()
+#p = ParcelleDAO()
 
 # test recherche_parcelle ??
 # p.recherche_parcelle('50250AZ4')
@@ -117,7 +117,7 @@ p = ParcelleDAO()
 
 
 #### test ajout_parcelle :
-p.ajout_parcelle('14302B6') # index out of range ?
+#p.ajout_parcelle('14302B6') # index out of range ?
 
 #### test research_all_lim
-p.research_all_lim('50250')
+#p.research_all_lim('50250')
