@@ -12,6 +12,8 @@ import datetime
 
 # print(req.headers)
 
+#filename = req.url[downloadUrl.rfind('/')+1:]
+#path = 'Application/client/data/communes/' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
 # filename = req.url[downloadUrl.rfind('/')+1:]
 # path = 'Application/client/data/commune/commune' #coder le chemin en fonction du zonage_1 (commune ou département (cf. nom du fichier))
 
@@ -41,8 +43,8 @@ import datetime
 #     print(data.get("type"))
 
 
-ctime = time.ctime(os.path.getctime("Application/client/data/commune/commune/cadastre-04004-communes.json.gz"))
-print(ctime)
+# ctime = time.ctime(os.path.getctime("Application/client/data/communes/communes/cadastre-04004-communes.json.gz"))
+# print(ctime)
 #print(time.time()-ctime)
 # if ctime < time.time()- (3600):
 #     print('True')
@@ -50,22 +52,45 @@ print(ctime)
 #     print('False')
 
 def create_place():
-    path = 'Application/client/data/commune/commune'
+    path = 'Application/client/data/departements/communes'
     count = 0
     #now_time = time.ctime()
     #now = time.time()
     for filename in os.listdir(path):
         count = count + 1
     
-    print(count)
     
-    if count > 2:
-        for filename in os.listdir(path):
-            if os.path.getctime(os.path.join(path,filename)) < (time.time()- 360):
-                os.remove(os.path.join(path,filename))
-                print('True')
+    
+    #first_filename = os.listdir(path).pop(0)
+
+    time = []
+    for filename in os.listdir(path) :
+        time.append(os.path.getctime(os.path.join(path,filename)))
+ 
+    dictionary = dict(zip(os.listdir(path),time)) 
+
+    if count > 95 :
+        L = os.path.getctime(os.path.join(path,os.listdir(path)[0]))
+        for filename in os.listdir(path) :
+            if L > os.path.getctime(os.path.join(path,filename)):
+                L = os.path.getctime(os.path.join(path,filename))
             else : 
-                print('False')
+                pass
+
+        file_remove = [key  for (key, val) in dictionary.items() if val == L]
+        
+        for filename in file_remove :
+            os.remove(os.path.join(path,filename))
+    
+    else :
+        pass
 
 
 create_place()
+
+
+            # if os.path.getctime(os.path.join(path,filename)) < (time.time()- 360):
+            #     os.remove(os.path.join(path,filename))
+            #     print('True')
+            # else : 
+            #     print('False')

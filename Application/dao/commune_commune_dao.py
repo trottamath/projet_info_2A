@@ -1,3 +1,9 @@
+"""module commune_commune_dao.py pour définir la classe CommuneCommuneDAO
+version 1.0
+date 15/10/2022
+auteurs : Jean-Philippe Trotta et Eva Puchalski
+"""
+
 from utils.singleton import Singleton
 from dao.db_connection import DBConnection
 from dao.commune_dao import CommuneDAO
@@ -8,21 +14,21 @@ cursor = connexion.cursor()
 class CommuneCommuneDAO():
     '''classe de communication avec la table commune_commune de la bdd'''
 
-    def recherche(self, id_com1: str, id_com2: str, date):
-        cursor.execute(
-            "SELECT id_com1, id_com2"\
-                "\n\t FROM commune_commune"\
-                    "\n\t WHERE (id_com1=%(id_com1)s AND id_com2=%(id_com2)s) AND date=%(date)s ",
-            {"id_com1": id_com1, "id_com2": id_com2, "date": date}
-        )  
-
-        res = cursor.fetchall()
+    def recherche(self, id_com1:str, id_com2:str, date:str):
+        request = "SELECT * FROM commune_commune WHERE id_com1=%(id_com1)s AND id_com2=%(id_com2)s AND date=%(date)s "
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor :
+                cursor.execute(
+                    request,
+                    {"id_com1": id_com1, "id_com2": id_com2, "date":date}
+                )
+                res = cursor.fetchall()
         return res
 
 
     def create(self, id_com1: str, id_com2: str, date):
         '''ajoute une nouvelle paire de communes limitrophes pour la date donnée'''
-        # si le couple existe déjà, on ne l'ajoute pas à la base de données
+        # si le couple existe déjà pour la date donnée, on ne l'ajoute pas à la base de données
         if self.recherche(id_com1,id_com2,date) == None : # le couple n'existe pas déjà
             request = "INSERT INTO Commune (id_com1, id_com2, date)" \
                     "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"
@@ -40,8 +46,8 @@ class CommuneCommuneDAO():
         #         "\n\t WHERE (id_com1=%(id_com)s OR id_com2=%(id_com)s) AND date=%(date)s "
         request = "SELECT id_com2"\
             "\n\t FROM commune_commune"\
-            "\n\t WHERE (id_com1=%(id_com)s AND date=%(date)s "
-        cursor.execute(
+            "\n\t WHERE id_com1=%(id_com)s AND date=%(date)s "
+        cursor.execute( request,
             {"id_com": id_com, "date":date}
         )  
         # res = cursor.fetchall() # liste de tuples (id_com1, id_com2) des lignes retournées
@@ -59,3 +65,9 @@ class CommuneCommuneDAO():
             self.create(id_com1= id_com1, id_com2= id_com2, date= date)
         
     
+################################################# TESTS #################################################
+
+cc = CommuneCommuneDAO()
+
+#### test recherche
+cc.recherche('RENNES', 'SAINT-JACQUES', '21/11/22')

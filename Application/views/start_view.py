@@ -1,3 +1,8 @@
+"""module start_view.py pour définir la classe StartView
+version 1.0
+date 25/10/2022
+auteurs : Fiona Fonkou et Jean-Philippe Trotta
+"""
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 
@@ -8,7 +13,7 @@ class StartView(AbstractView):
 
     def __init__(self):
         self.__questions = inquirer.select(
-            message=f'Bonjour {Session().user_name}'
+            message=f'Bonjour {Session().user_name}, choisissez une requête :'
             , choices=[
                 Choice('Liste des communes limitrophes à une commune donnée')
                 ,Choice('Liste des parcelles en bordure d\'une commune donnée')
@@ -17,7 +22,7 @@ class StartView(AbstractView):
             ]
         )
         self.__questions1 = inquirer.select(
-            message=f'Bonjour{Session().user_name}'
+            message=f'Choissez une date ou latest :'
             , choices=[
                 Choice('2019-01-01')
                 ,Choice('2019-04-01')
@@ -38,8 +43,6 @@ class StartView(AbstractView):
             ]
         )
     def display_info(self):
-        # with open('graphical_assets/banner.txt','r',encoding="utf_8") as asset:
-        #     print(asset.read())
         pass
     
     def make_choice(self):
@@ -49,8 +52,7 @@ class StartView(AbstractView):
             pass
         elif reponse == 'Liste des communes limitrophes à une commune donnée':
             Session().num="1"
-            #from views.commune_commune_view import Commune_Commune_View
-            #return Commune_Commune_View()
+
         elif reponse == 'Liste des parcelles en bordure d\'une commune donnée':
             Session().num="2"
             #from views.commune_parcelle_view import Commune_Parcelle_View

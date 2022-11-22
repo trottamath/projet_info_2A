@@ -9,6 +9,9 @@ from objets.geometrie.polygone import Polygone
 from objets.geometrie.multi_polygone import MultiPolygone
 from objets.geometrie.abstract_polygone import AbstractPolygone
 
+
+
+
 class Zonage():
     """classe zonage (classe mère commune à Commune et Parcelle)
     Attributs:
@@ -24,23 +27,13 @@ class Zonage():
         self.id = id
         self.geom_coord = geom_coord
 
-    @staticmethod
-    def ss_str(chaine: str, nbr_caract: int):
-        '''pour une chaine de caractère donnée, et nbr_caract un nombre entier de caractères à conserver
-        retourne les nbr_caract premiers caractères de la chaine'''
-        firsts=""
-        for i in range(nbr_caract):
-            firsts = firsts + chaine[i]
-        return firsts
+    def test_egal_id(self,autre_zone): #à voir si utile
+        """teste si deux zonages ont le même identifiant
+        Paramètre:
+        ----------
+            autre_zone : Zonage"""
+        return self.id == autre_zone.id
 
-    @staticmethod
-    def ident_dep(id: str):
-        id_dep= id[0] + id[1]
-        if id_dep == "97":
-            id_dep = id_dep + id[2]
-        return id_dep
-
-    
 
     def ident_departement(self):
         id_dep = self.id[0] + self.id[1]
@@ -76,5 +69,11 @@ class Zonage():
         ss_list= []
         for zone in list_zones:
             if zone.test_zone_contigu(macro_zone= self) and self.id!=zone.id:
-                ss_list.append(zone)  # ou avec zone.id
-        return ss_list #selon les besoins, on aurait pu ne retourner que la liste des identifiants
+                ss_list.append(zone)
+        return ss_list
+
+    
+    def __str__(self):
+        return self.id
+
+#print(Zonage(id="20", geom_coord=[]))
