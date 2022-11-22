@@ -35,9 +35,6 @@ class CommuneDAO(metaclass=Singleton):
                     {"id_com": id_com}
                 )
                 res = cursor.fetchall()
-        #if res ==[] :
-            #print("la commune n'est pas encore dans la base de données")
-        #else :
         return res[0]['nom_com']
         
     
