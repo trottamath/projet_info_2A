@@ -10,17 +10,17 @@ from service.instanciation import Instanciation
 #test ok
 insta = Instanciation(zonage1="departements", id1="13", zonage2="communes", date="latest")
 
-print(insta.dico) #{'zonage1': 'departements', 'id1': '13', 'zonage2': 'communes', 'date': 'latest'}
-print(insta.dico["zonage1"]) # "departement"
+#print(insta.dico) #{'zonage1': 'departements', 'id1': '13', 'zonage2': 'communes', 'date': 'latest'}
+#print(insta.dico["zonage1"]) # "departement"
 
 liste = insta.instancier_zonage()  
 print(liste[1].id)
 
-#test à problème
-insta = Instanciation(zonage1="communes", id1="13400", zonage2="parcelles", date="latest")
+#test ok avec un bon numéro de commune
+insta = Instanciation(zonage1="communes", id1="13207", zonage2="parcelles", date="latest")
 print(insta.dico) #{'zonage1': 'departements', 'id1': '13', 'zonage2': 'communes', 'date': 'latest'}
 print(insta.dico["zonage1"]) # "departement"
 
-liste = insta.instancier_zonage()   #ne fonctionne pas 
+liste = insta.instancier_zonage()   #fonctionne avec un code commune qui existe, attention à ce qui se passe qd il n'esiste pas
 print(liste[1].id)
 

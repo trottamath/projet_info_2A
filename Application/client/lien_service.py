@@ -43,8 +43,8 @@ class LienService():
         '''
         tel = Telechargement(id_zone1=self.dico['id1'],zonage1 = self.dico['zonage1'],date = self.dico['date'], zonage2 = self.dico['zonage2'] )
         
-        dico_extract_json = tel.read_json() #dictionnaire TODO le bug est ici !
-
+        dico_extract_json = tel.read_json() #dictionnaire TODO le bug est ici pour les parcelles uniquement!!!!
+        
         list_dict = dico_extract_json['features'] #extraction de la liste de dictionnaire
         
         return (list_dict)

@@ -15,3 +15,5 @@ if __name__ == '__main__':
         
 
 
+# la requete 1 fonctionne en latest pour la commune 13207 mais pas pour une code faux par exemple 13400
+# exemple de vrai numero de parcelle pour les tests 13001000AB0237

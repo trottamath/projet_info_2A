@@ -68,16 +68,21 @@ class TelechargementTest(unittest.TestCase):
 #dico = t5.read_json()
 #print(dico) 
 
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+#    unittest.main()
 
 
 
 #test fonction telechargement
-#t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
-#t4.download()  #fonctionne avec chemin2 dans download telechargement
-#dico=t4.read_json()
-print (dico)
+t4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
+t4.download() 
+dico=t4.read_json() #ne fonctionne pas TODO
+#print (dico)
+
+#test fonction telechargement
+t6 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="communes")
+t6.download() 
+
 
 #lecture de json vers dictionnaire
 #t5= Telechargement(id_zone1="07003",zonage1="communes",zonage2="communes")
