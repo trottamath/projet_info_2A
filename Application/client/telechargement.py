@@ -11,20 +11,20 @@ import gzip
 
 class Telechargement():
     '''Classe qui permet de télécharger des fichiers json.gz depuis un site web
-    Attributs :
+    Attributes :
     -----------
-            date : str = "latest" 
-                sinon saisir au format "AAAA-MM-JJ"
-            zonage1 : str = "departements"
-                zonage au choix parmi "departements" ou "france" ou "communes"
-            id_dep : str
-                code de département
-            id_zone : str = None
-                identifiant du zonage1
-            zonage2 : str = "communes"
-                zonage au choix parmi "parcelles" ou "communes"
-                sauf si zonage1="france" alors laisser par défaut zonage2="communes"
-                '''
+        date : str = "latest" 
+            sinon saisir au format "AAAA-MM-JJ"
+        zonage1 : str = "departements"
+            zonage au choix parmi "departements" ou "france" ou "communes"
+        id_dep : str
+            code de département
+        id_zone : str = None
+            identifiant du zonage1
+        zonage2 : str = "communes"
+            zonage au choix parmi "parcelles" ou "communes"
+            sauf si zonage1="france" alors laisser par défaut zonage2="communes"
+    '''
 
     def __init__(self, id_zone1 = None , zonage1 = "departements",  zonage2 = "communes", date = "latest"):
         '''constructeur de la classe Telechargement
