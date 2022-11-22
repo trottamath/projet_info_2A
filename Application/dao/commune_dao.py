@@ -35,8 +35,8 @@ class CommuneDAO(metaclass=Singleton):
                     {"id_com": id_com}
                 )
                 res = cursor.fetchall()
-        return res[0]['nom_com']
-        
+        return res
+        # res[0]['nom_com']
     
     def ajout_commune(self, id_com: str, nom_com: str):
         """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà"""
@@ -78,11 +78,11 @@ c = CommuneDAO()
 #c.ajout_commune('39000', 'LONS-LE-SAUNIER')
 
 #### test nom_commune : OK
-#print(c.nom_communes('35170'))
+#print(c.nom_commune('35170'))
 #print(c.nom_communes('35000'))
 
-#### test recherche : OK
-print(c.recherche_commune('35170'))
+#### test recherche_commune : OK
+#print(c.recherche_commune('45678'))
 #print(c.recherche('35000'))
 
 #### test suppression commune : OK
