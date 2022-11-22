@@ -15,13 +15,12 @@ class CommuneCommuneDAO():
     '''classe de communication avec la table commune_commune de la bdd'''
 
     def recherche(self, id_com1: str, id_com2: str, date):
+        request = "SELECT id_com1, id_com2 FROM commune_commune"\
+                    "\n\t WHERE id_com1=%(id_com1)s AND id_com2=%(id_com2)s AND date=%(date)s "
         cursor.execute(
-            "SELECT id_com1, id_com2"\
-                "\n\t FROM commune_commune"\
-                    "\n\t WHERE id_com1=%(id_com1)s AND id_com2=%(id_com2)s AND date=%(date)s ",
+            request,
             {"id_com1": id_com1, "id_com2": id_com2, "date": date}
         )  
-
         res = cursor.fetchall()
         return res
 
