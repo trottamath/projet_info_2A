@@ -89,8 +89,11 @@ class ParcelleDAO(metaclass=Singleton):
                         {"id_com_limit": id_com_limit}
                     )
                     res = cursor.fetchall()      #méthode à vérifier (pose pb pour la requete 2)
-        return res
-        #print(res)
+        parcelles = []
+        for i in range(len(res)):
+            parcelles.append(res[i]['id_parc'])
+        return parcelles
+
 
     def suppression_parcelle(self, id_parc : str): # OK
         '''pour supprimer une parcelle de la base de données'''
@@ -120,8 +123,8 @@ p = ParcelleDAO()
 #### test ajout_parcelle : OK
 #p.ajout_parcelle('14302B6')
 
-#### test research_all_lim
-p.research_all_lim('50250')
+#### test research_all_lim ????????????????????????
+print(p.research_all_lim('50250'))
 
 #### test ajout_liste_parc :OK
 #p.ajout_liste_parc(['AAAAAAA','1111111'])
