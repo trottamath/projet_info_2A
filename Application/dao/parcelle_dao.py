@@ -72,7 +72,7 @@ class ParcelleDAO(metaclass=Singleton):
         #return res
 
 
-    def ajout_liste_parc(self, list_id_parc : list[str]):
+    def ajout_liste_parc(self, list_id_parc : list[str]): # OK
         '''pour ajouter toute une liste de parcelles à la base de données'''
         for id_parc in list_id_parc:
             if self.recherche_parcelle(id_parc) == None or self.recherche_parcelle(id_parc) == [] :
@@ -81,18 +81,16 @@ class ParcelleDAO(metaclass=Singleton):
 
     def research_all_lim(self, id_com_limit: str):
         '''pour chercher toutes les parcelles de la bdd qui sont en limite de la commune dont l'identifiant est donné'''
-        request = "SELECT id_parc FROM parcelle WHERE id_com_limit = %(id_com_limit)s "
+        request = "SELECT id_parc FROM parcelle WHERE id_com_limit = %(id_com_limit)s"
         with DBConnection().connection as connection:
                 with connection.cursor() as cursor :
                     cursor.execute(
                         request,
                         {"id_com_limit": id_com_limit}
-                )
-                res = cursor.fetchall()      #méthode à vérifier (pose pb pour la requete 2)
+                    )
+                    res = cursor.fetchall()      #méthode à vérifier (pose pb pour la requete 2)
         return res
-
-
-#update inutile dans ce cas ?
+        #print(res)
 
     def suppression_parcelle(self, id_parc : str): # OK
         '''pour supprimer une parcelle de la base de données'''
@@ -107,7 +105,7 @@ class ParcelleDAO(metaclass=Singleton):
 
 ############################################ TESTS ############################################
 
-#p = ParcelleDAO()
+p = ParcelleDAO()
 #print(p.recherche_parcelle(id_parc="132078290I0071"))
 #print(p.research_all_lim(id_com_limit="13207")) #ne fonctionne pas ?
 
@@ -115,15 +113,15 @@ class ParcelleDAO(metaclass=Singleton):
 #print(p.recherche_parcelle('50250AZ4'))
 
 #### test suppression_parcelle : OK
-#p.drop('50250AZ4')
+#p.suppression_parcelle('45678UY')
 
 #### test ajout_parcelle :
-#p.ajout_parcelle('14302B6') # index out of range ?
+#p.ajout_parcelle('14302B6)
 #### test ajout_parcelle : OK
 #p.ajout_parcelle('14302B6')
 
 #### test research_all_lim
-#p.research_all_lim('50250')
+p.research_all_lim('50250')
 
-#### test ajout_liste_parc :
-#p.ajout_liste_parc(['13245AZ','45678UY'])
+#### test ajout_liste_parc :OK
+#p.ajout_liste_parc(['AAAAAAA','1111111'])
