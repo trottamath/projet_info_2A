@@ -18,7 +18,7 @@ class StartView(AbstractView):
                 Choice('Liste des communes limitrophes à une commune donnée')
                 ,Choice('Liste des parcelles en bordure d\'une commune donnée')
                 ,Choice('Liste des parcelles limitrophes à une parcelle donnée')
-                ,Choice('Quitter')
+                ,Choice('Quitter')  #attention lorsqu'on choisi quitter, ça continue qd même!!!
             ]
         )
         self.__questions1 = inquirer.select(

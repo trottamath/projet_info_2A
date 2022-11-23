@@ -29,8 +29,8 @@ class CommuneCommuneDAO():
     def create(self, id_com1: str, id_com2: str, date):
         '''ajoute une nouvelle paire de communes limitrophes pour la date donnée'''
         # si le couple existe déjà pour la date donnée, on ne l'ajoute pas à la base de données
-        if self.recherche(id_com1,id_com2,date) == None : # le couple n'existe pas déjà
-            request = "INSERT INTO Commune (id_com1, id_com2, date)" \
+        if self.recherche(id_com1,id_com2,date) == None or self.recherche(id_com1,id_com2,date) == []: # le couple n'existe pas déjà
+            request = "INSERT INTO commune_commune (id_com1, id_com2, date)" \
                     "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"
             cursor.execute(
                 request, {"id_com1" : id_com1, "id_com2": id_com2, "date": date}
@@ -67,7 +67,10 @@ class CommuneCommuneDAO():
     
 ################################################# TESTS #################################################
 
-cc = CommuneCommuneDAO()
+#cc = CommuneCommuneDAO()
+#print(cc.recherche_com(id_com="13207", date="latest")) #n'a pas afficher de contenu autre que None TODO
+#print(cc.recherche('13207', '13201', 'latest'))
 
 #### test recherche
-cc.recherche('RENNES', 'SAINT-JACQUES', '21/11/22')
+#print(cc.recherche('RENNES', 'SAINT-JACQUES', '21/11/22')) #il faudra penser à supprimer les essaies fake dans la bdd
+

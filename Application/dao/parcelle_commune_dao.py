@@ -24,7 +24,7 @@ class ParcelleCommuneDAO():
             "\n\t WHERE id_parc=%(id_parc)s AND id_com=%(id_com)s AND date=%(date)s",
             {"id_parc": id_parc, "id_com": id_com, "date":date}
         )
-        res= cursor.fetchone()
+        res= cursor.fetchall() #fetchone ?
         return res
     
     def create(self, id_parc: str, id_com: str, date):
@@ -35,14 +35,14 @@ class ParcelleCommuneDAO():
             "VALUES (%(id_parc)s, %(id_com)s, %(date)s) ",
             {"id_parc": id_parc, "id_com": id_com, "date": date}
         )
-        res = cursor.fetchone()
-        return res
+        #res = cursor.fetchone()
+        #return res
     
     def create_all(self, id_com: str, list_id_parc: list[str], date):
         '''ajout d'une liste de parcelles en limite d'une commune pour une date donnée'''
         for id_parc in list_id_parc:
             self.create(id_parc= id_parc, id_com= id_com, date= date)
-        ParcelleDAO().create_list(list_id_parc= list_id_parc)
+        ParcelleDAO().ajout_liste_parc(list_id_parc= list_id_parc) #à la place de crearte.list()
 
         
 

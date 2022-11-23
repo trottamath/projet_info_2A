@@ -60,7 +60,7 @@ class ParcelleDAO(metaclass=Singleton):
                         {"id_parc": id_parc, "id_com_limit" : id_com_limit}
                 )
                     #res = cursor.fetchall()
-            #eturn res
+            #return res
 
 
         #cursor.execute(
@@ -80,14 +80,14 @@ class ParcelleDAO(metaclass=Singleton):
 
     def research_all_lim(self, id_com_limit: str):
         '''pour chercher toutes les parcelles de la bdd qui sont en limite de la commune dont l'identifiant est donné'''
-        request = "SELECT id_parc FROM parcelle WHERE id_com_inclus = %(id_com_limit)s and limite_com = TRUE"
+        request = "SELECT id_parc FROM parcelle WHERE id_com_limit = %(id_com_limit)s "
         with DBConnection().connection as connection:
                 with connection.cursor() as cursor :
                     cursor.execute(
                         request,
                         {"id_com_limit": id_com_limit}
                 )
-                res = cursor.fetchall()
+                res = cursor.fetchall()      #méthode à vérifier (pose pb pour la requete 2)
         return res
 
 
@@ -106,8 +106,9 @@ class ParcelleDAO(metaclass=Singleton):
 
 ############################################ TESTS ############################################
 
-p = ParcelleDAO()
-
+#p = ParcelleDAO()
+#print(p.recherche_parcelle(id_parc="132078290I0071"))
+#print(p.research_all_lim(id_com_limit="13207")) #ne fonctionne pas ?
 # test recherche_parcelle : OK
 #print(p.recherche_parcelle('50250AZ4'))
 
