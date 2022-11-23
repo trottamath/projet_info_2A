@@ -14,8 +14,8 @@ cursor = connexion.cursor()
 class CommuneCommuneDAO():
     '''classe de communication avec la table commune_commune de la bdd'''
 
-    def recherche(self, id_com1:str, id_com2:str, date:str):
-        request = "SELECT * FROM commune_commune WHERE id_com1=%(id_com1)s AND id_com2=%(id_com2)s AND date=%(date)s "
+    def recherche(self, id_com1:str, id_com2:str, date:str): # OK
+        request = "SELECT * FROM commune_commune WHERE id_com1=%(id_com1)s AND id_com2=%(id_com2)s AND date=%(date)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(
@@ -26,37 +26,35 @@ class CommuneCommuneDAO():
         return res
 
 
-    def create(self, id_com1: str, id_com2: str, date):
+    def create(self, id_com1: str, id_com2: str, date): # OK
         '''ajoute une nouvelle paire de communes limitrophes pour la date donnée'''
         # si le couple existe déjà pour la date donnée, on ne l'ajoute pas à la base de données
         if self.recherche(id_com1,id_com2,date) == None or self.recherche(id_com1,id_com2,date) == []: # le couple n'existe pas déjà
-            request = "INSERT INTO commune_commune (id_com1, id_com2, date)" \
-                    "VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"
-            cursor.execute(
-                request, {"id_com1" : id_com1, "id_com2": id_com2, "date": date}
-            )
+            request = "INSERT INTO commune_commune (id_com1, id_com2, date) VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"
+            with DBConnection().connection as connection:
+                with connection.cursor() as cursor :
+                    cursor.execute(
+                        request,
+                        {"id_com1": id_com1, "id_com2": id_com2, "date":date}
+                    )
         else :
             pass
     
 
-    def recherche_com(self, id_com: str, date):
+    def recherche_com(self, id_com: str, date): # OK
         '''recherche les communes limitrophes à une commune donnée'''
-        # request = "SELECT id_com1, id_com2"\
-        #         "\n\t FROM commune_commune"\
-        #         "\n\t WHERE (id_com1=%(id_com)s OR id_com2=%(id_com)s) AND date=%(date)s "
-        request = "SELECT id_com2"\
-            "\n\t FROM commune_commune"\
-            "\n\t WHERE id_com1=%(id_com)s AND date=%(date)s "
-        cursor.execute( request,
-            {"id_com": id_com, "date":date}
-        )  
-        # res = cursor.fetchall() # liste de tuples (id_com1, id_com2) des lignes retournées
-        # voisins = []
-        # for i in range(len(res)) : 
-        #     for j in range(len(res[i])): # res[i] de longueur 2 car (id_com1, id_com2)
-        #         if res[i][j] != id_com : # voisin de la commune et non la commune elle-même
-        #             voisins.append(res[i][j])
-        # return voisins # liste des communes voisines
+        request = "SELECT id_com2 FROM commune_commune WHERE id_com1=%(id_com)s AND date=%(date)s"
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor :
+                cursor.execute(
+                    request,
+                    {"id_com": id_com, "date":date}
+                )
+                res = cursor.fetchall()
+        voisines = []
+        for i in range(len(res)):
+            voisines.append(res[i]['id_com2'])
+        return voisines
 
 
 
@@ -67,10 +65,19 @@ class CommuneCommuneDAO():
     
 ################################################# TESTS #################################################
 
-#cc = CommuneCommuneDAO()
+cc = CommuneCommuneDAO()
+
+#### test recherche : OK
+
 #print(cc.recherche_com(id_com="13207", date="latest")) #n'a pas afficher de contenu autre que None TODO
 #print(cc.recherche('13207', '13201', 'latest'))
 
-#### test recherche
-#print(cc.recherche('RENNES', 'SAINT-JACQUES', '21/11/22')) #il faudra penser à supprimer les essaies fake dans la bdd
+#### test recherche_com : OK
+#print(cc.recherche_com('13207', 'latest'))
 
+
+#### test create : OK
+#cc.create('10101', '10102', 'latest')
+
+#### test create_all :
+cc.create_all('1111',)
