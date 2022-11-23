@@ -73,9 +73,14 @@ class Requete ():
             list_dep = Departement(id_dep= id_dep).dep_contig() #la liste des id de départements limitrophes
             list_com = Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #liste des communes du département
             
+            
+            com1="Si ce message s'affiche le code de le commune saisie est faux"
             for commune in list_com:
+                
                 if commune.id == id_com:
-                    com1= commune #commune d'intérêt  
+                    com1= commune #commune d'intérêt
+            if type(com1)==str: 
+                print(com1) # pb ici!!! TODO provisoire (certaine commune n'existe pas dans les fichiers départements ? ex 13400 dans 13 à vérifier)
 
             for id_dep in list_dep:
                 # concaténation avec les listes de communes des départements limitrophes
@@ -84,6 +89,7 @@ class Requete ():
             list_id_com_contig = []
             
             for commune in list_com:
+                
                 if commune.id != id_com and com1.test_zone_contigu(commune): #bug avec com1 ? TODO
                     list_id_com_contig.append(commune.id)
             

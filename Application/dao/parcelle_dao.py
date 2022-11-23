@@ -44,6 +44,7 @@ class ParcelleDAO(metaclass=Singleton):
                 res = cursor.fetchall()
         return res
 
+
     def ajout_parcelle(self, id_parc:str): # OK
         '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
         directement à partir de son identifiant
@@ -109,14 +110,20 @@ class ParcelleDAO(metaclass=Singleton):
 #p = ParcelleDAO()
 #print(p.recherche_parcelle(id_parc="132078290I0071"))
 #print(p.research_all_lim(id_com_limit="13207")) #ne fonctionne pas ?
+
 # test recherche_parcelle : OK
 #print(p.recherche_parcelle('50250AZ4'))
 
 #### test suppression_parcelle : OK
 #p.drop('50250AZ4')
 
+#### test ajout_parcelle :
+#p.ajout_parcelle('14302B6') # index out of range ?
 #### test ajout_parcelle : OK
 #p.ajout_parcelle('14302B6')
 
 #### test research_all_lim
 #p.research_all_lim('50250')
+
+#### test ajout_liste_parc :
+#p.ajout_liste_parc(['13245AZ','45678UY'])

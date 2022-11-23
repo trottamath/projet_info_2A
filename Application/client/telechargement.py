@@ -147,10 +147,12 @@ class Telechargement():
         chemin = os.path.join(path,filename).replace("\\","/") 
 
         #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
-        #print(chemin2) #version2 qui ne fonctionne qu'en test dans le même fichier... WTF
+        print(chemin) 
 
         with gzip.open(chemin,'rb') as file:
-           data = json.load(file) #, parse_float=float, parse_int=float
+            
+            data = json.load(file) #, parse_float=float, parse_int=float  TODO il y a pb ici lorsque le code du zonage1 est faux .
+            
         return(data)
 
 
@@ -171,7 +173,7 @@ class Telechargement():
 # print(lien_3)
 
 #test pour le générateur de chemin : 
-#t4 = Telechargement(id_zone1="13400",zonage1="communes",zonage2="parcelles")
+#t4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
 #t4.generator_path()
 
 #test fonction telechargement

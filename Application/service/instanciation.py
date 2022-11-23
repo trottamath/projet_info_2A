@@ -26,7 +26,8 @@ class Instanciation():
 
     def instancier_zonage(self)->list[Zonage]:
         '''créer une liste d'instances de Commune ou Parcelle à partir d'une liste de dictionnaires demandée au client'''
-        list_dico = LienService(self.dico).genere_dico()
+        list_dico = LienService(self.dico).genere_dico() #bug ici pour parcelle
+        #print(list_dico)
         list_zonage = []
         if self.dico["zonage2"] == "communes":
             for dico in list_dico:
@@ -45,3 +46,4 @@ class Instanciation():
 
 #liste = insta.instancier_zonage()
 #print(liste[0].id)
+
