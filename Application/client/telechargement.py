@@ -116,7 +116,7 @@ class Telechargement():
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
        chemin = os.path.join(path,filename).replace("\\","/") #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
-       #chemin = os.path.join(path,('cadastre-{}-{}-{}').format(self.id_zones).replace("\\","/")
+       #chemin = os.path.join(path,('cadastre-{}-{}-{}.json.gz').format(self.id_zone,self.zonage2,self.date).replace("\\","/"))
 
        with req as rq:
            with open(chemin, 'wb') as file: 
