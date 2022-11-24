@@ -21,3 +21,6 @@ The proposed database is scalable. It is enriched with each new request, with au
 Initially, the database is loaded for the “latest” date available on the cadastral site. 
 This version limits the database to department 35, but it remains possible to launch a request for another department.
 
+For example, if the user chooses the request 1 "bordering municipalities of a given municipality" for the 7th district of Marseille 
+(INSEE code 13207) on the “latest” date, the application will return the list ['13201', '13206','13208'] corresponding to the 1st, 
+6th and 8th districts of Marseille.

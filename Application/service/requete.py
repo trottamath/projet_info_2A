@@ -179,7 +179,7 @@ class Requete ():
 
 req= Requete(dico_requete={"num":"1","id":"13207","date":"latest"})
 print(req.Get_Client()) # donne ['13201','13206','13208']
-print(req.Get_DAO()) #None  (encore un pb de DAO)
+#print(req.Get_DAO()) #None  (encore un pb de DAO)
 
 #Test pour le requete 2 latest et la commune 13207, les parcelles en limites sont:
 list_parc_lim13207=['132078290I0071',
