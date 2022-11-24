@@ -124,7 +124,11 @@ class Telechargement():
                file.write(rq.content)
                #print(("Le fichier {} a bien été téléchargé.").format(filename))
 
-    
+
+    def recherche_fichier(self) -> bool:
+        """ tester si le fichier existe en local"""
+        pass # à faire TODO
+
     def read_json(self) -> dict : 
         '''Lis le fichier json comme un dictionnaire
         Parameters
@@ -139,6 +143,8 @@ class Telechargement():
 
        
        '''
+        #if self.recherche_fichier()==False:
+            #self.download()                #TODO lever les # lorsque la méthode précente est codée
         url = self.generator_link()
         path = self.generator_path() 
         req = requests.get(url)
