@@ -183,7 +183,7 @@ class Requete ():
 #print(req.Get_DAO()) #None  (encore un pb de DAO)
 
 #Test pour le requete 2 latest et la commune 13207, les parcelles en limites sont:
-list_parc_lim13207=['132078290I0071',
+"""list_parc_lim13207=['132078290I0071',
  '132078290I0070',
  '132078290I0069',
  '132078300A0180',
@@ -235,5 +235,11 @@ list_parc_lim13207=['132078290I0071',
  '132078350C0006',
  '132078350D0007']
 
+<<<<<<< HEAD
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelle 132078290I0071 n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune, il devrait y en avoir qui ne commencent pas par "13207" (à vérifier )  
+=======
+ # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelles n'a que 2 parcelles contigües qui sont:
+ # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune (à vérifier )  
+ """
+>>>>>>> bb9eef26652e82a33175860225fff344c6abb75d

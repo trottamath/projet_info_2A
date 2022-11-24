@@ -108,7 +108,7 @@ class ParcelleDAO(metaclass=Singleton):
                         request,
                         {"id_com_limit": id_com_limit}
                     )
-                    res = cursor.fetchall()      #méthode à vérifier (pose pb pour la requete 2) ??
+                    res = cursor.fetchall() #méthode à vérifier (pose pb pour la requete 2) ??
         parcelles = []
         for i in range(len(res)):
             parcelles.append(res[i]['id_parc'])
@@ -143,13 +143,11 @@ p = ParcelleDAO()
 #### test suppression_parcelle : OK
 #p.suppression_parcelle('45678UY')
 
-#### test ajout_parcelle :
-#p.ajout_parcelle('14302B6)
 #### test ajout_parcelle : OK
 #p.ajout_parcelle('14302B6')
 
-#### test research_all_lim ????????????????????????
-#print(p.research_all_lim('50250'))
+#### test research_all_lim
+#print(p.research_all_lim('13207'))
 
 #### test ajout_liste_parc :OK
 #p.ajout_liste_parc(['AAAAAAA','1111111'])
