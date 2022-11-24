@@ -18,7 +18,7 @@ class DepartementsCommunes(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 99):
+    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 0):
         self.path = path
         self.quota = quota
 

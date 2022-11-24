@@ -1,6 +1,6 @@
 """module departementcommunes.py pour définir la classe DepartementCommunes
 version 1.0
-date 30/10/2022
+date 31/10/2022
 auteur : Chloé Contant
 """
 import os
@@ -9,51 +9,54 @@ from datetime import datetime
 from abc import ABC, abstractmethod
 from storage import Storage
 
-class DepartementsParcelles(Storage):
-    '''Classe qui gère le stockage du fichier communes dans départements
-
+class DepartementsCommunes(Storage):
+    '''Classe qui gère le stockage du fichier parcelles dans départements.
+    Attributes :
+    -----------
+        path : str = 'Application/client/data/departements/parcelles'
+        quota : int = 200
+            nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self):
-        pass
+    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 200):
+        self.path = path
+        self.quota = quota
 
-    def create_place(self):
-        '''Méthode qui supprime à partir d'un certain quota les fichiers les plus anciens dans le dossier
-        communes étant dans le dossier départements'''
-        
-        path = 'Application/client/data/departements/parcelles'
+    def count(self) :
+        '''Méthode qui compte le nombre de fichiers qu'il y a dans le dossier'''
         count = 0
-
-        for filename in os.listdir(path):
+        for filename in os.listdir(self.path):
             count = count + 1
+        return(count)
 
-        time = []
-        for filename in os.listdir(path) :
-            time.append(os.path.getctime(os.path.join(path,filename)))
+    def delete_older_file(self):
+        C = self.count()
 
-        dictionary = dict(zip(os.listdir(path),time)) 
+        while self.quota < C :
+            
 
-        if count > 50 :
-            L = os.path.getctime(os.path.join(path,os.listdir(path)[0]))
-            for filename in os.listdir(path) :
-                if L > os.path.getctime(os.path.join(path,filename)):
-                    L = os.path.getctime(os.path.join(path,filename))
-                else : 
-                    pass
-        
-            file_remove = [key  for (key, val) in dictionary.items() if val == L]
-        
-            for filename in file_remove :
-                os.remove(os.path.join(path,filename))
+            time = []
+            for filename in os.listdir(self.path) :
+                time.append(os.path.getctime(os.path.join(self.path,filename)))
+            min_time = min(time)
 
-        else : 
-            pass
+            dictionary = dict(zip(os.listdir(self.path),time))
+
+            older_file = []
+            older_file = [key for (key, val) in dictionary.items() if val == min_time]
+            C = C - len(older_file)
+            print(older_file)
+
+            for filename in older_file :
+                os.remove(os.path.join(self.path,filename))
 
 
 ############################################################### TEST ############################################################################
-    
+
 #test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-D = DepartementsParcelles()
-D.create_place()
+D = DepartementsCommunes()
+print(D.count())
+D.delete_older_file()
+
 
