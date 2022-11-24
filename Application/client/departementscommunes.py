@@ -18,7 +18,7 @@ class DepartementsCommunes(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 101):
+    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 99):
         self.path = path
         self.quota = quota
 
@@ -29,7 +29,7 @@ class DepartementsCommunes(Storage):
             count = count + 1
         return(count)
 
-    def find_older_file(self):
+    def delete_older_file(self):
         C = self.count()
 
         while self.quota < C :
@@ -43,38 +43,12 @@ class DepartementsCommunes(Storage):
             dictionary = dict(zip(os.listdir(self.path),time))
 
             older_file = []
-            #L = time[0]
-            # for filename in os.listdir(self.path) :
-            #     if dictionary[filename] < L :
-            #             #os.path.getctime(os.path.join(path,filename))
-            #             #L = os.path.getctime(os.path.join(path,filename))
-            #         L = dictionary[filename]
-            #     else :
-            #         pass
-            #older_file.append([key for (key, val) in dictionary.items() if val == L])
             older_file = [key for (key, val) in dictionary.items() if val == min_time]
             C = C - len(older_file)
-            # #del file_remove[file_remove.index(filename)]
             print(older_file)
+
             for filename in older_file :
                 os.remove(os.path.join(self.path,filename))
-
-
-    def select_files(self) :
-        '''Méthode qui sélectionne les fichiers du dossier à supprimer'''
-        C = self.count()
-
-        while self.quota < C :
-            self.find_older_file()
-
-        return(older_file)
-
-
-
-    def delete_files(self) :
-        '''Méthode qui supprime à partir d'un certain quota les fichiers les plus anciens dans le dossier
-        communes étant dans le dossier départements'''
-
 
 
 ############################################################### TEST ############################################################################
@@ -83,7 +57,6 @@ class DepartementsCommunes(Storage):
 
 D = DepartementsCommunes()
 print(D.count())
-D.find_older_file()
-#D.select_files()
-#D.delete_files()
+D.delete_older_file()
+
 
