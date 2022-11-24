@@ -118,7 +118,7 @@ class Telechargement():
        filename = req.url[url.rfind('/')+1:]
        chemin = os.path.join(path,filename).replace("\\","/") #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
        #chemin = os.path.join(path,('cadastre-{}-{}-{}.json.gz').format(self.id_zone,self.zonage2,self.date).replace("\\","/"))
-
+       print(chemin)
        with req as rq:
            with open(chemin, 'wb') as file: 
                file.write(rq.content)
@@ -196,10 +196,12 @@ class Telechargement():
 #t4.generator_path()
 
 #test fonction telechargement
-#t4 = Telechargement(id_zone1="08004",zonage1="communes")
-#t4.download()
+#t4 = Telechargement(id_zone1="08005",zonage1="communes")
+#t4.read_json()
 
-#t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
+#t5 = Telechargement(id_zone1="08004",date="latest",zonage1="communes",zonage2="parcelles")
+#print(t5.generator_link())
+#print(t5.generator_path())
 #t5.download()
 
 
@@ -209,4 +211,7 @@ class Telechargement():
 
 #test fonction recherche de fichier
 t4 = Telechargement(id_zone1="08004",zonage1="communes")
+print(t4.recherche_fichier())
+
+t4 = Telechargement(id_zone1="13207",zonage1="communes")
 print(t4.recherche_fichier())

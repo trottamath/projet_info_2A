@@ -95,8 +95,8 @@ class Requete ():
                     list_id_com_contig.append(commune.id)
             
             #enregistrement dans la base de données
-            CommuneCommuneDAO().create_all(id_com1= id_com, list_id_com2= list_id_com_contig, date= self.dico_requete["date"]) #vérifier si latest ne pose pas de pb par la suite
-            CommuneDAO().ajout_commune(id_com= id_com, nom_com= com1.nom)
+            #CommuneCommuneDAO().create_all(id_com1= id_com, list_id_com2= list_id_com_contig, date= self.dico_requete["date"]) #vérifier si latest ne pose pas de pb par la suite
+            #CommuneDAO().ajout_commune(id_com= id_com, nom_com= com1.nom)
             
             return list_id_com_contig
         
@@ -111,7 +111,7 @@ class Requete ():
                     list_id_parc_lim.append(parcel.id)
 
             #enregistrement dans la base de données
-            ParcelleDAO().ajout_liste_parc(list_id_parc= list_id_parc_lim) #à la place de ParcelleCommuneDAO()
+            #ParcelleDAO().ajout_liste_parc(list_id_parc= list_id_parc_lim) #à la place de ParcelleCommuneDAO()
 
             return list_id_parc_lim
         
@@ -178,8 +178,8 @@ class Requete ():
 
 ###################tests
 
-req= Requete(dico_requete={"num":"1","id":"13207","date":"latest"})
-print(req.Get_Client()) # donne ['13201','13206','13208']
+#req= Requete(dico_requete={"num":"1","id":"13207","date":"latest"})
+#print(req.Get_Client()) # donne ['13201','13206','13208']
 #print(req.Get_DAO()) #None  (encore un pb de DAO)
 
 #Test pour le requete 2 latest et la commune 13207, les parcelles en limites sont:
@@ -235,5 +235,5 @@ list_parc_lim13207=['132078290I0071',
  '132078350C0006',
  '132078350D0007']
 
- # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelles n'a que 2 parcelles contigües qui sont:
- # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune (à vérifier )  
+ # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelle 132078290I0071 n'a que 2 parcelles contigües qui sont:
+ # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune, il devrait y en avoir qui ne commencent pas par "13207" (à vérifier )  
