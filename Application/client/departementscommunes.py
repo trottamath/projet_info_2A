@@ -18,7 +18,7 @@ class DepartementsCommunes(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 99):
+    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 101):
         self.path = path
         self.quota = quota
 
@@ -32,18 +32,17 @@ class DepartementsCommunes(Storage):
     def find_older_file(self):
         C = self.count()
 
-        time = []
-        for filename in os.listdir(self.path) :
-            time.append(os.path.getctime(os.path.join(self.path,filename)))
-        min_time = min(time)
-        print(min_time)
-
-
-        dictionary = dict(zip(os.listdir(self.path),time))
-
-        older_file = []
-
         while self.quota < C :
+            
+
+            time = []
+            for filename in os.listdir(self.path) :
+                time.append(os.path.getctime(os.path.join(self.path,filename)))
+            min_time = min(time)
+
+            dictionary = dict(zip(os.listdir(self.path),time))
+
+            older_file = []
             #L = time[0]
             # for filename in os.listdir(self.path) :
             #     if dictionary[filename] < L :
@@ -54,12 +53,11 @@ class DepartementsCommunes(Storage):
             #         pass
             #older_file.append([key for (key, val) in dictionary.items() if val == L])
             older_file = [key for (key, val) in dictionary.items() if val == min_time]
-            print(older_file)
             C = C - len(older_file)
             # #del file_remove[file_remove.index(filename)]
-            # #return(older_file)
-            # for filename in older_file :
-            #     os.remove(os.path.join(self.path,filename))
+            print(older_file)
+            for filename in older_file :
+                os.remove(os.path.join(self.path,filename))
 
 
     def select_files(self) :
@@ -85,7 +83,7 @@ class DepartementsCommunes(Storage):
 
 D = DepartementsCommunes()
 print(D.count())
-print(D.find_older_file())
+D.find_older_file()
 #D.select_files()
 #D.delete_files()
 

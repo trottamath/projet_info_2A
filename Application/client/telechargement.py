@@ -86,7 +86,7 @@ class Telechargement():
 
         '''
         url = self.generator_link()
-        path = r'Application/client/data'  #essai avec modification provisoire de '/data/' 
+        path = r'Application/client/data'  
         req = requests.get(url)
         filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
@@ -115,7 +115,7 @@ class Telechargement():
        
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
-       chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
+       chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug 
        
        #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
        #print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
