@@ -4,10 +4,11 @@ date 20/10/2022
 auteurs : Chloé Contant, Jean-Philippe Trotta et Puchalski Eva
 """
 
-import requests
-import json    
+import json 
 import os
 import gzip
+import requests
+   
 
 class Telechargement():
     '''Classe qui permet de télécharger des fichiers json.gz depuis un site web
@@ -121,17 +122,25 @@ class Telechargement():
        with req as rq:
            with open(chemin, 'wb') as file: 
                file.write(rq.content)
-               #print(("Le fichier {} a bien été téléchargé.").format(filename))
+               print(("Le fichier {} a bien été téléchargé.").format(filename))
 
 
-    def recherche_fichier(self, path : str) -> bool:
+    def recherche_fichier(self) -> bool:
         '''Méthode qui regarde si le fichier existe en local
         
         Returns
         -------
             bool
         '''
-        isfile = os.path.isfile(path)
+        url = self.generator_link()
+        path= self.generator_path() 
+        req = requests.get(url)
+        filename = req.url[url.rfind('/')+1:]
+        
+        chemin = os.path.join(path,filename).replace("\\","/")
+
+        isfile = os.path.isfile(chemin)
+
         return(isfile)
 
     def read_json(self) -> dict : 
@@ -150,6 +159,7 @@ class Telechargement():
        '''
         if self.recherche_fichier() == False:
             self.download()            
+        
         url = self.generator_link()
         path = self.generator_path() 
         req = requests.get(url)
@@ -186,8 +196,8 @@ class Telechargement():
 #t4.generator_path()
 
 #test fonction telechargement
-t4 = Telechargement(id_zone1="08004",zonage1="communes")
-print(t4.download())
+#t4 = Telechargement(id_zone1="08004",zonage1="communes")
+#t4.download()
 
 #t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
 #t5.download()
@@ -198,5 +208,5 @@ print(t4.download())
 #print(dico) 
 
 #test fonction recherche de fichier
-#t4 = Telechargement(id_zone1="08004",zonage1="communes")
-#print(t4.recherche_fichier(path='Application/client/data/communes/parcelles/cadastre-07004-parcelles.json.gz'))
+t4 = Telechargement(id_zone1="08004",zonage1="communes")
+print(t4.recherche_fichier())

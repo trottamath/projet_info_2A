@@ -18,7 +18,7 @@ class DepartementsCommunes(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 0):
+    def __init__(self,path : str = 'Application/client/data/departements/communes', quota : int = 101):
         self.path = path
         self.quota = quota
 
@@ -33,7 +33,6 @@ class DepartementsCommunes(Storage):
         C = self.count()
 
         while self.quota < C :
-            
 
             time = []
             for filename in os.listdir(self.path) :
