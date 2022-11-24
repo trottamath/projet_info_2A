@@ -58,7 +58,7 @@ class CommuneCommuneDAO():
 
 
 
-    def create_all(self, id_com1: str, list_id_com2: list[str], date):
+    def create_all(self, id_com1: str, list_id_com2: list[str], date):# OK
         for id_com2 in list_id_com2:
             self.create(id_com1= id_com1, id_com2= id_com2, date= date)
         
@@ -79,5 +79,5 @@ cc = CommuneCommuneDAO()
 #### test create : OK
 #cc.create('10101', '10102', 'latest')
 
-#### test create_all :
-cc.create_all('1111',)
+#### test create_all : OK
+#cc.create_all('1111',['222222','333333','44444'], 'latest')
