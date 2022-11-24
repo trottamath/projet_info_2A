@@ -67,6 +67,7 @@ class Requete ():
     def Get_Client(self) -> list[str]:
         """pour déterminer le résultat de requête en interaction avec le Client 
         et les méthodes de la couche Objets"""
+        print(self.dico_requete)
         if self.dico_requete["num"] == "1" :
             id_com = self.dico_requete["id"] #l'identifiant de la commune d'intérêt
             id_dep = self.ident_dep() #l'identifiant du département de la commune  
