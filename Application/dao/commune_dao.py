@@ -95,12 +95,13 @@ class CommuneDAO(metaclass=Singleton):
 
 ################################################## TESTS : OK ##################################################
 
-#c = CommuneDAO()
+c = CommuneDAO()
 #print(c.recherche_commune(id_com="13207"))
 
 #### test ajout_commune : OK
 #c.ajout_commune('33000', 'Bordeaux')
 #c.ajout_commune('39000', 'LONS-LE-SAUNIER')
+#print(c.recherche_commune(id_com="33000")) TODO ne fonctionne pas ! La colonne id_com n'existe pas ??
 
 #### test nom_commune : OK
 #print(c.nom_commune('35170'))
