@@ -178,12 +178,12 @@ class Requete ():
 
 ###################tests
 
-req= Requete(dico_requete={"num":"1","id":"13207","date":"latest"})
-print(req.Get_Client()) # donne ['13201','13206','13208']
+#req= Requete(dico_requete={"num":"1","id":"13207","date":"latest"})
+#print(req.Get_Client()) # donne ['13201','13206','13208']
 #print(req.Get_DAO()) #None  (encore un pb de DAO)
 
 #Test pour le requete 2 latest et la commune 13207, les parcelles en limites sont:
-list_parc_lim13207=['132078290I0071',
+"""list_parc_lim13207=['132078290I0071',
  '132078290I0070',
  '132078290I0069',
  '132078300A0180',
@@ -237,3 +237,4 @@ list_parc_lim13207=['132078290I0071',
 
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelles n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune (à vérifier )  
+ """
