@@ -86,7 +86,7 @@ class Telechargement():
 
         '''
         url = self.generator_link()
-        path = r'Application/client/data'  #essai avec modification provisoire de '/data/' 
+        path = r'Application/client/data'  
         req = requests.get(url)
         filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
@@ -115,16 +115,26 @@ class Telechargement():
        
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
-       chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug (non effacée pour conserver la version qui fonctionne sur le pc de Chloé mais pas sur la VM)
+       chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug 
        
        #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
        #print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
        with req as rq:
-           with open(chemin, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+           with open(filename, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
                file.write(rq.content)
                #print(("Le fichier {} a bien été téléchargé.").format(filename))
 
-    
+
+    def recherche_fichier(self, path : str) -> bool:
+        '''Méthode qui regarde si le fichier existe en local
+        
+        Returns
+        -------
+            bool
+        '''
+        isfile = os.path.isfile(path)
+        return(isfile)
+
     def read_json(self) -> dict : 
         '''Lis le fichier json comme un dictionnaire
         Parameters
@@ -139,6 +149,8 @@ class Telechargement():
 
        
        '''
+        if self.recherche_fichier() == False:
+            self.download()            
         url = self.generator_link()
         path = self.generator_path() 
         req = requests.get(url)
@@ -150,9 +162,7 @@ class Telechargement():
         print(chemin) 
 
         with gzip.open(chemin,'rb') as file:
-            
             data = json.load(file) #, parse_float=float, parse_int=float  TODO il y a pb ici lorsque le code du zonage1 est faux .
-            
         return(data)
 
 
@@ -173,12 +183,12 @@ class Telechargement():
 # print(lien_3)
 
 #test pour le générateur de chemin : 
-#t4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
+#4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
 #t4.generator_path()
 
 #test fonction telechargement
-#t4 = Telechargement(id_zone1="08004",zonage1="communes")
-#t4.download()
+# t4 = Telechargement(id_zone1="08004",zonage1="communes")
+# t4.download()
 
 #t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
 #t5.download()
@@ -187,3 +197,7 @@ class Telechargement():
 #lecture de json vers dictionnaire
 #dico = t4.read_json()
 #print(dico) 
+
+#test fonction recherche de fichier
+t4 = Telechargement(id_zone1="08004",zonage1="communes")
+print(t4.recherche_fichier(path='Application/client/data/communes/parcelles/cadastre-07004-parcelles.json.gz'))

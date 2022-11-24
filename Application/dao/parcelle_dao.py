@@ -32,8 +32,13 @@ class ParcelleDAO(metaclass=Singleton):
     #     res = cursor.fetchone() #facultatif ? 
     #     return res  #['parcelle_id']  #??
     
-    def recherche_parcelle(self, id_parc:str): # OK
-        '''pour chercher une parcelle dans la base de données à partir de son identifiant (code)'''
+    def recherche_parcelle(self, id_parc:str):
+        """pour chercher une parcelle dans la base de données à partir de son identifiant (code)
+        Parameters
+        ------
+        id_parc : str
+            identifiant de la parcelle
+        """
         request = "SELECT * FROM parcelle WHERE id_parc = %(id_parc)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
@@ -45,10 +50,15 @@ class ParcelleDAO(metaclass=Singleton):
         return res
 
 
-    def ajout_parcelle(self, id_parc:str): # OK
-        '''pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
+    def ajout_parcelle(self, id_parc:str):
+        """pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
         directement à partir de son identifiant
-        On ajoute une parcelle dans la base de données seulement si elle est en limite de sa commune'''
+        On ajoute une parcelle dans la base de données seulement si elle est en limite de sa commune
+        Parameters
+        ------
+        id_parc : str
+            identifiant de la parcelle
+        """
 
         if self.recherche_parcelle(id_parc) == [] or self.recherche_parcelle(id_parc) == None : # la parcelle n'est pas présente dans la table
             id_com_limit = id_parc[0:5]
@@ -73,29 +83,45 @@ class ParcelleDAO(metaclass=Singleton):
 
 
     def ajout_liste_parc(self, list_id_parc : list[str]):
-        '''pour ajouter toute une liste de parcelles à la base de données'''
+        """pour ajouter toute une liste de parcelles à la base de données
+        Parameters
+        ------
+        list_id_parc : list[str]
+            liste d'identifiant de parcelle
+        """
         for id_parc in list_id_parc:
             if self.recherche_parcelle(id_parc) == None or self.recherche_parcelle(id_parc) == [] :
                 self.ajout_parcelle(id_parc= id_parc)
 
 
     def research_all_lim(self, id_com_limit: str):
-        '''pour chercher toutes les parcelles de la bdd qui sont en limite de la commune dont l'identifiant est donné'''
-        request = "SELECT id_parc FROM parcelle WHERE id_com_inclus = %(id_com_limit)s and limite_com = TRUE"
+        """pour chercher toutes les parcelles de la bdd qui sont en limite de la commune dont l'identifiant est donné
+        Parameters
+        ------
+        id_com_limit : str
+            code postal de la commune à traiter
+        """
+        request = "SELECT id_parc FROM parcelle WHERE id_com_limit = %(id_com_limit)s"
         with DBConnection().connection as connection:
                 with connection.cursor() as cursor :
                     cursor.execute(
                         request,
                         {"id_com_limit": id_com_limit}
-                )
-                res = cursor.fetchall()
-        return res
+                    )
+                    res = cursor.fetchall()      #méthode à vérifier (pose pb pour la requete 2) ??
+        parcelles = []
+        for i in range(len(res)):
+            parcelles.append(res[i]['id_parc'])
+        return parcelles
 
 
-#update inutile dans ce cas ?
-
-    def suppression_parcelle(self, id_parc : str): # OK
-        '''pour supprimer une parcelle de la base de données'''
+    def suppression_parcelle(self, id_parc : str):
+        """pour supprimer une parcelle de la base de données
+        Parameters
+        ------
+        id_parc : str
+            identifiant de la parcelle
+        """
         request = "DELETE FROM parcelle WHERE id_parc =%(id_parc)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
@@ -105,23 +131,25 @@ class ParcelleDAO(metaclass=Singleton):
 
 
 
-############################################ TESTS ############################################
+############################################ TESTS : OK ############################################
 
-#p = ParcelleDAO()
+p = ParcelleDAO()
+#print(p.recherche_parcelle(id_parc="132078290I0071"))
+#print(p.research_all_lim(id_com_limit="13207")) #ne fonctionne pas ?
 
 # test recherche_parcelle : OK
 #print(p.recherche_parcelle('50250AZ4'))
 
 #### test suppression_parcelle : OK
-#p.drop('50250AZ4')
+#p.suppression_parcelle('45678UY')
 
 #### test ajout_parcelle :
-#p.ajout_parcelle('14302B6') # index out of range ?
+#p.ajout_parcelle('14302B6)
 #### test ajout_parcelle : OK
 #p.ajout_parcelle('14302B6')
 
-#### test research_all_lim
-#p.research_all_lim('50250')
+#### test research_all_lim ????????????????????????
+#print(p.research_all_lim('50250'))
 
-#### test ajout_liste_parc :
-p.ajout_liste_parc(['13245AZ','45678UY'])
+#### test ajout_liste_parc :OK
+#p.ajout_liste_parc(['AAAAAAA','1111111'])
