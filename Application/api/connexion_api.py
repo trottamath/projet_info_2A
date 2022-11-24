@@ -10,7 +10,7 @@ from service.requete import Requete
 
 class Connexion_api():
 
-    communes = {"id_commune": ["40001","40002","40003"], "nom_commune": ["Paris","Rennes","Bruz"]}
+    #communes = {"id_commune": ["40001","40002","40003"], "nom_commune": ["Paris","Rennes","Bruz"]}
     
     def lancer_api(self):
         app = FastAPI()
