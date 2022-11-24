@@ -115,12 +115,11 @@ class Telechargement():
        
        req = requests.get(url)
        filename = req.url[url.rfind('/')+1:]
-       chemin = os.path.join(path,filename).replace("\\","/") #version d'origine mais avec bug 
-       
-       #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
-       #print(chemin2) #version2 ne fonctionne pas dès que le test n'est plus dans ce fichier
+       chemin = os.path.join(path,filename).replace("\\","/") #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+       #chemin = os.path.join(path,('cadastre-{}-{}-{}.json.gz').format(self.id_zone,self.zonage2,self.date).replace("\\","/"))
+
        with req as rq:
-           with open(filename, 'wb') as file: #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+           with open(chemin, 'wb') as file: 
                file.write(rq.content)
                #print(("Le fichier {} a bien été téléchargé.").format(filename))
 
@@ -187,8 +186,8 @@ class Telechargement():
 #t4.generator_path()
 
 #test fonction telechargement
-# t4 = Telechargement(id_zone1="08004",zonage1="communes")
-# t4.download()
+t4 = Telechargement(id_zone1="08004",zonage1="communes")
+print(t4.download())
 
 #t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
 #t5.download()
@@ -199,5 +198,5 @@ class Telechargement():
 #print(dico) 
 
 #test fonction recherche de fichier
-t4 = Telechargement(id_zone1="08004",zonage1="communes")
-print(t4.recherche_fichier(path='Application/client/data/communes/parcelles/cadastre-07004-parcelles.json.gz'))
+#t4 = Telechargement(id_zone1="08004",zonage1="communes")
+#print(t4.recherche_fichier(path='Application/client/data/communes/parcelles/cadastre-07004-parcelles.json.gz'))
