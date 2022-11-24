@@ -14,7 +14,16 @@ class ParcelleCommuneDAO():
     concernant les assiations (relation de contiguité) entre parcelles et communes"""
 
     def recherche_unit(self, id_parc: str, id_com: str, date): # OK
-        '''recherche d'un couple parcelle/commune contigües à une date donnée'''
+        """recherche d'un couple parcelle/commune contigües à une date donnée
+        Parameters
+        ------
+        id_parc : str
+            identifiant de la parcelle
+        id_com : str
+            code postal de la commune
+        date : str
+            date de l'information
+        """
         request = "SELECT * FROM parcelle_commune WHERE id_parc=%(id_parc)s AND id_com=%(id_com)s AND date=%(date)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
@@ -26,7 +35,16 @@ class ParcelleCommuneDAO():
         return res
     
     def create(self, id_parc: str, id_com: str, date):
-        '''ajout d'un couple parcelle/commune contigues à une date donnée'''
+        """ajout d'un couple parcelle/commune contigues à une date donnée
+        Parameters
+        ------
+        id_parc : str
+            identifiant de la parcelle
+        id_com : str
+            code postal de la commune
+        date : str
+            date de l'information
+        """
         # if self.recherche_unit(id_parc,id_com,date) != None : pass
         request = "INSERT INTO parcelle_commune (id_parc, id_com, date) VALUES (%(id_parc)s, %(id_com)s, %(date)s)"
         with DBConnection().connection as connection:
@@ -38,12 +56,20 @@ class ParcelleCommuneDAO():
     
 
     def create_all(self, id_com: str, list_id_parc: list[str], date):
-        '''ajout d'une liste de parcelles en limite d'une commune pour une date donnée'''
+        """Ajout d'une liste de parcelles en limite d'une commune pour une date donnée
+        Parameters
+        ------
+        id_com : str
+            code postal de la commune
+        list_id_parc : list[str]
+            liste des identifiants des parcelles à ajouter
+        date : str
+            date de l'information
+        """
         for id_parc in list_id_parc:
             self.create(id_parc= id_parc, id_com= id_com, date= date)
-        #ParcelleDAO().ajout_liste_parc(list_id_parc= list_id_parc) #à la place de crearte.list()
 
-#################################### TESTS : ##########################################
+#################################### TESTS : OK ##########################################
 
 pc = ParcelleCommuneDAO()
 
@@ -53,8 +79,8 @@ pc = ParcelleCommuneDAO()
 #### test create : OK
 #pc.create('111111', '22222', 'latest')
 
-#### test create_all :
-pc.create_all('11111',['2222','33333','44444'], 'latest')
+#### test create_all : OK
+#pc.create_all('11111',['2222','33333','44444'], 'latest')
 
 
 

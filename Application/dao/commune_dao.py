@@ -13,9 +13,14 @@ class CommuneDAO(metaclass=Singleton):
     "Table Commune dans la base de données"
 
     def nom_commune(self, id_com: str):
-        """Retourne le nom de la commune correspondant à l'identifiant"""
+        """Retourne le nom de la commune correspondant à l'identifiant
+        Parameters
+        ------
+        id_com : str
+            code postal de la commune
+        """
+
         request = "SELECT nom_com FROM Commune WHERE id_com = %(id_com)s"
-        
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(
@@ -25,8 +30,14 @@ class CommuneDAO(metaclass=Singleton):
                 res = cursor.fetchone() 
         return res
 
+
     def recherche_commune(self, id_com:str):
-        """Recherche une commune par son identifiant"""
+        """Recherche une commune par son identifiant
+        Parameters
+        ------
+        id_com : str
+            code postal de la commune
+        """
         request = "SELECT * FROM Commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
@@ -38,8 +49,16 @@ class CommuneDAO(metaclass=Singleton):
         return res
         # res[0]['nom_com']
     
+
     def ajout_commune(self, id_com: str, nom_com: str):
-        """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà"""
+        """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà
+        Parameters
+        ------
+        id_com : str
+            code postal de la commune
+        nom_com : str
+            nom de la commune
+        """
         print(self.recherche_commune(id_com)) #provisoire 
         if self.recherche_commune(id_com) == [] or self.recherche_commune(id_com) == None : # la commune n'est pas présente dans la table
             id_dep = id_com[0:2]
@@ -58,7 +77,12 @@ class CommuneDAO(metaclass=Singleton):
             print('la commune est déjà dans la base de données')
         
     def suppression_commune(self, id_com: str):
-        """Supprime la ligne d'une commune dans la table Commune de la BdD """
+        """Supprime la ligne d'une commune dans la table Commune de la BdD
+        Parameters
+        ------
+        id_com : str
+            code postal de la commune
+        """
         request = "DELETE FROM commune WHERE id_com =%(id_com)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
