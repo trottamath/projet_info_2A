@@ -69,18 +69,4 @@ class ParcelleCommuneDAO():
         for id_parc in list_id_parc:
             self.create(id_parc= id_parc, id_com= id_com, date= date)
 
-#################################### TESTS : OK ##########################################
-
-pc = ParcelleCommuneDAO()
-
-#### test recherche_unit : OK
-#print(pc.recherche_unit('132078290I0071', '13207', 'latest'))
-
-#### test create : OK
-#pc.create('111111', '22222', 'latest')
-
-#### test create_all : OK
-#pc.create_all('11111',['2222','33333','44444'], 'latest')
-
-
 

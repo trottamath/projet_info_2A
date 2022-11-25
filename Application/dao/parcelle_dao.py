@@ -131,23 +131,3 @@ class ParcelleDAO(metaclass=Singleton):
 
 
 
-############################################ TESTS : OK ############################################
-
-p = ParcelleDAO()
-#print(p.recherche_parcelle(id_parc="132078290I0071"))
-#print(p.research_all_lim(id_com_limit="13207")) #ne fonctionne pas ?
-
-# test recherche_parcelle : OK
-#print(p.recherche_parcelle('50250AZ4'))
-
-#### test suppression_parcelle : OK
-#p.suppression_parcelle('45678UY')
-
-#### test ajout_parcelle : OK
-#p.ajout_parcelle('14302B6')
-
-#### test research_all_lim
-#print(p.research_all_lim('13207'))
-
-#### test ajout_liste_parc :OK
-#p.ajout_liste_parc(['AAAAAAA','1111111'])
