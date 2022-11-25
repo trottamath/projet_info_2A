@@ -13,8 +13,8 @@ class Connexion_api():
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des communes contigues à id_zone
         @app.get("/commune_commune/")
         async def get_all_commune():
-            dico_requete = {"num": '1',"id": '13207', "date": 'latest'}
-            req= Requete(dico_requete={"num":"1","id":"13207","date":"latest"})
+            #dico_requete = {"num": '1',"id": '13207', "date": 'latest'}
+            req= Requete(dico_requete)
             print("hello")
             return req.Get_DAO()
 

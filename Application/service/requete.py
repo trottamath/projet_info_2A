@@ -234,6 +234,7 @@ class Requete ():
  '132078330M0127',
  '132078350C0006',
  '132078350D0007']
+"""
 
 <<<<<<< HEAD
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelle 132078290I0071 n'a que 2 parcelles contigües qui sont:
@@ -241,5 +242,6 @@ class Requete ():
 =======
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelles n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune (à vérifier )  
- """
+ 
 >>>>>>> bb9eef26652e82a33175860225fff344c6abb75d
+
