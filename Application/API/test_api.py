@@ -5,17 +5,17 @@ from service.requete import Requete
 #from dao.commune_commune_dao import CommuneCommuneDAO
 class Connexion_api():
 
-    dico_requete = {"num": "1","id": '13207', "date": '2021-10-01'}
+    #dico_requete = {"num": "1","id": '13207', "date": '2021-10-01'}
     
     def lancer_api(self):
         app = FastAPI()
 
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des communes contigues à id_zone
-        @app.get("/commune_commune/")
-        async def get_all_commune():
-            #dico_requete = {"num": '1',"id": '13207', "date": 'latest'}
+        @app.get("/commune_commune/{id_com}")
+        async def get_all_commune(id_com):
+            dico_requete = {"num": '1',"id": '13207', "date": 'latest'}
             req= Requete(dico_requete)
-            print("hello")
+            
             return req.Get_DAO()
 
         # Lancement de l'application sur le le port 80
