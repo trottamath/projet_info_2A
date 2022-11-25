@@ -81,7 +81,7 @@ class Polygone(AbstractPolygone):
         """
         #print("test polygones contigus") # TODO à supprimer à la fin
         if self.test_polyg_proche(autre_polyg= autre_polyg):  
-            for sgm1 in self.liste_poly_geom[0]:
+            for sgm1 in self.liste_poly_geom[0]: 
                 if autre_polyg.test_segment(autre_segment=sgm1):
                     return True
         return False

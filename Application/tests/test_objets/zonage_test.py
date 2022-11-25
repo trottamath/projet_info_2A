@@ -16,15 +16,15 @@ class ZonageTest(unittest.TestCase):
     def test_test_zone_proche(self):
 
         poly1 = Polygone([[[1,3],[2,1],[3,3]]])
-        parc1 = Parcelle(id= "01001001", geom_coord= poly1)
+        parc1 = Parcelle(id= "01001001", geom_coord = poly1)
         poly2 = Polygone([[[2,0],[5,0],[3,2]]])
-        parc2 = Parcelle(id= "01001002", geom_coord= poly2)
+        parc2 = Parcelle(id= "01001002", geom_coord = poly2)
         poly3 = Polygone([[[4,2],[9,2],[5,5]],[[5,3],[6,3],[6,4],[5,4]]])
-        parc3 = Parcelle(id= "01001003", geom_coord= poly3)
+        parc3 = Parcelle(id= "01001003", geom_coord = poly3)
 
 
-        test1 = parc1.test_zone_proche ( autre_zone= parc2 ) #True
-        test2 = parc1.test_zone_proche (autre_zone= parc3 ) #False
+        test1 = parc1.test_zone_proche ( autre_zone = parc2 ) #True
+        test2 = parc1.test_zone_proche (autre_zone = parc3 ) #False
 
         m1 = MultiPolygone([[[[4,2],[9,2],[5,5]],[[5,3],[6,3],[6,4],[5,4]]]])
         com1 = Commune(id= "01002", geom_coord=m1, nom="fake1")

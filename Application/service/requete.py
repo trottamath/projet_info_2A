@@ -72,31 +72,44 @@ class Requete ():
             id_com = self.dico_requete["id"] #l'identifiant de la commune d'intérêt
             id_dep = self.ident_dep() #l'identifiant du département de la commune  
             list_dep = Departement(id_dep= id_dep).dep_contig() #la liste des id de départements limitrophes
-            list_com = Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #liste des communes du département
             
+            list_com = Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #liste des communes du département
+            #print(list_com[0].id)
             
             com1="Si ce message s'affiche le code de le commune saisie est faux"
             for commune in list_com:
                 
                 if commune.id == id_com:
                     com1= commune #commune d'intérêt
-            if type(com1)==str: 
-                print(com1) # pb ici!!! TODO provisoire (certaine commune n'existe pas dans les fichiers départements ? ex 13400 dans 13 à vérifier)
-
+             
+            #print(com1) # pb ici!!! TODO provisoire (certaine commune n'existe pas dans les fichiers départements ? ex 13400 dans 13 à vérifier)
+            #print("coucou1")
+            #print(list_dep)
             for id_dep in list_dep:
+                #print("coucou2")
                 # concaténation avec les listes de communes des départements limitrophes
-                list_com = list_com + Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage() #concaténation
-            
-            list_id_com_contig = []
-            
-            for commune in list_com:
                 
+                #print(type(list_com))
+                #print("coucou2bis")
+                autre_list_com = Instanciation(zonage1="departements", id1=id_dep, zonage2="communes", date=self.dico_requete["date"]).instancier_zonage()
+                #print(type(autre_list_com))
+                list_com = [ *list_com , *autre_list_com] #concaténation
+                
+                #print(type(list_com))
+                #print("coucou2ter")
+                #print(list_com[len(list_com)-1].id) #bug ci-dessus pour certaines communes ????  
+            list_id_com_contig = []
+            #print("coucou3")
+            #print(type(list_com))
+            for commune in list_com:
+                #print("je suis ici")
                 if commune.id != id_com and com1.test_zone_contigu(commune): #bug avec com1 ? TODO
                     list_id_com_contig.append(commune.id)
+                    #print("coucou4")
             
             #enregistrement dans la base de données
-            #CommuneCommuneDAO().create_all(id_com1= id_com, list_id_com2= list_id_com_contig, date= self.dico_requete["date"]) #vérifier si latest ne pose pas de pb par la suite
-            #CommuneDAO().ajout_commune(id_com= id_com, nom_com= com1.nom)
+            CommuneCommuneDAO().create_all(id_com1= id_com, list_id_com2= list_id_com_contig, date= self.dico_requete["date"]) #vérifier si latest ne pose pas de pb par la suite
+            CommuneDAO().ajout_commune(id_com= id_com, nom_com= com1.nom)
             
             return list_id_com_contig
         
@@ -109,9 +122,10 @@ class Requete ():
             for parcel in list_parc:
                 if parcel.test_zone_contigu(macro_zone= commune[0]):
                     list_id_parc_lim.append(parcel.id)
-
+            
             #enregistrement dans la base de données
-            #ParcelleDAO().ajout_liste_parc(list_id_parc= list_id_parc_lim) #à la place de ParcelleCommuneDAO()
+            ParcelleDAO().ajout_liste_parc(list_id_parc= list_id_parc_lim) #à la place de ParcelleCommuneDAO()
+            
 
             return list_id_parc_lim
         
@@ -119,10 +133,10 @@ class Requete ():
             id_parc = self.dico_requete["id"] #l'identifiant de la parcelle d'intérêt
             id_com = id_parc[0:5] #identifiant de la commune de cette parcelle
             requete2_com = Requete(dico_requete= {"num":"2","id":id_com,"date":self.dico_requete["date"]})
-            #if requete2_com.Get_DAO() != []:
-            #    list_id_parc_lim = requete2_com.Get_DAO()
-            #else:
-            list_id_parc_lim = requete2_com.Get_Client() #à réindenter dans else
+            if requete2_com.Get_DAO() != []:
+                list_id_parc_lim = requete2_com.Get_DAO()
+            else:
+                list_id_parc_lim = requete2_com.Get_Client() #à réindenter dans else
 
             liste_parc_com1 = Instanciation(zonage1="communes", id1=id_com, zonage2="parcelles", date=self.dico_requete["date"]).instancier_zonage()
             for parcel in liste_parc_com1:
@@ -147,10 +161,10 @@ class Requete ():
                 if list_id_com_contig!=[] and list_id_com_contig!=None:    
                     for id_com2 in list_id_com_contig: #pour chaque commune contigüe
                         requete2_com2 = Requete(dico_requete= {"num":"2","id":id_com2,"date":self.dico_requete["date"]})
-                        #if requete2_com2.Get_DAO() != []:
-                        #    list_id_parc_lim2 = requete2_com2.Get_DAO()
-                        #else:
-                        list_id_parc_lim2 = requete2_com2.Get_Client() # à réindenter dans else
+                        if requete2_com2.Get_DAO() != []:
+                            list_id_parc_lim2 = requete2_com2.Get_DAO()
+                        else:
+                            list_id_parc_lim2 = requete2_com2.Get_Client() # à réindenter dans else
                         liste_parc_com2 = Instanciation(zonage1="communes", id1=id_com2, zonage2="parcelles", date=self.dico_requete["date"]).instancier_zonage()
                         liste_parc_lim2 = []
                         for parc2 in liste_parc_com2:
@@ -167,8 +181,8 @@ class Requete ():
 
     def Get_or_create(self) ->list[str]:
         if self.Get_DAO()!=None and self.Get_DAO()!=[]: #à vérifier TODO
-            print("iciiii")
-            print(self.Get_DAO())
+            
+            #print(self.Get_DAO())
             return self.Get_DAO()
         else:
             return self.Get_Client()
@@ -183,7 +197,7 @@ class Requete ():
 #print(req.Get_DAO()) #None  (encore un pb de DAO)
 
 #Test pour le requete 2 latest et la commune 13207, les parcelles en limites sont:
-"""list_parc_lim13207=['132078290I0071',
+list_parc_lim13207=['132078290I0071',
  '132078290I0070',
  '132078290I0069',
  '132078300A0180',
@@ -235,11 +249,8 @@ class Requete ():
  '132078350C0006',
  '132078350D0007']
 
-<<<<<<< HEAD
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelle 132078290I0071 n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune, il devrait y en avoir qui ne commencent pas par "13207" (à vérifier )  
-=======
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelles n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune (à vérifier )  
- """
->>>>>>> bb9eef26652e82a33175860225fff344c6abb75d
+ 

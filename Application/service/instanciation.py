@@ -26,7 +26,7 @@ class Instanciation():
 
     def instancier_zonage(self)->list[Zonage]:
         '''créer une liste d'instances de Commune ou Parcelle à partir d'une liste de dictionnaires demandée au client'''
-        list_dico = LienService(self.dico).genere_dico() #bug ici pour parcelle
+        list_dico = LienService(self.dico).genere_dico()
         #print(list_dico)
         list_zonage = []
         if self.dico["zonage2"] == "communes":
@@ -38,12 +38,26 @@ class Instanciation():
 
         return list_zonage
 
-#test
-#insta = Instanciation(zonage1="departements", id1="13", zonage2="communes", date="latest")
+#test ne fonctionne pas pour certains départements 06, 14, 15, 16, 21, 22, 24, 25, 27, 28, 29, 34, 40, 43, 50, 51, 54, 55, 59, 
+# 60, 65, 67, 69, 77, 79, 81, 87, 90, 96, 971, 975   (vérifier le contenu du json)
+#list_com1 = Instanciation(zonage1="departements", id1="2A", zonage2="communes", date="latest").instancier_zonage()
+#list_com2 = Instanciation(zonage1="departements", id1="06", zonage2="communes", date="latest").instancier_zonage()
 
 #print(insta.dico)
 #print(insta.dico["zonage1"])
 
 #liste = insta.instancier_zonage()
 #print(liste[0].id)
+
+#120com13110 = Instanciation(zonage1="communes", id1="13110", zonage2="communes", date="latest").instancier_zonage() #liste d'une seule commune
+#print (com13110[0].geom_coord)
+#com83120 = Instanciation(zonage1="communes", id1="83120", zonage2="communes", date="latest").instancier_zonage()
+#print (com83120[0].geom_coord)
+
+#from objets.zone.commune import Commune
+#print(com13110[0].lien_zone(autre_zone = com83120[0])) # non-contigues (alors qu'elles devraient l'être)
+
+#from objets.geometrie.multi_polygone import MultiPolygone
+#print(com13110[0].geom_coord.test_polyg_contigu(autre_polyg = com83120[0].geom_coord)) # pourquoi ces multipolygones ne sont pas contigus?
+
 

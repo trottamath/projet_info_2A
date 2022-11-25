@@ -56,7 +56,7 @@ class Zonage():
         -----------
             macro_zone : Zonage
         """
-        return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord)
+        return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord) #retest avec inversion des zonage
 
     def ss_list_contig(self,list_zones) -> list :
         """ extrait une sous-liste de zones contigües
