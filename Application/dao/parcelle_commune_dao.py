@@ -13,7 +13,7 @@ class ParcelleCommuneDAO():
     """classe ParcelleCommuneDAO pour communiquer avec la base de bonnées
     concernant les assiations (relation de contiguité) entre parcelles et communes"""
 
-    def recherche_unit(self, id_parc: str, id_com: str, date): # OK
+    def recherche_unit(self, id_parc: str, id_com: str, date: str):
         """recherche d'un couple parcelle/commune contigües à une date donnée
         Parameters
         ------
@@ -24,17 +24,17 @@ class ParcelleCommuneDAO():
         date : str
             date de l'information
         """
-        request = "SELECT * FROM parcelle_commune WHERE id_parc=%(id_parc)s AND id_com=%(id_com)s AND date=%(date)s"
+        request = "SELECT * FROM parcelle_commune WHERE id_parc = %(id_parc)s AND id_com = %(id_com)s AND date = %(date)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(
                     request,
-                    {"id_parc": id_parc, "id_com": id_com, "date":date}
+                    {"id_parc": id_parc, "id_com": id_com, "date": date}
                     )
-                res = cursor.fetchall() #fetchone ?
+                res = cursor.fetchall()
         return res
     
-    def create(self, id_parc: str, id_com: str, date):
+    def create(self, id_parc: str, id_com: str, date: str):
         """ajout d'un couple parcelle/commune contigues à une date donnée
         Parameters
         ------
@@ -55,7 +55,7 @@ class ParcelleCommuneDAO():
                     )
     
 
-    def create_all(self, id_com: str, list_id_parc: list[str], date):
+    def create_all(self, id_com: str, list_id_parc: list[str], date: str):
         """Ajout d'une liste de parcelles en limite d'une commune pour une date donnée
         Parameters
         ------
@@ -68,5 +68,3 @@ class ParcelleCommuneDAO():
         """
         for id_parc in list_id_parc:
             self.create(id_parc= id_parc, id_com= id_com, date= date)
-
-

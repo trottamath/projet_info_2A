@@ -13,8 +13,10 @@ from objets.geometrie.multi_polygone import MultiPolygone
 import unittest
 
 class ZonageTest(unittest.TestCase):
-    def test_test_zone_proche(self):
+    '''classe de test de la classe Zonage'''
 
+    def test_test_zone_proche(self):
+        '''test de la méthode test_zone_proche'''
         poly1 = Polygone([[[1,3],[2,1],[3,3]]])
         parc1 = Parcelle(id= "01001001", geom_coord = poly1)
         poly2 = Polygone([[[2,0],[5,0],[3,2]]])
@@ -40,6 +42,7 @@ class ZonageTest(unittest.TestCase):
         self.assertEqual(test, True)
 
     def test_test_zone_contigu(self):
+        '''test de la méthode test_zone_contigu'''
         poly1 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
         parc1 = Parcelle(id= "01001001", geom_coord= poly1)
         poly2 = Polygone([[[4,4],[4,5],[6,7]]])
@@ -60,6 +63,7 @@ class ZonageTest(unittest.TestCase):
         self.assertEqual(test, True)
 
     def test_ss_list_contig(self):
+        '''test de la méthode ss_list_contig'''
         poly1 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
         parc1 = Parcelle(id= "01001001", geom_coord= poly1)
         poly2 = Polygone([[[4,4],[4,5],[6,7],[5425,22],[2,25545]]])

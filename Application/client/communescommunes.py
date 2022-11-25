@@ -18,7 +18,8 @@ class DepartementsCommunes(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self,path : str = 'Application/client/data/communes/communes', quota : int = 200):
+    def __init__(self, path : str = 'Application/client/data/communes/communes', quota : int = 200):
+        '''constructeur'''
         self.path = path
         self.quota = quota
 
@@ -30,6 +31,7 @@ class DepartementsCommunes(Storage):
         return(count)
 
     def delete_older_file(self):
+        
         C = self.count()
 
         while self.quota < C :
@@ -54,8 +56,6 @@ class DepartementsCommunes(Storage):
 
 #test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-D = DepartementsCommunes()
-print(D.count())
-D.delete_older_file()
-
-
+#D = DepartementsCommunes()
+#print(D.count())
+#D.delete_older_file()

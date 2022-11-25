@@ -34,16 +34,7 @@ class Storage(ABC):
     #     #os.rmdir("myfolder") #supprime un dossier
 
     def create_place():
-        '''Méthode qui supprime le fichier le plus ancien d'un dossier pour libérer de la place
-        Parameters
-        ----------
-
-        Returns
-        -------
-
-        Example
-        -------
-        '''
+        '''Méthode qui supprime le fichier le plus ancien d'un dossier pour libérer de la place'''
         pass
     #fixer un quota par dossier 
     #récuperer les dates de téléchargement pour supprimer le plus ancien

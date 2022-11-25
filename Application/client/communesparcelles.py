@@ -19,6 +19,7 @@ class DepartementsCommunes(Storage):
     '''
 
     def __init__(self,path : str = 'Application/client/data/communes/parcelles', quota : int = 200):
+        '''constructeur'''
         self.path = path
         self.quota = quota
 
@@ -33,7 +34,6 @@ class DepartementsCommunes(Storage):
         C = self.count()
 
         while self.quota < C :
-
             time = []
             for filename in os.listdir(self.path) :
                 time.append(os.path.getctime(os.path.join(self.path,filename)))
@@ -54,8 +54,8 @@ class DepartementsCommunes(Storage):
 
 #test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-D = DepartementsCommunes()
-print(D.count())
-D.delete_older_file()
+#D = DepartementsCommunes()
+#print(D.count())
+#D.delete_older_file()
 
 

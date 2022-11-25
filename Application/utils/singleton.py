@@ -1,3 +1,4 @@
+'''module singleton pour définir la classe Singleton'''
 class Singleton(type):
     """
     -> https://refactoring.guru/fr/design-patterns/singleton

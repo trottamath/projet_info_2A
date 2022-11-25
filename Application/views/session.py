@@ -18,16 +18,14 @@ from utils.singleton import Singleton
                 #date : str
                  #   date du fichier cadatral de référence
 
-class Session(metaclass=Singleton):
+class Session(metaclass = Singleton):
     def __init__(self):
         """
         Définition des variables que l'on stocke en session
         La syntaxe => ref:type = valeur nous permet de donner le type des variables.
         """
-        self.date: str = "latest" #date du fichier
-        self.num: str = None #numero de la requete
+        self.date : str = "latest" #date du fichier
+        self.num : str = None #numero de la requete
         self.id : str = None #identifiant de la commune ou parcelle
-        self.list_res: list = None #liste des identifiants récupéré par la couche service
-        self.user_name: str = "utilisateur" #à voir si c'est utile ?
-        
-
+        self.list_res : list = None #liste des identifiants récupéré par la couche service
+        self.user_name : str = "utilisateur" #à voir si c'est utile ?

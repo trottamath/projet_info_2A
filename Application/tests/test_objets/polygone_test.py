@@ -30,12 +30,11 @@ class PolygoneTest(unittest.TestCase):
         self.assertEqual(test, True)
 
     def test_test_polyg_contigu (self):
+        '''test de la méthode test_polyg_contigu'''
         poly1 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
         poly2 = Polygone([[[4,4],[4,5],[6,7]]])
-        self.assertEqual(poly1.test_polyg_contigu(autre_polyg=poly2), True)
+        self.assertEqual(poly1.test_polyg_contigu(autre_polyg= poly2), True)
 
   
-
-
 if __name__ == '__main__':
     unittest.main()

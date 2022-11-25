@@ -12,7 +12,7 @@ from dao.commune_dao import CommuneDAO
 class CommuneCommuneDAO():
     '''classe de communication avec la table commune_commune de la bdd'''
 
-    def recherche(self, id_com1:str, id_com2:str, date:str):
+    def recherche(self, id_com1: str, id_com2: str, date: str):
         """Recherche un couple de commune pour une date donnée
         Parameters
         ------
@@ -23,12 +23,12 @@ class CommuneCommuneDAO():
         date : str
             date de l'information
         """
-        request = "SELECT * FROM commune_commune WHERE id_com1=%(id_com1)s AND id_com2=%(id_com2)s AND date=%(date)s"
+        request = "SELECT * FROM commune_commune WHERE id_com1 = %(id_com1)s AND id_com2 = %(id_com2)s AND date = %(date)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(
                     request,
-                    {"id_com1": id_com1, "id_com2": id_com2, "date":date}
+                    {"id_com1": id_com1, "id_com2": id_com2, "date": date}
                 )
                 res = cursor.fetchall()
         return res
@@ -52,13 +52,13 @@ class CommuneCommuneDAO():
                 with connection.cursor() as cursor :
                     cursor.execute(
                         request,
-                        {"id_com1": id_com1, "id_com2": id_com2, "date":date}
+                        {"id_com1": id_com1, "id_com2": id_com2, "date": date}
                     )
         else :
             pass
     
 
-    def recherche_com(self, id_com: str, date):
+    def recherche_com(self, id_com: str, date: str):
         """recherche les communes limitrophes à une commune donnée
         Parameters
         ------
@@ -72,7 +72,7 @@ class CommuneCommuneDAO():
             with connection.cursor() as cursor :
                 cursor.execute(
                     request,
-                    {"id_com": id_com, "date":date}
+                    {"id_com": id_com, "date": date}
                 )
                 res = cursor.fetchall()
         voisines = []
@@ -82,7 +82,7 @@ class CommuneCommuneDAO():
 
 
 
-    def create_all(self, id_com1: str, list_id_com2: list[str], date):
+    def create_all(self, id_com1: str, list_id_com2: list[str], date: str):
         """Ajoute un ensemble de communes voisines à une commune donnée
         Parameters
         ------
@@ -95,6 +95,3 @@ class CommuneCommuneDAO():
         """
         for id_com2 in list_id_com2:
             self.create(id_com1= id_com1, id_com2= id_com2, date= date)
-        
-    
-

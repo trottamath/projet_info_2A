@@ -27,7 +27,7 @@ class Zonage():
         self.id = id
         self.geom_coord = geom_coord
 
-    def test_egal_id(self,autre_zone): #à voir si utile
+    def test_egal_id(self, autre_zone): #à voir si utile
         """teste si deux zonages ont le même identifiant
         Paramètre:
         ----------
@@ -58,7 +58,7 @@ class Zonage():
         """
         return macro_zone.geom_coord.test_polyg_contigu(self.geom_coord) #retest avec inversion des zonage
 
-    def ss_list_contig(self,list_zones) -> list :
+    def ss_list_contig(self, list_zones) -> list :
         """ extrait une sous-liste de zones contigües
         Parametre:
             list_zones : list [ Zonage ]
@@ -66,12 +66,11 @@ class Zonage():
         Return :
             list [ Zonage ]
             """
-        ss_list= []
+        ss_list = []
         for zone in list_zones:
-            if zone.test_zone_contigu(macro_zone= self) and self.id!=zone.id:
+            if zone.test_zone_contigu(macro_zone= self) and self.id != zone.id:
                 ss_list.append(zone)
         return ss_list
-
     
     def __str__(self):
         return self.id

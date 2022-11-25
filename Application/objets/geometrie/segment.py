@@ -32,5 +32,4 @@ class Segment():
         """affichage
         """
         print("Segment:")
-        return "[ {} ; {} ]".format(str(self.point1),str(self.point2))
-
+        return "[ {} ; {} ]".format(str(self.point1), str(self.point2))

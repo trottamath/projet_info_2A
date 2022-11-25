@@ -62,7 +62,7 @@ class CommuneDAO(metaclass=Singleton):
         print(self.recherche_commune(id_com)) #provisoire 
         if self.recherche_commune(id_com) == [] or self.recherche_commune(id_com) == None : # la commune n'est pas présente dans la table
             id_dep = id_com[0:2]
-            if id_dep=="97": # Dom Tom : ont un num de département à 3 chiffres
+            if id_dep == "97": # Dom Tom : ont un num de département à 3 chiffres
                 id_dep = id_com[0:3]
             request = "INSERT INTO commune (id_com, nom_commune, id_dep)"\
             "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
@@ -83,7 +83,7 @@ class CommuneDAO(metaclass=Singleton):
         id_com : str
             code postal de la commune
         """
-        request = "DELETE FROM commune WHERE id_com =%(id_com)s"
+        request = "DELETE FROM commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(

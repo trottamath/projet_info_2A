@@ -70,7 +70,7 @@ class Telechargement():
 
         fichier ="cadastre-{}-{}.json.gz".format(self.id_zone,self.zonage2)
 
-        if self.zonage1 == "france" and self.zonage2== "communes":
+        if self.zonage1 == "france" and self.zonage2 == "communes":
             url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/france/cadastre-france-communes.json.gz"
         else:
             url = "{}{}/geojson/{}/{}/{}".format(url,self.date,self.zonage1,url_zone1,fichier)
@@ -91,19 +91,19 @@ class Telechargement():
         req = requests.get(url)
         filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
-            path = os.path.join(path,'departements').replace("\\","/")
+            path = os.path.join(path, 'departements').replace("\\", "/")
             if 'communes' in filename :
-                path = os.path.join(path,'communes').replace("\\","/")
+                path = os.path.join(path, 'communes').replace("\\", "/")
             else : 
-                path = os.path.join(path,'parcelles').replace("\\","/")
+                path = os.path.join(path, 'parcelles').replace("\\", "/")
         elif 'france' in url:
-            path = os.path.join(path,'france').replace("\\","/")
+            path = os.path.join(path, 'france').replace("\\", "/")
         else : 
-            path = os.path.join(path,'communes').replace("\\","/")
+            path = os.path.join(path, 'communes').replace("\\", "/")
             if 'communes' in filename :
-                path = os.path.join(path,'communes').replace("\\","/")
+                path = os.path.join(path, 'communes').replace("\\", "/")
             else : 
-                path = os.path.join(path,'parcelles').replace("\\","/")
+                path = os.path.join(path, 'parcelles').replace("\\", "/")
         return(path)
 
     
@@ -112,12 +112,12 @@ class Telechargement():
              
        '''
        url = self.generator_link()
-       path= self.generator_path() 
+       path = self.generator_path() 
        
        req = requests.get(url)
-       filename = req.url[url.rfind('/')+1:]
+       filename = req.url[url.rfind('/') + 1:]
        #chemin = os.path.join(path,filename).replace("\\","/") #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
-       chemin = os.path.join(path,('cadastre-{}-{}-{}.json.gz').format(self.id_zone,self.zonage2,self.date).replace("\\","/"))
+       chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(self.id_zone, self.zonage2, self.date).replace("\\", "/"))
        print(chemin)
        with req as rq:
            with open(chemin, 'wb') as file: 
@@ -135,10 +135,10 @@ class Telechargement():
         url = self.generator_link()
         path= self.generator_path() 
         req = requests.get(url)
-        filename = req.url[url.rfind('/')+1:]
+        filename = req.url[url.rfind('/') + 1:]
         
         #chemin = os.path.join(path,filename).replace("\\","/")
-        chemin = os.path.join(path,('cadastre-{}-{}-{}.json.gz').format(self.id_zone,self.zonage2,self.date).replace("\\","/"))
+        chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(self.id_zone, self.zonage2, self.date).replace("\\", "/"))
 
         isfile = os.path.isfile(chemin)
 
@@ -146,18 +146,11 @@ class Telechargement():
 
     def read_json(self) -> dict : 
         '''Lis le fichier json comme un dictionnaire
-        Parameters
-        ----------
-        path : str 
-        Chemin dans lequel le fichier json.gz est stocké
 
         Return
         ------
-        data 
-        Fichier json sous la forme d'un dictionnaire python
-
-       
-       '''
+            dict
+        '''
         if self.recherche_fichier() == False:
             self.download()            
         
@@ -165,14 +158,14 @@ class Telechargement():
         path = self.generator_path() 
         req = requests.get(url)
         
-        filename = req.url[url.rfind('/')+1:]
+        filename = req.url[url.rfind('/') + 1:]
         #chemin = os.path.join(path,filename).replace("\\","/")
-        chemin = os.path.join(path,('cadastre-{}-{}-{}.json.gz').format(self.id_zone,self.zonage2,self.date).replace("\\","/")) 
+        chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(self.id_zone, self.zonage2, self.date).replace("\\", "/")) 
 
         #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
         print(chemin) 
 
-        with gzip.open(chemin,'rb') as file:
+        with gzip.open(chemin, 'rb') as file:
             data = json.load(file) #, parse_float=float, parse_int=float  TODO il y a pb ici lorsque le code du zonage1 est faux .
         return(data)
 
@@ -212,8 +205,9 @@ class Telechargement():
 #print(dico) 
 
 #test fonction recherche de fichier
-t4 = Telechargement(id_zone1="08005",zonage1="communes")
-print(t4.recherche_fichier())
+#t4 = Telechargement(id_zone1="08005",zonage1="communes")
+#print(t4.recherche_fichier())
+
 #t4 = Telechargement(id_zone1="08004",zonage1="communes")
 #t4.download()
 #print(t4.recherche_fichier())

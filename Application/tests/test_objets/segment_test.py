@@ -9,8 +9,10 @@ from objets.geometrie.segment import Segment
 import unittest
 
 class SegmentTest(unittest.TestCase):
+    '''test de la classe segment'''
     
     def test_test_egal(self):
+        '''test de la méthode test_egal'''
         
         pt1 = Point([0,0])
         pt2 = Point([4,10])

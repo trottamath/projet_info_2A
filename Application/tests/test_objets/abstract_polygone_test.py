@@ -16,14 +16,14 @@ class MultiPolygoneTest(unittest.TestCase):
 
         poly8 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
         poly9 = Polygone([[[4,4],[4,5],[2.5,6]],[[3.6,5],[3.8,5],[3.8,4.6],[3.6,4.6]]])
-        rect1 = Rectangle(lat_min=3, lat_max=7, long_min=2, long_max=3.5) 
+        rect1 = Rectangle(lat_min= 3, lat_max= 7, long_min= 2, long_max= 3.5) 
 
         test1 = poly8.test_intersect_rect (rectangle = rect1) #true
         test2 = poly9.test_intersect_rect (rectangle = rect1) #false
 
         m1 = MultiPolygone([[[[1,5545.3254],[654436.65,25545.444],[5425,11]],[[8000,4000],[10000,4000],[8000,2000]]],[[[5,1],[4,4],[4,5],[6,6],[6,1]]]])
-        rect2 = Rectangle(lat_min=2000, lat_max=4000, long_min=2000, long_max=4000)
-        rect3 =Rectangle(lat_min=-10, lat_max=-5, long_min=-10, long_max=-5)
+        rect2 = Rectangle(lat_min= 2000, lat_max= 4000, long_min= 2000, long_max= 4000)
+        rect3 = Rectangle(lat_min= -10, lat_max= -5, long_min= -10, long_max= -5)
 
         test3 = m1.test_intersect_rect (rectangle = rect1) #True
         test4 = m1.test_intersect_rect (rectangle = rect2) #True

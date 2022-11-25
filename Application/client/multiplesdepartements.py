@@ -119,6 +119,7 @@ class MultiplesDepartements(Telechargement):
         }
 
     def __init__(self, dict_dep : dict = DEPARTEMENTS):
+        '''constructeur'''
         self.num_dep = list(dict_dep.keys())
         self.name_dep = list(dict_dep.values())
 
@@ -137,7 +138,7 @@ class MultiplesDepartements(Telechargement):
         '''Méthode qui télécharge tous les départements de la France'''
 
         for i in self.num_dep :
-            t = Telechargement(id_zone1=i,date="latest",zonage1="departements")
+            t = Telechargement(id_zone1 = i, date = "latest", zonage1 = "departements")
             link = t.generator_link()
             print(link)
             path = t.generator_path()

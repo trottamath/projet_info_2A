@@ -25,10 +25,10 @@ class Parcelle(Zonage):
     def ident_commune(self): 
         """retourne l'identifiant de la commune dont la parcelle est issue
         """
-        id=""
+        id = ""
         for i in range(5):
             id = id + self.id_parc[i]
-        return id # à vérifier pour les DOM, si les id communes ont aussi 5 caractères
+        return id
 
     def lien_zone(self, autre_parcelle) -> str:
         """retourne "contigues" si les deux parcelles sont contigües

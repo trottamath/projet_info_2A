@@ -17,7 +17,7 @@ from dao.commune_dao import CommuneDAO
 connexion = DBConnection().connection
 cursor = connexion.cursor()
 
-class ParcelleDAO(metaclass=Singleton):
+class ParcelleDAO(metaclass = Singleton):
     """classe ParcelleDAO """
 
 
@@ -32,7 +32,7 @@ class ParcelleDAO(metaclass=Singleton):
     #     res = cursor.fetchone() #facultatif ? 
     #     return res  #['parcelle_id']  #??
     
-    def recherche_parcelle(self, id_parc:str):
+    def recherche_parcelle(self, id_parc: str):
         """pour chercher une parcelle dans la base de données à partir de son identifiant (code)
         Parameters
         ------
@@ -50,7 +50,7 @@ class ParcelleDAO(metaclass=Singleton):
         return res
 
 
-    def ajout_parcelle(self, id_parc:str):
+    def ajout_parcelle(self, id_parc: str):
         """pour ajouter une nouvelle parcelle dans la table parcelle de la base de données,
         directement à partir de son identifiant
         On ajoute une parcelle dans la base de données seulement si elle est en limite de sa commune
@@ -122,12 +122,9 @@ class ParcelleDAO(metaclass=Singleton):
         id_parc : str
             identifiant de la parcelle
         """
-        request = "DELETE FROM parcelle WHERE id_parc =%(id_parc)s"
+        request = "DELETE FROM parcelle WHERE id_parc = %(id_parc)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(
                     request,
                     {"id_parc": id_parc})
-
-
-

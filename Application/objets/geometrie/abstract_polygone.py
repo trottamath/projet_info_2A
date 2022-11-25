@@ -11,10 +11,12 @@ class AbstractPolygone():
     """classe abstraite pour définir les méthodes communes aux objets de type Polygone et Multipolygone
     """
     def __init__(self): #à supprimer ? TODO
+        '''constructeur'''
         pass
 
     @abstractmethod
     def rectangle_circonscrit(self):
+        '''retourne le rectangle circonscrit à'''
         pass
 
     def test_intersect_rect (self, rectangle : Rectangle ) -> bool:

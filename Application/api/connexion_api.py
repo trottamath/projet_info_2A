@@ -1,9 +1,9 @@
 """module connexion_api.py
 version 1.0
 date 18/11/2022
-auteures : Fiona Fonkou  et Justine Farnarier
+auteures : Fiona Fonkou, Justine Farnarier, Chloé Contant
 """
-# Import classique
+
 from fastapi import FastAPI
 import uvicorn
 from service.requete import Requete
@@ -36,7 +36,7 @@ from service.requete import Requete
 
             #il faudrait aussi une liste de choix pour les dates, comme c'est fait dans la classe view
         
-"""
+"""  #commentaires à nettoyer TODO
 class Connexion_api():
 
     #dico_requete = {"num": "1","id": '13207', "date": '2021-10-01'}
@@ -47,9 +47,8 @@ class Connexion_api():
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des communes contigues à id_zone
         @app.get("/commune_commune/{id_com}")
         async def get_all_commune(id_com:str, date):
-            dico_requete = {"num": '1',"id": id_com, "date": 'latest'}
+            dico_requete = {"num": '1', "id": id_com, "date": 'latest'}
             req= Requete(dico_requete)
-            
             return req.Get_DAO()
 
         # Lancement de l'application sur le le port 80
@@ -61,8 +60,8 @@ class Connexion_api():
         #entrer l'id dans le path
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des parcelles en bordure de id_zone
         @app.get("/commune_parcelle/{id_com}")
-        async def get_all(id_com:str, date):
-            dico_requete = {"num":"2","id":id_com,"date":'latest'}
+        async def get_all(id_com: str, date):
+            dico_requete = {"num": "2", "id": id_com, "date": 'latest'}
             #return Requete(dico_requete).Get_Client()
             req= Requete(dico_requete)
             return req.Get_DAO()
@@ -73,13 +72,9 @@ class Connexion_api():
 
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des parcelles limitrophes à id_zone
         @app.get("/parcelle_parcelle/")
-        async def get_all_commune(id_com:str, date):
-            dico_requete = {"num":"3","id":id_com,"date":date}
+        async def get_all_commune(id_com: str, date: str):
+            dico_requete = {"num": "3", "id": id_com, "date": date}
             return Requete(dico_requete).Get_Client()
-
-
-
-
 
 
         # Lancement de l'application sur le le port 80

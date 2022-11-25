@@ -13,7 +13,7 @@ from objets.geometrie.multi_polygone import MultiPolygone
 #from objets.zone.departement import Departement
 
 class Instanciation():
-    def __init__(self, zonage1:str, id1:str, zonage2:str, date:str ) -> dict:
+    def __init__(self, zonage1: str, id1: str, zonage2: str, date: str ) -> dict:
         '''constructeur
         Paramètres:
         -----------
@@ -24,17 +24,17 @@ class Instanciation():
         self.dico = {"zonage1": zonage1, "id1": id1, "zonage2": zonage2, "date": date}
 
 
-    def instancier_zonage(self)->list[Zonage]:
+    def instancier_zonage(self) -> list[Zonage]:
         '''créer une liste d'instances de Commune ou Parcelle à partir d'une liste de dictionnaires demandée au client'''
         list_dico = LienService(self.dico).genere_dico()
         #print(list_dico)
         list_zonage = []
         if self.dico["zonage2"] == "communes":
             for dico in list_dico:
-                list_zonage.append(Commune(id=dico["id"], geom_coord= MultiPolygone(liste_brute= dico["geometry"]["coordinates"]), nom= dico["properties"]["nom"]))
-        elif self.dico["zonage2"]=="parcelles":
+                list_zonage.append(Commune(id= dico["id"], geom_coord= MultiPolygone(liste_brute= dico["geometry"]["coordinates"]), nom= dico["properties"]["nom"]))
+        elif self.dico["zonage2"] == "parcelles":
             for dico in list_dico:
-                list_zonage.append(Parcelle(id=dico["id"], geom_coord= Polygone(liste_brute= dico["geometry"]["coordinates"]))) #à vérifier
+                list_zonage.append(Parcelle(id= dico["id"], geom_coord= Polygone(liste_brute= dico["geometry"]["coordinates"]))) #à vérifier
 
         return list_zonage
 
@@ -59,5 +59,3 @@ class Instanciation():
 
 #from objets.geometrie.multi_polygone import MultiPolygone
 #print(com13110[0].geom_coord.test_polyg_contigu(autre_polyg = com83120[0].geom_coord)) # pourquoi ces multipolygones ne sont pas contigus?
-
-

@@ -64,10 +64,9 @@ class Rectangle():
         '''
         pas_long = (self.long_max - self.long_min) / nb_col_tot
         pas_lat = (self.lat_max - self.lat_min) / nb_lignes_tot
-        return Rectangle(lat_min= self.lat_min + num_ligne*pas_lat, lat_max= self.lat_min + (num_ligne+1)*pas_lat, long_min= self.long_min + num_col*pas_long, long_max= self.long_min + (num_col+1)*pas_long)
+        return Rectangle(lat_min= self.lat_min + num_ligne*pas_lat, lat_max= self.lat_min + (num_ligne + 1)*pas_lat, long_min= self.long_min + num_col*pas_long, long_max= self.long_min + (num_col + 1)*pas_long)
 
     def __str__(self) -> str:
         """affichage"""
         print("rectangle:")
         return "Latitude min : {}; latitude max: {}; longitude min: {}; longitude max: {})".format(self.lat_min, self.lat_max, self.long_min, self.long_max)
-

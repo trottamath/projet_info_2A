@@ -10,7 +10,7 @@ import unittest
 class DepartementTest(unittest.TestCase):
     def test_dep_contig(self):
 
-        list_dep13 = Departement(id_dep="13").dep_contig()
+        list_dep13 = Departement(id_dep= "13").dep_contig()
         liste = ['30', '84', '04', '83']
         
 
@@ -18,5 +18,3 @@ class DepartementTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-

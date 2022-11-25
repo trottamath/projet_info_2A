@@ -8,8 +8,10 @@ from objets.geometrie.point import Point
 import unittest
 
 class PointTest(unittest.TestCase):
+    '''test de la classe Point'''
     
     def test_test_egal(self):
+        '''test de la méthode test_egal'''
         
         pt1 = Point([0,0])
         pt2 = Point([4,10])

@@ -9,8 +9,10 @@ from objets.geometrie.polygone import Polygone
 import unittest
 
 class MultiPolygoneTest(unittest.TestCase):
-    
+    '''test de la classe MultiPolygone'''
+
     def test_test_polyg_contigu (self):
+        '''test de la méthode test_polyg_contigu'''
 
         poly7 = Polygone([[[4,4],[4,6],[6,6]]])
         poly8 = Polygone([[[5,1],[4,4],[4,5],[6,6],[6,1]]])
