@@ -1,3 +1,9 @@
+"""module test_api.py
+version 1.0
+date 20/11/2022
+auteures : Fiona Fonkou, Chloé Contant et Eva Puchalski
+"""
+
 # Import classique
 from fastapi import FastAPI
 import uvicorn
