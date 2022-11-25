@@ -1,9 +1,6 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>370</x><y>310</y><w>210</w><h>170</h></coordinates><panel_attributes>Instanciation
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>520</x><y>160</y><w>210</w><h>150</h></coordinates><panel_attributes>Instanciation
 --
-type : str,
-id_type: str
-zone: str
-date: str
+dico : dict
 --
 __init__(zonage1: str, id1: str,
               zonage2: str,date: str ): dict
@@ -11,17 +8,20 @@ __init__(zonage1: str, id1: str,
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>90</y><w>210</w><h>170</h></coordinates><panel_attributes>Requete
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>150</x><y>160</y><w>210</w><h>170</h></coordinates><panel_attributes>Requete
 --
-type : str,
-id_type: str
-zone: str
-date: str
+dico_requette : dict 
 --
-__init__(zonage1: str, id1: str,
-              zonage2: str,date: str ): dict
-+instancier_zonage( ): list[Zonage]
+__init__(dico_requette )
++ id_dep( ) : str
++ Get_DAO ( ) : list [ str ] 
++ Get_Client ( ) : list [ str ]
++ Get_or_create ( ) : list [ str ]
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>250</y><w>190</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=1
+utilise &gt;</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element></diagram>

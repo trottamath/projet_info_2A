@@ -1,4 +1,10 @@
 requests
+time
+os
+datetime
+storage 
+json
+gzip
 psycopg2-binary
 dataclasses
 python-dotenv

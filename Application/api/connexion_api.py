@@ -10,7 +10,7 @@ from service.requete import Requete
 
 class Connexion_api():
 
-    communes = {"id_commune": ["40001","40002","40003"], "nom_commune": ["Paris","Rennes","Bruz"]}
+    #communes = {"id_commune": ["40001","40002","40003"], "nom_commune": ["Paris","Rennes","Bruz"]}
     
     def lancer_api(self):
         app = FastAPI()
@@ -19,7 +19,7 @@ class Connexion_api():
         @app.get("/commune_commune/")
         async def get_all_commune(id_com:str, date:str):
             dico_requete = {"num":"1","id":id_com,"date":date}
-            return Requete(dico_requete).Get_Client()
+            return Requete(dico_requete).Get_Client()  #à remplacer par Get_or_create() lorsque GetDAO() fonctionnera 
 
 
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des parcelles en bordure de id_zone
@@ -30,9 +30,11 @@ class Connexion_api():
 
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des parcelles limitrophes à id_zone
         @app.get("/parcelle_parcelle/")
-        async def get_all_commune(id_com:str, date):
+        async def get_all_commune(id_com:str, date):  #pourquoi pas get_all_parcelles(id_parc:str,date:str)
             dico_requete = {"num":"3","id":id_com,"date":date}
             return Requete(dico_requete).Get_Client()
+
+            #il faudrait aussi une liste de choix pour les dates, comme c'est fait dans la classe view
         
 
 
