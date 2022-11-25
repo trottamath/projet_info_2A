@@ -101,7 +101,6 @@ c = CommuneDAO()
 #c.ajout_commune('33000', 'Bordeaux')
 #c.ajout_commune('39000', 'LONS-LE-SAUNIER')
 #print(c.recherche_commune(id_com="83000")) 
-# #TODO ne fonctionne pas ! La colonne id_com n'existe pas ?? PB réglé
 
 #### test nom_commune : OK
 #print(c.nom_commune('35170'))
