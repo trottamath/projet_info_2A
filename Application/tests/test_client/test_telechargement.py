@@ -41,15 +41,21 @@ class TelechargementTest(unittest.TestCase):
         test5 = t5.download() == None
         self.assertEqual(test5, True)
     
+    def recherche_fichier(self):
+        '''test pour la recherche d'un fichier json.gz'''
+        t6 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+        test6 = t6.recherche_fichier() == None
+        self.assertEqual(test6, True)
+
     def test_read_json(self):
         '''test pour la lecture du fichier json.gz'''
-        t6 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
-        t6.download()
-        dico = t6.read_json()
+        t7 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+        t7.download()
+        dico = t7.read_json()
         id=dico["features"][0]["id"]
         print(id)
-        test6 = dico == "07003000AB0001" 
-        self.assertEqual(test6, True) #le test ne fonctionne pas 
+        test7 = dico == "07003000AB0001" 
+        self.assertEqual(test7, True) #le test ne fonctionne pas 
     
 
 #test fonction telechargement
@@ -62,28 +68,28 @@ class TelechargementTest(unittest.TestCase):
 #dico = t5.read_json()
 #print(dico) 
 
-#if __name__ == '__main__':
-#    unittest.main()
+if __name__ == '__main__':
+   unittest.main()
 
 
 
 #test fonction telechargement
-t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
-t4.download()  
+# t4 = Telechargement(id_zone1="07003",zonage1="communes",zonage2="parcelles")
+# t4.download()  
 
-#lecture de json vers dictionnaire
-t5= Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
-t5.download()
+# #lecture de json vers dictionnaire
+# t5= Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
+# t5.download()
 
 
-t4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
-t4.download() 
-dico=t4.read_json() #ne fonctionne pas TODO
-#print (dico)
+# t4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
+# t4.download() 
+# dico=t4.read_json() #ne fonctionne pas TODO
+# #print (dico)
 
-#test fonction telechargement
-t6 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="communes")
-t6.download() 
+# #test fonction telechargement
+# t6 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="communes")
+# t6.download() 
 
 
 #lecture de json vers dictionnaire

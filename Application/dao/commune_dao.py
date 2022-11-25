@@ -92,7 +92,6 @@ class CommuneDAO(metaclass=Singleton):
                 )
     
 
-
 ################################################## TESTS : OK ##################################################
 
 c = CommuneDAO()
@@ -101,7 +100,7 @@ c = CommuneDAO()
 #### test ajout_commune : OK
 #c.ajout_commune('33000', 'Bordeaux')
 #c.ajout_commune('39000', 'LONS-LE-SAUNIER')
-#print(c.recherche_commune(id_com="33000")) TODO ne fonctionne pas ! La colonne id_com n'existe pas ??
+#print(c.recherche_commune(id_com="83000")) 
 
 #### test nom_commune : OK
 #print(c.nom_commune('35170'))
@@ -109,7 +108,7 @@ c = CommuneDAO()
 
 #### test recherche_commune : OK
 #print(c.recherche_commune('45678'))
-#print(c.recherche('35000'))
+#print(c.recherche_commune('84000'))
 
 #### test suppression commune : OK
 #c.suppression_commune('83000')

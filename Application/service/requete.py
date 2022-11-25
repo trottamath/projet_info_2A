@@ -1,7 +1,7 @@
 """module requete.py pour définir la classe Requete
 version 1.0
 date 20/10/2022
-auteur : Jean-Philippe Trotta et Eva Puchalski
+auteurs : Jean-Philippe Trotta et Eva Puchalski
 """
 
 
@@ -249,8 +249,8 @@ list_parc_lim13207=['132078290I0071',
  '132078350C0006',
  '132078350D0007']
 
+
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelle 132078290I0071 n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune, il devrait y en avoir qui ne commencent pas par "13207" (à vérifier )  
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelles n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune (à vérifier )  
- 
