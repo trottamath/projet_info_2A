@@ -97,21 +97,4 @@ class CommuneCommuneDAO():
             self.create(id_com1= id_com1, id_com2= id_com2, date= date)
         
     
-################################################# TESTS : OK #################################################
 
-cc = CommuneCommuneDAO()
-
-#### test recherche : OK
-
-#print(cc.recherche_com(id_com="13207", date="latest")) #n'a pas afficher de contenu autre que None TODO
-#print(cc.recherche('13207', '13201', 'latest'))
-
-#### test recherche_com : OK
-#print(cc.recherche_com('13207', 'latest'))
-
-
-#### test create : OK
-#cc.create('10101', '10102', 'latest')
-
-#### test create_all : OK
-#cc.create_all('1111',['222222','333333','44444'], 'latest')
