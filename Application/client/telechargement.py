@@ -212,10 +212,8 @@ class Telechargement():
 #print(dico) 
 
 #test fonction recherche de fichier
-<<<<<<< HEAD
 t4 = Telechargement(id_zone1="08005",zonage1="communes")
 print(t4.recherche_fichier())
-=======
 #t4 = Telechargement(id_zone1="08004",zonage1="communes")
 #t4.download()
 #print(t4.recherche_fichier())
@@ -223,4 +221,3 @@ print(t4.recherche_fichier())
 #t4 = Telechargement(id_zone1="13201",zonage1="communes") 
 #t4.read_json()
 #print(t4.recherche_fichier())
->>>>>>> 9a793477e98276b9b2470a8d6fa66e3f8fd0083a
