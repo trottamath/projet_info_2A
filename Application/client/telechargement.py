@@ -1,7 +1,7 @@
 """module telechargement.py pour définir la classe Telechargement
 version 1.1
 date 20/10/2022
-auteurs : Chloé Contant, Jean-Philippe Trotta et Puchalski Eva
+auteurs : Chloé Contant, Jean-Philippe Trotta et Eva Puchalski
 """
 
 import json 
@@ -143,6 +143,30 @@ class Telechargement():
         isfile = os.path.isfile(chemin)
 
         return(isfile)
+
+    def latest_date_cadastre():
+        ''' Méthode permettant de déterminer la date de la dernière mise à jour du cadastre.
+    
+        Returns
+        -------
+        date : str
+            Une date de la forme 03-Nov-2022.
+            '' si la recherche de la date échoue.
+        '''
+        url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
+        opener = urllib.request.FancyURLopener({})
+        date = ''
+        with opener.open(url) as f:
+            content = f.readlines()
+            for line in content:
+                line = str(line)
+                if 'latest' in line:
+                    line = line.replace("""b'<a href="latest/">latest/</a>""", '')
+                    line = line.replace("-\\r\\n'", '')
+                    date = line.strip(' ')[:-5]
+        return(date)
+
+        print(latest_date_cadastre())
 
     def read_json(self) -> dict : 
         '''Lis le fichier json comme un dictionnaire
