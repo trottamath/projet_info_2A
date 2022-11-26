@@ -31,7 +31,11 @@ class View():
         Session().id = answers['id_zone']
         dico_requete = {"num": Session().num, "id": Session().id, "date": Session().date}
         pprint(dico_requete)
+<<<<<<< HEAD:Application/views/view.py
         Session().list_res = Requete(dico_requete= dico_requete ).Get_or_create() 
+=======
+        Session().list_res = Requete(dico_requete= dico_requete ).Get_or_create() #Get_Client() #Get_or_create() #Get_DAO()
+>>>>>>> c02478a4a2071d058f1fa6f5cb5ca77dae5b4062:Application/views/abstract_view.py
         pprint(Session().list_res) 
 
         from views.start_view import StartView

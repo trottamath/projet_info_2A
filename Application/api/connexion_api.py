@@ -49,7 +49,7 @@ class Connexion_api():
         async def get_all_commune(id_com:str, date):
             dico_requete = {"num": '1', "id": id_com, "date": 'latest'}
             req= Requete(dico_requete)
-            return req.Get_Client()
+            return req.Get_or_create()
 
         # Lancement de l'application sur le le port 80
         #uvicorn.run(app, host="127.0.1.0", port=80)
@@ -64,7 +64,7 @@ class Connexion_api():
             dico_requete = {"num": "2", "id": id_com, "date": 'latest'}
             #return Requete(dico_requete).Get_Client()
             req= Requete(dico_requete)
-            return req.Get_DAO()
+            return req.Get_or_create()
         
         #uvicorn.run(app, host="127.0.1.0", port=80)
 
@@ -74,7 +74,7 @@ class Connexion_api():
         @app.get("/parcelle_parcelle/")
         async def get_all_parcelle(id_com: str, date: str):
             dico_requete = {"num": "3", "id": id_com, "date": date}
-            return Requete(dico_requete).Get_Client()
+            return Requete(dico_requete).Get_or_create()
 
 
         # Lancement de l'application sur le le port 80
