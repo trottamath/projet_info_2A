@@ -27,7 +27,7 @@ class Telechargement():
             sauf si zonage1="france" alors laisser par défaut zonage2="communes"
     '''
 
-    def __init__(self, id_zone1=None, zonage1="departements",  zonage2="communes", date="latest"):
+    def __init__(self, id_zone1 = None, zonage1 = "departements",  zonage2 = "communes", date = "latest"):
         '''constructeur de la classe Telechargement
 
         Parameters:
@@ -106,7 +106,8 @@ class Telechargement():
         return(path)
 
     def download(self):
-        '''Télécharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
+        '''Télécharge un fichier depuis une url donnée et 
+        l'enregistre dans un dossier donné
 
         '''
         url = self.generator_link()
@@ -114,13 +115,12 @@ class Telechargement():
 
         req = requests.get(url)
         filename = req.url[url.rfind('/') + 1:]
-        # chemin = os.path.join(path,filename).replace("\\","/") #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
         chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(
             self.id_zone, self.zonage2, self.date).replace("\\", "/"))
         print(chemin)
-        with req as rq:
+        with req as request:
             with open(chemin, 'wb') as file:
-                file.write(rq.content)
+                file.write(request.content)
                 print(("Le fichier {} a bien été téléchargé.").format(filename))
 
     def recherche_fichier(self) -> bool:
@@ -141,10 +141,11 @@ class Telechargement():
 
         isfile = os.path.isfile(chemin)
 
-        return(isfile)
+        return isfile
 
     def latest_date_cadastre():
-        ''' Méthode permettant de déterminer la date de la dernière mise à jour du cadastre.
+        ''' Méthode permettant de déterminer la date de 
+        la dernière mise à jour du cadastre.
 
         Returns
         -------
@@ -155,8 +156,8 @@ class Telechargement():
         url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
         opener = urllib.request.FancyURLopener({})
         date = ''
-        with opener.open(url) as f:
-            content = f.readlines()
+        with opener.open(url) as file:
+            content = file.readlines()
             for line in content:
                 line = str(line)
                 if 'latest' in line:
@@ -164,7 +165,7 @@ class Telechargement():
                         """b'<a href="latest/">latest/</a>""", '')
                     line = line.replace("-\\r\\n'", '')
                     date = line.strip(' ')[:-5]
-        return(date)
+        return date
 
         print(latest_date_cadastre())
 
@@ -191,13 +192,14 @@ class Telechargement():
         print(chemin)
 
         with gzip.open(chemin, 'rb') as file:
-            # , parse_float=float, parse_int=float  TODO il y a pb ici lorsque le code du zonage1 est faux .
+            # , parse_float=float, parse_int=float  
+            # TODO il y a pb ici lorsque le code du zonage1 est faux.
             data = json.load(file)
-        return(data)
+        return data
 
 
-############################################################### TEST ############################################################################
-    # à faire absolument dans un fichier test, sinon ça fait croire que c ok alors que non
+########################### TEST ##########################
+# à faire absolument dans un fichier test, sinon ça fait croire que c ok alors que non
 # test pour fonction qui recup url
 
 # t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")

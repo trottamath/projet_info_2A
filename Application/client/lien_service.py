@@ -1,17 +1,15 @@
-"""module commune_dao.py pour définir la classe CommuneDAO
+'''module commune_dao.py pour définir la classe CommuneDAO
 version 1.0
 date 25/10/2022
 auteurs : Chloé Contant et Jean-Philippe Trotta
-"""
+'''
 from client.telechargement import Telechargement
 
 class LienService():
     '''Classe qui créer les dictionnaires utiles pour la couche Service à partir des fichiers .json.gz stockés en local
-    
     Attributes
     ----------
     dict_initial : dict
-
     '''
     
     def __init__(self, dict_initial : dict):
@@ -34,24 +32,20 @@ class LienService():
                 La méthode retourne une liste de dictionnaires avec les communes du département 35
                 chaque dictionnaire a entre autres une clée "coordinates" , un clé "id"
                 voire une clée "nom" pour le nom de commune.
-
-        
-        Returns
-        ------
-            list_dict : list[dict]
-        
+            Returns
+            ------
+                list_dict : list[dict]
         '''
-        tel = Telechargement(id_zone1 = self.dico['id1'], zonage1 = self.dico['zonage1'],date = self.dico['date'], zonage2 = self.dico['zonage2'] )
 
+        tel = Telechargement(id_zone1 = self.dico['id1'], zonage1 = self.dico['zonage1'], date = self.dico['date'], zonage2 = self.dico['zonage2'])
         dico_extract_json = tel.read_json()
-
         list_dict = dico_extract_json['features'] #extraction de la liste de dictionnaire
+        return list_dict
 
-        return (list_dict)
+###################### TEST ###############
 
-############################################################### TEST ############################################################################
-
-#test pour fonction qui genère dictionnaire (déplacé dans un fichier test TODO à supprimer ici)
+#test pour fonction qui genère dictionnaire 
+# (déplacé dans un fichier test TODO à supprimer ici)
 
 #D = {'zonage1' : 'departements',
  #   'id1' : '01',
