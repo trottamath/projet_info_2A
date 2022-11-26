@@ -60,7 +60,7 @@ class Telechargement():
         self.id_zone = id_zone1
         self.zonage2 = zonage2
 
-        if self.date == "latest":
+        if self.date == "latest": #webscapping de la vraie date
             url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
             opener = urllib.request.FancyURLopener({})
             date = ''
@@ -208,9 +208,9 @@ class Telechargement():
 
 
 
-# t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
-# lien_1 = t1.generator_link()
-# print(lien_1)
+#t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
+#lien_1 = t1.generator_link()
+#print(lien_1)
 
 #t2 = Telechargement(date="latest",zonage1="communes", id_zone1 = "08124")
 # lien_2 = t2.generator_link()
@@ -228,8 +228,8 @@ class Telechargement():
 #t4 = Telechargement(id_zone1="08005",zonage1="communes")
 # t4.read_json()
 
-t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements",zonage2="parcelles")
-t5.download()
+#t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements",zonage2="parcelles")
+#t5.download()
 
 
 # lecture de json vers dictionnaire
