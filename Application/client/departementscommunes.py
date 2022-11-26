@@ -19,7 +19,7 @@ class DepartementsCommunes(Storage):
     def __init__(
             self,
             path: str = 'Application/client/data/departements/communes',
-            quota: int = 101):
+            quota: int = 10):
         '''constructeur'''
         self.path = path
         self.quota = quota
@@ -54,11 +54,3 @@ class DepartementsCommunes(Storage):
                 os.remove(os.path.join(self.path, filename).replace("\\", "/"))
 
 
-######## TEST #####
-
-# test pour fonction libère de la place dans le sous-dossier commune du
-# dossier département
-
-D = DepartementsCommunes()
-print(D.count())
-#D.delete_older_file()

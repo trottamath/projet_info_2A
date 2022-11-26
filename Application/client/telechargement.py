@@ -240,9 +240,7 @@ class Telechargement():
 #t4 = Telechargement(id_zone1="08005",zonage1="communes")
 # t4.read_json()
 
-t5 = Telechargement(id_zone1="08004",date="latest",zonage1="communes",zonage2="parcelles")
-print(t5.generator_link())
-print(t5.generator_path())
+t5 = Telechargement(id_zone1="08",date="latest",zonage1="departements",zonage2="parcelles")
 t5.download()
 
 
