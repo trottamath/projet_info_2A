@@ -9,7 +9,8 @@ from datetime import datetime
 from abc import ABC, abstractmethod
 from storage import Storage
 
-class DepartementsCommunes(Storage):
+
+class CommunesParcelles(Storage):
     '''Classe qui gère le stockage du fichier communes dans départements.
     Attributes :
     -----------
@@ -18,12 +19,12 @@ class DepartementsCommunes(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self,path : str = 'Application/client/data/communes/parcelles', quota : int = 200):
+    def __init__(self, path: str = 'Application/client/data/communes/parcelles', quota: int = 200):
         '''constructeur'''
         self.path = path
         self.quota = quota
 
-    def count(self) :
+    def count(self):
         '''Méthode qui compte le nombre de fichiers qu'il y a dans le dossier parcelles du dossier communes'''
         count = 0
         for filename in os.listdir(self.path):
@@ -33,29 +34,29 @@ class DepartementsCommunes(Storage):
     def delete_older_file(self):
         C = self.count()
 
-        while self.quota < C :
+        while self.quota < C:
             time = []
-            for filename in os.listdir(self.path) :
-                time.append(os.path.getctime(os.path.join(self.path,filename)))
+            for filename in os.listdir(self.path):
+                time.append(os.path.getctime(
+                    os.path.join(self.path, filename)))
             min_time = min(time)
 
-            dictionary = dict(zip(os.listdir(self.path),time))
+            dictionary = dict(zip(os.listdir(self.path), time))
 
             older_file = []
-            older_file = [key for (key, val) in dictionary.items() if val == min_time]
+            older_file = [
+                key for (key, val) in dictionary.items() if val == min_time]
             C = C - len(older_file)
             print(older_file)
 
-            for filename in older_file :
-                os.remove(os.path.join(self.path,filename))
+            for filename in older_file:
+                os.remove(os.path.join(self.path, filename))
 
 
 ############################################################### TEST ############################################################################
 
-#test pour fonction libère de la place dans le sous-dossier commune du dossier département
+# test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-#D = DepartementsCommunes()
-#print(D.count())
-#D.delete_older_file()
-
-
+#D = CommunesParcelles()
+# print(D.count())
+# D.delete_older_file()
