@@ -6,10 +6,10 @@ auteurs : Fiona Fonkou et Jean-Philippe Trotta
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 
-from views.abstract_view import AbstractView
+from views.view import View
 from views.session import Session
 
-class StartView(AbstractView):
+class StartView(View):
 
     def __init__(self):
         self.__questions = inquirer.select(
@@ -41,8 +41,8 @@ class StartView(AbstractView):
                 ,Choice('latest')
             ]
         )
-    def display_info(self):
-        pass
+    #def display_info(self):
+    #    pass
     
     def make_choice(self):
         reponse = self.__questions.execute()
@@ -55,5 +55,5 @@ class StartView(AbstractView):
 
         elif reponse == 'Liste des parcelles limitrophes à une parcelle donnée':
             Session().num = "3"
-        from views.abstract_view import AbstractView
-        return AbstractView()
+        from views.view import View
+        return View()

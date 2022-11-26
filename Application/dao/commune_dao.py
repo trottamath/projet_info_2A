@@ -28,7 +28,7 @@ class CommuneDAO(metaclass=Singleton):
                     {"id_com": id_com}
                 )
                 res = cursor.fetchone()
-        return res
+        return res['nom_commune']
 
     def recherche_commune(self, id_com: str):
         """Recherche une commune par son identifiant
@@ -46,7 +46,6 @@ class CommuneDAO(metaclass=Singleton):
                 )
                 res = cursor.fetchall()
         return res
-        # res[0]['nom_com']
 
     def ajout_commune(self, id_com: str, nom_com: str):
         """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà

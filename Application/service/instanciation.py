@@ -13,6 +13,8 @@ from objets.geometrie.multi_polygone import MultiPolygone
 
 
 class Instanciation():
+    '''classe qui instancie les objets Commune ou Pacelle
+    à partir d'un dictionnaire extrait du geojson par la couche Client'''
     def __init__(
             self,
             zonage1: str,
@@ -110,13 +112,13 @@ class Instanciation():
 
 
 #Test de parcelles approximativement contigues
-com13007 = Instanciation(zonage1="communes", id1="13007", zonage2="parcelles", date="latest").instancier_zonage()
-com83120 = Instanciation(zonage1="communes", id1="83120", zonage2="parcelles", date="latest").instancier_zonage()
-for parc in com13007:
-    if parc.id == "13007000KT0037":
-        parc13_037 = parc
-for parc in com83120:
-    if parc.id == "831200000A0314":
-        parc83_316 = parc
-from objets.zone.zonage import Zonage
-print(parc13_037.test_zone_contigu(macro_zone=parc83_316))
+#com13007 = Instanciation(zonage1="communes", id1="13007", zonage2="parcelles", date="latest").instancier_zonage()
+#com83120 = Instanciation(zonage1="communes", id1="83120", zonage2="parcelles", date="latest").instancier_zonage()
+#for parc in com13007:
+#    if parc.id == "13007000KT0037":
+#        parc13_037 = parc
+#for parc in com83120:
+#    if parc.id == "831200000A0314":
+#        parc83_316 = parc
+#from objets.zone.zonage import Zonage
+#print(parc13_037.test_zone_contigu(macro_zone=parc83_316))
