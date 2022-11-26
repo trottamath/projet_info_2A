@@ -72,9 +72,9 @@ class Connexion_api():
 
         # Définition du endpoint qui repond à la méthode GET à l'adresse "/" et qui va retourner la liste des parcelles limitrophes à id_zone
         @app.get("/parcelle_parcelle/")
-        async def get_all_commune(id_com: str, date: str):
+        async def get_all_parcelle(id_com: str, date: str):
             dico_requete = {"num": "3", "id": id_com, "date": date}
-            return Requete(dico_requete).Get_Client()
+            return Requete(dico_requete).Get_DAO()
 
 
         # Lancement de l'application sur le le port 80
