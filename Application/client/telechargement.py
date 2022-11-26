@@ -14,7 +14,6 @@ from client.departementsparcelles import DepartementsParcelles
 from client.departementscommunes import CommunesCommunes
 from client.departementscommunes import CommunesParcelles
 
-
 class Telechargement():
     '''Classe qui permet de télécharger des fichiers json.gz depuis un site web
     Attributes :
