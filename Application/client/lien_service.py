@@ -48,15 +48,3 @@ class LienService():
         list_dict = dico_extract_json['features']
         return list_dict
 
-###################### TEST ###############
-
-# test pour fonction qui genère dictionnaire
-# (déplacé dans un fichier test TODO à supprimer ici)
-
-# D = {'zonage1' : 'departements',
- #   'id1' : '01',
-  #  'zonage2' : 'communes',
-   # 'date' : 'latest'}
-#test = LienService(D)
-#dico = test.genere_dico()
-# print(dico)
