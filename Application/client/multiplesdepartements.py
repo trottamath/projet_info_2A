@@ -5,9 +5,6 @@ auteur : Chloé Contant
 """
 from client.telechargement import Telechargement
 import requests
-from abc import ABC, abstractmethod
-
-# https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/01/cadastre-01-communes.json.gz
 
 url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/"
 
@@ -123,7 +120,7 @@ class MultiplesDepartements(Telechargement):
         self.num_dep = list(dict_dep.keys())
         self.name_dep = list(dict_dep.values())
 
-    def certains_departements(self, liste_dep: list):
+    def certains_departements_communes(self, liste_dep: list):
         '''Méthode qui télécharge un certain nombre de départements français selon leur identifiant'''
         for i in liste_dep:
             t = Telechargement(
@@ -136,7 +133,21 @@ class MultiplesDepartements(Telechargement):
             print(path)
             t.download()
 
-    def france_entiere(self):
+    def certains_departements_parcelles(self, liste_dep: list):
+        '''Méthode qui télécharge un certain nombre de départements français selon leur identifiant'''
+        for i in liste_dep:
+            t = Telechargement(
+                id_zone1=i,
+                date="2021-04-01",
+                zonage1="departements",
+                zonage2="parcelles")
+            link = t.generator_link()
+            print(link)
+            path = t.generator_path()
+            print(path)
+            t.download()
+
+    def france_entiere_communes(self):
         '''Méthode qui télécharge tous les départements de la France'''
 
         for i in self.num_dep:
@@ -149,18 +160,3 @@ class MultiplesDepartements(Telechargement):
             path = t.generator_path()
             print(path)
             t.download()
-
-
-########### TEST #####
-
-# test pour certains départements
-
-T = MultiplesDepartements()
-U = ['06','972','973','78','21']
-T.certains_departements(U)
-
-
-# test pour france entière
-
-# T = MultiplesDepartements()
-# T.france_entiere()

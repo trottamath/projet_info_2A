@@ -216,9 +216,6 @@ class Telechargement():
         return data
 
 
-########################### TEST ##########################
-# à faire absolument dans un fichier test, sinon ça fait croire que c ok alors que non
-# test pour fonction qui recup url
 
 # t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
 # lien_1 = t1.generator_link()
