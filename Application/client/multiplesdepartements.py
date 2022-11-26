@@ -9,7 +9,7 @@ import requests
 url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/"
 
 
-class MultiplesDepartements(Telechargement):
+class MultiplesDepartements():
 
     DEPARTEMENTS = {
         '01': 'Ain',
