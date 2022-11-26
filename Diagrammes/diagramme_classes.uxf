@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><help_text>Space for diagram note</help_text><element><id>UMLClass</id><coordinates><x>724</x><y>130</y><w>168</w><h>84</h></coordinates><panel_attributes>Point
+<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><help_text>Space for diagram note</help_text><element><id>UMLClass</id><coordinates><x>700</x><y>30</y><w>168</w><h>84</h></coordinates><panel_attributes>Point
 --
 latitude : float
 longitude : float
@@ -13,7 +13,7 @@ longitude : float
 
 bg=#CACACA
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>718</x><y>382</y><w>192</w><h>84</h></coordinates><panel_attributes>Polygone
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>694</x><y>282</y><w>192</w><h>84</h></coordinates><panel_attributes>Polygone
 --
 liste_poly_geom : list [ list[ Segment ] ]
 --
@@ -23,7 +23,7 @@ liste_poly_geom : list [ list[ Segment ] ]
 + test_polyg_contigu ( autre_polyg : Polygone ) : bool
 +__str__() : str
 
-bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>532</y><w>222</w><h>66</h></coordinates><panel_attributes>MultiPolygone
+bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>676</x><y>432</y><w>222</w><h>66</h></coordinates><panel_attributes>MultiPolygone
 --
 liste_polyg : list [ Polygone ]
 --
@@ -35,8 +35,8 @@ liste_polyg : list [ Polygone ]
 bg=#CACACA
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>820</x><y>460</y><w>30</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=1..*</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>172</x><y>358</y><w>144</w><h>54</h></coordinates><panel_attributes>Parcelle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>796</x><y>360</y><w>30</w><h>84</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..*</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>148</x><y>258</y><w>144</w><h>54</h></coordinates><panel_attributes>Parcelle
 --
 geom_coord : Polygone
 --
@@ -45,7 +45,7 @@ geom_coord : Polygone
 bg=#CACACA
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>142</x><y>532</y><w>192</w><h>66</h></coordinates><panel_attributes>Commune
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>118</x><y>432</y><w>192</w><h>66</h></coordinates><panel_attributes>Commune
 --
 geom_coord : MultiPolygone
 nom : str
@@ -53,10 +53,10 @@ nom : str
 « Create »__init__(id : str, geom_coord : Multipolygone)
 +lien_zone(autre_zone : Zonage) : str
 
-bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>382</y><w>96</w><h>216</h></coordinates><panel_attributes>lt=-
+bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>64</x><y>282</y><w>96</w><h>216</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1..*
-&lt; est incluse dans </panel_attributes><additional_attributes>90;330;10;330;10;10;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>994</x><y>226</y><w>180</w><h>114</h></coordinates><panel_attributes>Rectangle
+&lt; est incluse dans </panel_attributes><additional_attributes>90;330;10;330;10;10;140;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>970</x><y>126</y><w>180</w><h>114</h></coordinates><panel_attributes>Rectangle
 --
 lat_min : float
 lat_max : float
@@ -71,10 +71,10 @@ long_min : float, long_max : float )
 nb_lignes_tot : int, nb_col_tot: int ) -&gt; Rectangle 
 
 
-bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1078</x><y>334</y><w>78</w><h>132</h></coordinates><panel_attributes>lt=-
+bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1054</x><y>234</y><w>78</w><h>132</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-est inscrit dans &gt;</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>724</x><y>250</y><w>168</w><h>72</h></coordinates><panel_attributes>Segment
+est inscrit dans &gt;</panel_attributes><additional_attributes>10;200;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>700</x><y>150</y><w>168</w><h>72</h></coordinates><panel_attributes>Segment
 --
 point1 : Point
 point2 : Point
@@ -84,14 +84,14 @@ point2 : Point
 +__str__() : str
 
 bg=#CACACA
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>808</x><y>208</y><w>24</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=2</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>808</x><y>316</y><w>30</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
-m2=3..*</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>688</x><y>100</y><w>510</w><h>516</h></coordinates><panel_attributes>geometrie
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>108</y><w>24</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=2</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>784</x><y>216</y><w>30</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=3..*</panel_attributes><additional_attributes>10;110;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>664</x><y>0</y><w>510</w><h>516</h></coordinates><panel_attributes>geometrie
 --
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>82</x><y>328</y><w>474</w><h>300</h></coordinates><panel_attributes>zone
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>58</x><y>228</y><w>474</w><h>300</h></coordinates><panel_attributes>zone
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>976</x><y>454</y><w>210</w><h>78</h></coordinates><panel_attributes>/AbstractPolygone/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>952</x><y>354</y><w>210</w><h>78</h></coordinates><panel_attributes>/AbstractPolygone/
 --
 
 --
@@ -100,7 +100,7 @@ m2=3..*</panel_attributes><additional_attributes>10;110;10;10</additional_attrib
 + test_intersect_rect ( rectangle : Rectangle ) : bool
 + test_polyg_proche ( autre_polyg : AbstractPolygone ) : bool
 
-bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>904</x><y>454</y><w>84</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>862</x><y>502</y><w>126</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>448</y><w>192</w><h>90</h></coordinates><panel_attributes>Zonage
+bg=#CACACA</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>880</x><y>354</y><w>84</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>838</x><y>402</y><w>126</w><h>42</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;10;10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>328</x><y>348</y><w>192</w><h>90</h></coordinates><panel_attributes>Zonage
 --
 id : str
 geom_coord : AbstractPolygone
@@ -113,4 +113,4 @@ geom_coord : AbstractPolygone
   
 bg=#CACACA
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>328</x><y>532</y><w>90</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;130;90;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>382</y><w>126</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;110;190;10;10;10</additional_attributes></element></diagram>
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>304</x><y>432</y><w>90</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>130;10;130;90;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>286</x><y>282</y><w>126</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>190;110;190;10;10;10</additional_attributes></element></diagram>
