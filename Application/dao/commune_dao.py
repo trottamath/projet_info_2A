@@ -108,4 +108,3 @@ c.ajout_commune('33000', 'BORDEAUX')
 
 # test suppression commune : OK
 # c.suppression_commune('83000')
-#>>>>>>> 699776ce20f4fb8aa84912f69193d3b55a710382
