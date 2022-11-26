@@ -18,7 +18,7 @@ class CommunesCommunes(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self, path : str = 'Application/client/data/communes/communes', quota : int = 200):
+    def __init__(self, path : str = 'Application/client/data/communes/communes', quota : int = 3):
         '''constructeur'''
         self.path = path
         self.quota = quota
