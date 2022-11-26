@@ -4,11 +4,11 @@ date 20/10/2022
 auteurs : Chloé Contant, Jean-Philippe Trotta et Eva Puchalski
 """
 
-import json 
+import json
 import os
 import gzip
 import requests
-   
+
 
 class Telechargement():
     '''Classe qui permet de télécharger des fichiers json.gz depuis un site web
@@ -27,9 +27,9 @@ class Telechargement():
             sauf si zonage1="france" alors laisser par défaut zonage2="communes"
     '''
 
-    def __init__(self, id_zone1 = None , zonage1 = "departements",  zonage2 = "communes", date = "latest"):
+    def __init__(self, id_zone1=None, zonage1="departements",  zonage2="communes", date="latest"):
         '''constructeur de la classe Telechargement
-        
+
         Parameters:
         -----------
             date : str = "latest" 
@@ -50,36 +50,35 @@ class Telechargement():
         self.zonage1 = zonage1
         self.id_zone = id_zone1
         self.zonage2 = zonage2
-    
-    def generator_link(self) -> str :
+
+    def generator_link(self) -> str:
         '''Genère un lien url selon certains critères 
 
         Returns 
         -------
             url : str
         '''
-            
+
         url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
 
         if self.zonage1 == "departements":
             #self.id_zone = self.id_dep
             url_zone1 = self.id_dep
         elif self.zonage1 == "communes":
-            url_zone1="{}/{}".format(self.id_dep,self.id_zone)
-        
+            url_zone1 = "{}/{}".format(self.id_dep, self.id_zone)
 
-        fichier ="cadastre-{}-{}.json.gz".format(self.id_zone,self.zonage2)
+        fichier = "cadastre-{}-{}.json.gz".format(self.id_zone, self.zonage2)
 
         if self.zonage1 == "france" and self.zonage2 == "communes":
             url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/france/cadastre-france-communes.json.gz"
         else:
-            url = "{}{}/geojson/{}/{}/{}".format(url,self.date,self.zonage1,url_zone1,fichier)
+            url = "{}{}/geojson/{}/{}/{}".format(
+                url, self.date, self.zonage1, url_zone1, fichier)
         return url
-    
-    
+
     def generator_path(self) -> str:
         '''Méthode qui dirige le fichier json.gz dans un dossier en fonction du zonage_1
-        
+
         Return
         ------
             path : str
@@ -87,58 +86,58 @@ class Telechargement():
 
         '''
         url = self.generator_link()
-        path = r'Application/client/data'  
+        path = r'Application/client/data'
         req = requests.get(url)
         filename = req.url[url.rfind('/')+1:]
         if 'departements' in url:
             path = os.path.join(path, 'departements').replace("\\", "/")
-            if 'communes' in filename :
+            if 'communes' in filename:
                 path = os.path.join(path, 'communes').replace("\\", "/")
-            else : 
+            else:
                 path = os.path.join(path, 'parcelles').replace("\\", "/")
         elif 'france' in url:
             path = os.path.join(path, 'france').replace("\\", "/")
-        else : 
+        else:
             path = os.path.join(path, 'communes').replace("\\", "/")
-            if 'communes' in filename :
+            if 'communes' in filename:
                 path = os.path.join(path, 'communes').replace("\\", "/")
-            else : 
+            else:
                 path = os.path.join(path, 'parcelles').replace("\\", "/")
         return(path)
 
-    
     def download(self):
-       '''Télécharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
-             
-       '''
-       url = self.generator_link()
-       path = self.generator_path() 
-       
-       req = requests.get(url)
-       filename = req.url[url.rfind('/') + 1:]
-       #chemin = os.path.join(path,filename).replace("\\","/") #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
-       chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(self.id_zone, self.zonage2, self.date).replace("\\", "/"))
-       print(chemin)
-       with req as rq:
-           with open(chemin, 'wb') as file: 
-               file.write(rq.content)
-               print(("Le fichier {} a bien été téléchargé.").format(filename))
+        '''Télécharge un fichier depuis une url donnée et l'enregistre dans un dossier donné
 
+        '''
+        url = self.generator_link()
+        path = self.generator_path()
+
+        req = requests.get(url)
+        filename = req.url[url.rfind('/') + 1:]
+        # chemin = os.path.join(path,filename).replace("\\","/") #possibilité de changer le nom du fichier, ex : 'data.json.gz' au lieu de filename
+        chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(
+            self.id_zone, self.zonage2, self.date).replace("\\", "/"))
+        print(chemin)
+        with req as rq:
+            with open(chemin, 'wb') as file:
+                file.write(rq.content)
+                print(("Le fichier {} a bien été téléchargé.").format(filename))
 
     def recherche_fichier(self) -> bool:
         '''Méthode qui regarde si le fichier existe en local
-        
+
         Returns
         -------
             bool
         '''
         url = self.generator_link()
-        path= self.generator_path() 
+        path = self.generator_path()
         req = requests.get(url)
         filename = req.url[url.rfind('/') + 1:]
-        
+
         #chemin = os.path.join(path,filename).replace("\\","/")
-        chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(self.id_zone, self.zonage2, self.date).replace("\\", "/"))
+        chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(
+            self.id_zone, self.zonage2, self.date).replace("\\", "/"))
 
         isfile = os.path.isfile(chemin)
 
@@ -146,7 +145,7 @@ class Telechargement():
 
     def latest_date_cadastre():
         ''' Méthode permettant de déterminer la date de la dernière mise à jour du cadastre.
-    
+
         Returns
         -------
         date : str
@@ -161,14 +160,15 @@ class Telechargement():
             for line in content:
                 line = str(line)
                 if 'latest' in line:
-                    line = line.replace("""b'<a href="latest/">latest/</a>""", '')
+                    line = line.replace(
+                        """b'<a href="latest/">latest/</a>""", '')
                     line = line.replace("-\\r\\n'", '')
                     date = line.strip(' ')[:-5]
         return(date)
 
         print(latest_date_cadastre())
 
-    def read_json(self) -> dict : 
+    def read_json(self) -> dict:
         '''Lis le fichier json comme un dictionnaire
 
         Return
@@ -176,27 +176,29 @@ class Telechargement():
             dict
         '''
         if self.recherche_fichier() == False:
-            self.download()            
-        
+            self.download()
+
         url = self.generator_link()
-        path = self.generator_path() 
+        path = self.generator_path()
         req = requests.get(url)
-        
+
         filename = req.url[url.rfind('/') + 1:]
         #chemin = os.path.join(path,filename).replace("\\","/")
-        chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(self.id_zone, self.zonage2, self.date).replace("\\", "/")) 
+        chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(
+            self.id_zone, self.zonage2, self.date).replace("\\", "/"))
 
         #chemin2 = os.path.dirname(os.path.abspath(__file__))+path+"/"+filename
-        print(chemin) 
+        print(chemin)
 
         with gzip.open(chemin, 'rb') as file:
-            data = json.load(file) #, parse_float=float, parse_int=float  TODO il y a pb ici lorsque le code du zonage1 est faux .
+            # , parse_float=float, parse_int=float  TODO il y a pb ici lorsque le code du zonage1 est faux .
+            data = json.load(file)
         return(data)
 
 
 ############################################################### TEST ############################################################################
     # à faire absolument dans un fichier test, sinon ça fait croire que c ok alors que non
-#test pour fonction qui recup url
+# test pour fonction qui recup url
 
 # t1 = Telechargement(id_zone1="08",date="latest",zonage1="departements")
 # lien_1 = t1.generator_link()
@@ -210,36 +212,36 @@ class Telechargement():
 # lien_3 = t3.generator_link()
 # print(lien_3)
 
-#test pour le générateur de chemin : 
-#4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
-#t4.generator_path()
+# test pour le générateur de chemin :
+# 4 = Telechargement(id_zone1="13207",zonage1="communes",zonage2="parcelles")
+# t4.generator_path()
 
-#test fonction telechargement
+# test fonction telechargement
 #t4 = Telechargement(id_zone1="08005",zonage1="communes")
-#t4.read_json()
+# t4.read_json()
 
 #t5 = Telechargement(id_zone1="08004",date="latest",zonage1="communes",zonage2="parcelles")
-#print(t5.generator_link())
-#print(t5.generator_path())
-#t5.download()
+# print(t5.generator_link())
+# print(t5.generator_path())
+# t5.download()
 
 
-#lecture de json vers dictionnaire
+# lecture de json vers dictionnaire
 #dico = t4.read_json()
-#print(dico) 
+# print(dico)
 
-#test fonction recherche de fichier
+# test fonction recherche de fichier
 #t4 = Telechargement(id_zone1="08005",zonage1="communes")
-#print(t4.recherche_fichier())
+# print(t4.recherche_fichier())
 
 #t4 = Telechargement(id_zone1="08004",zonage1="communes")
-#t4.download()
-#print(t4.recherche_fichier())
+# t4.download()
+# print(t4.recherche_fichier())
 
-#t4 = Telechargement(id_zone1="13201",zonage1="communes") 
-#t4.read_json()
-#print(t4.recherche_fichier())
+#t4 = Telechargement(id_zone1="13201",zonage1="communes")
+# t4.read_json()
+# print(t4.recherche_fichier())
 
-#t4 = Telechargement(id_zone1="51",zonage1="departements") 
+#t4 = Telechargement(id_zone1="51",zonage1="departements")
 #dico = t4.read_json()
-#print(dico['features'][0]["id"])
+# print(dico['features'][0]["id"])
