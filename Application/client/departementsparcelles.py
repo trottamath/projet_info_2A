@@ -9,8 +9,7 @@ from datetime import datetime
 from abc import ABC, abstractmethod
 from storage import Storage
 
-
-class DepartementsCommunes(Storage):
+class DepartementsParcelles(Storage):
     '''Classe qui gère le stockage du fichier parcelles dans départements.
     Attributes :
     -----------

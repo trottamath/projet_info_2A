@@ -7,7 +7,6 @@ import os
 from abc import ABC, abstractmethod
 from storage import Storage
 
-
 class DepartementsCommunes(Storage):
     '''Classe qui gère le stockage du fichier communes dans départements.
     Attributes :

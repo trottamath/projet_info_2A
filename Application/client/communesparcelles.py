@@ -10,7 +10,7 @@ from abc import ABC, abstractmethod
 from storage import Storage
 
 
-class DepartementsCommunes(Storage):
+class CommunesParcelles(Storage):
     '''Classe qui gère le stockage du fichier communes dans départements.
     Attributes :
     -----------
@@ -57,6 +57,6 @@ class DepartementsCommunes(Storage):
 
 # test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-#D = DepartementsCommunes()
+#D = CommunesParcelles()
 # print(D.count())
 # D.delete_older_file()
