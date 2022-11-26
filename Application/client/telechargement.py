@@ -11,8 +11,8 @@ import requests
 import urllib.request
 from client.departementscommunes import DepartementsCommunes
 from client.departementsparcelles import DepartementsParcelles
-from client.departementscommunes import CommunesCommunes
-from client.departementscommunes import CommunesParcelles
+from client.communescommunes import CommunesCommunes
+from client.communesparcelles import CommunesParcelles
 
 class Telechargement():
     '''Classe qui permet de télécharger des fichiers json.gz depuis un site web
@@ -122,13 +122,13 @@ class Telechargement():
         url = self.generator_link()
         path = self.generator_path()
 
-        if departements in path : 
-            if communes in path :
+        if 'departements' in path : 
+            if 'communes' in path :
                 DepartementsCommunes.delete_older_file()
             else :
                 DepartementsParcelles.delete_older_file()
         else : 
-            if parcelles in path : 
+            if 'parcelles' in path : 
                 CommunesParcelles.delete_older_file()
             else : 
                 CommunesCommunes.delete_older_file()
@@ -240,10 +240,10 @@ class Telechargement():
 #t4 = Telechargement(id_zone1="08005",zonage1="communes")
 # t4.read_json()
 
-#t5 = Telechargement(id_zone1="08004",date="latest",zonage1="communes",zonage2="parcelles")
-# print(t5.generator_link())
-# print(t5.generator_path())
-# t5.download()
+t5 = Telechargement(id_zone1="08004",date="latest",zonage1="communes",zonage2="parcelles")
+print(t5.generator_link())
+print(t5.generator_path())
+t5.download()
 
 
 # lecture de json vers dictionnaire
@@ -266,5 +266,5 @@ class Telechargement():
 #dico = t4.read_json()
 # print(dico['features'][0]["id"])
 
-t4 = Telechargement(id_zone1="51",zonage1="departements")
-t4.latest_date_cadastre()
+# t4 = Telechargement(id_zone1="51",zonage1="departements")
+# t4.latest_date_cadastre()
