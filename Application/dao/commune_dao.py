@@ -22,16 +22,15 @@ class CommuneDAO(metaclass=Singleton):
 
         request = "SELECT nom_com FROM Commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
-            with connection.cursor() as cursor :
+            with connection.cursor() as cursor:
                 cursor.execute(
                     request,
                     {"id_com": id_com}
                 )
-                res = cursor.fetchone() 
+                res = cursor.fetchone()
         return res
 
-
-    def recherche_commune(self, id_com:str):
+    def recherche_commune(self, id_com: str):
         """Recherche une commune par son identifiant
         Parameters
         ------
@@ -40,7 +39,7 @@ class CommuneDAO(metaclass=Singleton):
         """
         request = "SELECT * FROM Commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
-            with connection.cursor() as cursor :
+            with connection.cursor() as cursor:
                 cursor.execute(
                     request,
                     {"id_com": id_com}
@@ -48,7 +47,6 @@ class CommuneDAO(metaclass=Singleton):
                 res = cursor.fetchall()
         return res
         # res[0]['nom_com']
-    
 
     def ajout_commune(self, id_com: str, nom_com: str):
         """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà
@@ -59,23 +57,23 @@ class CommuneDAO(metaclass=Singleton):
         nom_com : str
             nom de la commune
         """
-        print(self.recherche_commune(id_com)) #provisoire 
-        if self.recherche_commune(id_com) == [] or self.recherche_commune(id_com) == None : # la commune n'est pas présente dans la table
+        print(self.recherche_commune(id_com))  # provisoire
+        if self.recherche_commune(id_com) == [] or self.recherche_commune(
+                id_com) is None:  # la commune n'est pas présente dans la table
             id_dep = id_com[0:2]
-            if id_dep == "97": # Dom Tom : ont un num de département à 3 chiffres
+            if id_dep == "97":  # Dom Tom : ont un num de département à 3 chiffres
                 id_dep = id_com[0:3]
             request = "INSERT INTO commune (id_com, nom_commune, id_dep)"\
-            "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
+                "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
 
             with DBConnection().connection as connection:
-                with connection.cursor() as cursor :
+                with connection.cursor() as cursor:
                     cursor.execute(
-                        request,
-                        {"id_com": id_com, "nom_commune": nom_com, "id_dep": id_dep}
-                    )
-        else : # la commune est déjà dans la table
+                        request, {
+                            "id_com": id_com, "nom_commune": nom_com, "id_dep": id_dep})
+        else:  # la commune est déjà dans la table
             print('la commune est déjà dans la base de données')
-        
+
     def suppression_commune(self, id_com: str):
         """Supprime la ligne d'une commune dans la table Commune de la BdD
         Parameters
@@ -85,30 +83,30 @@ class CommuneDAO(metaclass=Singleton):
         """
         request = "DELETE FROM commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
-            with connection.cursor() as cursor :
+            with connection.cursor() as cursor:
                 cursor.execute(
                     request,
                     {"id_com": id_com}
                 )
-    
 
-################################################## TESTS : OK ##################################################
+
+################################################## TESTS : OK ############
 
 c = CommuneDAO()
-#print(c.recherche_commune(id_com="13207"))
+# print(c.recherche_commune(id_com="13207"))
 
-#### test ajout_commune : OK
+# test ajout_commune : OK
 #c.ajout_commune('33000', 'Bordeaux')
 #c.ajout_commune('39000', 'LONS-LE-SAUNIER')
-#print(c.recherche_commune(id_com="83000")) 
+# print(c.recherche_commune(id_com="83000"))
 
-#### test nom_commune : OK
-#print(c.nom_commune('35170'))
-#print(c.nom_communes('35000'))
+# test nom_commune : OK
+# print(c.nom_commune('35170'))
+# print(c.nom_communes('35000'))
 
-#### test recherche_commune : OK
-#print(c.recherche_commune('45678'))
-#print(c.recherche_commune('84000'))
+# test recherche_commune : OK
+# print(c.recherche_commune('45678'))
+# print(c.recherche_commune('84000'))
 
-#### test suppression commune : OK
-#c.suppression_commune('83000')
+# test suppression commune : OK
+# c.suppression_commune('83000')
