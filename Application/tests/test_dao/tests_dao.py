@@ -11,7 +11,7 @@ from dao.parcelle_commune_dao import ParcelleCommuneDAO
 # print(c.recherche_commune(id_com="13207"))
 
 # test ajout_commune : OK
-#c.ajout_commune('33000', 'Bordeaux')
+#c.ajout_commune('33000', 'BORDEAUX')
 #c.ajout_commune('39000', 'LONS-LE-SAUNIER')
 # print(c.recherche_commune(id_com="83000"))
 

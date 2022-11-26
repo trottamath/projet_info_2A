@@ -50,10 +50,3 @@ class CommunesParcelles(Storage):
                 os.remove(os.path.join(self.path, filename).replace("\\", "/"))
 
 
-############################################################### TEST ############################################################################
-
-# test pour fonction libère de la place dans le sous-dossier commune du dossier département
-
-D = CommunesParcelles()
-print(D.count())
-D.delete_older_file()
