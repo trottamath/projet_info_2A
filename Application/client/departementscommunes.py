@@ -12,14 +12,14 @@ class DepartementsCommunes(Storage):
     Attributes :
     -----------
         path : str = 'Application/client/data/departements/communes'
-        quota : int = 99
+        quota : int = 101
             nombre maximum de fichiers dans le dossier
     '''
 
     def __init__(
             self,
             path: str = 'Application/client/data/departements/communes',
-            quota: int = 10):
+            quota: int = 101):
         '''constructeur'''
         self.path = path
         self.quota = quota

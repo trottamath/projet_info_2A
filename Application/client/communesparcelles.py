@@ -12,11 +12,11 @@ class CommunesParcelles(Storage):
     Attributes :
     -----------
         path : str = 'Application/client/data/communes/parcelles'
-        quota : int = 99
+        quota : int = 20
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self, path: str = 'Application/client/data/communes/parcelles', quota: int = 6):
+    def __init__(self, path: str = 'Application/client/data/communes/parcelles', quota: int = 20):
         '''constructeur'''
         self.path = path
         self.quota = quota
