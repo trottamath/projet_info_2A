@@ -29,25 +29,40 @@ class Instanciation():
         list_dico = LienService(self.dico).genere_dico()
         #print(list_dico)
         list_zonage = []
-        if self.dico["zonage2"] == "communes":
-            for dico in list_dico:
-                list_zonage.append(Commune(id= dico["id"], geom_coord= MultiPolygone(liste_brute= dico["geometry"]["coordinates"]), nom= dico["properties"]["nom"]))
-        elif self.dico["zonage2"] == "parcelles":
-            for dico in list_dico:
-                list_zonage.append(Parcelle(id= dico["id"], geom_coord= Polygone(liste_brute= dico["geometry"]["coordinates"]))) #à vérifier
+        #if self.dico["zonage2"] == "communes":
+        #    for dico in list_dico:
+        #        list_zonage.append(Commune(id= dico["properties"]["id"], geom_coord= MultiPolygone(liste_brute= dico["geometry"]["coordinates"]), nom= dico["properties"]["nom"]))
+        #elif self.dico["zonage2"] == "parcelles":
+        #    for dico in list_dico:
+        #        list_zonage.append(Parcelle(id= dico["properties"]["id"], geom_coord= Polygone(liste_brute= dico["geometry"]["coordinates"]))) #à vérifier
+        for dico in list_dico:
+            if dico["geometry"]["type"] == "Polygon":
+                list_zonage.append(Parcelle(id= dico["properties"]["id"], geom_coord= Polygone(liste_brute= dico["geometry"]["coordinates"])))
+            if dico["geometry"]["type"] == "MultiPolygon":
+                list_zonage.append(Commune(id= dico["properties"]["id"], geom_coord= MultiPolygone(liste_brute= dico["geometry"]["coordinates"]), nom= dico["properties"]["nom"]))
 
         return list_zonage
 
-#test ne fonctionne pas pour certains départements 06, 14, 15, 16, 21, 22, 24, 25, 27, 28, 29, 34, 40, 43, 50, 51, 54, 55, 59, 
+#test ne fonctionne pas pour certains départements 14, 15, 16, 21, 22, 24, 25, 27, 28, 29, 34, 40, 43, 50, 51, 54, 55, 59, 
 # 60, 65, 67, 69, 77, 79, 81, 87, 90, 96, 971, 975   (vérifier le contenu du json)
 #list_com1 = Instanciation(zonage1="departements", id1="2A", zonage2="communes", date="latest").instancier_zonage()
 #list_com2 = Instanciation(zonage1="departements", id1="06", zonage2="communes", date="latest").instancier_zonage()
+#pb résolu !!!!!!
+#for i in [ "2A", "06", "13","51", '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '67', '68', '69', '70', '71', '72', '76', '77', '78', '79', '80', '81', '82', '83', '85', '86', '87', '88', '89', '90', '91', '93', '94', '95', '96', '971', '975']:
+#    Instanciation(id1=i,zonage1="departements",zonage2="communes",date="latest").instancier_zonage()
 
 #print(insta.dico)
 #print(insta.dico["zonage1"])
 
 #liste = insta.instancier_zonage()
 #print(liste[0].id)
+
+
+
+
+
+
+
 
 #120com13110 = Instanciation(zonage1="communes", id1="13110", zonage2="communes", date="latest").instancier_zonage() #liste d'une seule commune
 #print (com13110[0].geom_coord)

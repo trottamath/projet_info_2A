@@ -50,8 +50,8 @@ class Requete ():
         """pour demander le resultat à la DAO qui va interroger la base de données"""
         res = None
         if self.dico_requete["num"] == "1" : # voisines communes à une voisine donnée
-            print(self.dico_requete["id"]) #vérification provisoire
-            print(self.dico_requete["date"]) #provisoire
+            #print(self.dico_requete["id"]) #vérification provisoire
+            #print(self.dico_requete["date"]) #provisoire
             res = CommuneCommuneDAO().recherche_com(self.dico_requete["id"], self.dico_requete["date"])
 
         elif self.dico_requete["num"] == "2" : # parcelles en bordure d'une commune donnée
@@ -104,7 +104,7 @@ class Requete ():
 
             #enregistrement dans la base de données
             CommuneCommuneDAO().create_all(id_com1= id_com, list_id_com2= list_id_com_contig, date= self.dico_requete["date"]) #vérifier si latest ne pose pas de pb par la suite
-            CommuneDAO().ajout_commune(id_com= id_com, nom_com= com1.nom)
+            #CommuneDAO().ajout_commune(id_com= id_com, nom_com= com1.nom)
 
             return list_id_com_contig
 
@@ -126,13 +126,13 @@ class Requete ():
         elif self.dico_requete["num"] == "3" :
             id_parc = self.dico_requete["id"] #l'identifiant de la parcelle d'intérêt
             id_com = id_parc[0:5] #identifiant de la commune de cette parcelle
-            requete2_com = Requete(dico_requete= {"num": "2", "id": id_com, "date": self.dico_requete["date"]})
-            if requete2_com.Get_DAO() != [] and requet2_com.Get_DAO() != None:
+            requete2_com = Requete(dico_requete= {"num": "2", "id": id_com, "date": self.dico_requete["date"]}) #recherche des parcelles en limites de cette commune
+            if requete2_com.Get_DAO() != [] and requete2_com.Get_DAO() != None:
                 list_id_parc_lim = requete2_com.Get_DAO()
             else:
                 list_id_parc_lim = requete2_com.Get_Client() #à réindenter dans else
 
-            liste_parc_com1 = Instanciation(zonage1= "communes", id1= id_com, zonage2= "parcelles", date= self.dico_requete["date"]).instancier_zonage()
+            liste_parc_com1 = Instanciation(zonage1= "communes", id1= id_com, zonage2= "parcelles", date= self.dico_requete["date"]).instancier_zonage() #liste de toutes les parcelles de cette commune
             for parcel in liste_parc_com1:
                 if parcel.id == id_parc:
                     parcel1 = parcel #parcelle d'intérêt
@@ -144,28 +144,30 @@ class Requete ():
                 if id == id_parc:
                     test_lim = True
             if test_lim: #si la parcelle d'intérêt est en limite de sa commune
-                requete1_com = Requete(dico_requete= {"num":"1","id":id_com,"date":self.dico_requete["date"]})
+                requete1_com = Requete(dico_requete= {"num": "1","id": id_com,"date": self.dico_requete["date"]}) #recherche des communes limitrophes
                 list_id_com_contig = []
-                if requete1_com.Get_DAO() != []:
+                if requete1_com.Get_DAO() != [] and requete1_com.Get_DAO() != None:
                     list_id_com_contig = requete1_com.Get_DAO()
                 else:
                     list_id_com_contig = requete1_com.Get_Client()
 
-                print(list_id_com_contig) #provisoire pour vérifier  (None???)
+                #print(list_id_com_contig) #provisoire pour vérifier  (None???)
                 if list_id_com_contig != [] and list_id_com_contig != None:    
                     for id_com2 in list_id_com_contig: #pour chaque commune contigüe
-                        requete2_com2 = Requete(dico_requete= {"num": "2", "id": id_com2, "date": self.dico_requete["date"]})
-                        if requete2_com2.Get_DAO() != []:
+                        requete2_com2 = Requete(dico_requete= {"num": "2", "id": id_com2, "date": self.dico_requete["date"]}) #recherche des parcelles en limite de la commune contigüe
+                        if requete2_com2.Get_DAO() != [] and requete2_com.Get_DAO() != None:
                             list_id_parc_lim2 = requete2_com2.Get_DAO()
                         else:
                             list_id_parc_lim2 = requete2_com2.Get_Client() # à réindenter dans else
-                        liste_parc_com2 = Instanciation(zonage1="communes", id1=id_com2, zonage2="parcelles", date=self.dico_requete["date"]).instancier_zonage()
+                        liste_parc_com2 = Instanciation(zonage1= "communes", id1= id_com2, zonage2= "parcelles", date= self.dico_requete["date"]).instancier_zonage() #liste des parcelles de la commune voisine
                         liste_parc_lim2 = []
                         for parc2 in liste_parc_com2:
                             for id in list_id_parc_lim2:
-                                if id == parc2.id:
+                                if id == parc2.id: #si c'est une parcelle en limite de la commune voisine
                                     liste_parc_lim2.append(parc2)
-                        liste_parc_com1 =  liste_parc_com1 + parcel1.ss_list_contig(list_zones= liste_parc_lim2)
+                        list_parc_contig2 = parcel1.ss_list_contig(list_zones= liste_parc_lim2) #restriction aux parcelles contigües avec la parcelle d'intéret
+                        #print(list_parc_contig2) #provisoire, à supprimer
+                        liste_parc_com1 =  liste_parc_com1 + list_parc_contig2 
             
             list_id_parc_contig = [liste_parc_com1[i].id for i in range(len(liste_parc_com1))]
             return list_id_parc_contig
@@ -190,7 +192,7 @@ class Requete ():
 #print(req.Get_DAO()) #None  (encore un pb de DAO)
 
 #Test pour le requete 2 latest et la commune 13207, les parcelles en limites sont:
-list_parc_lim13207=['132078290I0071',
+list_parc_lim13207 = ['132078290I0071',
  '132078290I0070',
  '132078290I0069',
  '132078300A0180',
@@ -247,3 +249,14 @@ list_parc_lim13207=['132078290I0071',
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune, il devrait y en avoir qui ne commencent pas par "13207" (à vérifier )  
  # pour l'instant, en latest, la requete 3 (en masquant la dao à corriger), réponds que la parcelles n'a que 2 parcelles contigües qui sont:
  # ['132078290I0070','132078290K0032'] alors qu'elle est en limite de commune (à vérifier )  
+
+
+#exemple pour la requête 3 avec une parcelle : 831200000B0632 est contigüe à :
+parc_cont831200000B0632= ['831200000B0616',
+ '831200000B0626',
+ '831200000B0637',
+ '831200000B0634',
+ '831200000B0639',
+ '831200000B0628',
+ '831200000B0630',
+ '831200000B0633']

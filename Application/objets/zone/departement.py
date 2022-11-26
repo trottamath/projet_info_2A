@@ -41,7 +41,9 @@ class Departement():
         return liste_dep
 
 
-#départements à anomalies dans le json:
+
+
+#départements à anomalies dans le json:  (résolu, à supprimer)
 list_pb = ["06", "14", "15", "16", "21", "22", "24", "25", "27", "28", "29", "34", "40", "43", "50", "51", "54", "55", "59", "60", "65", "67", "69", "77", "79", "81", "87", "90", "96", "971", "975"]
 #print(len(list_pb))
 list_next = []

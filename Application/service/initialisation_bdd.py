@@ -17,3 +17,5 @@ class InitialisationBdD():
         for commune in list_com:
             Requete(dico_requete= {"num": "1", "id": self.id_dep, "date": self.date}).Get_client()
             Requete(dico_requete= {"num": "2", "id": commune.id, "date": self.date}).Get_client()
+
+#InitialisationBdD(id_dep="13").chargement_bdd()

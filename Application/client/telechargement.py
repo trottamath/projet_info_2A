@@ -239,3 +239,7 @@ class Telechargement():
 #t4 = Telechargement(id_zone1="13201",zonage1="communes") 
 #t4.read_json()
 #print(t4.recherche_fichier())
+
+#t4 = Telechargement(id_zone1="51",zonage1="departements") 
+#dico = t4.read_json()
+#print(dico['features'][0]["id"])
