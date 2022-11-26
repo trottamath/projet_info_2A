@@ -60,6 +60,11 @@ class Telechargement():
         self.id_zone = id_zone1
         self.zonage2 = zonage2
 
+        if self.date == "latest":
+            #copier ici l'interieur du code
+            #avec indentation
+
+
     def generator_link(self) -> str:
         '''Genère un lien url selon certains critères
 
@@ -118,7 +123,7 @@ class Telechargement():
         '''Télécharge un fichier depuis une url donnée et
         l'enregistre dans un dossier donné
 
-        '''
+        ''' 
         url = self.generator_link()
         path = self.generator_path()
 
@@ -164,31 +169,32 @@ class Telechargement():
         return isfile
 
     def latest_date_cadastre(self):
-        ''' Méthode permettant de déterminer la date de
-        la dernière mise à jour du cadastre.
+        ''' Méthode de webscrapping permettant de déterminer
+         la date de la dernière mise à jour du cadastre
 
         Returns
         -------
         date : str
-            Une date de la forme 03-Nov-2022.
-            '' si la recherche de la date échoue.
+            Une date de la forme AAAA-MM-JJ
         '''
-        url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
-        opener = urllib.request.FancyURLopener({})
-        date = ''
-        with opener.open(url) as file:
-            content = file.readlines()
-            previous_line = ''
-            for line in content:
-                line = str(line)
-                if 'latest' in line:
-                    previous_line = previous_line[previous_line.index('''/">''')+3:previous_line.index("/</a>")]
-                    date = previous_line.strip(' ')
-                else :
-                    previous_line = line
-        return date
+        if self.date == "latest":
+            url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
+            opener = urllib.request.FancyURLopener({})
+            date = ''
+            with opener.open(url) as file:
+                content = file.readlines()
+                previous_line = ''
+                for line in content:
+                    line = str(line)
+                    if 'latest' in line:
+                        previous_line = previous_line[previous_line.index('''/">''')+3:previous_line.index("/</a>")]
+                        date = previous_line.strip(' ')
+                    else :
+                        previous_line = line
+            self.date = date
+        #return date
 
-        print(latest_date_cadastre())
+        
 
     def read_json(self) -> dict:
         '''Lis le fichier json comme un dictionnaire
@@ -197,6 +203,7 @@ class Telechargement():
         ------
             dict
         '''
+        self.date = self.latest_date_cadastre()
         if self.recherche_fichier() == False:
             self.download()
 
