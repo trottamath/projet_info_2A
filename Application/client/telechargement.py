@@ -61,8 +61,20 @@ class Telechargement():
         self.zonage2 = zonage2
 
         if self.date == "latest":
-            #copier ici l'interieur du code
-            #avec indentation
+            url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
+            opener = urllib.request.FancyURLopener({})
+            date = ''
+            with opener.open(url) as file:
+                content = file.readlines()
+                previous_line = ''
+                for line in content:
+                    line = str(line)
+                    if 'latest' in line:
+                        previous_line = previous_line[previous_line.index('''/">''')+3:previous_line.index("/</a>")]
+                        date = previous_line.strip(' ')
+                    else :
+                        previous_line = line
+            self.date = date
 
 
     def generator_link(self) -> str:
@@ -167,34 +179,6 @@ class Telechargement():
         isfile = os.path.isfile(chemin)
 
         return isfile
-
-    def latest_date_cadastre(self):
-        ''' Méthode de webscrapping permettant de déterminer
-         la date de la dernière mise à jour du cadastre
-
-        Returns
-        -------
-        date : str
-            Une date de la forme AAAA-MM-JJ
-        '''
-        if self.date == "latest":
-            url = "https://cadastre.data.gouv.fr/data/etalab-cadastre/"
-            opener = urllib.request.FancyURLopener({})
-            date = ''
-            with opener.open(url) as file:
-                content = file.readlines()
-                previous_line = ''
-                for line in content:
-                    line = str(line)
-                    if 'latest' in line:
-                        previous_line = previous_line[previous_line.index('''/">''')+3:previous_line.index("/</a>")]
-                        date = previous_line.strip(' ')
-                    else :
-                        previous_line = line
-            self.date = date
-        #return date
-
-        
 
     def read_json(self) -> dict:
         '''Lis le fichier json comme un dictionnaire
