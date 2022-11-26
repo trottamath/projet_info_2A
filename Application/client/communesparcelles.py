@@ -24,7 +24,7 @@ class CommunesParcelles(Storage):
     def count(self):
         '''Méthode qui compte le nombre de fichiers qu'il y a dans le dossier parcelles du dossier communes'''
         count = 0
-        for filename in os.listdir(self.path).replace("\\", "/"):
+        for filename in os.listdir(self.path):
             count = count + 1
         return(count)
 
@@ -33,12 +33,12 @@ class CommunesParcelles(Storage):
 
         while self.quota < C:
             time = []
-            for filename in os.listdir(self.path).replace("\\", "/"):
+            for filename in os.listdir(self.path):
                 time.append(os.path.getctime(
                     os.path.join(self.path, filename).replace("\\", "/")))
             min_time = min(time)
 
-            dictionary = dict(zip(os.listdir(self.path).replace("\\", "/"), time))
+            dictionary = dict(zip(os.listdir(self.path), time))
 
             older_file = []
             older_file = [
