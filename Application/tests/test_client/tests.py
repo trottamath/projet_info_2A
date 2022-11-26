@@ -33,6 +33,6 @@ from client.multiplesdepartements import MultiplesDepartements
 
 #Test pour la classe MultiplesDepartements
 
-T = MultiplesDepartements()
-U = ['06','972']
-T.certains_departements_communes(U)
+#T = MultiplesDepartements()
+#U = ['06','972','78','12','03']
+#T.certains_departements_communes(U)
