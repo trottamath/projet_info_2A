@@ -34,7 +34,7 @@ class DepartementsCommunes(Storage):
     def delete_older_file(self):
         count = self.count()
 
-        while self.quota < count:
+        while self.quota - 1 < count:
 
             time = []
             for filename in os.listdir(self.path):
@@ -61,4 +61,4 @@ class DepartementsCommunes(Storage):
 
 D = DepartementsCommunes()
 print(D.count())
-D.delete_older_file()
+#D.delete_older_file()

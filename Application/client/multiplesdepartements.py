@@ -128,7 +128,7 @@ class MultiplesDepartements(Telechargement):
         for i in liste_dep:
             t = Telechargement(
                 id_zone1=i,
-                date="2022-10-01",
+                date="2022-04-01",
                 zonage1="departements")
             link = t.generator_link()
             print(link)
@@ -156,7 +156,7 @@ class MultiplesDepartements(Telechargement):
 # test pour certains départements
 
 T = MultiplesDepartements()
-U = ['02','67','974','25','01','03','08','28']
+U = ['06','972','973','78','21']
 T.certains_departements(U)
 
 

@@ -124,14 +124,14 @@ class Telechargement():
 
         if 'departements' in path : 
             if 'communes' in path :
-                DepartementsCommunes.delete_older_file()
+                DepartementsCommunes().delete_older_file()
             else :
-                DepartementsParcelles.delete_older_file()
+                DepartementsParcelles().delete_older_file()
         else : 
             if 'parcelles' in path : 
-                CommunesParcelles.delete_older_file()
+                CommunesParcelles().delete_older_file()
             else : 
-                CommunesCommunes.delete_older_file()
+                CommunesCommunes().delete_older_file()
 
         req = requests.get(url)
         filename = req.url[url.rfind('/') + 1:]
