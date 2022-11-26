@@ -128,7 +128,7 @@ class MultiplesDepartements(Telechargement):
         for i in liste_dep:
             t = Telechargement(
                 id_zone1=i,
-                date="2022-04-01",
+                date="2021-04-01",
                 zonage1="departements")
             link = t.generator_link()
             print(link)
