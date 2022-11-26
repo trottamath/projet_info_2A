@@ -4,8 +4,6 @@ date 25/10/2022
 auteurs : Fiona Fonkou et Jean-Philippe Trotta
 """
 from pprint import pprint
-
-#import regex
 from prompt_toolkit.validation import ValidationError, Validator
 from InquirerPy import prompt
 
@@ -33,7 +31,7 @@ class AbstractView():
         Session().id = answers['id_zone']
         dico_requete = {"num": Session().num, "id": Session().id, "date": Session().date}
         pprint(dico_requete)
-        Session().list_res = Requete(dico_requete= dico_requete ).Get_Client() #Get_Client() #Get_or_create() #Get_DAO()
+        Session().list_res = Requete(dico_requete= dico_requete ).Get_or_create() #Get_Client()
         pprint(Session().list_res) 
 
         from views.start_view import StartView

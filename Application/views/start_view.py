@@ -18,8 +18,7 @@ class StartView(AbstractView):
                 Choice('Liste des communes limitrophes à une commune donnée')
                 ,Choice('Liste des parcelles en bordure d\'une commune donnée')
                 ,Choice('Liste des parcelles limitrophes à une parcelle donnée')
-                ,Choice('Quitter')  #attention lorsqu'on choisi quitter, ça continue qd même!!!
-            ]
+                ]
         )
         self.__questions1 = inquirer.select(
             message = f'Choissez une date ou latest :'
@@ -48,9 +47,7 @@ class StartView(AbstractView):
     def make_choice(self):
         reponse = self.__questions.execute()
         Session().date = self.__questions1.execute()
-        if reponse == 'Quitter':
-            pass
-        elif reponse == 'Liste des communes limitrophes à une commune donnée':
+        if reponse == 'Liste des communes limitrophes à une commune donnée':
             Session().num = "1"
 
         elif reponse == 'Liste des parcelles en bordure d\'une commune donnée':
