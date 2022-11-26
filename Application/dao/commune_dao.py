@@ -20,7 +20,7 @@ class CommuneDAO(metaclass=Singleton):
             code postal de la commune
         """
 
-        request = "SELECT nom_com FROM Commune WHERE id_com = %(id_com)s"
+        request = "SELECT nom_commune FROM Commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor:
                 cursor.execute(
@@ -87,6 +87,9 @@ class CommuneDAO(metaclass=Singleton):
                 cursor.execute(
                     request,
                     {"id_com": id_com}
+<<<<<<< HEAD
+                )
+=======
                 )
 
 
@@ -110,3 +113,4 @@ c = CommuneDAO()
 
 # test suppression commune : OK
 # c.suppression_commune('83000')
+>>>>>>> 699776ce20f4fb8aa84912f69193d3b55a710382
