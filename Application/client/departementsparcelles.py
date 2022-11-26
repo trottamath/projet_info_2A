@@ -27,7 +27,7 @@ class DepartementsParcelles(Storage):
     def count(self):
         '''Méthode qui compte le nombre de fichiers qu'il y a dans le dossier'''
         count = 0
-        for filename in os.listdir(self.path):
+        for filename in os.listdir(self.path).replace("\\", "/"):
             count = count + 1
         return(count)
 
@@ -37,7 +37,7 @@ class DepartementsParcelles(Storage):
         while self.quota < C:
 
             time = []
-            for filename in os.listdir(self.path):
+            for filename in os.listdir(self.path).replace("\\", "/"):
                 time.append(
                     os.path.getctime(
                         os.path.join(
@@ -45,7 +45,7 @@ class DepartementsParcelles(Storage):
                             filename)))
             min_time = min(time)
 
-            dictionary = dict(zip(os.listdir(self.path), time))
+            dictionary = dict(zip(os.listdir(self.path).replace("\\", "/"), time))
 
             older_file = []
             older_file = [
@@ -56,7 +56,7 @@ class DepartementsParcelles(Storage):
             print(older_file)
 
             for filename in older_file:
-                os.remove(os.path.join(self.path, filename))
+                os.remove(os.path.join(self.path, filename).replace("\\", "/"))
 
 
 ############################################################### TEST #####
