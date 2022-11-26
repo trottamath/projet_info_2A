@@ -4,9 +4,8 @@ date 29/10/2022
 auteur : Chloé Contant
 """
 import os
-from abc import ABC, abstractmethod
-from storage import Storage
-
+import time
+from client.storage import Storage
 
 class DepartementsCommunes(Storage):
     '''Classe qui gère le stockage du fichier communes dans départements.
@@ -35,12 +34,12 @@ class DepartementsCommunes(Storage):
     def delete_older_file(self):
         count = self.count()
 
-        while self.quota < count:
+        while self.quota - 1 < count:
 
             time = []
             for filename in os.listdir(self.path):
                 time.append(os.path.getctime(
-                    os.path.join(self.path, filename)))
+                    os.path.join(self.path, filename).replace("\\", "/")))
             min_time = min(time)
 
             dictionary = dict(zip(os.listdir(self.path), time))
@@ -52,14 +51,14 @@ class DepartementsCommunes(Storage):
             print(older_file)
 
             for filename in older_file:
-                os.remove(os.path.join(self.path, filename))
+                os.remove(os.path.join(self.path, filename).replace("\\", "/"))
 
 
-############################################################### TEST #####
+######## TEST #####
 
 # test pour fonction libère de la place dans le sous-dossier commune du
 # dossier département
 
 D = DepartementsCommunes()
 print(D.count())
-D.delete_older_file()
+#D.delete_older_file()

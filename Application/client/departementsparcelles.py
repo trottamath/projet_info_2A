@@ -5,12 +5,9 @@ auteur : Chloé Contant
 """
 import os
 import time
-from datetime import datetime
-from abc import ABC, abstractmethod
-from storage import Storage
+from client.storage import Storage
 
-
-class DepartementsCommunes(Storage):
+class DepartementsParcelles(Storage):
     '''Classe qui gère le stockage du fichier parcelles dans départements.
     Attributes :
     -----------
@@ -21,7 +18,7 @@ class DepartementsCommunes(Storage):
 
     def __init__(
             self,
-            path: str = 'Application/client/data/departements/communes',
+            path: str = 'Application/client/data/departements/parcelles',
             quota: int = 200):
         '''constructeur'''
         self.path = path
@@ -45,7 +42,7 @@ class DepartementsCommunes(Storage):
                     os.path.getctime(
                         os.path.join(
                             self.path,
-                            filename)))
+                            filename).replace("\\", "/")))
             min_time = min(time)
 
             dictionary = dict(zip(os.listdir(self.path), time))
@@ -59,7 +56,7 @@ class DepartementsCommunes(Storage):
             print(older_file)
 
             for filename in older_file:
-                os.remove(os.path.join(self.path, filename))
+                os.remove(os.path.join(self.path, filename).replace("\\", "/"))
 
 
 ############################################################### TEST #####
@@ -67,6 +64,6 @@ class DepartementsCommunes(Storage):
 # test pour fonction libère de la place dans le sous-dossier commune du
 # dossier département
 
-#D = DepartementsCommunes()
-# print(D.count())
-# D.delete_older_file()
+D = DepartementsParcelles()
+print(D.count())
+D.delete_older_file()
