@@ -47,13 +47,13 @@ class CommuneDAO(metaclass=Singleton):
                 res = cursor.fetchall()
         return res
 
-    def ajout_commune(self, id_com: str, nom_com: str):
+    def ajout_commune(self, id_com: str, nom_commune: str):
         """Ajouter commune à la table Commune dans la table si elle n'existe pas déjà
         Parameters
         ------
         id_com : str
             code postal de la commune
-        nom_com : str
+        nom_commune : str
             nom de la commune
         """
         print(self.recherche_commune(id_com))  # provisoire
@@ -63,13 +63,13 @@ class CommuneDAO(metaclass=Singleton):
             if id_dep == "97":  # Dom Tom : ont un num de département à 3 chiffres
                 id_dep = id_com[0:3]
             request = "INSERT INTO commune (id_com, nom_commune, id_dep)"\
-                "VALUES (%(id_com)s, %(nom_com)s, %(id_dep)s)"\
+                "VALUES (%(id_com)s, %(nom_commune)s, %(id_dep)s)"\
 
             with DBConnection().connection as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(
-                        request, {
-                            "id_com": id_com, "nom_commune": nom_com, "id_dep": id_dep})
+                        request,
+                        {"id_com": id_com, "nom_commune": nom_commune, "id_dep": id_dep})
         else:  # la commune est déjà dans la table
             print('la commune est déjà dans la base de données')
 
@@ -94,7 +94,7 @@ c = CommuneDAO()
 # print(c.recherche_commune(id_com="13207"))
 
 # test ajout_commune : OK
-#c.ajout_commune('33000', 'Bordeaux')
+c.ajout_commune('33000', 'BORDEAUX')
 #c.ajout_commune('39000', 'LONS-LE-SAUNIER')
 # print(c.recherche_commune(id_com="83000"))
 
