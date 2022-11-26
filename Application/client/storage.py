@@ -5,8 +5,9 @@ date 05/11/2022
 auteur : Chloé Contant
 """
 
+
 class Storage(ABC):
-    '''Classe qui permet de gérer le stockage des fichiers, 
+    '''Classe qui permet de gérer le stockage des fichiers,
         elle supprime les fichiers s'ils sont trop nombreux dans un dossier.
         Attributes
         ----------'''

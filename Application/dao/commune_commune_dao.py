@@ -25,14 +25,13 @@ class CommuneCommuneDAO():
         """
         request = "SELECT * FROM commune_commune WHERE id_com1 = %(id_com1)s AND id_com2 = %(id_com2)s AND date = %(date)s"
         with DBConnection().connection as connection:
-            with connection.cursor() as cursor :
+            with connection.cursor() as cursor:
                 cursor.execute(
                     request,
                     {"id_com1": id_com1, "id_com2": id_com2, "date": date}
                 )
                 res = cursor.fetchall()
         return res
-
 
     def create(self, id_com1: str, id_com2: str, date):
         """ajoute une nouvelle paire de communes limitrophes pour la date donnée
@@ -45,18 +44,19 @@ class CommuneCommuneDAO():
         date : str
             date de l'information
         """
-        # si le couple existe déjà pour la date donnée, on ne l'ajoute pas à la base de données
-        if self.recherche(id_com1,id_com2,date) == None or self.recherche(id_com1,id_com2,date) == []: # le couple n'existe pas déjà
+        # si le couple existe déjà pour la date donnée, on ne l'ajoute pas à la
+        # base de données
+        if self.recherche(id_com1, id_com2, date) is None or self.recherche(
+                id_com1, id_com2, date) == []:  # le couple n'existe pas déjà
             request = "INSERT INTO commune_commune (id_com1, id_com2, date) VALUES (%(id_com1)s, %(id_com2)s, %(date)s)"
             with DBConnection().connection as connection:
-                with connection.cursor() as cursor :
+                with connection.cursor() as cursor:
                     cursor.execute(
                         request,
                         {"id_com1": id_com1, "id_com2": id_com2, "date": date}
                     )
-        else :
+        else:
             pass
-    
 
     def recherche_com(self, id_com: str, date: str):
         """recherche les communes limitrophes à une commune donnée
@@ -69,7 +69,7 @@ class CommuneCommuneDAO():
         """
         request = "SELECT id_com2 FROM commune_commune WHERE id_com1=%(id_com)s AND date=%(date)s"
         with DBConnection().connection as connection:
-            with connection.cursor() as cursor :
+            with connection.cursor() as cursor:
                 cursor.execute(
                     request,
                     {"id_com": id_com, "date": date}
@@ -79,8 +79,6 @@ class CommuneCommuneDAO():
         for i in range(len(res)):
             voisines.append(res[i]['id_com2'])
         return voisines
-
-
 
     def create_all(self, id_com1: str, list_id_com2: list[str], date: str):
         """Ajoute un ensemble de communes voisines à une commune donnée
@@ -94,4 +92,4 @@ class CommuneCommuneDAO():
             date de l'information
         """
         for id_com2 in list_id_com2:
-            self.create(id_com1= id_com1, id_com2= id_com2, date= date)
+            self.create(id_com1=id_com1, id_com2=id_com2, date=date)

@@ -14,7 +14,7 @@ class Telechargement():
     '''Classe qui permet de télécharger des fichiers json.gz depuis un site web
     Attributes :
     -----------
-        date : str = "latest" 
+        date : str = "latest"
             sinon saisir au format "AAAA-MM-JJ"
         zonage1 : str = "departements"
             zonage au choix parmi "departements" ou "france" ou "communes"
@@ -27,12 +27,17 @@ class Telechargement():
             sauf si zonage1="france" alors laisser par défaut zonage2="communes"
     '''
 
-    def __init__(self, id_zone1 = None, zonage1 = "departements",  zonage2 = "communes", date = "latest"):
+    def __init__(
+            self,
+            id_zone1=None,
+            zonage1="departements",
+            zonage2="communes",
+            date="latest"):
         '''constructeur de la classe Telechargement
 
         Parameters:
         -----------
-            date : str = "latest" 
+            date : str = "latest"
                 sinon saisir au format "AAAA-MM-JJ"
             zonage1 : str = "departements"
                 zonage au choix parmi "departements" ou "france" ou "communes"
@@ -52,9 +57,9 @@ class Telechargement():
         self.zonage2 = zonage2
 
     def generator_link(self) -> str:
-        '''Genère un lien url selon certains critères 
+        '''Genère un lien url selon certains critères
 
-        Returns 
+        Returns
         -------
             url : str
         '''
@@ -88,7 +93,7 @@ class Telechargement():
         url = self.generator_link()
         path = r'Application/client/data'
         req = requests.get(url)
-        filename = req.url[url.rfind('/')+1:]
+        filename = req.url[url.rfind('/') + 1:]
         if 'departements' in url:
             path = os.path.join(path, 'departements').replace("\\", "/")
             if 'communes' in filename:
@@ -106,7 +111,7 @@ class Telechargement():
         return(path)
 
     def download(self):
-        '''Télécharge un fichier depuis une url donnée et 
+        '''Télécharge un fichier depuis une url donnée et
         l'enregistre dans un dossier donné
 
         '''
@@ -144,7 +149,7 @@ class Telechargement():
         return isfile
 
     def latest_date_cadastre():
-        ''' Méthode permettant de déterminer la date de 
+        ''' Méthode permettant de déterminer la date de
         la dernière mise à jour du cadastre.
 
         Returns
@@ -192,7 +197,7 @@ class Telechargement():
         print(chemin)
 
         with gzip.open(chemin, 'rb') as file:
-            # , parse_float=float, parse_int=float  
+            # , parse_float=float, parse_int=float
             # TODO il y a pb ici lorsque le code du zonage1 est faux.
             data = json.load(file)
         return data
