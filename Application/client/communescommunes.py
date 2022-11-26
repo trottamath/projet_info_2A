@@ -5,9 +5,7 @@ auteur : Chloé Contant
 """
 import os
 import time
-from datetime import datetime
-from abc import ABC, abstractmethod
-from storage import Storage
+from client.storage import Storage
 
 class CommunesCommunes(Storage):
     '''Classe qui gère le stockage du fichier communes dans départements.
@@ -56,6 +54,6 @@ class CommunesCommunes(Storage):
 
 #test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-#D = CommunesCommunes()
-#print(D.count())
-#D.delete_older_file()
+D = CommunesCommunes()
+print(D.count())
+D.delete_older_file()

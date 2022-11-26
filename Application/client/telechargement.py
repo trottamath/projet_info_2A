@@ -9,6 +9,10 @@ import os
 import gzip
 import requests
 import urllib.request
+from client.departementscommunes import DepartementsCommunes
+from client.departementsparcelles import DepartementsParcelles
+from client.departementscommunes import CommunesCommunes
+from client.departementscommunes import CommunesParcelles
 
 
 class Telechargement():
@@ -118,6 +122,14 @@ class Telechargement():
         '''
         url = self.generator_link()
         path = self.generator_path()
+
+        if departements in path : 
+            if communes in path :
+
+            else :
+
+        
+        if communes 
 
         req = requests.get(url)
         filename = req.url[url.rfind('/') + 1:]

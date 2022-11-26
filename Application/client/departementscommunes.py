@@ -4,8 +4,8 @@ date 29/10/2022
 auteur : Chloé Contant
 """
 import os
-from abc import ABC, abstractmethod
-from storage import Storage
+import time
+from client.storage import Storage
 
 class DepartementsCommunes(Storage):
     '''Classe qui gère le stockage du fichier communes dans départements.
@@ -54,7 +54,7 @@ class DepartementsCommunes(Storage):
                 os.remove(os.path.join(self.path, filename))
 
 
-############################################################### TEST #####
+######## TEST #####
 
 # test pour fonction libère de la place dans le sous-dossier commune du
 # dossier département

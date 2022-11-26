@@ -5,10 +5,7 @@ auteur : Chloé Contant
 """
 import os
 import time
-from datetime import datetime
-from abc import ABC, abstractmethod
-from storage import Storage
-
+from client.storage import Storage
 
 class CommunesParcelles(Storage):
     '''Classe qui gère le stockage du fichier communes dans départements.
@@ -19,7 +16,7 @@ class CommunesParcelles(Storage):
             nombre maximum de fichiers dans le dossier
     '''
 
-    def __init__(self, path: str = 'Application/client/data/communes/parcelles', quota: int = 200):
+    def __init__(self, path: str = 'Application/client/data/communes/parcelles', quota: int = 6):
         '''constructeur'''
         self.path = path
         self.quota = quota
@@ -57,6 +54,6 @@ class CommunesParcelles(Storage):
 
 # test pour fonction libère de la place dans le sous-dossier commune du dossier département
 
-#D = CommunesParcelles()
-# print(D.count())
-# D.delete_older_file()
+D = CommunesParcelles()
+print(D.count())
+D.delete_older_file()
