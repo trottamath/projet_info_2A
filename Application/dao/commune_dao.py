@@ -20,7 +20,7 @@ class CommuneDAO(metaclass=Singleton):
             code postal de la commune
         """
 
-        request = "SELECT nom_com FROM Commune WHERE id_com = %(id_com)s"
+        request = "SELECT nom_commune FROM Commune WHERE id_com = %(id_com)s"
         with DBConnection().connection as connection:
             with connection.cursor() as cursor :
                 cursor.execute(
@@ -90,25 +90,3 @@ class CommuneDAO(metaclass=Singleton):
                     request,
                     {"id_com": id_com}
                 )
-    
-
-################################################## TESTS : OK ##################################################
-
-c = CommuneDAO()
-#print(c.recherche_commune(id_com="13207"))
-
-#### test ajout_commune : OK
-#c.ajout_commune('33000', 'Bordeaux')
-#c.ajout_commune('39000', 'LONS-LE-SAUNIER')
-#print(c.recherche_commune(id_com="83000")) 
-
-#### test nom_commune : OK
-#print(c.nom_commune('35170'))
-#print(c.nom_communes('35000'))
-
-#### test recherche_commune : OK
-#print(c.recherche_commune('45678'))
-#print(c.recherche_commune('84000'))
-
-#### test suppression commune : OK
-#c.suppression_commune('83000')
