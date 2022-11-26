@@ -4,7 +4,8 @@ from service.requete import Requete
 
 
 class InitialisationBdD():
-    '''classe qui charge la base de données pour un département à une date donnée'''
+    '''classe qui charge la base de données pour un département
+     à une date donnée'''
 
     def __init__(self, id_dep: str, date: str = "latest"):
         '''constructeur'''
