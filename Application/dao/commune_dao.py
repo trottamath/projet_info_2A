@@ -87,13 +87,9 @@ class CommuneDAO(metaclass=Singleton):
                 cursor.execute(
                     request,
                     {"id_com": id_com}
-<<<<<<< HEAD
-                )
-=======
-                )
 
 
-################################################## TESTS : OK ############
+)################################################## TESTS : OK ############
 
 c = CommuneDAO()
 # print(c.recherche_commune(id_com="13207"))
@@ -113,4 +109,4 @@ c = CommuneDAO()
 
 # test suppression commune : OK
 # c.suppression_commune('83000')
->>>>>>> 699776ce20f4fb8aa84912f69193d3b55a710382
+#>>>>>>> 699776ce20f4fb8aa84912f69193d3b55a710382
