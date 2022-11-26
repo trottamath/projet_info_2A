@@ -86,25 +86,4 @@ class CommuneDAO(metaclass=Singleton):
                 cursor.execute(
                     request,
                     {"id_com": id_com}
-
-
-)################################################## TESTS : OK ############
-
-c = CommuneDAO()
-# print(c.recherche_commune(id_com="13207"))
-
-# test ajout_commune : OK
-c.ajout_commune('33000', 'BORDEAUX')
-#c.ajout_commune('39000', 'LONS-LE-SAUNIER')
-# print(c.recherche_commune(id_com="83000"))
-
-# test nom_commune : OK
-# print(c.nom_commune('35170'))
-# print(c.nom_communes('35000'))
-
-# test recherche_commune : OK
-# print(c.recherche_commune('45678'))
-# print(c.recherche_commune('84000'))
-
-# test suppression commune : OK
-# c.suppression_commune('83000')
+                )
