@@ -49,11 +49,3 @@ class CommunesCommunes(Storage):
             for filename in older_file :
                 os.remove(os.path.join(self.path,filename).replace("\\", "/"))
 
-
-############################################################### TEST ############################################################################
-
-#test pour fonction libère de la place dans le sous-dossier commune du dossier département
-
-D = CommunesCommunes()
-print(D.count())
-D.delete_older_file()
