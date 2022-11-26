@@ -1,41 +1,28 @@
-'''module de test de la classe LienService'''
+'''module de test de la classe LienService
+test unitaire de la classe Telechargement
+auteurs: Jean-Philippe Trotta et Chloé Contant
+date : 21/11/2022'''
 from client.lien_service import LienService
+import unittest
 
 
-D = {'zonage1': 'communes',
-     'id1': '13207',
-     'zonage2': 'parcelles',
-     'date': 'latest'}
-test = LienService(D)
-print(test.dico)
-dico = test.genere_dico()
-# print(dico)
+class LienServiceTest(unittest.TestCase):
 
+     def test_genere_dico(self):
+          '''Test de la méthode qui retourne la liste de dictionnaires à la couche service'''
+          D1 = {'zonage1': 'communes',
+               'id1': '13207',
+               'zonage2': 'parcelles',
+               'date': 'latest'}
+          t1 = LienService(D1)
+          test1 = t1.genere_dico() is None
+     
+          D2 = {'zonage1': 'departements',
+               'id1': '51',
+          'zonage2': 'communes',
+          'date': 'latest'}
+          t2 = LienService(D2)
+          test2 = t2.genere_dico() is None
 
-D = {'zonage1': 'departements',
-     'id1': '2A',
-     'zonage2': 'communes',
-     'date': 'latest'}
-test = LienService(D)
-print(test.dico)
-
-# bug pour une parcelle en zonage2, mais ok pour commune
-list_dico = test.genere_dico()
-
-
-D = {'zonage1': 'departements',
-     'id1': '51',
-     'zonage2': 'communes',
-     'date': 'latest'
-     }
-test = LienService(D)
-print(test.dico)
-
-
-# pb résolu, à supprimer
-# list_dico = test.genere_dico()  #bug pour une parcelle en zonage2, mais ok pour commune
-# multi=list_dico[136]["geometry"]["coordinates"]
-# print(list_dico[136]["geometry"]["type"])
-# poly=multi[0]
-# mpoly=poly[0]
-# print(mpoly[0])
+if __name__ == '__main__':
+    unittest.main()
