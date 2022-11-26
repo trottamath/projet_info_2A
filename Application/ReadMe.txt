@@ -25,5 +25,5 @@ For example, if the user chooses the request 1 "bordering municipalities of a gi
 (INSEE code 13207) on the “latest” date, the application will return the list ['13201', '13206','13208'] corresponding to the 1st, 
 6th and 8th districts of Marseille.
 
-WARNING for the first use: To load a complete district in the database, for exemple for the district 13, use 
+WARNING  for the first use: Create your database (cf. init_db.sql). To load a complete district in the database, for exemple for the district 13, use 
  InitialisationBdD(id_dep="13").chargement_bdd()

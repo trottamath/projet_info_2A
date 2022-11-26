@@ -104,6 +104,7 @@ class Requete ():
             # enregistrement dans la base de données
             CommuneCommuneDAO().create_all(id_com1=id_com, list_id_com2=list_id_com_contig,
                                            date=self.dico_requete["date"])
+            print(com1.nom)
             CommuneDAO().ajout_commune(id_com= id_com, nom_com= com1.nom)
 
             return list_id_com_contig
