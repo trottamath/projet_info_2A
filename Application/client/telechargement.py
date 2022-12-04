@@ -159,7 +159,7 @@ class Telechargement():
             with open(chemin, 'wb') as file:
                 file.write(request.content)
                 #print(("Le fichier {} a bien été téléchargé.").format(filename))
-        print("{} est téléchargé").format(chemin)
+        print("{} est téléchargé".format(chemin))
 
     def recherche_fichier(self) -> bool:
         '''Méthode qui regarde si le fichier existe en local
@@ -198,7 +198,7 @@ class Telechargement():
         filename = req.url[url.rfind('/') + 1:]
         chemin = os.path.join(path, ('cadastre-{}-{}-{}.json.gz').format(
             self.id_zone, self.zonage2, self.date).replace("\\", "/"))
-        print(chemin)
+        print("{} est lu".format(chemin))
 
         with gzip.open(chemin, 'rb') as file:
             # , parse_float=float, parse_int=float
