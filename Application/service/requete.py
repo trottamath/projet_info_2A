@@ -39,7 +39,8 @@ class Requete ():
 
         #modification de la date "latest"
         if self.dico_requete["date"] == "latest":
-            self.dico_requete["date"] = Telechargement(id_zone1=self.dico_requete["id"]).date
+            date =Telechargement(id_zone1=self.dico_requete["id"]).date
+            self.dico_requete["date"] = date
 
 
     def ident_dep(self):
