@@ -12,6 +12,7 @@ from client.lien_service import LienService
 from objets.zone.zonage import Zonage
 from objets.zone.departement import Departement
 from service.instanciation import Instanciation
+from client.telechargement import Telechargement
 
 
 class Requete ():
@@ -35,6 +36,11 @@ class Requete ():
                     date du fichier cadatral de référence
                 """
         self.dico_requete = dico_requete
+
+        #modification de la date "latest"
+        if self.dico_requete["date"] == "latest":
+            self.dico_requete["date"] = Telechargement(id_zone1=self.dico_requete["id"]).date
+
 
     def ident_dep(self):
         '''extrait les 2 ou 3 premiers caractères d'un identifiant
@@ -217,6 +223,7 @@ class Requete ():
 
 
     def Get_or_create(self) -> list[str]:
+        
         if self.Get_DAO() is not None and self.Get_DAO() != []:
             return self.Get_DAO()
         else:
