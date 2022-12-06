@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>12</zoom_level><element><id>UMLClass</id><coordinates><x>324</x><y>204</y><w>156</w><h>108</h></coordinates><panel_attributes>Commune
+<diagram program="umletino" version="15.0.0"><zoom_level>12</zoom_level><element><id>UMLClass</id><coordinates><x>216</x><y>216</y><w>156</w><h>108</h></coordinates><panel_attributes>Commune
 --
 _id_com : str_
 nom_commune : str
@@ -9,7 +9,7 @@ bg=#EBACA2
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>684</x><y>216</y><w>144</w><h>96</h></coordinates><panel_attributes>Parcelle
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>228</y><w>144</w><h>96</h></coordinates><panel_attributes>Parcelle
 --
 _id_parc : str_
 #id_com_limit : str
@@ -20,15 +20,15 @@ bg=#EBACA2
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>468</x><y>252</y><w>240</w><h>60</h></coordinates><panel_attributes>lt=-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>264</y><w>240</w><h>60</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=*
-&lt; est contigüe à</panel_attributes><additional_attributes>10;20;180;20</additional_attributes></element><element><id>Relation</id><coordinates><x>576</x><y>264</y><w>36</w><h>120</h></coordinates><panel_attributes>lt=.
+&lt; est contigüe à</panel_attributes><additional_attributes>10;20;180;20</additional_attributes></element><element><id>Relation</id><coordinates><x>468</x><y>276</y><w>36</w><h>120</h></coordinates><panel_attributes>lt=.
 m1=
-m2=</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>168</x><y>156</y><w>228</w><h>216</h></coordinates><panel_attributes>lt=-
+m2=</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>60</x><y>168</y><w>228</w><h>216</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=*
-&lt; est contigüe à </panel_attributes><additional_attributes>160;130;160;160;10;160;10;10;160;10;160;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>168</x><y>396</y><w>204</w><h>96</h></coordinates><panel_attributes>Commune_Commune
+&lt; est contigüe à </panel_attributes><additional_attributes>160;130;160;160;10;160;10;10;160;10;160;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>408</y><w>204</w><h>96</h></coordinates><panel_attributes>Commune_Commune
 --
 _id_com1 : str_
 _id_com2 : str_
@@ -36,32 +36,32 @@ _date_
 bg=#EBACA2
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>264</x><y>336</y><w>36</w><h>84</h></coordinates><panel_attributes>lt=.
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>156</x><y>348</y><w>36</w><h>84</h></coordinates><panel_attributes>lt=.
 m1=
-m2=</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>492</x><y>360</y><w>156</w><h>108</h></coordinates><panel_attributes>Parcelle_Commune
+m2=</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>372</y><w>156</w><h>108</h></coordinates><panel_attributes>Parcelle_Commune
 --
 _id_parc : str_
 _id_com : str_
 _date _
-bg=#EBACA2
+bg=#EBACA
 
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>444</x><y>24</y><w>192</w><h>96</h></coordinates><panel_attributes>Departements_contigus
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>336</x><y>36</y><w>192</w><h>96</h></coordinates><panel_attributes>Commune_Département
 --
-_id_dep1 : str_
-_id_dep2 : str_
+_id_dep : str_
+_id_com : str_
+_date_
 
-
-bg=#EBACA2
-
-
-
+bg=#EBACA
 
 
 
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>108</y><w>192</w><h>120</h></coordinates><panel_attributes>lt=-
-m1=*
-m2=*
- est incluse dans l'un &gt;</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>348</x><y>120</y><w>120</w><h>120</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..1
+ en limite &gt;</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>

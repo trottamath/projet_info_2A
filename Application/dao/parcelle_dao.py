@@ -114,3 +114,28 @@ class ParcelleDAO(metaclass=Singleton):
                 cursor.execute(
                     request,
                     {"id_parc": id_parc})
+
+    def suppression_all_com(self, id_com_limit):
+        request = "DELETE FROM parcelle WHERE id_com_limit = %(id_com_limit)s"
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    request,
+                    {"id_com_limit": id_com_limit})
+
+
+
+    def supprime_listcom(self,list_id_com):
+        for id_com_limit in list_id_com:
+            self.suppression_all_com(id_com_limit= id_com_limit)
+    
+    def supprime_all_dep(self, id_dep):
+            request = "DELETE FROM parcelle WHERE SUBSTR(id_parc,0,2) = %(id_dep)s"
+            #à compléter pour supprimer toute les communes du départements données
+            
+            with DBConnection().connection as connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        request,
+                        {"id_dep": id_dep}
+                    )

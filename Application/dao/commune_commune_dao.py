@@ -93,3 +93,32 @@ class CommuneCommuneDAO():
         """
         for id_com2 in list_id_com2:
             self.create(id_com1=id_com1, id_com2=id_com2, date=date)
+
+    def supprime_commune(self,id_com):
+        request = "DELETE FROM commune_commune WHERE id_com1 = %(id_com)s OR id_com2 = %(id_com)s"
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    request,
+                    {"id_com": id_com}
+                )
+
+    def supprime_listcom(self,list_id_com):
+        for id_com in list_id_com:
+            self.supprime_commune(id_com)
+
+    def supprime_all_dep(self, id_dep):
+        request = "DELETE FROM commune_commune WHERE SUBSTR(id_com1,0,2) = %(id_dep)s OR SUBSTR(id_com2,0,2) = %(id_dep)s"
+        #à compléter pour supprimer toute les communes du départements données
+            
+        with DBConnection().connection as connection:
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    request,
+                    {"id_dep": id_dep}
+                )
+
+#solution de secours provisoire pour supprimer la commune 13007
+#CommuneCommuneDAO().supprime_commune(id_com="13007")
+#print(CommuneCommuneDAO().recherche_com(id_com="13007", date="2022-10-01"))
+#CommuneCommuneDAO().supprime_all_dep(id_dep="13")

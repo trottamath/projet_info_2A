@@ -87,3 +87,25 @@ class CommuneDAO(metaclass=Singleton):
                     request,
                     {"id_com": id_com}
                 )
+    
+    def supprime_listcom(self,list_id_com):
+        for id_com in list_id_com:
+            self.suppression_commune(id_com= id_com)
+    
+    def supprime_all_dep(self, id_dep):
+            request = "DELETE FROM commune WHERE SUBSTR(id_com,0,2) = %(id_dep)s"
+            #à compléter pour supprimer toute les communes du départements données
+            
+            with DBConnection().connection as connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        request,
+                        {"id_dep": id_dep}
+                    )
+
+#solution de secours provisoire pour supprimer la commune 13007
+#CommuneDAO().suppression_commune(id_com="13007")
+#print(CommuneDAO().recherche_commune(id_com="13007"))
+
+
+#CommuneDAO().supprime_all_dep(id_dep="13") 
