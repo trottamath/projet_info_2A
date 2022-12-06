@@ -49,10 +49,9 @@ class Point():
             autre_point : Point
         """
         # print("test d'égalité de points") # TODO à supprimer à la fin
-        # return (autre_point.latitude == self.latitude) and
-        # (autre_point.longitude == self.longitude)
+        return (autre_point.latitude == self.latitude) and (autre_point.longitude == self.longitude)
         # à tester avec une erreur raisonnable ?
-        return self.test_proxim(autre_point=autre_point, erreur=0.0002)
+        #return self.test_proxim(autre_point=autre_point, erreur=0.0002)
 
     def __str__(self) -> str:
         """affichage"""
